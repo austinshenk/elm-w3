@@ -1,0 +1,28 @@
+{
+  "name": "elm-wai",
+  "version": "1.0.0",
+  "engines": {
+    "node": "11.14.0",
+    "npm": "5.6.0"
+  },
+  "description": "Elm package to create WAI compliant components",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/austinshenk/elm-wai.git"
+  },
+  "author": "Austin Bookhart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/austinshenk/elm-wai/issues"
+  },
+  "homepage": "https://github.com/austinshenk/elm-wai#readme",
+  "dependencies": {
+    "elm": "^0.19.0-bugfix6",
+    "elm-analyse": "^0.16.3",
+    "elm-test": "^0.19.0-rev6"
+  }
+}
