@@ -2,7 +2,7 @@
   "name": "elm-wai",
   "version": "1.0.0",
   "engines": {
-    "node": "11.14.0",
+    "node": "10.15.3",
     "npm": "5.6.0"
   },
   "description": "Elm package to create WAI compliant components",
