@@ -2,12 +2,12 @@ module RadioSuite exposing (suite)
 
 import Expect
 import Html.Attributes
-import Label
-import Radio
 import Test exposing (..)
 import Test.Html.Query as Query
 import Test.Html.Selector as Selector
 import Wai.Aria as Aria
+import Wai.Label as Label
+import Wai.Radio as Radio
 import Wai.TriState as TriState
 
 

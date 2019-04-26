@@ -1,4 +1,4 @@
-module Label.Type exposing (Label(..))
+module Wai.Label.Type exposing (Label(..))
 
 import Wai.IdReference exposing (IdReference)
 

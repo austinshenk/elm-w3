@@ -1,14 +1,14 @@
 module AccordionSuite exposing (suite)
 
-import Accordion exposing (..)
 import Expect
 import Html
 import Html.Attributes as Attribute
-import Label
 import Test exposing (..)
 import Test.Html.Query as Query
 import Test.Html.Selector as Selector
+import Wai.Accordion as Accordion exposing (..)
 import Wai.Aria as Aria
+import Wai.Label as Label
 
 
 suite : Test

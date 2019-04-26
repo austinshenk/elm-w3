@@ -1,4 +1,4 @@
-module Table exposing
+module Wai.Table exposing
     ( column
     , data
     , header
@@ -9,10 +9,10 @@ module Table exposing
 
 import Html exposing (Attribute, Html)
 import Html.Attributes
-import Label.Help
-import Label.Type exposing (Label)
 import Wai.Aria as Aria
 import Wai.IdReference exposing (IdReference)
+import Wai.Label.Help as LabelHelp
+import Wai.Label.Type exposing (Label)
 import Wai.Table.Column as Column
 import Wai.Table.Data as Data
 import Wai.Table.Header as Header
@@ -30,7 +30,7 @@ table : Settings -> List (Attribute a) -> List (Header a) -> List (Row a) -> Htm
 table tableSettings attributes headers rows =
     let
         labelledAttributes =
-            Label.Help.apply tableSettings.label ( attributes, [] )
+            LabelHelp.apply tableSettings.label ( attributes, [] )
 
         tattributes =
             Aria.colCount tableSettings.columnCount :: Aria.rowCount tableSettings.rowCount :: optionalAttribute Aria.describedBy tableSettings.describedBy :: Tuple.first labelledAttributes

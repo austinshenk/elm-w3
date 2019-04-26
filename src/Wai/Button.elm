@@ -1,4 +1,4 @@
-module Button exposing
+module Wai.Button exposing
     ( button
     , buttonWith
     , closed
@@ -20,10 +20,10 @@ module Button exposing
     )
 
 import Html
-import Label.Help
-import Label.Type exposing (Label)
 import Wai.Aria as Aria
 import Wai.IdReference exposing (IdReference)
+import Wai.Label.Help as LabelHelp
+import Wai.Label.Type exposing (Label)
 import Wai.Token.HasPopup as HasPopup
 import Wai.TriState
 
@@ -41,7 +41,7 @@ button : Label -> List (Html.Attribute a) -> List (Html.Html a) -> Html.Html a
 button label attributes body =
     let
         ( attributesWithLabel, bodyWithLabel ) =
-            Label.Help.apply label ( attributes, body )
+            LabelHelp.apply label ( attributes, body )
     in
     Html.button attributesWithLabel bodyWithLabel
 
@@ -168,7 +168,7 @@ closed =
 applyButtonSettings : Settings -> ( List (Html.Attribute a), List (Html.Html a) ) -> ( List (Html.Attribute a), List (Html.Html a) )
 applyButtonSettings { label, describedBy, enabled } ( attributes, body ) =
     ( attributes, body )
-        |> Label.Help.apply label
+        |> LabelHelp.apply label
         |> applyDescribedBy describedBy
         |> applyEnabled enabled
 
@@ -183,7 +183,7 @@ type alias Settings =
 applyToggleButtonSettings : ToggleSettings -> ( List (Html.Attribute a), List (Html.Html a) ) -> ( List (Html.Attribute a), List (Html.Html a) )
 applyToggleButtonSettings buttonSettings ( attributes, body ) =
     ( attributes, body )
-        |> Label.Help.apply buttonSettings.label
+        |> LabelHelp.apply buttonSettings.label
         |> applyDescribedBy buttonSettings.describedBy
         |> applyEnabled buttonSettings.enabled
         |> applyPressed buttonSettings.pressed
@@ -202,7 +202,7 @@ type alias ToggleSettings =
 applyMenuButtonSettings : HasPopup -> PopupSettings -> ( List (Html.Attribute a), List (Html.Html a) ) -> ( List (Html.Attribute a), List (Html.Html a) )
 applyMenuButtonSettings hasPopup buttonSettings ( attributes, body ) =
     ( attributes, body )
-        |> Label.Help.apply buttonSettings.label
+        |> LabelHelp.apply buttonSettings.label
         |> applyDescribedBy buttonSettings.describedBy
         |> applyEnabled buttonSettings.enabled
         |> applyHasPopup hasPopup

@@ -1,10 +1,10 @@
-module Accordion exposing (Expanded, Heading, Panel, Region, accordion, closed, heading, opened, panel, panelSettings, region)
+module Wai.Accordion exposing (Expanded, Heading, Panel, Region, accordion, closed, heading, opened, panel, panelSettings, region)
 
-import Button
 import Html exposing (Attribute, Html)
 import Html.Attributes
-import Label.Type exposing (Label)
 import Wai.Aria as Aria
+import Wai.Button as Button
+import Wai.Label.Type exposing (Label)
 
 
 

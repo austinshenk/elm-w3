@@ -1,4 +1,4 @@
-module Alert exposing (alert)
+module Wai.Alert exposing (alert)
 
 import Html
 import Html.Attributes

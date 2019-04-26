@@ -1,11 +1,11 @@
 module LinkSuite exposing (suite)
 
 import Html.Attributes as Attribute
-import Label
-import Link exposing (..)
 import Test exposing (..)
 import Test.Html.Query as Query
 import Test.Html.Selector as Selector
+import Wai.Label as Label
+import Wai.Link as Link exposing (..)
 
 
 suite : Test

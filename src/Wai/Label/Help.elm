@@ -1,8 +1,8 @@
-module Label.Help exposing (apply)
+module Wai.Label.Help exposing (apply)
 
 import Html exposing (Attribute, Html)
-import Label.Type exposing (Label(..))
 import Wai.Aria
+import Wai.Label.Type exposing (Label(..))
 
 
 apply : Label -> ( List (Attribute a), List (Html a) ) -> ( List (Attribute a), List (Html a) )

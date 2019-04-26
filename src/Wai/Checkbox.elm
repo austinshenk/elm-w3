@@ -1,11 +1,11 @@
-module Checkbox exposing (ariaLabel, ariaLabelledBy, checkbox, checkboxSettings, group, groupCheckbox)
+module Wai.Checkbox exposing (ariaLabel, ariaLabelledBy, checkbox, checkboxSettings, group, groupCheckbox)
 
 import Html exposing (Attribute, Html)
 import Html.Attributes
-import Label.Help
-import Label.Type exposing (Label)
 import Wai.Aria as Aria
 import Wai.IdReference exposing (IdReference)
+import Wai.Label.Help as LabelHelp
+import Wai.Label.Type as LabelType exposing (Label)
 import Wai.TriState
 
 
@@ -38,12 +38,12 @@ checkboxSettings label checked =
 
 ariaLabel : String -> GroupLabel
 ariaLabel label =
-    GroupLabel (Label.Type.AriaLabel label)
+    GroupLabel (LabelType.AriaLabel label)
 
 
 ariaLabelledBy : List IdReference -> GroupLabel
 ariaLabelledBy idReferences =
-    GroupLabel (Label.Type.AriaLabelledBy idReferences)
+    GroupLabel (LabelType.AriaLabelledBy idReferences)
 
 
 group : GroupLabel -> List (Attribute a) -> List (GroupedCheckbox a) -> Html a
@@ -51,7 +51,7 @@ group groupLabel attributes checkboxes =
     let
         ( groupAttributes, groupBody ) =
             ( [ Aria.group ], List.map groupedCheckboxToElement checkboxes )
-                |> Label.Help.apply (groupLabelToLabel groupLabel)
+                |> LabelHelp.apply (groupLabelToLabel groupLabel)
     in
     Html.div (attributes ++ groupAttributes) groupBody
 
@@ -83,6 +83,6 @@ checkbox settings attributes =
 
         ( checkboxAttrbutes, checkboxBody ) =
             ( [ Html.Attributes.attribute "type" "checkbox", checkedAttribute ], [] )
-                |> Label.Help.apply settings.label
+                |> LabelHelp.apply settings.label
     in
     Html.input (attributes ++ checkboxAttrbutes) checkboxBody

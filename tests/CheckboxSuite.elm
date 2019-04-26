@@ -1,13 +1,13 @@
 module CheckboxSuite exposing (suite)
 
-import Checkbox
 import Expect
 import Html.Attributes
-import Label
 import Test exposing (..)
 import Test.Html.Query as Query
 import Test.Html.Selector as Selector
 import Wai.Aria as Aria
+import Wai.Checkbox as Checkbox
+import Wai.Label as Label
 import Wai.TriState as TriState
 
 

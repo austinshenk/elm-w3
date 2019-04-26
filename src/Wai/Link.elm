@@ -1,9 +1,9 @@
-module Link exposing (link, settings)
+module Wai.Link exposing (link, settings)
 
 import Html exposing (Attribute, Html)
 import Html.Attributes exposing (attribute)
-import Label.Help
-import Label.Type exposing (Label)
+import Wai.Label.Help as LabelHelp
+import Wai.Label.Type exposing (Label)
 
 
 
@@ -33,7 +33,7 @@ link linkSettings attributes body =
     let
         ( attributesWithSettings, bodyWithSettings ) =
             ( attributes, body )
-                |> Label.Help.apply linkSettings.label
+                |> LabelHelp.apply linkSettings.label
                 |> applyHref linkSettings.href
     in
     Html.a attributesWithSettings bodyWithSettings

@@ -1,7 +1,7 @@
-module Label exposing (ariaLabel, ariaLabelledBy, custom, text, textAppended, textPreppended)
+module Wai.Label exposing (ariaLabel, ariaLabelledBy, custom, text, textAppended, textPreppended)
 
-import Label.Type exposing (Label(..))
 import Wai.IdReference exposing (IdReference)
+import Wai.Label.Type exposing (Label(..))
 
 
 custom : Label

@@ -3,12 +3,12 @@ module TableSuite exposing (suite)
 import Expect
 import Html
 import Html.Attributes as Attribute
-import Label
-import Table exposing (..)
 import Test exposing (..)
 import Test.Html.Query as Query
 import Test.Html.Selector as Selector
 import Wai.Aria as Aria
+import Wai.Label as Label
+import Wai.Table as Table exposing (..)
 import Wai.Table.Column as Column exposing (..)
 import Wai.Table.Data as Data exposing (..)
 import Wai.Table.Header as Header exposing (..)

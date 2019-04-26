@@ -1,11 +1,11 @@
-module Radio exposing (ariaLabel, ariaLabelledBy, group, groupRadio, radio, settings)
+module Wai.Radio exposing (ariaLabel, ariaLabelledBy, group, groupRadio, radio, settings)
 
 import Html exposing (Attribute, Html)
 import Html.Attributes
-import Label.Help
-import Label.Type exposing (Label(..))
 import Wai.Aria as Aria
 import Wai.IdReference exposing (IdReference)
+import Wai.Label.Help as LabelHelp
+import Wai.Label.Type as LabelType exposing (Label(..))
 import Wai.TriState
 
 
@@ -38,12 +38,12 @@ settings label checked =
 
 ariaLabel : String -> GroupLabel
 ariaLabel label =
-    GroupLabel (Label.Type.AriaLabel label)
+    GroupLabel (LabelType.AriaLabel label)
 
 
 ariaLabelledBy : List IdReference -> GroupLabel
 ariaLabelledBy idReferences =
-    GroupLabel (Label.Type.AriaLabelledBy idReferences)
+    GroupLabel (LabelType.AriaLabelledBy idReferences)
 
 
 group : GroupLabel -> List (Attribute a) -> List (GroupRadio a) -> Html a
@@ -51,7 +51,7 @@ group groupLabel attributes radios =
     let
         ( groupAttributes, groupBody ) =
             ( [ Aria.group ], List.map groupRadioToHtml radios )
-                |> Label.Help.apply (groupLabelToLabel groupLabel)
+                |> LabelHelp.apply (groupLabelToLabel groupLabel)
     in
     Html.div (attributes ++ groupAttributes) groupBody
 
@@ -83,6 +83,6 @@ radio radioSettings attributes =
 
         ( radioAttrbutes, radioBody ) =
             ( [ Html.Attributes.attribute "type" "radio", checkedAttribute ], [] )
-                |> Label.Help.apply radioSettings.label
+                |> LabelHelp.apply radioSettings.label
     in
     Html.input (attributes ++ radioAttrbutes) radioBody
