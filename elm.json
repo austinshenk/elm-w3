@@ -20,7 +20,6 @@
       ],
       "UI Components": [
         "Wai.Accordion",
-        "Wai.Alert",
         "Wai.Button",
         "Wai.Checkbox",
         "Wai.Label",

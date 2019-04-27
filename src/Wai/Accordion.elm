@@ -1,4 +1,27 @@
-module Wai.Accordion exposing (Expanded, Heading, Panel, Region, accordion, closed, heading, opened, panel, panelSettings, region)
+module Wai.Accordion exposing
+    ( accordion
+    , panel, panelSettings, heading, region
+    , open, close
+    )
+
+{-| UI component based on WAI's [accordion](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion) reccomendations
+
+
+# Accordion
+
+@docs accordion
+
+
+# Panel
+
+@docs panel, panelSettings, heading, region
+
+
+# State
+
+@docs open, close
+
+-}
 
 import Html exposing (Attribute, Html)
 import Html.Attributes
@@ -7,20 +30,17 @@ import Wai.Button as Button
 import Wai.Label.Type exposing (Label)
 
 
-
-{- WAI-ARIA Accordion
-   https://www.w3.org/TR/wai-aria-practices-1.1/#accordion
--}
-
-
+{-| -}
 type Panel a
     = Panel PanelSettings (Heading a) (Region a)
 
 
+{-| -}
 type Heading a
     = Heading Label (List (Attribute a)) (List (Html a))
 
 
+{-| -}
 type Region a
     = Region (List (Attribute a)) (List (Html a))
 
@@ -36,18 +56,21 @@ type Expanded
     | Close
 
 
+{-| -}
 panelSettings : String -> Expanded -> PanelSettings
 panelSettings id expanded =
     { id = id, expanded = expanded }
 
 
-opened : Expanded
-opened =
+{-| -}
+open : Expanded
+open =
     Open
 
 
-closed : Expanded
-closed =
+{-| -}
+close : Expanded
+close =
     Close
 
 
@@ -55,6 +78,7 @@ type alias HeadingLevel =
     Int
 
 
+{-| -}
 accordion : HeadingLevel -> List (Attribute a) -> List (Panel a) -> Html a
 accordion headingLevel attributes panels =
     let
@@ -125,16 +149,19 @@ panelRegionToElement (Region attributes body) settings =
     Html.dd allAttrbutes body
 
 
+{-| -}
 panel : PanelSettings -> Heading a -> Region a -> Panel a
 panel =
     Panel
 
 
+{-| -}
 heading : Label -> List (Attribute a) -> List (Html a) -> Heading a
 heading =
     Heading
 
 
+{-| -}
 region : List (Attribute a) -> List (Html a) -> Region a
 region =
     Region

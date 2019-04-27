@@ -15,7 +15,7 @@ suite : Test
 suite =
     let
         closedPanel =
-            panel (panelSettings "panel1" closed)
+            panel (panelSettings "panel1" close)
                 (heading Label.custom [] [])
                 (region [] [])
 
@@ -30,13 +30,13 @@ suite =
         accordionWithSomeClosedPanels =
             accordion 1
                 []
-                [ panel (panelSettings "panel1" closed)
+                [ panel (panelSettings "panel1" close)
                     (heading Label.custom [] [])
                     (region [] [])
-                , panel (panelSettings "panel2" closed)
+                , panel (panelSettings "panel2" close)
                     (heading Label.custom [] [])
                     (region [] [])
-                , panel (panelSettings "panel3" closed)
+                , panel (panelSettings "panel3" close)
                     (heading Label.custom [] [])
                     (region [] [])
                 ]
@@ -44,7 +44,7 @@ suite =
         accordionWithSingleOpenedPanel =
             accordion 1
                 []
-                [ panel (panelSettings "panel1" opened)
+                [ panel (panelSettings "panel1" open)
                     (heading Label.custom [] [])
                     (region [] [])
                 ]
