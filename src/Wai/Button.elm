@@ -1,23 +1,27 @@
 module Wai.Button exposing
-    ( button
-    , buttonWith
-    , closed
-    , describedby
-    , dialogButton
-    , disable
-    , enable
-    , gridButton
-    , listBoxButton
-    , menuButton
-    , off
-    , on
-    , opened
-    , popupSettings
-    , settings
-    , toggleButton
-    , toggleSettings
-    , treeButton
+    ( button, buttonWith, settings, describedby, enable, disable
+    , toggleButton, toggleSettings, on, off
+    , menuButton, listBoxButton, treeButton, gridButton, dialogButton, popupSettings, opened, closed
     )
+
+{-| UI component based on WAI's [button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) reccomendations
+
+
+# Button
+
+@docs button, buttonWith, settings, describedby, enable, disable
+
+
+# Toggle button
+
+@docs toggleButton, toggleSettings, on, off
+
+
+# Popup button
+
+@docs menuButton, listBoxButton, treeButton, gridButton, dialogButton, popupSettings, opened, closed
+
+-}
 
 import Html
 import Wai.Aria as Aria
@@ -28,15 +32,7 @@ import Wai.Token.HasPopup as HasPopup
 import Wai.TriState
 
 
-
-{- WAI-ARIA Button
-   https://www.w3.org/TR/wai-aria-practices-1.1/#button
-   https://www.w3.org/TR/wai-aria-1.1/#button
-
-   https://www.w3.org/TR/wai-aria-practices-1.1/#menubutton
--}
-
-
+{-| -}
 button : Label -> List (Html.Attribute a) -> List (Html.Html a) -> Html.Html a
 button label attributes body =
     let
@@ -46,6 +42,7 @@ button label attributes body =
     Html.button attributesWithLabel bodyWithLabel
 
 
+{-| -}
 buttonWith : Settings -> List (Html.Attribute a) -> List (Html.Html a) -> Html.Html a
 buttonWith buttonSettings attributes body =
     let
@@ -55,26 +52,31 @@ buttonWith buttonSettings attributes body =
     Html.button attributesWithSettings bodyWithSettings
 
 
+{-| -}
 settings : Label -> Settings
 settings label =
     { label = label, describedBy = [], enabled = True }
 
 
+{-| -}
 describedby : List IdReference -> Settings -> Settings
 describedby ids buttonSettings =
     { buttonSettings | describedBy = ids }
 
 
+{-| -}
 enable : Settings -> Settings
 enable buttonSettings =
     { buttonSettings | enabled = True }
 
 
+{-| -}
 disable : Settings -> Settings
 disable buttonSettings =
     { buttonSettings | enabled = False }
 
 
+{-| -}
 toggleButton : ToggleSettings -> List (Html.Attribute a) -> List (Html.Html a) -> Html.Html a
 toggleButton buttonSettings attributes body =
     let
@@ -84,6 +86,7 @@ toggleButton buttonSettings attributes body =
     Html.button attributesWithSettings bodyWithSettings
 
 
+{-| -}
 toggleSettings : Label -> Pressed -> ToggleSettings
 toggleSettings label pressed =
     let
@@ -97,36 +100,43 @@ toggleSettings label pressed =
     }
 
 
+{-| -}
 on : Pressed
 on =
     On
 
 
+{-| -}
 off : Pressed
 off =
     Off
 
 
+{-| -}
 menuButton : PopupSettings -> List (Html.Attribute a) -> List (Html.Html a) -> Html.Html a
 menuButton =
     buttonHasPopup Menu
 
 
+{-| -}
 listBoxButton : PopupSettings -> List (Html.Attribute a) -> List (Html.Html a) -> Html.Html a
 listBoxButton =
     buttonHasPopup ListBox
 
 
+{-| -}
 treeButton : PopupSettings -> List (Html.Attribute a) -> List (Html.Html a) -> Html.Html a
 treeButton =
     buttonHasPopup Tree
 
 
+{-| -}
 gridButton : PopupSettings -> List (Html.Attribute a) -> List (Html.Html a) -> Html.Html a
 gridButton =
     buttonHasPopup Grid
 
 
+{-| -}
 dialogButton : PopupSettings -> List (Html.Attribute a) -> List (Html.Html a) -> Html.Html a
 dialogButton =
     buttonHasPopup Dialog
@@ -141,6 +151,7 @@ buttonHasPopup hasPopup buttonSettings attributes body =
     Html.button attributesWithSettings bodyWithSettings
 
 
+{-| -}
 popupSettings : Label -> Expanded -> List IdReference -> PopupSettings
 popupSettings label isOpened controls =
     let
@@ -155,11 +166,13 @@ popupSettings label isOpened controls =
     }
 
 
+{-| -}
 opened : Expanded
 opened =
     Opened
 
 
+{-| -}
 closed : Expanded
 closed =
     Closed

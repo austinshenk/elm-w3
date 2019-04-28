@@ -1,4 +1,21 @@
-module Wai.Checkbox exposing (ariaLabel, ariaLabelledBy, checkbox, checkboxSettings, group, groupCheckbox)
+module Wai.Checkbox exposing
+    ( checkbox, checkboxSettings, ariaLabel, ariaLabelledBy
+    , group, groupCheckbox
+    )
+
+{-| UI component based on WAI's [checkbox](https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox) reccomendations
+
+
+# Checkbox
+
+@docs checkbox, checkboxSettings, ariaLabel, ariaLabelledBy
+
+
+# Group
+
+@docs group, groupCheckbox
+
+-}
 
 import Html exposing (Attribute, Html)
 import Html.Attributes
@@ -7,12 +24,6 @@ import Wai.IdReference exposing (IdReference)
 import Wai.Label.Help as LabelHelp
 import Wai.Label.Type as LabelType exposing (Label)
 import Wai.TriState
-
-
-
-{- WAI-ARIA Checkbox
-   https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox
--}
 
 
 type GroupedCheckbox a
@@ -29,6 +40,7 @@ type alias CheckboxSettings =
     }
 
 
+{-| -}
 checkboxSettings : Label -> Bool -> CheckboxSettings
 checkboxSettings label checked =
     { label = label
@@ -36,16 +48,19 @@ checkboxSettings label checked =
     }
 
 
+{-| -}
 ariaLabel : String -> GroupLabel
 ariaLabel label =
     GroupLabel (LabelType.AriaLabel label)
 
 
+{-| -}
 ariaLabelledBy : List IdReference -> GroupLabel
 ariaLabelledBy idReferences =
     GroupLabel (LabelType.AriaLabelledBy idReferences)
 
 
+{-| -}
 group : GroupLabel -> List (Attribute a) -> List (GroupedCheckbox a) -> Html a
 group groupLabel attributes checkboxes =
     let
@@ -66,11 +81,13 @@ groupedCheckboxToElement (GroupedCheckbox settings attributes) =
     checkbox settings attributes
 
 
+{-| -}
 groupCheckbox : CheckboxSettings -> List (Attribute a) -> GroupedCheckbox a
 groupCheckbox =
     GroupedCheckbox
 
 
+{-| -}
 checkbox : CheckboxSettings -> List (Attribute a) -> Html a
 checkbox settings attributes =
     let

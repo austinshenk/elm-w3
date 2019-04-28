@@ -1,11 +1,27 @@
 module Wai.Table exposing
-    ( column
-    , data
-    , header
-    , row
-    , settings
-    , table
+    ( table, settings, describedBy
+    , header, column
+    , row, data
     )
+
+{-| UI component based on WAI's [table](https://www.w3.org/TR/wai-aria-practices-1.1/#table) reccomendations
+
+
+# Table
+
+@docs table, settings, describedBy
+
+
+# Header
+
+@docs header, column
+
+
+# Row
+
+@docs row, data
+
+-}
 
 import Html exposing (Attribute, Html)
 import Html.Attributes
@@ -19,13 +35,7 @@ import Wai.Table.Header as Header
 import Wai.Table.Row as Row
 
 
-
-{- WAI Table
-   https://www.w3.org/TR/wai-aria-practices-1.1/#table
-   https://www.w3.org/TR/wai-aria-practices-1.1/#gridAndTableProperties
--}
-
-
+{-| -}
 table : Settings -> List (Attribute a) -> List (Header a) -> List (Row a) -> Html a
 table tableSettings attributes headers rows =
     let
@@ -52,6 +62,7 @@ type alias Settings =
     }
 
 
+{-| -}
 settings : Label -> Int -> Int -> Settings
 settings label rowCount columnCount =
     { label = label
@@ -61,6 +72,7 @@ settings label rowCount columnCount =
     }
 
 
+{-| -}
 describedBy : List IdReference -> Settings -> Settings
 describedBy ids tableSettings =
     { tableSettings | describedBy = Just ids }
@@ -70,6 +82,7 @@ type Header a
     = Header Header.Settings (List (Attribute a)) (List (Column a))
 
 
+{-| -}
 header : Header.Settings -> List (Attribute a) -> List (Column a) -> Header a
 header =
     Header
@@ -79,6 +92,7 @@ type Column a
     = Column Column.Settings (List (Attribute a)) (List (Html a))
 
 
+{-| -}
 column : Column.Settings -> List (Attribute a) -> List (Html a) -> Column a
 column =
     Column
@@ -88,6 +102,7 @@ type Row a
     = Row Row.Settings (List (Attribute a)) (List (Data a))
 
 
+{-| -}
 row : Row.Settings -> List (Attribute a) -> List (Data a) -> Row a
 row =
     Row
@@ -97,6 +112,7 @@ type Data a
     = Data Data.Settings (List (Attribute a)) (List (Html a))
 
 
+{-| -}
 data : Data.Settings -> List (Attribute a) -> List (Html a) -> Data a
 data =
     Data

@@ -1,11 +1,22 @@
-module Wai.Table.Header exposing (Settings, columnIndex, settings)
+module Wai.Table.Header exposing (Settings, settings, columnIndex)
+
+{-| Header settings for Wai.Table module
 
 
+# Header
+
+@docs Settings, settings, columnIndex
+
+-}
+
+
+{-| -}
 settings : Int -> Settings
 settings rowIndex =
     { rowIndex = rowIndex, columnIndex = Nothing }
 
 
+{-| -}
 columnIndex : Int -> Settings -> Settings
 columnIndex value headerSettings =
     { headerSettings | columnIndex = Just value }

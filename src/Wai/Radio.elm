@@ -1,4 +1,21 @@
-module Wai.Radio exposing (ariaLabel, ariaLabelledBy, group, groupRadio, radio, settings)
+module Wai.Radio exposing
+    ( radio, settings, ariaLabel, ariaLabelledBy
+    , group, groupRadio
+    )
+
+{-| UI component based on WAI's [radio](https://www.w3.org/TR/wai-aria-practices-1.1/#radio) reccomendations
+
+
+# Radio
+
+@docs radio, settings, ariaLabel, ariaLabelledBy
+
+
+# Group
+
+@docs group, groupRadio
+
+-}
 
 import Html exposing (Attribute, Html)
 import Html.Attributes
@@ -7,12 +24,6 @@ import Wai.IdReference exposing (IdReference)
 import Wai.Label.Help as LabelHelp
 import Wai.Label.Type as LabelType exposing (Label(..))
 import Wai.TriState
-
-
-
-{- WAI-ARIA Radio
-   https://www.w3.org/TR/wai-aria-practices-1.1/#radio
--}
 
 
 type GroupRadio a
@@ -29,6 +40,7 @@ type alias Settings =
     }
 
 
+{-| -}
 settings : Label -> Bool -> Settings
 settings label checked =
     { label = label
@@ -36,16 +48,19 @@ settings label checked =
     }
 
 
+{-| -}
 ariaLabel : String -> GroupLabel
 ariaLabel label =
     GroupLabel (LabelType.AriaLabel label)
 
 
+{-| -}
 ariaLabelledBy : List IdReference -> GroupLabel
 ariaLabelledBy idReferences =
     GroupLabel (LabelType.AriaLabelledBy idReferences)
 
 
+{-| -}
 group : GroupLabel -> List (Attribute a) -> List (GroupRadio a) -> Html a
 group groupLabel attributes radios =
     let
@@ -66,11 +81,13 @@ groupRadioToHtml (GroupRadio radioSettings attributes) =
     radio radioSettings attributes
 
 
+{-| -}
 groupRadio : Settings -> List (Attribute a) -> GroupRadio a
 groupRadio =
     GroupRadio
 
 
+{-| -}
 radio : Settings -> List (Attribute a) -> Html a
 radio radioSettings attributes =
     let

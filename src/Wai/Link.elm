@@ -1,18 +1,21 @@
 module Wai.Link exposing (link, settings)
 
+{-| UI component based on WAI's [link](https://www.w3.org/TR/wai-aria-practices-1.1/#link) reccomendations
+
+
+# Link
+
+@docs link, settings
+
+-}
+
 import Html exposing (Attribute, Html)
 import Html.Attributes exposing (attribute)
 import Wai.Label.Help as LabelHelp
 import Wai.Label.Type exposing (Label)
 
 
-
-{- WAI-ARIA Link
-   https://www.w3.org/TR/wai-aria-practices-1.1/#link
-   https://www.w3.org/TR/wai-aria-1.1/#link
--}
-
-
+{-| -}
 settings : Label -> Href -> Settings
 settings label href =
     { href = href, label = label }
@@ -28,6 +31,7 @@ type alias Href =
     String
 
 
+{-| -}
 link : Settings -> List (Attribute a) -> List (Html a) -> Html a
 link linkSettings attributes body =
     let
