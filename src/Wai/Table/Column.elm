@@ -30,6 +30,7 @@ sort value columnSettings =
     { columnSettings | sort = Just value }
 
 
+{-| -}
 type alias Settings =
     { label : String
     , columnIndex : Maybe Int

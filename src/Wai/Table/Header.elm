@@ -22,6 +22,7 @@ columnIndex value headerSettings =
     { headerSettings | columnIndex = Just value }
 
 
+{-| -}
 type alias Settings =
     { rowIndex : Int
     , columnIndex : Maybe Int

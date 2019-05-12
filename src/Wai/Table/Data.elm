@@ -34,6 +34,7 @@ columnSpan value dataSettings =
     { dataSettings | columnSpan = Just value }
 
 
+{-| -}
 type alias Settings =
     { columnIndex : Maybe Int
     , rowSpan : Maybe Int
