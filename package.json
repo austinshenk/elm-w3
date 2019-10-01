@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/austinshenk/elm-wai#readme",
   "dependencies": {
-    "elm": "^0.19.0-bugfix6",
+    "elm": "^0.19.0-no-deps",
     "elm-analyse": "^0.16.3",
     "elm-test": "^0.19.0-rev6"
   }
