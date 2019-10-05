@@ -4,9 +4,8 @@
     "summary": "Create components that follow WAI recommendations",
     "license": "MIT",
     "version": "1.0.0",
-    "exposed-modules": {
-      "ARIA": [
-        "Wai.Role",
+    "exposed-modules": [
+        "Wai.Aria",
         "Wai.TriState",
         "Wai.Token.AutoComplete",
         "Wai.Token.Current",
@@ -17,8 +16,7 @@
         "Wai.Token.Orientation",
         "Wai.Token.Relevant",
         "Wai.Token.Sort"
-      ]
-    },
+    ],
     "elm-version": "0.19.0 <= v < 0.20.0",
     "dependencies": {
         "elm/core": "1.0.2 <= v < 2.0.0",

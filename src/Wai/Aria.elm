@@ -17,728 +17,753 @@ module Wai.Aria exposing
 
 -}
 
-import Html exposing (Attribute)
-import Html.Attributes exposing (attribute)
-import Wai.Aria.Help as Aria
+import Html
+import Wai.Aria.Help as Wai
 import Wai.IdReference exposing (IdReference)
-import Wai.Token as Token exposing (AutoComplete(..), Current(..), DropEffect(..), HasPopup(..), Invalid(..), Live(..), Orientation(..), Relevant(..), Sort(..), toToken)
-import Wai.TriState.Help exposing (TriState(..))
+import Wai.Token as Token exposing (AutoComplete(..), Current(..), DropEffect(..), HasPopup(..), Invalid(..), Live(..), Orientation(..), Relevant(..), Sort(..))
+import Wai.TriState.Help exposing (TriState)
 
 
 {-| -}
-activeDescendant : IdReference -> Attribute msg
+activeDescendant : IdReference -> Wai.Attribute { compatible | activeDescendant : Wai.Supported }
 activeDescendant =
-    Aria.withIdReference "aria-activedescendant"
+    Wai.idReference "activedescendant"
 
 
 {-| -}
-atomic : Bool -> Attribute msg
+atomic : Bool -> Wai.Attribute { compatible | atomic : Wai.Supported }
 atomic =
-    Aria.withBool "aria-atomic"
+    Wai.bool "atomic"
 
 
 {-| -}
-autoComplete : AutoComplete -> Attribute msg
+autoComplete : AutoComplete -> Wai.Attribute { compatible | autoComplete : Wai.Supported }
 autoComplete (AutoComplete value) =
-    Aria.withToken "aria-autocomplete" value
+    Wai.token "autocomplete" value
 
 
 {-| -}
-busy : Bool -> Attribute msg
+busy : Bool -> Wai.Attribute { compatible | busy : Wai.Supported }
 busy =
-    Aria.withBool "aria-busy"
+    Wai.bool "busy"
 
 
 {-| -}
-checked : TriState -> Attribute msg
+checked : TriState -> Wai.Attribute { compatible | checked : Wai.Supported }
 checked =
-    Aria.withTriState "aria-checked"
+    Wai.triState "checked"
 
 
 {-| -}
-colCount : Int -> Attribute msg
+colCount : Int -> Wai.Attribute { compatible | colCount : Wai.Supported }
 colCount =
-    Aria.withInteger "aria-colcount" -1
+    Wai.integer "colcount" -1
 
 
 {-| -}
-colIndex : Int -> Attribute msg
+colIndex : Int -> Wai.Attribute { compatible | colIndex : Wai.Supported }
 colIndex =
-    Aria.withInteger "aria-colindex" 1
+    Wai.integer "colindex" 1
 
 
 {-| -}
-colSpan : Int -> Attribute msg
+colSpan : Int -> Wai.Attribute { compatible | colSpan : Wai.Supported }
 colSpan =
-    Aria.withInteger "aria-colspan" 1
+    Wai.integer "colspan" 1
 
 
 {-| -}
-controls : List IdReference -> Attribute msg
+controls : List IdReference -> Wai.Attribute { compatible | controls : Wai.Supported }
 controls =
-    Aria.withIdReferenceList "aria-controls"
+    Wai.idReferenceList "controls"
 
 
 {-| -}
-current : Current -> Attribute msg
+current : Current -> Wai.Attribute { compatible | current : Wai.Supported }
 current (Current value) =
-    Aria.withToken "aria-current" value
+    Wai.token "current" value
 
 
 {-| -}
-describedBy : List IdReference -> Attribute msg
+describedBy : List IdReference -> Wai.Attribute { compatible | describedBy : Wai.Supported }
 describedBy =
-    Aria.withIdReferenceList "aria-describedby"
+    Wai.idReferenceList "describedby"
 
 
 {-| -}
-details : IdReference -> Attribute msg
+details : IdReference -> Wai.Attribute { compatible | details : Wai.Supported }
 details =
-    Aria.withIdReference "aria-details"
+    Wai.idReference "details"
 
 
 {-| -}
-disabled : Bool -> Attribute msg
+disabled : Bool -> Wai.Attribute { compatible | disabled : Wai.Supported }
 disabled =
-    Aria.withBool "aria-disabled"
+    Wai.bool "disabled"
 
 
 {-| -}
-dropEffect : DropEffect -> Attribute msg
+dropEffect : DropEffect -> Wai.Attribute { compatible | dropEffect : Wai.Supported }
 dropEffect (DropEffect value) =
-    Aria.withToken "aria-dropeffect" value
+    Wai.token "dropeffect" value
 
 
 {-| -}
-errorMessage : IdReference -> Attribute msg
+errorMessage : IdReference -> Wai.Attribute { compatible | errorMessage : Wai.Supported }
 errorMessage =
-    Aria.withIdReference "aria-errormessage"
+    Wai.idReference "errormessage"
 
 
 {-| -}
-expanded : Maybe Bool -> Attribute msg
+expanded : Maybe Bool -> Wai.Attribute { compatible | expanded : Wai.Supported }
 expanded =
-    Aria.withMaybeBool "aria-expanded"
+    Wai.maybeBool "expanded"
 
 
 {-| -}
-flowTo : List IdReference -> Attribute msg
+flowTo : List IdReference -> Wai.Attribute { compatible | flowTo : Wai.Supported }
 flowTo =
-    Aria.withIdReferenceList "aria-flowto"
+    Wai.idReferenceList "flowto"
 
 
 {-| -}
-grabbed : Maybe Bool -> Attribute msg
+grabbed : Maybe Bool -> Wai.Attribute { compatible | grabbed : Wai.Supported }
 grabbed =
-    Aria.withMaybeBool "aria-grabbed"
+    Wai.maybeBool "grabbed"
 
 
 {-| -}
-hasPopup : HasPopup -> Attribute msg
+hasPopup : HasPopup -> Wai.Attribute { compatible | hasPopup : Wai.Supported }
 hasPopup (HasPopup value) =
-    Aria.withToken "aria-haspopup" value
+    Wai.token "haspopup" value
 
 
 {-| -}
-hidden : Maybe Bool -> Attribute msg
+hidden : Maybe Bool -> Wai.Attribute { compatible | hidden : Wai.Supported }
 hidden =
-    Aria.withMaybeBool "aria-hidden"
+    Wai.maybeBool "hidden"
 
 
 {-| -}
-invalid : Invalid -> Attribute msg
+invalid : Invalid -> Wai.Attribute { compatible | invalid : Wai.Supported }
 invalid (Invalid value) =
-    Aria.withToken "aria-invalid" value
+    Wai.token "invalid" value
 
 
 {-| -}
-keyShortcuts : String -> Attribute msg
+keyShortcuts : String -> Wai.Attribute { compatible | keyShortcuts : Wai.Supported }
 keyShortcuts =
-    attribute "aria-keyshortcuts"
+    Wai.string "keyshortcuts"
 
 
 {-| -}
-label : String -> Attribute msg
+label : String -> Wai.Attribute { compatible | label : Wai.Supported }
 label =
-    Aria.withString "aria-label"
+    Wai.string "label"
 
 
 {-| -}
-labelledBy : List IdReference -> Attribute msg
+labelledBy : List IdReference -> Wai.Attribute { compatible | labelledBy : Wai.Supported }
 labelledBy =
-    Aria.withIdReferenceList "aria-labelledby"
+    Wai.idReferenceList "labelledby"
 
 
 {-| -}
-level : Int -> Attribute msg
+level : Int -> Wai.Attribute { compatible | level : Wai.Supported }
 level =
-    Aria.withInteger "aria-level" 1
+    Wai.integer "level" 1
 
 
 {-| -}
-live : Live -> Attribute msg
+live : Live -> Wai.Attribute { compatible | live : Wai.Supported }
 live (Live value) =
-    Aria.withToken "aria-live" value
+    Wai.token "live" value
 
 
 {-| -}
-modal : Bool -> Attribute msg
+modal : Bool -> Wai.Attribute { compatible | modal : Wai.Supported }
 modal =
-    Aria.withBool "aria-modal"
+    Wai.bool "modal"
 
 
 {-| -}
-multiLine : Bool -> Attribute msg
+multiLine : Bool -> Wai.Attribute { compatible | multiLine : Wai.Supported }
 multiLine =
-    Aria.withBool "aria-multiline"
+    Wai.bool "multiline"
 
 
 {-| -}
-multiSelectable : Bool -> Attribute msg
+multiSelectable : Bool -> Wai.Attribute { compatible | multiSelectable : Wai.Supported }
 multiSelectable =
-    Aria.withBool "aria-multiselectable"
+    Wai.bool "multiselectable"
 
 
 {-| -}
-orientation : Orientation -> Attribute msg
+orientation : Orientation -> Wai.Attribute { compatible | orientation : Wai.Supported }
 orientation (Orientation value) =
-    Aria.withToken "aria-orientation" value
+    Wai.token "orientation" value
 
 
 {-| -}
-owns : List IdReference -> Attribute msg
+owns : List IdReference -> Wai.Attribute { compatible | owns : Wai.Supported }
 owns =
-    Aria.withIdReferenceList "aria-owns"
+    Wai.idReferenceList "owns"
 
 
 {-| -}
-placeholder : String -> Attribute msg
+placeholder : String -> Wai.Attribute { compatible | placeholder : Wai.Supported }
 placeholder =
-    Aria.withString "aria-placeholder"
+    Wai.string "placeholder"
 
 
 {-| -}
-posInSet : Int -> Attribute msg
+posInSet : Int -> Wai.Attribute { compatible | posInSet : Wai.Supported }
 posInSet =
-    Aria.withInteger "aria-posinset" 1
+    Wai.integer "posinset" 1
 
 
 {-| -}
-pressed : TriState -> Attribute msg
+pressed : TriState -> Wai.Attribute { compatible | pressed : Wai.Supported }
 pressed =
-    Aria.withTriState "aria-pressed"
+    Wai.triState "pressed"
 
 
 {-| -}
-readOnly : Bool -> Attribute msg
+readOnly : Bool -> Wai.Attribute { compatible | readOnly : Wai.Supported }
 readOnly =
-    Aria.withBool "aria-readonly"
+    Wai.bool "readonly"
 
 
 {-| -}
-relevant : List Relevant -> Attribute msg
+relevant : List Relevant -> Wai.Attribute { compatible | relevant : Wai.Supported }
 relevant value =
-    attribute "aria-relevant" <| Token.listToString <| List.map relevantToToken value
+    Wai.string "relevant" <| Token.listToString <| List.map relevantToToken value
 
 
-{-| -}
 relevantToToken : Relevant -> Token.Type
 relevantToToken (Relevant value) =
     value
 
 
 {-| -}
-relevantAll : Attribute msg
+relevantAll : Wai.Attribute { compatible | relevant : Wai.Supported }
 relevantAll =
-    Aria.withToken "aria-relevant" <| Token.toToken "all"
+    Wai.token "relevant" <| Token.toToken "all"
 
 
 {-| -}
-required : Bool -> Attribute msg
+required : Bool -> Wai.Attribute { compatible | required : Wai.Supported }
 required =
-    Aria.withBool "aria-required"
+    Wai.bool "required"
 
 
 {-| -}
-roleDescription : String -> Attribute msg
+roleDescription : String -> Wai.Attribute { compatible | roleDescription : Wai.Supported }
 roleDescription =
-    Aria.withString "aria-roledescription"
+    Wai.string "roledescription"
 
 
 {-| -}
-rowCount : Int -> Attribute msg
+rowCount : Int -> Wai.Attribute { compatible | rowCount : Wai.Supported }
 rowCount =
-    Aria.withInteger "aria-rowcount" -1
+    Wai.integer "rowcount" -1
 
 
 {-| -}
-rowIndex : Int -> Attribute msg
+rowIndex : Int -> Wai.Attribute { compatible | rowIndex : Wai.Supported }
 rowIndex =
-    Aria.withInteger "aria-rowindex" 1
+    Wai.integer "rowindex" 1
 
 
 {-| -}
-rowSpan : Int -> Attribute msg
+rowSpan : Int -> Wai.Attribute { compatible | rowSpan : Wai.Supported }
 rowSpan =
-    Aria.withInteger "aria-rowspan" 0
+    Wai.integer "rowspan" 0
 
 
 {-| -}
-selected : Maybe Bool -> Attribute msg
+selected : Maybe Bool -> Wai.Attribute { compatible | selected : Wai.Supported }
 selected =
-    Aria.withMaybeBool "aria-selected"
+    Wai.maybeBool "selected"
 
 
 {-| -}
-setSize : Int -> Attribute msg
+setSize : Int -> Wai.Attribute { compatible | setSize : Wai.Supported }
 setSize =
-    Aria.withInteger "aria-setsize" -1
+    Wai.integer "setsize" -1
 
 
 {-| -}
-sort : Sort -> Attribute msg
+sort : Sort -> Wai.Attribute { compatible | sort : Wai.Supported }
 sort (Sort value) =
-    Aria.withToken "aria-sort" value
+    Wai.token "sort" value
 
 
 {-| -}
-valueMax : Int -> Attribute msg
+valueMax : Int -> Wai.Attribute { compatible | valueMax : Wai.Supported }
 valueMax =
-    Aria.withNumber "aria-valuemax"
+    Wai.number "valuemax"
 
 
 {-| -}
-valueMin : Int -> Attribute msg
+valueMin : Int -> Wai.Attribute { compatible | valueMin : Wai.Supported }
 valueMin =
-    Aria.withNumber "aria-valuemin"
+    Wai.number "valuemin"
 
 
 {-| -}
-valueNow : Int -> Attribute msg
+valueNow : Int -> Wai.Attribute { compatible | valueNow : Wai.Supported }
 valueNow =
-    Aria.withNumber "aria-valuenow"
+    Wai.number "valuenow"
 
 
 {-| -}
-valueText : String -> Attribute msg
+valueText : String -> Wai.Attribute { compatible | valueText : Wai.Supported }
 valueText =
-    Aria.withString "aria-valuetext"
+    Wai.string "valuetext"
+
+
+type alias GlobalAttributes a =
+    Wai.Attribute
+        { a
+            | atomic : Wai.Supported
+            , busy : Wai.Supported
+            , controls : Wai.Supported
+            , current : Wai.Supported
+            , describedby : Wai.Supported
+            , details : Wai.Supported
+            , disabled : Wai.Supported
+            , dropEffect : Wai.Supported
+            , errorMessage : Wai.Supported
+            , flowTo : Wai.Supported
+            , grabbed : Wai.Supported
+            , hasPopup : Wai.Supported
+            , hidden : Wai.Supported
+            , invalid : Wai.Supported
+            , keyShortcuts : Wai.Supported
+            , label : Wai.Supported
+            , labelledBy : Wai.Supported
+            , live : Wai.Supported
+            , owns : Wai.Supported
+            , relevant : Wai.Supported
+            , roleDescription : Wai.Supported
+        }
 
 
 {-| -}
-alert : Attribute msg
+alert : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 alert =
-    role "alert"
+    Wai.role "alert"
 
 
 {-| -}
-alertDialog : Attribute msg
+alertDialog : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 alertDialog =
-    role "alertdialog"
+    Wai.role "alertdialog"
 
 
 {-| -}
-application : Attribute msg
+application : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 application =
-    role "application"
+    Wai.role "application"
 
 
 {-| -}
-article : Attribute msg
+article : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 article =
-    role "article"
+    Wai.role "article"
 
 
 {-| -}
-banner : Attribute msg
+banner : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 banner =
-    role "banner"
+    Wai.role "banner"
 
 
 {-| -}
-button : Attribute msg
+button : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 button =
-    role "button"
+    Wai.role "button"
 
 
 {-| -}
-cell : Attribute msg
+cell : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 cell =
-    role "cell"
+    Wai.role "cell"
 
 
 {-| -}
-checkBox : Attribute msg
+checkBox : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 checkBox =
-    role "checkbox"
+    Wai.role "checkbox"
 
 
 {-| -}
-columnHeader : Attribute msg
+columnHeader : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 columnHeader =
-    role "columnheader"
+    Wai.role "columnheader"
 
 
 {-| -}
-comboBox : Attribute msg
+comboBox : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 comboBox =
-    role "combobox"
+    Wai.role "combobox"
 
 
 {-| -}
-complementary : Attribute msg
+complementary : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 complementary =
-    role "complementary"
+    Wai.role "complementary"
 
 
 {-| -}
-contentInfo : Attribute msg
+contentInfo : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 contentInfo =
-    role "contentinfo"
+    Wai.role "contentinfo"
 
 
 {-| -}
-definition : Attribute msg
+definition : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 definition =
-    role "definition"
+    Wai.role "definition"
 
 
 {-| -}
-dialog : Attribute msg
+dialog : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 dialog =
-    role "dialog"
+    Wai.role "dialog"
 
 
 {-| -}
-directory : Attribute msg
+directory : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 directory =
-    role "directory"
+    Wai.role "directory"
 
 
 {-| -}
-document : Attribute msg
+document : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 document =
-    role "document"
+    Wai.role "document"
 
 
 {-| -}
-feed : Attribute msg
+feed : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 feed =
-    role "feed"
+    Wai.role "feed"
 
 
 {-| -}
-figure : Attribute msg
+figure : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 figure =
-    role "figure"
+    Wai.role "figure"
 
 
 {-| -}
-form : Attribute msg
+form : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 form =
-    role "form"
+    Wai.role "form"
 
 
 {-| -}
-grid : Attribute msg
+grid : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 grid =
-    role "grid"
+    Wai.role "grid"
 
 
 {-| -}
-gridCell : Attribute msg
+gridCell : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 gridCell =
-    role "gridcell"
+    Wai.role "gridcell"
 
 
 {-| -}
-group : Attribute msg
+group : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 group =
-    role "group"
+    Wai.role "group"
 
 
 {-| -}
-heading : Attribute msg
+heading : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 heading =
-    role "heading"
+    Wai.role "heading"
 
 
 {-| -}
-img : Attribute msg
+img : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 img =
-    role "img"
+    Wai.role "img"
 
 
 {-| -}
-link : Attribute msg
+link : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 link =
-    role "link"
+    Wai.role "link"
 
 
 {-| -}
-list : Attribute msg
+list : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 list =
-    role "list"
+    Wai.role "list"
 
 
 {-| -}
-listBox : Attribute msg
+listBox : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 listBox =
-    role "listbox"
+    Wai.role "listbox"
 
 
 {-| -}
-listItem : Attribute msg
+listItem : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 listItem =
-    role "listitem"
+    Wai.role "listitem"
 
 
 {-| -}
-log : Attribute msg
+log : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 log =
-    role "log"
+    Wai.role "log"
 
 
 {-| -}
-main_ : Attribute msg
+main_ : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 main_ =
-    role "main"
+    Wai.role "main"
 
 
 {-| -}
-marquee : Attribute msg
+marquee : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 marquee =
-    role "marquee"
+    Wai.role "marquee"
 
 
 {-| -}
-math : Attribute msg
+math : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 math =
-    role "math"
+    Wai.role "math"
 
 
 {-| -}
-menu : Attribute msg
+menu : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 menu =
-    role "menu"
+    Wai.role "menu"
 
 
 {-| -}
-menuBar : Attribute msg
+menuBar : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 menuBar =
-    role "menubar"
+    Wai.role "menubar"
 
 
 {-| -}
-menuItem : Attribute msg
+menuItem : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 menuItem =
-    role "menuitem"
+    Wai.role "menuitem"
 
 
 {-| -}
-menuItemCheckBox : Attribute msg
+menuItemCheckBox : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 menuItemCheckBox =
-    role "menuitemcheckbox"
+    Wai.role "menuitemcheckbox"
 
 
 {-| -}
-menuItemRadio : Attribute msg
+menuItemRadio : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 menuItemRadio =
-    role "menuitemradio"
+    Wai.role "menuitemradio"
 
 
 {-| -}
-navigation : Attribute msg
+navigation : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 navigation =
-    role "navigation"
+    Wai.role "navigation"
 
 
 {-| -}
-none : Attribute msg
+none : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 none =
-    role "none"
+    Wai.role "none"
 
 
 {-| -}
-note : Attribute msg
+note : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 note =
-    role "note"
+    Wai.role "note"
 
 
 {-| -}
-option : Attribute msg
+option : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 option =
-    role "option"
+    Wai.role "option"
 
 
 {-| -}
-presentation : Attribute msg
+presentation : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 presentation =
-    role "presentation"
+    Wai.role "presentation"
 
 
 {-| -}
-progressBar : Attribute msg
+progressBar : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 progressBar =
-    role "progressbar"
+    Wai.role "progressbar"
 
 
 {-| -}
-radio : Attribute msg
+radio : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 radio =
-    role "radio"
+    Wai.role "radio"
 
 
 {-| -}
-radioGroup : Attribute msg
+radioGroup : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 radioGroup =
-    role "radiogroup"
+    Wai.role "radiogroup"
 
 
 {-| -}
-region : Attribute msg
+region : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 region =
-    role "region"
+    Wai.role "region"
 
 
 {-| -}
-row : Attribute msg
+row : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 row =
-    role "row"
+    Wai.role "row"
 
 
 {-| -}
-rowGroup : Attribute msg
+rowGroup : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 rowGroup =
-    role "rowgroup"
+    Wai.role "rowgroup"
 
 
 {-| -}
-rowHeader : Attribute msg
+rowHeader : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 rowHeader =
-    role "rowheader"
+    Wai.role "rowheader"
 
 
 {-| -}
-scrollBar : Attribute msg
+scrollBar : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 scrollBar =
-    role "scrollbar"
+    Wai.role "scrollbar"
 
 
 {-| -}
-search : Attribute msg
+search : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 search =
-    role "search"
+    Wai.role "search"
 
 
 {-| -}
-searchBox : Attribute msg
+searchBox : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 searchBox =
-    role "searchbox"
+    Wai.role "searchbox"
 
 
 {-| -}
-separator : Attribute msg
+separator : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 separator =
-    role "separator"
+    Wai.role "separator"
 
 
 {-| -}
-slider : Attribute msg
+slider : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 slider =
-    role "slider"
+    Wai.role "slider"
 
 
 {-| -}
-spinButton : Attribute msg
+spinButton : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 spinButton =
-    role "spinbutton"
+    Wai.role "spinbutton"
 
 
 {-| -}
-status : Attribute msg
+status : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 status =
-    role "status"
+    Wai.role "status"
 
 
 {-| -}
-switch : Attribute msg
+switch : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 switch =
-    role "switch"
+    Wai.role "switch"
 
 
 {-| -}
-tab : Attribute msg
+tab : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 tab =
-    role "tab"
+    Wai.role "tab"
 
 
 {-| -}
-table : Attribute msg
+table : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 table =
-    role "table"
+    Wai.role "table"
 
 
 {-| -}
-tabList : Attribute msg
+tabList : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 tabList =
-    role "tablist"
+    Wai.role "tablist"
 
 
 {-| -}
-tabPanel : Attribute msg
+tabPanel : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 tabPanel =
-    role "tabpanel"
+    Wai.role "tabpanel"
 
 
 {-| -}
-term : Attribute msg
+term : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 term =
-    role "term"
+    Wai.role "term"
 
 
 {-| -}
-textBox : Attribute msg
+textBox : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 textBox =
-    role "textbox"
+    Wai.role "textbox"
 
 
 {-| -}
-timer : Attribute msg
+timer : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 timer =
-    role "timer"
+    Wai.role "timer"
 
 
 {-| -}
-toolBar : Attribute msg
+toolBar : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 toolBar =
-    role "toolbar"
+    Wai.role "toolbar"
 
 
 {-| -}
-toolTip : Attribute msg
+toolTip : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 toolTip =
-    role "tooltip"
+    Wai.role "tooltip"
 
 
 {-| -}
-tree : Attribute msg
+tree : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 tree =
-    role "tree"
+    Wai.role "tree"
 
 
 {-| -}
-treeGrid : Attribute msg
+treeGrid : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 treeGrid =
-    role "treegrid"
+    Wai.role "treegrid"
 
 
 {-| -}
-treeItem : Attribute msg
+treeItem : List (GlobalAttributes {}) -> List (Html.Attribute msg)
 treeItem =
-    role "treeitem"
+    Wai.role "treeitem"
 
 
-role : String -> Attribute msg
-role =
-    attribute "role"
+attribute : Wai.Attribute a -> Html.List (GlobalAttributes {}) -> List (Html.Attribute msg)
+attribute =
+    Wai.toAttribute
