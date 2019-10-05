@@ -11,7 +11,7 @@ import Wai.Role as Role exposing (..)
 suite : Test
 suite =
     describe "RoleType"
-        [ test "has atomic"
+        [ Test.test "has atomic"
             (\() ->
                 Html.a (Role.application [ Role.atomic True ]) []
                     |> Query.fromHtml

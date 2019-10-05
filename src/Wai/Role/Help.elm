@@ -1,4 +1,4 @@
-module Wai.Role.Help exposing (Attribute(..), Compatible(..), bool, boolToString, idReference, idReferenceList, integer, maybeBool, maybeBoolToString, number, role, string, toAttribute, token, triState)
+module Wai.Role.Help exposing (Attribute(..), Supported(..), bool, boolToString, idReference, idReferenceList, integer, maybeBool, maybeBoolToString, number, role, string, toAttribute, token, triState)
 
 import Html
 import Html.Attributes as Attributes
@@ -8,21 +8,21 @@ import Wai.TriState.Help exposing (TriState)
 
 
 type Attribute a
-    = Attribute String String a
+    = Attribute String String
 
 
-type Compatible
-    = Compatible
+type Supported
+    = Supported
 
 
-bool : (String -> String -> Attribute a) -> String -> Bool -> Attribute a
-bool attribute key =
-    attribute key << boolToString
+bool : String -> Bool -> Attribute a
+bool key =
+    Attribute key << boolToString
 
 
-maybeBool : (String -> String -> Attribute a) -> String -> Maybe Bool -> Attribute a
-maybeBool attribute key =
-    attribute key << maybeBoolToString
+maybeBool : String -> Maybe Bool -> Attribute a
+maybeBool key =
+    Attribute key << maybeBoolToString
 
 
 maybeBoolToString : Maybe Bool -> String
@@ -44,43 +44,43 @@ boolToString value =
         "false"
 
 
-triState : (String -> String -> Attribute a) -> String -> TriState -> Attribute a
-triState attribute key =
-    attribute key << Wai.TriState.Help.toString
+triState : String -> TriState -> Attribute a
+triState key =
+    Attribute key << Wai.TriState.Help.toString
 
 
-number : (String -> String -> Attribute a) -> String -> Int -> Attribute a
-number attribute key =
-    attribute key << String.fromInt
+number : String -> Int -> Attribute a
+number key =
+    Attribute key << String.fromInt
 
 
-integer : (String -> String -> Attribute a) -> String -> Int -> Int -> Attribute a
-integer attribute key minValue =
-    attribute key << String.fromInt << Basics.max minValue
+integer : String -> Int -> Int -> Attribute a
+integer key minValue =
+    Attribute key << String.fromInt << Basics.max minValue
 
 
-token : (String -> String -> Attribute a) -> String -> Token.Type -> Attribute a
-token attribute key =
-    attribute key << Token.toString
+token : String -> Token.Type -> Attribute a
+token key =
+    Attribute key << Token.toString
 
 
-idReference : (String -> String -> Attribute a) -> String -> IdReference -> Attribute a
-idReference attribute key =
-    attribute key << Wai.IdReference.toString
+idReference : String -> IdReference -> Attribute a
+idReference key =
+    Attribute key << Wai.IdReference.toString
 
 
-idReferenceList : (String -> String -> Attribute a) -> String -> List IdReference -> Attribute a
-idReferenceList attribute key =
-    attribute key << Wai.IdReference.listToString
+idReferenceList : String -> List IdReference -> Attribute a
+idReferenceList key =
+    Attribute key << Wai.IdReference.listToString
 
 
-string : (String -> String -> Attribute a) -> String -> String -> Attribute a
-string attribute key value =
+string : String -> String -> Attribute a
+string key value =
     if value |> String.trim |> String.isEmpty then
-        attribute "" ""
+        Attribute "" ""
 
     else
-        attribute key value
+        Attribute key value
 
 
 role : String -> List (Attribute a) -> List (Html.Attribute msg)
@@ -89,5 +89,5 @@ role name attributes =
 
 
 toAttribute : Attribute a -> Html.Attribute msg
-toAttribute (Attribute name value _) =
+toAttribute (Attribute name value) =
     Attributes.attribute ("aria-" ++ name) value
