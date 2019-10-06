@@ -351,229 +351,229 @@ type alias GlobalAttributes a =
 
 
 {-| -}
-alert : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+alert : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 alert =
     Wai.role "alert"
 
 
 {-| -}
-alertDialog : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+alertDialog : List (GlobalAttributes { expanded : Wai.Supported, modal : Wai.Supported }) -> List (Html.Attribute msg)
 alertDialog =
     Wai.role "alertdialog"
 
 
 {-| -}
-application : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+application : List (GlobalAttributes { activeDescendant : Wai.Supported }) -> List (Html.Attribute msg)
 application =
     Wai.role "application"
 
 
 {-| -}
-article : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+article : List (GlobalAttributes { expanded : Wai.Supported, posInSet : Wai.Supported, setSize : Wai.Supported }) -> List (Html.Attribute msg)
 article =
     Wai.role "article"
 
 
 {-| -}
-banner : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+banner : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 banner =
     Wai.role "banner"
 
 
 {-| -}
-button : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+button : List (GlobalAttributes { expanded : Wai.Supported, pressed : Wai.Supported }) -> List (Html.Attribute msg)
 button =
     Wai.role "button"
 
 
 {-| -}
-cell : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+cell : List (GlobalAttributes { expanded : Wai.Supported, colIndex : Wai.Supported, colSpan : Wai.Supported, rowIndex : Wai.Supported, rowSpan : Wai.Supported }) -> List (Html.Attribute msg)
 cell =
     Wai.role "cell"
 
 
 {-| -}
-checkBox : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+checkBox : List (GlobalAttributes { checked : Wai.Supported, readOnly : Wai.Supported }) -> List (Html.Attribute msg)
 checkBox =
     Wai.role "checkbox"
 
 
 {-| -}
-columnHeader : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+columnHeader : List (GlobalAttributes { colIndex : Wai.Supported, colSpan : Wai.Supported, expanded : Wai.Supported, readOnly : Wai.Supported, required : Wai.Supported, rowIndex : Wai.Supported, rowSpan : Wai.Supported, selected : Wai.Supported }) -> List (Html.Attribute msg)
 columnHeader =
     Wai.role "columnheader"
 
 
 {-| -}
-comboBox : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+comboBox : List (GlobalAttributes { controls : Wai.Supported, expanded : Wai.Supported, autoComplete : Wai.Supported, readOnly : Wai.Supported, required : Wai.Supported, activeDescendant : Wai.Supported, orientation : Wai.Supported }) -> List (Html.Attribute msg)
 comboBox =
     Wai.role "combobox"
 
 
 {-| -}
-complementary : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+complementary : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 complementary =
     Wai.role "complementary"
 
 
 {-| -}
-contentInfo : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+contentInfo : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 contentInfo =
     Wai.role "contentinfo"
 
 
 {-| -}
-definition : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+definition : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 definition =
     Wai.role "definition"
 
 
 {-| -}
-dialog : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+dialog : List (GlobalAttributes { expanded : Wai.Supported, modal : Wai.Supported }) -> List (Html.Attribute msg)
 dialog =
     Wai.role "dialog"
 
 
 {-| -}
-directory : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+directory : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 directory =
     Wai.role "directory"
 
 
 {-| -}
-document : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+document : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 document =
     Wai.role "document"
 
 
 {-| -}
-feed : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+feed : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 feed =
     Wai.role "feed"
 
 
 {-| -}
-figure : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+figure : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 figure =
     Wai.role "figure"
 
 
 {-| -}
-form : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+form : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 form =
     Wai.role "form"
 
 
 {-| -}
-grid : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+grid : List (GlobalAttributes { level : Wai.Supported, multiSelectable : Wai.Supported, readOnly : Wai.Supported, activeDescendant : Wai.Supported, colCount : Wai.Supported, expanded : Wai.Supported, rowCount : Wai.Supported }) -> List (Html.Attribute msg)
 grid =
     Wai.role "grid"
 
 
 {-| -}
-gridCell : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+gridCell : List (GlobalAttributes { colIndex : Wai.Supported, colSpan : Wai.Supported, expanded : Wai.Supported, readOnly : Wai.Supported, required : Wai.Supported, rowIndex : Wai.Supported, rowSpan : Wai.Supported, selected : Wai.Supported }) -> List (Html.Attribute msg)
 gridCell =
     Wai.role "gridcell"
 
 
 {-| -}
-group : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+group : List (GlobalAttributes { activeDescendant : Wai.Supported, expanded : Wai.Supported }) -> List (Html.Attribute msg)
 group =
     Wai.role "group"
 
 
 {-| -}
-heading : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+heading : List (GlobalAttributes { level : Wai.Supported, expanded : Wai.Supported }) -> List (Html.Attribute msg)
 heading =
     Wai.role "heading"
 
 
 {-| -}
-img : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+img : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 img =
     Wai.role "img"
 
 
 {-| -}
-link : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+link : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 link =
     Wai.role "link"
 
 
 {-| -}
-list : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+list : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 list =
     Wai.role "list"
 
 
 {-| -}
-listBox : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+listBox : List (GlobalAttributes { multiSelectable : Wai.Supported, readOnly : Wai.Supported, required : Wai.Supported, activeDescendant : Wai.Supported, expanded : Wai.Supported, orientation : Wai.Supported }) -> List (Html.Attribute msg)
 listBox =
     Wai.role "listbox"
 
 
 {-| -}
-listItem : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+listItem : List (GlobalAttributes { level : Wai.Supported, posInSet : Wai.Supported, setSize : Wai.Supported }) -> List (Html.Attribute msg)
 listItem =
     Wai.role "listitem"
 
 
 {-| -}
-log : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+log : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 log =
     Wai.role "log"
 
 
 {-| -}
-main_ : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+main_ : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 main_ =
     Wai.role "main"
 
 
 {-| -}
-marquee : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+marquee : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 marquee =
     Wai.role "marquee"
 
 
 {-| -}
-math : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+math : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 math =
     Wai.role "math"
 
 
 {-| -}
-menu : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+menu : List (GlobalAttributes { activeDescendant : Wai.Supported, expanded : Wai.Supported, orientation : Wai.Supported }) -> List (Html.Attribute msg)
 menu =
     Wai.role "menu"
 
 
 {-| -}
-menuBar : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+menuBar : List (GlobalAttributes { activeDescendant : Wai.Supported, expanded : Wai.Supported, orientation : Wai.Supported }) -> List (Html.Attribute msg)
 menuBar =
     Wai.role "menubar"
 
 
 {-| -}
-menuItem : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+menuItem : List (GlobalAttributes { posInSet : Wai.Supported, setSize : Wai.Supported }) -> List (Html.Attribute msg)
 menuItem =
     Wai.role "menuitem"
 
 
 {-| -}
-menuItemCheckBox : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+menuItemCheckBox : List (GlobalAttributes { checked : Wai.Supported, posInSet : Wai.Supported, readOnly : Wai.Supported, setSize : Wai.Supported }) -> List (Html.Attribute msg)
 menuItemCheckBox =
     Wai.role "menuitemcheckbox"
 
 
 {-| -}
-menuItemRadio : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+menuItemRadio : List (GlobalAttributes { checked : Wai.Supported, posInSet : Wai.Supported, readOnly : Wai.Supported, setSize : Wai.Supported }) -> List (Html.Attribute msg)
 menuItemRadio =
     Wai.role "menuitemradio"
 
 
 {-| -}
-navigation : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+navigation : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 navigation =
     Wai.role "navigation"
 
@@ -585,13 +585,13 @@ none =
 
 
 {-| -}
-note : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+note : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 note =
     Wai.role "note"
 
 
 {-| -}
-option : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+option : List (GlobalAttributes { selected : Wai.Supported, checked : Wai.Supported, posInSet : Wai.Supported, setSize : Wai.Supported }) -> List (Html.Attribute msg)
 option =
     Wai.role "option"
 
@@ -603,31 +603,31 @@ presentation =
 
 
 {-| -}
-progressBar : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+progressBar : List (GlobalAttributes { expanded : Wai.Supported, valueMax : Wai.Supported, valueMin : Wai.Supported, valueNow : Wai.Supported, valueText : Wai.Supported }) -> List (Html.Attribute msg)
 progressBar =
     Wai.role "progressbar"
 
 
 {-| -}
-radio : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+radio : List (GlobalAttributes { checked : Wai.Supported, posInSet : Wai.Supported, setSize : Wai.Supported }) -> List (Html.Attribute msg)
 radio =
     Wai.role "radio"
 
 
 {-| -}
-radioGroup : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+radioGroup : List (GlobalAttributes { readOnly : Wai.Supported, required : Wai.Supported, activeDescendant : Wai.Supported, expanded : Wai.Supported, orientation : Wai.Supported }) -> List (Html.Attribute msg)
 radioGroup =
     Wai.role "radiogroup"
 
 
 {-| -}
-region : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+region : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 region =
     Wai.role "region"
 
 
 {-| -}
-row : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+row : List (GlobalAttributes { colIndex : Wai.Supported, level : Wai.Supported, rowIndex : Wai.Supported, selected : Wai.Supported, activeDescendant : Wai.Supported, expanded : Wai.Supported }) -> List (Html.Attribute msg)
 row =
     Wai.role "row"
 
@@ -639,131 +639,131 @@ rowGroup =
 
 
 {-| -}
-rowHeader : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+rowHeader : List (GlobalAttributes { sort : Wai.Supported, colIndex : Wai.Supported, colSpan : Wai.Supported, expanded : Wai.Supported, readOnly : Wai.Supported, required : Wai.Supported, rowIndex : Wai.Supported, rowSpan : Wai.Supported, selected : Wai.Supported }) -> List (Html.Attribute msg)
 rowHeader =
     Wai.role "rowheader"
 
 
 {-| -}
-scrollBar : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+scrollBar : List (GlobalAttributes { controls : Wai.Supported, orientation : Wai.Supported, valueMax : Wai.Supported, valueMin : Wai.Supported, valueNow : Wai.Supported, valueText : Wai.Supported }) -> List (Html.Attribute msg)
 scrollBar =
     Wai.role "scrollbar"
 
 
 {-| -}
-search : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+search : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 search =
     Wai.role "search"
 
 
 {-| -}
-searchBox : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+searchBox : List (GlobalAttributes { activeDescendant : Wai.Supported, autoComplete : Wai.Supported, multiLine : Wai.Supported, placeholder : Wai.Supported, readOnly : Wai.Supported, required : Wai.Supported }) -> List (Html.Attribute msg)
 searchBox =
     Wai.role "searchbox"
 
 
 {-| -}
-separator : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+separator : List (GlobalAttributes { valueMax : Wai.Supported, valueMin : Wai.Supported, valueNow : Wai.Supported, orientation : Wai.Supported, valueText : Wai.Supported }) -> List (Html.Attribute msg)
 separator =
     Wai.role "separator"
 
 
 {-| -}
-slider : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+slider : List (GlobalAttributes { valueMax : Wai.Supported, valueMin : Wai.Supported, valueNow : Wai.Supported, orientation : Wai.Supported, readOnly : Wai.Supported, valueText : Wai.Supported }) -> List (Html.Attribute msg)
 slider =
     Wai.role "slider"
 
 
 {-| -}
-spinButton : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+spinButton : List (GlobalAttributes { valueMax : Wai.Supported, valueMin : Wai.Supported, valueNow : Wai.Supported, readOnly : Wai.Supported, required : Wai.Supported, activeDescendant : Wai.Supported, valueText : Wai.Supported }) -> List (Html.Attribute msg)
 spinButton =
     Wai.role "spinbutton"
 
 
 {-| -}
-status : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+status : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 status =
     Wai.role "status"
 
 
 {-| -}
-switch : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+switch : List (GlobalAttributes { checked : Wai.Supported, readOnly : Wai.Supported }) -> List (Html.Attribute msg)
 switch =
     Wai.role "switch"
 
 
 {-| -}
-tab : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+tab : List (GlobalAttributes { posInSet : Wai.Supported, selected : Wai.Supported, setSize : Wai.Supported, expanded : Wai.Supported }) -> List (Html.Attribute msg)
 tab =
     Wai.role "tab"
 
 
 {-| -}
-table : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+table : List (GlobalAttributes { colCount : Wai.Supported, rowCount : Wai.Supported, expanded : Wai.Supported }) -> List (Html.Attribute msg)
 table =
     Wai.role "table"
 
 
 {-| -}
-tabList : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+tabList : List (GlobalAttributes { level : Wai.Supported, multiSelectable : Wai.Supported, orientation : Wai.Supported, activeDescendant : Wai.Supported }) -> List (Html.Attribute msg)
 tabList =
     Wai.role "tablist"
 
 
 {-| -}
-tabPanel : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+tabPanel : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 tabPanel =
     Wai.role "tabpanel"
 
 
 {-| -}
-term : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+term : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 term =
     Wai.role "term"
 
 
 {-| -}
-textBox : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+textBox : List (GlobalAttributes { activeDescendant : Wai.Supported, autoComplete : Wai.Supported, multiLine : Wai.Supported, placeholder : Wai.Supported, readOnly : Wai.Supported, required : Wai.Supported }) -> List (Html.Attribute msg)
 textBox =
     Wai.role "textbox"
 
 
 {-| -}
-timer : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+timer : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 timer =
     Wai.role "timer"
 
 
 {-| -}
-toolBar : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+toolBar : List (GlobalAttributes { orientation : Wai.Supported, activeDescendant : Wai.Supported, expanded : Wai.Supported }) -> List (Html.Attribute msg)
 toolBar =
     Wai.role "toolbar"
 
 
 {-| -}
-toolTip : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+toolTip : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
 toolTip =
     Wai.role "tooltip"
 
 
 {-| -}
-tree : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+tree : List (GlobalAttributes { multiSelectable : Wai.Supported, required : Wai.Supported, activeDescendant : Wai.Supported, expanded : Wai.Supported, orientation : Wai.Supported }) -> List (Html.Attribute msg)
 tree =
     Wai.role "tree"
 
 
 {-| -}
-treeGrid : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+treeGrid : List (GlobalAttributes { activeDescendant : Wai.Supported, colCount : Wai.Supported, expanded : Wai.Supported, level : Wai.Supported, multiSelectable : Wai.Supported, orientation : Wai.Supported, readOnly : Wai.Supported, required : Wai.Supported, rowCount : Wai.Supported }) -> List (Html.Attribute msg)
 treeGrid =
     Wai.role "treegrid"
 
 
 {-| -}
-treeItem : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+treeItem : List (GlobalAttributes { checked : Wai.Supported, expanded : Wai.Supported, level : Wai.Supported, posInSet : Wai.Supported, selected : Wai.Supported, setSize : Wai.Supported }) -> List (Html.Attribute msg)
 treeItem =
     Wai.role "treeitem"
 
 
-attribute : Wai.Attribute a -> Html.List (GlobalAttributes {}) -> List (Html.Attribute msg)
+attribute : Wai.Attribute a -> Html.Attribute msg
 attribute =
     Wai.toAttribute
