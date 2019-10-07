@@ -5,7 +5,7 @@ import Html.Attributes as Attribute
 import Test exposing (..)
 import Test.Html.Query as Query
 import Test.Html.Selector as Selector
-import Wai.Aria as Role exposing (..)
+import Wai as Role exposing (..)
 
 
 suite : Test
