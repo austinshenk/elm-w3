@@ -1,326 +1,24 @@
 module Wai exposing
-    ( activeDescendant, atomic, autoComplete, busy, checked, colCount, colIndex, colSpan, controls, current, describedBy, details, disabled, dropEffect, errorMessage, expanded, flowTo, grabbed, hasPopup, hidden, invalid, keyShortcuts, label, labelledBy, level, live, modal, multiLine, multiSelectable, orientation, owns, placeholder, posInSet, pressed, readOnly, relevant, relevantAll, required, roleDescription, rowCount, rowIndex, rowSpan, selected, setSize, sort, valueMax, valueMin, valueNow, valueText
-    , alert, alertDialog, application, article, banner, button, cell, checkBox, columnHeader, comboBox, complementary, contentInfo, definition, dialog, directory, document, feed, figure, form, grid, gridCell, group, heading, img, link, list, listBox, listItem, log, main_, marquee, math, menu, menuBar, menuItem, menuItemCheckBox, menuItemRadio, navigation, none, note, option, presentation, progressBar, radio, radioGroup, region, row, rowGroup, rowHeader, scrollBar, search, searchBox, separator, slider, spinButton, status, switch, tab, tabList, tabPanel, table, term, textBox, timer, toolBar, toolTip, tree, treeGrid, treeItem
+    ( alert, alertDialog, application, article, banner, button, cell, checkBox, columnHeader, comboBox, complementary, contentInfo, definition, dialog_, directory, document, feed, figure, form, grid_, gridCell, group, heading, img, link_, list_, listBox, listItem, log, main_, marquee, math, menu_, menuBar, menuItem, menuItemCheckBox, menuItemRadio, navigation, none_, note, option, presentation, progressBar, radio, radioGroup, region, row, rowGroup, rowHeader, scrollBar, search, searchBox, separator, slider, spinButton, status, switch, tab, tabList, tabPanel, table, term, textBox, timer, toolBar, toolTip, tree_, treeGrid, treeItem
+    , activeDescendant, atomic, autoComplete, busy, checked, colCount, colIndex, colSpan, controls, current, describedBy, details, disabled, dropEffect, errorMessage, expanded, flowTo, grabbed, hasPopup, hidden, invalid, keyShortcuts, label, labelledBy, level, live, modal, multiLine, multiSelectable, orientation, owns, placeholder, posInSet, pressed, readOnly, relevant, relevantAll, required, roleDescription, rowCount, rowIndex, rowSpan, selected, setSize, sort, valueMax, valueMin, valueNow, valueText
     )
 
 {-| Module that defines all ARIA attributes and roles.
+
+
+# Roles
+
+@docs alert, alertDialog, application, article, banner, button, cell, checkBox, columnHeader, comboBox, complementary, contentInfo, definition, dialog_, directory, document, feed, figure, form, grid_, gridCell, group, heading, img, link_, list_, listBox, listItem, log, main_, marquee, math, menu_, menuBar, menuItem, menuItemCheckBox, menuItemRadio, navigation, none_, note, option, presentation, progressBar, radio, radioGroup, region, row, rowGroup, rowHeader, scrollBar, search, searchBox, separator, slider, spinButton, status, switch, tab, tabList, tabPanel, table, term, textBox, timer, toolBar, toolTip, tree_, treeGrid, treeItem
 
 
 # Attributes
 
 @docs activeDescendant, atomic, autoComplete, busy, checked, colCount, colIndex, colSpan, controls, current, describedBy, details, disabled, dropEffect, errorMessage, expanded, flowTo, grabbed, hasPopup, hidden, invalid, keyShortcuts, label, labelledBy, level, live, modal, multiLine, multiSelectable, orientation, owns, placeholder, posInSet, pressed, readOnly, relevant, relevantAll, required, roleDescription, rowCount, rowIndex, rowSpan, selected, setSize, sort, valueMax, valueMin, valueNow, valueText
 
-
-# Roles
-
-@docs alert, alertDialog, application, article, banner, button, cell, checkBox, columnHeader, comboBox, complementary, contentInfo, definition, dialog, directory, document, feed, figure, form, grid, gridCell, group, heading, img, link, list, listBox, listItem, log, main_, marquee, math, menu, menuBar, menuItem, menuItemCheckBox, menuItemRadio, navigation, none, note, option, presentation, progressBar, radio, radioGroup, region, row, rowGroup, rowHeader, scrollBar, search, searchBox, separator, slider, spinButton, status, switch, tab, tabList, tabPanel, table, term, textBox, timer, toolBar, toolTip, tree, treeGrid, treeItem
-
 -}
 
 import Html
-import Wai.Aria.Help as Wai
-import Wai.IdReference exposing (IdReference)
-import Wai.Token as Token exposing (AutoComplete(..), Current(..), DropEffect(..), HasPopup(..), Invalid(..), Live(..), Orientation(..), Relevant(..), Sort(..))
-import Wai.TriState.Help exposing (TriState)
-
-
-{-| -}
-activeDescendant : IdReference -> Wai.Attribute { compatible | activeDescendant : Wai.Supported }
-activeDescendant =
-    Wai.idReference "activedescendant"
-
-
-{-| -}
-atomic : Bool -> Wai.Attribute { compatible | atomic : Wai.Supported }
-atomic =
-    Wai.bool "atomic"
-
-
-{-| -}
-autoComplete : AutoComplete -> Wai.Attribute { compatible | autoComplete : Wai.Supported }
-autoComplete (AutoComplete value) =
-    Wai.token "autocomplete" value
-
-
-{-| -}
-busy : Bool -> Wai.Attribute { compatible | busy : Wai.Supported }
-busy =
-    Wai.bool "busy"
-
-
-{-| -}
-checked : TriState -> Wai.Attribute { compatible | checked : Wai.Supported }
-checked =
-    Wai.triState "checked"
-
-
-{-| -}
-colCount : Int -> Wai.Attribute { compatible | colCount : Wai.Supported }
-colCount =
-    Wai.integer "colcount" -1
-
-
-{-| -}
-colIndex : Int -> Wai.Attribute { compatible | colIndex : Wai.Supported }
-colIndex =
-    Wai.integer "colindex" 1
-
-
-{-| -}
-colSpan : Int -> Wai.Attribute { compatible | colSpan : Wai.Supported }
-colSpan =
-    Wai.integer "colspan" 1
-
-
-{-| -}
-controls : List IdReference -> Wai.Attribute { compatible | controls : Wai.Supported }
-controls =
-    Wai.idReferenceList "controls"
-
-
-{-| -}
-current : Current -> Wai.Attribute { compatible | current : Wai.Supported }
-current (Current value) =
-    Wai.token "current" value
-
-
-{-| -}
-describedBy : List IdReference -> Wai.Attribute { compatible | describedBy : Wai.Supported }
-describedBy =
-    Wai.idReferenceList "describedby"
-
-
-{-| -}
-details : IdReference -> Wai.Attribute { compatible | details : Wai.Supported }
-details =
-    Wai.idReference "details"
-
-
-{-| -}
-disabled : Bool -> Wai.Attribute { compatible | disabled : Wai.Supported }
-disabled =
-    Wai.bool "disabled"
-
-
-{-| -}
-dropEffect : DropEffect -> Wai.Attribute { compatible | dropEffect : Wai.Supported }
-dropEffect (DropEffect value) =
-    Wai.token "dropeffect" value
-
-
-{-| -}
-errorMessage : IdReference -> Wai.Attribute { compatible | errorMessage : Wai.Supported }
-errorMessage =
-    Wai.idReference "errormessage"
-
-
-{-| -}
-expanded : Maybe Bool -> Wai.Attribute { compatible | expanded : Wai.Supported }
-expanded =
-    Wai.maybeBool "expanded"
-
-
-{-| -}
-flowTo : List IdReference -> Wai.Attribute { compatible | flowTo : Wai.Supported }
-flowTo =
-    Wai.idReferenceList "flowto"
-
-
-{-| -}
-grabbed : Maybe Bool -> Wai.Attribute { compatible | grabbed : Wai.Supported }
-grabbed =
-    Wai.maybeBool "grabbed"
-
-
-{-| -}
-hasPopup : HasPopup -> Wai.Attribute { compatible | hasPopup : Wai.Supported }
-hasPopup (HasPopup value) =
-    Wai.token "haspopup" value
-
-
-{-| -}
-hidden : Maybe Bool -> Wai.Attribute { compatible | hidden : Wai.Supported }
-hidden =
-    Wai.maybeBool "hidden"
-
-
-{-| -}
-invalid : Invalid -> Wai.Attribute { compatible | invalid : Wai.Supported }
-invalid (Invalid value) =
-    Wai.token "invalid" value
-
-
-{-| -}
-keyShortcuts : String -> Wai.Attribute { compatible | keyShortcuts : Wai.Supported }
-keyShortcuts =
-    Wai.string "keyshortcuts"
-
-
-{-| -}
-label : String -> Wai.Attribute { compatible | label : Wai.Supported }
-label =
-    Wai.string "label"
-
-
-{-| -}
-labelledBy : List IdReference -> Wai.Attribute { compatible | labelledBy : Wai.Supported }
-labelledBy =
-    Wai.idReferenceList "labelledby"
-
-
-{-| -}
-level : Int -> Wai.Attribute { compatible | level : Wai.Supported }
-level =
-    Wai.integer "level" 1
-
-
-{-| -}
-live : Live -> Wai.Attribute { compatible | live : Wai.Supported }
-live (Live value) =
-    Wai.token "live" value
-
-
-{-| -}
-modal : Bool -> Wai.Attribute { compatible | modal : Wai.Supported }
-modal =
-    Wai.bool "modal"
-
-
-{-| -}
-multiLine : Bool -> Wai.Attribute { compatible | multiLine : Wai.Supported }
-multiLine =
-    Wai.bool "multiline"
-
-
-{-| -}
-multiSelectable : Bool -> Wai.Attribute { compatible | multiSelectable : Wai.Supported }
-multiSelectable =
-    Wai.bool "multiselectable"
-
-
-{-| -}
-orientation : Orientation -> Wai.Attribute { compatible | orientation : Wai.Supported }
-orientation (Orientation value) =
-    Wai.token "orientation" value
-
-
-{-| -}
-owns : List IdReference -> Wai.Attribute { compatible | owns : Wai.Supported }
-owns =
-    Wai.idReferenceList "owns"
-
-
-{-| -}
-placeholder : String -> Wai.Attribute { compatible | placeholder : Wai.Supported }
-placeholder =
-    Wai.string "placeholder"
-
-
-{-| -}
-posInSet : Int -> Wai.Attribute { compatible | posInSet : Wai.Supported }
-posInSet =
-    Wai.integer "posinset" 1
-
-
-{-| -}
-pressed : TriState -> Wai.Attribute { compatible | pressed : Wai.Supported }
-pressed =
-    Wai.triState "pressed"
-
-
-{-| -}
-readOnly : Bool -> Wai.Attribute { compatible | readOnly : Wai.Supported }
-readOnly =
-    Wai.bool "readonly"
-
-
-{-| -}
-relevant : List Relevant -> Wai.Attribute { compatible | relevant : Wai.Supported }
-relevant value =
-    Wai.string "relevant" <| Token.listToString <| List.map relevantToToken value
-
-
-relevantToToken : Relevant -> Token.Type
-relevantToToken (Relevant value) =
-    value
-
-
-{-| -}
-relevantAll : Wai.Attribute { compatible | relevant : Wai.Supported }
-relevantAll =
-    Wai.token "relevant" <| Token.toToken "all"
-
-
-{-| -}
-required : Bool -> Wai.Attribute { compatible | required : Wai.Supported }
-required =
-    Wai.bool "required"
-
-
-{-| -}
-roleDescription : String -> Wai.Attribute { compatible | roleDescription : Wai.Supported }
-roleDescription =
-    Wai.string "roledescription"
-
-
-{-| -}
-rowCount : Int -> Wai.Attribute { compatible | rowCount : Wai.Supported }
-rowCount =
-    Wai.integer "rowcount" -1
-
-
-{-| -}
-rowIndex : Int -> Wai.Attribute { compatible | rowIndex : Wai.Supported }
-rowIndex =
-    Wai.integer "rowindex" 1
-
-
-{-| -}
-rowSpan : Int -> Wai.Attribute { compatible | rowSpan : Wai.Supported }
-rowSpan =
-    Wai.integer "rowspan" 0
-
-
-{-| -}
-selected : Maybe Bool -> Wai.Attribute { compatible | selected : Wai.Supported }
-selected =
-    Wai.maybeBool "selected"
-
-
-{-| -}
-setSize : Int -> Wai.Attribute { compatible | setSize : Wai.Supported }
-setSize =
-    Wai.integer "setsize" -1
-
-
-{-| -}
-sort : Sort -> Wai.Attribute { compatible | sort : Wai.Supported }
-sort (Sort value) =
-    Wai.token "sort" value
-
-
-{-| -}
-valueMax : Int -> Wai.Attribute { compatible | valueMax : Wai.Supported }
-valueMax =
-    Wai.number "valuemax"
-
-
-{-| -}
-valueMin : Int -> Wai.Attribute { compatible | valueMin : Wai.Supported }
-valueMin =
-    Wai.number "valuemin"
-
-
-{-| -}
-valueNow : Int -> Wai.Attribute { compatible | valueNow : Wai.Supported }
-valueNow =
-    Wai.number "valuenow"
-
-
-{-| -}
-valueText : String -> Wai.Attribute { compatible | valueText : Wai.Supported }
-valueText =
-    Wai.string "valuetext"
+import Wai.Help as Wai
 
 
 type alias GlobalAttributes a =
@@ -429,8 +127,8 @@ definition =
 
 
 {-| -}
-dialog : List (GlobalAttributes { expanded : Wai.Supported, modal : Wai.Supported }) -> List (Html.Attribute msg)
-dialog =
+dialog_ : List (GlobalAttributes { expanded : Wai.Supported, modal : Wai.Supported }) -> List (Html.Attribute msg)
+dialog_ =
     Wai.role "dialog"
 
 
@@ -465,8 +163,8 @@ form =
 
 
 {-| -}
-grid : List (GlobalAttributes { level : Wai.Supported, multiSelectable : Wai.Supported, readOnly : Wai.Supported, activeDescendant : Wai.Supported, colCount : Wai.Supported, expanded : Wai.Supported, rowCount : Wai.Supported }) -> List (Html.Attribute msg)
-grid =
+grid_ : List (GlobalAttributes { level : Wai.Supported, multiSelectable : Wai.Supported, readOnly : Wai.Supported, activeDescendant : Wai.Supported, colCount : Wai.Supported, expanded : Wai.Supported, rowCount : Wai.Supported }) -> List (Html.Attribute msg)
+grid_ =
     Wai.role "grid"
 
 
@@ -495,14 +193,14 @@ img =
 
 
 {-| -}
-link : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
-link =
+link_ : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
+link_ =
     Wai.role "link"
 
 
 {-| -}
-list : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
-list =
+list_ : List (GlobalAttributes { expanded : Wai.Supported }) -> List (Html.Attribute msg)
+list_ =
     Wai.role "list"
 
 
@@ -543,8 +241,8 @@ math =
 
 
 {-| -}
-menu : List (GlobalAttributes { activeDescendant : Wai.Supported, expanded : Wai.Supported, orientation : Wai.Supported }) -> List (Html.Attribute msg)
-menu =
+menu_ : List (GlobalAttributes { activeDescendant : Wai.Supported, expanded : Wai.Supported, orientation : Wai.Supported }) -> List (Html.Attribute msg)
+menu_ =
     Wai.role "menu"
 
 
@@ -579,8 +277,8 @@ navigation =
 
 
 {-| -}
-none : List (GlobalAttributes {}) -> List (Html.Attribute msg)
-none =
+none_ : List (GlobalAttributes {}) -> List (Html.Attribute msg)
+none_ =
     Wai.role "none"
 
 
@@ -747,8 +445,8 @@ toolTip =
 
 
 {-| -}
-tree : List (GlobalAttributes { multiSelectable : Wai.Supported, required : Wai.Supported, activeDescendant : Wai.Supported, expanded : Wai.Supported, orientation : Wai.Supported }) -> List (Html.Attribute msg)
-tree =
+tree_ : List (GlobalAttributes { multiSelectable : Wai.Supported, required : Wai.Supported, activeDescendant : Wai.Supported, expanded : Wai.Supported, orientation : Wai.Supported }) -> List (Html.Attribute msg)
+tree_ =
     Wai.role "tree"
 
 
@@ -764,6 +462,512 @@ treeItem =
     Wai.role "treeitem"
 
 
+{-| -}
+activeDescendant : Wai.IdReference -> Wai.Attribute { compatible | activeDescendant : Wai.Supported }
+activeDescendant =
+    Wai.idReference "activedescendant"
+
+
+{-| -}
+atomic : Bool -> Wai.Attribute { compatible | atomic : Wai.Supported }
+atomic =
+    Wai.bool "atomic"
+
+
+{-| -}
+autoComplete : Wai.Value { inline : Wai.SupportedValue, list : Wai.SupportedValue, both : Wai.SupportedValue, none : Wai.SupportedValue } -> Wai.Attribute { compatible | autoComplete : Wai.Supported }
+autoComplete =
+    Wai.value "autocomplete"
+
+
+{-| -}
+busy : Bool -> Wai.Attribute { compatible | busy : Wai.Supported }
+busy =
+    Wai.bool "busy"
+
+
+{-| -}
+checked : Wai.TriState -> Wai.Attribute { compatible | checked : Wai.Supported }
+checked =
+    Wai.triState "checked"
+
+
+{-| -}
+colCount : Int -> Wai.Attribute { compatible | colCount : Wai.Supported }
+colCount =
+    Wai.integer "colcount" -1
+
+
+{-| -}
+colIndex : Int -> Wai.Attribute { compatible | colIndex : Wai.Supported }
+colIndex =
+    Wai.integer "colindex" 1
+
+
+{-| -}
+colSpan : Int -> Wai.Attribute { compatible | colSpan : Wai.Supported }
+colSpan =
+    Wai.integer "colspan" 1
+
+
+{-| -}
+controls : List Wai.IdReference -> Wai.Attribute { compatible | controls : Wai.Supported }
+controls =
+    Wai.idReferenceList "controls"
+
+
+{-| -}
+current : Wai.Value { page : Wai.SupportedValue, step : Wai.SupportedValue, location : Wai.SupportedValue, date : Wai.SupportedValue, time : Wai.SupportedValue, true : Wai.SupportedValue, false : Wai.SupportedValue } -> Wai.Attribute { compatible | current : Wai.Supported }
+current =
+    Wai.value "current"
+
+
+{-| -}
+describedBy : List Wai.IdReference -> Wai.Attribute { compatible | describedBy : Wai.Supported }
+describedBy =
+    Wai.idReferenceList "describedby"
+
+
+{-| -}
+details : Wai.IdReference -> Wai.Attribute { compatible | details : Wai.Supported }
+details =
+    Wai.idReference "details"
+
+
+{-| -}
+disabled : Bool -> Wai.Attribute { compatible | disabled : Wai.Supported }
+disabled =
+    Wai.bool "disabled"
+
+
+{-| -}
+dropEffect : Wai.Value { copy : Wai.SupportedValue, execute : Wai.SupportedValue, link : Wai.SupportedValue, move : Wai.SupportedValue, none : Wai.SupportedValue, popup : Wai.SupportedValue } -> Wai.Attribute { compatible | dropEffect : Wai.Supported }
+dropEffect =
+    Wai.value "dropeffect"
+
+
+{-| -}
+errorMessage : Wai.IdReference -> Wai.Attribute { compatible | errorMessage : Wai.Supported }
+errorMessage =
+    Wai.idReference "errormessage"
+
+
+{-| -}
+expanded : Maybe Bool -> Wai.Attribute { compatible | expanded : Wai.Supported }
+expanded =
+    Wai.maybeBool "expanded"
+
+
+{-| -}
+flowTo : List Wai.IdReference -> Wai.Attribute { compatible | flowTo : Wai.Supported }
+flowTo =
+    Wai.idReferenceList "flowto"
+
+
+{-| -}
+grabbed : Maybe Bool -> Wai.Attribute { compatible | grabbed : Wai.Supported }
+grabbed =
+    Wai.maybeBool "grabbed"
+
+
+{-| -}
+hasPopup : Wai.Value { menu : Wai.SupportedValue, listbox : Wai.SupportedValue, tree : Wai.SupportedValue, grid : Wai.SupportedValue, dialog : Wai.SupportedValue, true : Wai.SupportedValue, false : Wai.SupportedValue } -> Wai.Attribute { compatible | hasPopup : Wai.Supported }
+hasPopup =
+    Wai.value "haspopup"
+
+
+{-| -}
+hidden : Maybe Bool -> Wai.Attribute { compatible | hidden : Wai.Supported }
+hidden =
+    Wai.maybeBool "hidden"
+
+
+{-| -}
+invalid : Wai.Value { grammar : Wai.SupportedValue, spelling : Wai.SupportedValue, true : Wai.SupportedValue, false : Wai.SupportedValue } -> Wai.Attribute { compatible | invalid : Wai.Supported }
+invalid =
+    Wai.value "invalid"
+
+
+{-| -}
+keyShortcuts : String -> Wai.Attribute { compatible | keyShortcuts : Wai.Supported }
+keyShortcuts =
+    Wai.string "keyshortcuts"
+
+
+{-| -}
+label : String -> Wai.Attribute { compatible | label : Wai.Supported }
+label =
+    Wai.string "label"
+
+
+{-| -}
+labelledBy : List Wai.IdReference -> Wai.Attribute { compatible | labelledBy : Wai.Supported }
+labelledBy =
+    Wai.idReferenceList "labelledby"
+
+
+{-| -}
+level : Int -> Wai.Attribute { compatible | level : Wai.Supported }
+level =
+    Wai.integer "level" 1
+
+
+{-| -}
+live : Wai.Value { assertive : Wai.SupportedValue, polite : Wai.SupportedValue, off : Wai.SupportedValue } -> Wai.Attribute { compatible | live : Wai.Supported }
+live =
+    Wai.value "live"
+
+
+{-| -}
+modal : Bool -> Wai.Attribute { compatible | modal : Wai.Supported }
+modal =
+    Wai.bool "modal"
+
+
+{-| -}
+multiLine : Bool -> Wai.Attribute { compatible | multiLine : Wai.Supported }
+multiLine =
+    Wai.bool "multiline"
+
+
+{-| -}
+multiSelectable : Bool -> Wai.Attribute { compatible | multiSelectable : Wai.Supported }
+multiSelectable =
+    Wai.bool "multiselectable"
+
+
+{-| -}
+orientation : Wai.Value { horizontal : Wai.SupportedValue, vertical : Wai.SupportedValue, undefined : Wai.SupportedValue } -> Wai.Attribute { compatible | orientation : Wai.Supported }
+orientation =
+    Wai.value "orientation"
+
+
+{-| -}
+owns : List Wai.IdReference -> Wai.Attribute { compatible | owns : Wai.Supported }
+owns =
+    Wai.idReferenceList "owns"
+
+
+{-| -}
+placeholder : String -> Wai.Attribute { compatible | placeholder : Wai.Supported }
+placeholder =
+    Wai.string "placeholder"
+
+
+{-| -}
+posInSet : Int -> Wai.Attribute { compatible | posInSet : Wai.Supported }
+posInSet =
+    Wai.integer "posinset" 1
+
+
+{-| -}
+pressed : Wai.TriState -> Wai.Attribute { compatible | pressed : Wai.Supported }
+pressed =
+    Wai.triState "pressed"
+
+
+{-| -}
+readOnly : Bool -> Wai.Attribute { compatible | readOnly : Wai.Supported }
+readOnly =
+    Wai.bool "readonly"
+
+
+{-| -}
+relevant : List (Wai.Value { additions : Wai.SupportedValue, removals : Wai.SupportedValue, text : Wai.SupportedValue }) -> Wai.Attribute { compatible | relevant : Wai.Supported }
+relevant value =
+    Wai.string "relevant" <| String.join "," (List.map Wai.valueToString value)
+
+
+{-| -}
+relevantAll : Wai.Attribute { compatible | relevant : Wai.Supported }
+relevantAll =
+    Wai.value "relevant" <| Wai.Value "all"
+
+
+{-| -}
+required : Bool -> Wai.Attribute { compatible | required : Wai.Supported }
+required =
+    Wai.bool "required"
+
+
+{-| -}
+roleDescription : String -> Wai.Attribute { compatible | roleDescription : Wai.Supported }
+roleDescription =
+    Wai.string "roledescription"
+
+
+{-| -}
+rowCount : Int -> Wai.Attribute { compatible | rowCount : Wai.Supported }
+rowCount =
+    Wai.integer "rowcount" -1
+
+
+{-| -}
+rowIndex : Int -> Wai.Attribute { compatible | rowIndex : Wai.Supported }
+rowIndex =
+    Wai.integer "rowindex" 1
+
+
+{-| -}
+rowSpan : Int -> Wai.Attribute { compatible | rowSpan : Wai.Supported }
+rowSpan =
+    Wai.integer "rowspan" 0
+
+
+{-| -}
+selected : Maybe Bool -> Wai.Attribute { compatible | selected : Wai.Supported }
+selected =
+    Wai.maybeBool "selected"
+
+
+{-| -}
+setSize : Int -> Wai.Attribute { compatible | setSize : Wai.Supported }
+setSize =
+    Wai.integer "setsize" -1
+
+
+{-| -}
+sort : Wai.Value { ascending : Wai.SupportedValue, descending : Wai.SupportedValue, none : Wai.SupportedValue, other : Wai.SupportedValue } -> Wai.Attribute { compatible | sort : Wai.Supported }
+sort =
+    Wai.value "sort"
+
+
+{-| -}
+valueMax : Int -> Wai.Attribute { compatible | valueMax : Wai.Supported }
+valueMax =
+    Wai.number "valuemax"
+
+
+{-| -}
+valueMin : Int -> Wai.Attribute { compatible | valueMin : Wai.Supported }
+valueMin =
+    Wai.number "valuemin"
+
+
+{-| -}
+valueNow : Int -> Wai.Attribute { compatible | valueNow : Wai.Supported }
+valueNow =
+    Wai.number "valuenow"
+
+
+{-| -}
+valueText : String -> Wai.Attribute { compatible | valueText : Wai.Supported }
+valueText =
+    Wai.string "valuetext"
+
+
+{-| -}
+additions : Wai.Value { compatible | additions : Wai.SupportedValue }
+additions =
+    Wai.Value "additions"
+
+
+{-| -}
+ascending : Wai.Value { compatible | ascending : Wai.SupportedValue }
+ascending =
+    Wai.Value "ascending"
+
+
+{-| -}
+assertive : Wai.Value { compatible | assertive : Wai.SupportedValue }
+assertive =
+    Wai.Value "assertive"
+
+
+{-| -}
+both : Wai.Value { compatible | both : Wai.SupportedValue }
+both =
+    Wai.Value "both"
+
+
+{-| -}
+copy : Wai.Value { compatible | copy : Wai.SupportedValue }
+copy =
+    Wai.Value "copy"
+
+
+{-| -}
+date : Wai.Value { compatible | date : Wai.SupportedValue }
+date =
+    Wai.Value "date"
+
+
+{-| -}
+descending : Wai.Value { compatible | descending : Wai.SupportedValue }
+descending =
+    Wai.Value "descending"
+
+
+{-| -}
+dialog : Wai.Value { compatible | dialog : Wai.SupportedValue }
+dialog =
+    Wai.Value "dialog"
+
+
+{-| -}
+execute : Wai.Value { compatible | execute : Wai.SupportedValue }
+execute =
+    Wai.Value "execute"
+
+
+{-| -}
+false : Wai.Value { compatible | false : Wai.SupportedValue }
+false =
+    Wai.Value "false"
+
+
+{-| -}
+grammar : Wai.Value { compatible | grammar : Wai.SupportedValue }
+grammar =
+    Wai.Value "grammar"
+
+
+{-| -}
+grid : Wai.Value { compatible | grid : Wai.SupportedValue }
+grid =
+    Wai.Value "grid"
+
+
+{-| -}
+horizontal : Wai.Value { compatible | horizontal : Wai.SupportedValue }
+horizontal =
+    Wai.Value "horizontal"
+
+
+{-| -}
+inline : Wai.Value { compatible | inline : Wai.SupportedValue }
+inline =
+    Wai.Value "inline"
+
+
+{-| -}
+link : Wai.Value { compatible | link : Wai.SupportedValue }
+link =
+    Wai.Value "link"
+
+
+{-| -}
+list : Wai.Value { compatible | list : Wai.SupportedValue }
+list =
+    Wai.Value "list"
+
+
+{-| -}
+listbox : Wai.Value { compatible | listbox : Wai.SupportedValue }
+listbox =
+    Wai.Value "listbox"
+
+
+{-| -}
+location : Wai.Value { compatible | location : Wai.SupportedValue }
+location =
+    Wai.Value "location"
+
+
+{-| -}
+menu : Wai.Value { compatible | menu : Wai.SupportedValue }
+menu =
+    Wai.Value "menu"
+
+
+{-| -}
+move : Wai.Value { compatible | move : Wai.SupportedValue }
+move =
+    Wai.Value "move"
+
+
+{-| -}
+none : Wai.Value { compatible | none : Wai.SupportedValue }
+none =
+    Wai.Value "none"
+
+
+{-| -}
+off : Wai.Value { compatible | none : Wai.SupportedValue }
+off =
+    Wai.Value "off"
+
+
+{-| -}
+other : Wai.Value { compatible | other : Wai.SupportedValue }
+other =
+    Wai.Value "other"
+
+
+{-| -}
+page : Wai.Value { compatible | page : Wai.SupportedValue }
+page =
+    Wai.Value "page"
+
+
+{-| -}
+polite : Wai.Value { compatible | polite : Wai.SupportedValue }
+polite =
+    Wai.Value "polite"
+
+
+{-| -}
+popup : Wai.Value { compatible | popup : Wai.SupportedValue }
+popup =
+    Wai.Value "popup"
+
+
+{-| -}
+removals : Wai.Value { compatible | removals : Wai.SupportedValue }
+removals =
+    Wai.Value "removals"
+
+
+{-| -}
+spelling : Wai.Value { compatible | spelling : Wai.SupportedValue }
+spelling =
+    Wai.Value "spelling"
+
+
+{-| -}
+step : Wai.Value { compatible | step : Wai.SupportedValue }
+step =
+    Wai.Value "step"
+
+
+{-| -}
+text : Wai.Value { compatible | step : Wai.SupportedValue }
+text =
+    Wai.Value "text"
+
+
+{-| -}
+time : Wai.Value { compatible | time : Wai.SupportedValue }
+time =
+    Wai.Value "time"
+
+
+{-| -}
+tree : Wai.Value { compatible | tree : Wai.SupportedValue }
+tree =
+    Wai.Value "tree"
+
+
+{-| -}
+true : Wai.Value { compatible | true : Wai.SupportedValue }
+true =
+    Wai.Value "true"
+
+
+{-| -}
+undefined : Wai.Value { compatible | undefined : Wai.SupportedValue }
+undefined =
+    Wai.Value "undefined"
+
+
+{-| -}
+vertical : Wai.Value { compatible | vertical : Wai.SupportedValue }
+vertical =
+    Wai.Value "vertical"
+
+
+{-| Escape Hatch
+-}
 attribute : Wai.Attribute a -> Html.Attribute msg
 attribute =
     Wai.toAttribute
