@@ -1,6 +1,8 @@
 module Wai exposing
     ( alert, alertDialog, application, article, banner, button, cell, checkBox, columnHeader, comboBox, complementary, contentInfo, definition, dialog_, directory, document, feed, figure, form, grid_, gridCell, group, heading, img, link_, list_, listBox, listItem, log, main_, marquee, math, menu_, menuBar, menuItem, menuItemCheckBox, menuItemRadio, navigation, none_, note, option, presentation, progressBar, radio, radioGroup, region, row, rowGroup, rowHeader, scrollBar, search, searchBox, separator, slider, spinButton, status, switch, tab, tabList, tabPanel, table, term, textBox, timer, toolBar, toolTip, tree_, treeGrid, treeItem
     , activeDescendant, atomic, autoComplete, busy, checked, colCount, colIndex, colSpan, controls, current, describedBy, details, disabled, dropEffect, errorMessage, expanded, flowTo, grabbed, hasPopup, hidden, invalid, keyShortcuts, label, labelledBy, level, live, modal, multiLine, multiSelectable, orientation, owns, placeholder, posInSet, pressed, readOnly, relevant, relevantAll, required, roleDescription, rowCount, rowIndex, rowSpan, selected, setSize, sort, valueMax, valueMin, valueNow, valueText
+    , additions, ascending, assertive, both, copy, date, descending, dialog, execute, false, grammar, grid, horizontal, inline, link, list, listbox, location, menu, move, none, off, other, page, polite, popup, removals, spelling, step, text, time, tree, true, undefined, vertical
+    , attribute
     )
 
 {-| Module that defines all ARIA attributes and roles.
@@ -14,6 +16,16 @@ module Wai exposing
 # Attributes
 
 @docs activeDescendant, atomic, autoComplete, busy, checked, colCount, colIndex, colSpan, controls, current, describedBy, details, disabled, dropEffect, errorMessage, expanded, flowTo, grabbed, hasPopup, hidden, invalid, keyShortcuts, label, labelledBy, level, live, modal, multiLine, multiSelectable, orientation, owns, placeholder, posInSet, pressed, readOnly, relevant, relevantAll, required, roleDescription, rowCount, rowIndex, rowSpan, selected, setSize, sort, valueMax, valueMin, valueNow, valueText
+
+
+# Values
+
+@docs additions, ascending, assertive, both, copy, date, descending, dialog, execute, false, grammar, grid, horizontal, inline, link, list, listbox, location, menu, move, none, off, other, page, polite, popup, removals, spelling, step, text, time, tree, true, undefined, vertical
+
+
+# Escape Hatch
+
+@docs attribute
 
 -}
 
@@ -462,6 +474,10 @@ treeItem =
     Wai.role "treeitem"
 
 
+
+{--ATTRIBUTES --}
+
+
 {-| -}
 activeDescendant : Wai.IdReference -> Wai.Attribute { compatible | activeDescendant : Wai.Supported }
 activeDescendant =
@@ -754,6 +770,10 @@ valueNow =
 valueText : String -> Wai.Attribute { compatible | valueText : Wai.Supported }
 valueText =
     Wai.string "valuetext"
+
+
+
+{--VALUES --}
 
 
 {-| -}
