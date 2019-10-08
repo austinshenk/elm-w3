@@ -6,16 +6,7 @@
     "version": "1.0.0",
     "exposed-modules": [
         "Wai.Aria",
-        "Wai.TriState",
-        "Wai.Token.AutoComplete",
-        "Wai.Token.Current",
-        "Wai.Token.DropEffect",
-        "Wai.Token.HasPopup",
-        "Wai.Token.Invalid",
-        "Wai.Token.Live",
-        "Wai.Token.Orientation",
-        "Wai.Token.Relevant",
-        "Wai.Token.Sort"
+        "Wai.Aria.Attributes"
     ],
     "elm-version": "0.19.0 <= v < 0.20.0",
     "dependencies": {
