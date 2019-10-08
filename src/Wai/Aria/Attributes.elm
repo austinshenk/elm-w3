@@ -34,7 +34,7 @@ activeDescendant =
     Aria.idReference "activedescendant"
 
 
-{-| Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the relevant attribute.
+{-| Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the [relevant](#relevant) attribute.
 -}
 atomic : Bool -> Aria.Attribute { compatible | atomic : Aria.Supported }
 atomic =
@@ -55,35 +55,35 @@ busy =
     Aria.bool "busy"
 
 
-{-| Indicates the current "checked" state of checkboxes, radio buttons, and other widgets. See related aria-pressed and aria-selected.
+{-| Indicates the current "checked" state of checkboxes, radio buttons, and other widgets. See related [pressed](#pressed) and [selected](#selected).
 -}
 checked : Aria.TriState -> Aria.Attribute { compatible | checked : Aria.Supported }
 checked =
     Aria.triState "checked"
 
 
-{-| Defines the total number of columns in a table, grid, or treegrid. See related aria-colindex.
+{-| Defines the total number of columns in a table, grid, or treegrid. See related [colIndex](#colIndex).
 -}
 colCount : Int -> Aria.Attribute { compatible | colCount : Aria.Supported }
 colCount =
     Aria.integer "colcount" -1
 
 
-{-| Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid. See related aria-colcount and aria-colspan.
+{-| Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid. See related [colCount](#colCount) and [colSpan](#colSpan).
 -}
 colIndex : Int -> Aria.Attribute { compatible | colIndex : Aria.Supported }
 colIndex =
     Aria.integer "colindex" 1
 
 
-{-| Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid. See related aria-colindex and aria-rowspan.
+{-| Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid. See related [colIndex](#colIndex) and [rowspan](#rowSpan).
 -}
 colSpan : Int -> Aria.Attribute { compatible | colSpan : Aria.Supported }
 colSpan =
     Aria.integer "colspan" 1
 
 
-{-| Identifies the element (or elements) whose contents or presence are controlled by the current element. See related aria-owns.
+{-| Identifies the element (or elements) whose contents or presence are controlled by the current element. See related [owns](#owns).
 -}
 controls : List Aria.IdReference -> Aria.Attribute { compatible | controls : Aria.Supported }
 controls =
@@ -97,21 +97,21 @@ current =
     Aria.value "current"
 
 
-{-| Identifies the element (or elements) that describes the object. See related aria-labelledby.
+{-| Identifies the element (or elements) that describes the object. See related [labelledBy](#labelledBy).
 -}
 describedBy : List Aria.IdReference -> Aria.Attribute { compatible | describedBy : Aria.Supported }
 describedBy =
     Aria.idReferenceList "describedby"
 
 
-{-| Identifies the element that provides a detailed, extended description for the object. See related aria-describedby.
+{-| Identifies the element that provides a detailed, extended description for the object. See related [describedBy](#describedBy).
 -}
 details : Aria.IdReference -> Aria.Attribute { compatible | details : Aria.Supported }
 details =
     Aria.idReference "details"
 
 
-{-| Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable. See related aria-hidden and aria-readonly.
+{-| Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable. See related [hidden](#hidden) and [readOnly](#readOnly).
 -}
 disabled : Bool -> Aria.Attribute { compatible | disabled : Aria.Supported }
 disabled =
@@ -125,7 +125,7 @@ dropEffect =
     Aria.value "dropeffect"
 
 
-{-| Identifies the element that provides an error message for the object. See related aria-invalid and aria-describedby.
+{-| Identifies the element that provides an error message for the object. See related [invalid](#invalid) and [describedBy](#describedBy).
 -}
 errorMessage : Aria.IdReference -> Aria.Attribute { compatible | errorMessage : Aria.Supported }
 errorMessage =
@@ -160,14 +160,14 @@ hasPopup =
     Aria.value "haspopup"
 
 
-{-| Indicates whether the element is exposed to an accessibility API. See related aria-disabled.
+{-| Indicates whether the element is exposed to an accessibility API. See related [disabled](#disabled).
 -}
 hidden : Maybe Bool -> Aria.Attribute { compatible | hidden : Aria.Supported }
 hidden =
     Aria.maybeBool "hidden"
 
 
-{-| Indicates the entered value does not conform to the format expected by the application. See related aria-errormessage.
+{-| Indicates the entered value does not conform to the format expected by the application. See related [errorMessage](#errorMessage).
 -}
 invalid : Aria.Value { grammar : Aria.SupportedValue, spelling : Aria.SupportedValue, true : Aria.SupportedValue, false : Aria.SupportedValue } -> Aria.Attribute { compatible | invalid : Aria.Supported }
 invalid =
@@ -181,14 +181,14 @@ keyShortcuts =
     Aria.string "keyshortcuts"
 
 
-{-| Defines a string value that labels the current element. See related aria-labelledby.
+{-| Defines a string value that labels the current element. See related [labelledBy](#labelledBy).
 -}
 label : String -> Aria.Attribute { compatible | label : Aria.Supported }
 label =
     Aria.string "label"
 
 
-{-| Identifies the element (or elements) that labels the current element. See related aria-describedby.
+{-| Identifies the element (or elements) that labels the current element. See related [describedBy](#describedBy).
 -}
 labelledBy : List Aria.IdReference -> Aria.Attribute { compatible | labelledBy : Aria.Supported }
 labelledBy =
@@ -237,7 +237,7 @@ orientation =
     Aria.value "orientation"
 
 
-{-| Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship between DOM elements where the DOM hierarchy cannot be used to represent the relationship. See related aria-controls.
+{-| Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship between DOM elements where the DOM hierarchy cannot be used to represent the relationship. See related [controls](#controls).
 -}
 owns : List Aria.IdReference -> Aria.Attribute { compatible | owns : Aria.Supported }
 owns =
@@ -251,35 +251,35 @@ placeholder =
     Aria.string "placeholder"
 
 
-{-| Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. See related aria-setsize.
+{-| Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. See related [setSize](#setSize).
 -}
 posInSet : Int -> Aria.Attribute { compatible | posInSet : Aria.Supported }
 posInSet =
     Aria.integer "posinset" 1
 
 
-{-| Indicates the current "pressed" state of toggle buttons. See related aria-checked and aria-selected.
+{-| Indicates the current "pressed" state of toggle buttons. See related [checked](#checked) and [selected](#selected).
 -}
 pressed : Aria.TriState -> Aria.Attribute { compatible | pressed : Aria.Supported }
 pressed =
     Aria.triState "pressed"
 
 
-{-| Indicates that the element is not editable, but is otherwise operable. See related aria-disabled.
+{-| Indicates that the element is not editable, but is otherwise operable. See related [disabled](#disabled).
 -}
 readOnly : Bool -> Aria.Attribute { compatible | readOnly : Aria.Supported }
 readOnly =
     Aria.bool "readonly"
 
 
-{-| Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified. See related aria-atomic.
+{-| Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified. See related [atomic](#atomic).
 -}
 relevant : List (Aria.Value { additions : Aria.SupportedValue, removals : Aria.SupportedValue, text : Aria.SupportedValue }) -> Aria.Attribute { compatible | relevant : Aria.Supported }
 relevant value =
     Aria.string "relevant" <| String.join "," (List.map Aria.valueToString value)
 
 
-{-| Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified. See related aria-atomic.
+{-| Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified. See related [atomic](#atomic).
 -}
 relevantAll : Aria.Attribute { compatible | relevant : Aria.Supported }
 relevantAll =
@@ -300,35 +300,35 @@ roleDescription =
     Aria.string "roledescription"
 
 
-{-| Defines the total number of rows in a table, grid, or treegrid. See related aria-rowindex.
+{-| Defines the total number of rows in a table, grid, or treegrid. See related [rowIndex](#rowIndex).
 -}
 rowCount : Int -> Aria.Attribute { compatible | rowCount : Aria.Supported }
 rowCount =
     Aria.integer "rowcount" -1
 
 
-{-| Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid. See related aria-rowcount and aria-rowspan.
+{-| Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid. See related [rowCount](#rowCount) and [rowSpan](#rowSpan).
 -}
 rowIndex : Int -> Aria.Attribute { compatible | rowIndex : Aria.Supported }
 rowIndex =
     Aria.integer "rowindex" 1
 
 
-{-| Defines the number of rows spanned by a cell or gridcell within a table, grid, or treegrid. See related aria-rowindex and aria-colspan.
+{-| Defines the number of rows spanned by a cell or gridcell within a table, grid, or treegrid. See related [rowIndex](#rowIndex) and [colSpan](#colSpan).
 -}
 rowSpan : Int -> Aria.Attribute { compatible | rowSpan : Aria.Supported }
 rowSpan =
     Aria.integer "rowspan" 0
 
 
-{-| Indicates the current "selected" state of various widgets. See related aria-checked and aria-pressed.
+{-| Indicates the current "selected" state of various widgets. See related [checked](#checked) and [pressed](#pressed).
 -}
 selected : Maybe Bool -> Aria.Attribute { compatible | selected : Aria.Supported }
 selected =
     Aria.maybeBool "selected"
 
 
-{-| Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. See related aria-posinset.
+{-| Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. See related [posInSet](#posInSet).
 -}
 setSize : Int -> Aria.Attribute { compatible | setSize : Aria.Supported }
 setSize =
@@ -356,14 +356,14 @@ valueMin =
     Aria.number "valuemin"
 
 
-{-| Defines the current value for a range widget. See related aria-valuetext.
+{-| Defines the current value for a range widget. See related [valueText](#valueText).
 -}
 valueNow : Int -> Aria.Attribute { compatible | valueNow : Aria.Supported }
 valueNow =
     Aria.number "valuenow"
 
 
-{-| Defines the human readable text alternative of aria-valuenow for a range widget.
+{-| Defines the human readable text alternative of [valueNow](#valueNow) for a range widget.
 -}
 valueText : String -> Aria.Attribute { compatible | valueText : Aria.Supported }
 valueText =
