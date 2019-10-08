@@ -1,4 +1,4 @@
-module Wai.Help exposing (Attribute(..), IdReference, Supported, SupportedValue, TriState, Value(..), bool, boolToString, idReference, idReferenceList, integer, maybeBool, maybeBoolToString, number, role, string, toAttribute, triState, value, valueToString)
+module Wai.Aria.Help exposing (Attribute(..), IdReference, Supported, SupportedValue, TriState, Value(..), bool, boolToString, idReference, idReferenceList, integer, maybeBool, maybeBoolToString, number, role, string, toAttribute, triState, value, valueToString)
 
 import Html
 import Html.Attributes as Attributes
@@ -46,7 +46,11 @@ boolToString val =
 
 
 type alias TriState =
-    Value { true : SupportedValue, false : SupportedValue, mixed : SupportedValue }
+    Value
+        { true : SupportedValue
+        , false : SupportedValue
+        , mixed : SupportedValue
+        }
 
 
 triState : String -> TriState -> Attribute a
@@ -117,9 +121,9 @@ string key val =
         Attribute key val
 
 
-role : String -> List (Attribute a) -> List (Html.Attribute msg)
-role name attributes =
-    Attributes.attribute "role" name :: List.map toAttribute attributes
+role : String -> List (Attribute a) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+role name attributes htmlAttributes =
+    Attributes.attribute "role" name :: List.concat [ List.map toAttribute attributes, htmlAttributes ]
 
 
 toAttribute : Attribute a -> Html.Attribute msg
