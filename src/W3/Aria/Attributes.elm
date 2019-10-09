@@ -1,4 +1,4 @@
-module Wai.Aria.Attributes exposing
+module W3.Aria.Attributes exposing
     ( Value
     , activeDescendant, atomic, autoComplete, busy, checked, colCount, colIndex, colSpan, controls, current, describedBy, details, disabled, dropEffect, errorMessage, expanded, flowTo, grabbed, hasPopup, hidden, invalid, keyShortcuts, label, labelledBy, level, live, modal, multiLine, multiSelectable, orientation, owns, placeholder, posInSet, pressed, readOnly, relevant, relevantAll, required, roleDescription, rowCount, rowIndex, rowSpan, selected, setSize, sort, valueMax, valueMin, valueNow, valueText
     , additions, ascending, assertive, both, copy, date, descending, dialog, execute, false, grammar, grid, horizontal, inline, link, list, listbox, location, menu, move, none, off, other, page, polite, popup, removals, spelling, step, text, time, tree, true, undefined, vertical
@@ -29,7 +29,7 @@ module Wai.Aria.Attributes exposing
 -}
 
 import Html
-import Wai.Aria.Help as Aria
+import W3.Aria.Help as Aria
 
 
 {-| -}

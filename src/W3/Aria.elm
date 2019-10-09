@@ -1,4 +1,4 @@
-module Wai.Aria exposing
+module W3.Aria exposing
     ( Attribute
     , alert, alertDialog, application, article, banner, button, cell, checkBox, columnHeader, comboBox, complementary, contentInfo, definition, dialog, directory, document, feed, figure, form, grid, gridCell, group, heading, img, link, list, listBox, listItem, log, main_, marquee, math, menu, menuBar, menuItem, menuItemCheckBox, menuItemRadio, navigation, none, note, option, presentation, progressBar, radio, radioGroup, region, row, rowGroup, rowHeader, scrollBar, search, searchBox, separator, slider, spinButton, status, switch, tab, tabList, tabPanel, table, term, textBox, timer, toolBar, toolTip, tree, treeGrid, treeItem
     )
@@ -18,7 +18,7 @@ module Wai.Aria exposing
 -}
 
 import Html
-import Wai.Aria.Help as Aria
+import W3.Aria.Help as Aria
 
 
 {-| -}

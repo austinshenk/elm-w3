@@ -5,8 +5,8 @@ import Html.Attributes as Attribute
 import Test exposing (..)
 import Test.Html.Query as Query
 import Test.Html.Selector as Selector
-import Wai.Aria as Aria
-import Wai.Aria.Attributes as AriaAttribute
+import W3.Aria as Aria
+import W3.Aria.Attributes as AriaAttribute
 
 
 suite : Test
