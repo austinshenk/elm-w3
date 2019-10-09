@@ -1,10 +1,15 @@
 module Wai.Aria.Attributes exposing
-    ( activeDescendant, atomic, autoComplete, busy, checked, colCount, colIndex, colSpan, controls, current, describedBy, details, disabled, dropEffect, errorMessage, expanded, flowTo, grabbed, hasPopup, hidden, invalid, keyShortcuts, label, labelledBy, level, live, modal, multiLine, multiSelectable, orientation, owns, placeholder, posInSet, pressed, readOnly, relevant, relevantAll, required, roleDescription, rowCount, rowIndex, rowSpan, selected, setSize, sort, valueMax, valueMin, valueNow, valueText
+    ( Value
+    , activeDescendant, atomic, autoComplete, busy, checked, colCount, colIndex, colSpan, controls, current, describedBy, details, disabled, dropEffect, errorMessage, expanded, flowTo, grabbed, hasPopup, hidden, invalid, keyShortcuts, label, labelledBy, level, live, modal, multiLine, multiSelectable, orientation, owns, placeholder, posInSet, pressed, readOnly, relevant, relevantAll, required, roleDescription, rowCount, rowIndex, rowSpan, selected, setSize, sort, valueMax, valueMin, valueNow, valueText
     , additions, ascending, assertive, both, copy, date, descending, dialog, execute, false, grammar, grid, horizontal, inline, link, list, listbox, location, menu, move, none, off, other, page, polite, popup, removals, spelling, step, text, time, tree, true, undefined, vertical
     , attribute
     )
 
 {-| File that contains all WAI-ARIA attributes and their values. More information about Aria attributes can be found in the [state and properties section](https://www.w3.org/TR/wai-aria-1.1/#state_prop_def) and different attribute value types can be found in the [property characteristics section](https://www.w3.org/TR/wai-aria-1.1/#propcharacteristic_value)
+
+#Types
+
+@docs Value
 
 
 # Attributes
@@ -25,6 +30,11 @@ module Wai.Aria.Attributes exposing
 
 import Html
 import Wai.Aria.Help as Aria
+
+
+{-| -}
+type alias Value a =
+    Aria.Value a
 
 
 {-| Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application.

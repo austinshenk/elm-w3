@@ -1,6 +1,14 @@
-module Wai.Aria exposing (alert, alertDialog, application, article, banner, button, cell, checkBox, columnHeader, comboBox, complementary, contentInfo, definition, dialog, directory, document, feed, figure, form, grid, gridCell, group, heading, img, link, list, listBox, listItem, log, main_, marquee, math, menu, menuBar, menuItem, menuItemCheckBox, menuItemRadio, navigation, none, note, option, presentation, progressBar, radio, radioGroup, region, row, rowGroup, rowHeader, scrollBar, search, searchBox, separator, slider, spinButton, status, switch, tab, tabList, tabPanel, table, term, textBox, timer, toolBar, toolTip, tree, treeGrid, treeItem)
+module Wai.Aria exposing
+    ( Attribute
+    , alert, alertDialog, application, article, banner, button, cell, checkBox, columnHeader, comboBox, complementary, contentInfo, definition, dialog, directory, document, feed, figure, form, grid, gridCell, group, heading, img, link, list, listBox, listItem, log, main_, marquee, math, menu, menuBar, menuItem, menuItemCheckBox, menuItemRadio, navigation, none, note, option, presentation, progressBar, radio, radioGroup, region, row, rowGroup, rowHeader, scrollBar, search, searchBox, separator, slider, spinButton, status, switch, tab, tabList, tabPanel, table, term, textBox, timer, toolBar, toolTip, tree, treeGrid, treeItem
+    )
 
 {-| File that contains all WAI-ARIA roles as defined by W3's specification and in alphabetical order. If you want to read more about a role's purpose, take a look at the [role definitions list](https://www.w3.org/TR/wai-aria-1.1/#role_definitions).
+
+
+# Types
+
+@docs Attribute
 
 
 # Roles
@@ -11,6 +19,11 @@ module Wai.Aria exposing (alert, alertDialog, application, article, banner, butt
 
 import Html
 import Wai.Aria.Help as Aria
+
+
+{-| -}
+type alias Attribute a =
+    Aria.Attribute a
 
 
 type alias GlobalAttributes a =
