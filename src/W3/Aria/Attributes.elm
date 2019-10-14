@@ -28,7 +28,7 @@ module W3.Aria.Attributes exposing
 
 -}
 
-import Html
+import VirtualDom
 import W3.Aria.Help as Aria
 
 
@@ -596,6 +596,6 @@ vertical =
 
 {-| Use this to break out of this package's requirements. Useful if there is something that this package does not allow and you want to support it.
 -}
-attribute : Aria.Attribute a -> Html.Attribute msg
+attribute : Aria.Attribute a -> VirtualDom.Attribute msg
 attribute =
     Aria.toAttribute

@@ -1,7 +1,6 @@
 module W3.Aria.Help exposing (Attribute(..), IdReference, Supported, SupportedValue, TriState, Value(..), bool, boolToString, idReference, idReferenceList, integer, maybeBool, maybeBoolToString, number, role, string, toAttribute, triState, value, valueToString)
 
-import Html
-import Html.Attributes as Attributes
+import VirtualDom
 
 
 type Attribute a
@@ -121,11 +120,11 @@ string key val =
         Attribute key val
 
 
-role : String -> List (Attribute a) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+role : String -> List (Attribute a) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
 role name attributes htmlAttributes =
-    Attributes.attribute "role" name :: List.concat [ List.map toAttribute attributes, htmlAttributes ]
+    VirtualDom.attribute "role" name :: List.concat [ List.map toAttribute attributes, htmlAttributes ]
 
 
-toAttribute : Attribute a -> Html.Attribute msg
+toAttribute : Attribute a -> VirtualDom.Attribute msg
 toAttribute (Attribute name val) =
-    Attributes.attribute ("aria-" ++ name) val
+    VirtualDom.attribute ("aria-" ++ name) val

@@ -1,12 +1,10 @@
 module RoleTypeSuite exposing (suite)
 
-import Html
-import Html.Attributes as Attribute
 import Test exposing (..)
 import Test.Html.Query as Query
 import Test.Html.Selector as Selector
-import W3.Aria as Aria
-import W3.Aria.Attributes as AriaAttribute
+import VirtualDom
+import W3.Html as Html
 
 
 suite : Test
@@ -14,8 +12,9 @@ suite =
     describe "RoleType"
         [ Test.test "has atomic"
             (\() ->
-                Html.a (Aria.link [ AriaAttribute.atomic True ] []) []
+                Html.figure1 [] (Html.figcaption [] []) []
+                    |> Html.toHtml
                     |> Query.fromHtml
-                    |> Query.has [ Selector.attribute (Attribute.attribute "aria-atomic" "true") ]
+                    |> Query.has [ Selector.attribute (VirtualDom.attribute "aria-atomic" "true") ]
             )
         ]
