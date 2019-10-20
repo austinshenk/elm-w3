@@ -1,26 +1,36 @@
 module W3.Html exposing (Node, blockquote, dataDiv, dd, div, dl, dl1, dt, figcaption, figure, figure1, figure2, hr, li, menu, ol, p, pre, toHtml, ul)
 
-import Set exposing (Set)
 import VirtualDom
+import W3.Html.Attributes.Help as Attributes
 
 
-type Attribute a
-    = Attribute String String
-
-
-values : String -> List String -> Attribute a
-values key =
-    Attribute key << String.join " "
-
-
-uniqueValues : String -> Set String -> Attribute a
-uniqueValues key =
-    Attribute key << setToString
-
-
-setToString : Set String -> String
-setToString set =
-    set |> Set.toList |> String.join " "
+type alias GlobalAttributes a =
+    Attributes.Attribute
+        { a
+            | accesskey : Attributes.Supported
+            , autocapitalize : Attributes.Supported
+            , autofocus : Attributes.Supported
+            , contenteditable : Attributes.Supported
+            , dir : Attributes.Supported
+            , draggable : Attributes.Supported
+            , enterkeyhint : Attributes.Supported
+            , hidden : Attributes.Supported
+            , inputmode : Attributes.Supported
+            , is : Attributes.Supported
+            , itemid : Attributes.Supported
+            , itemprop : Attributes.Supported
+            , itemref : Attributes.Supported
+            , itemscope : Attributes.Supported
+            , itemtype : Attributes.Supported
+            , lang : Attributes.Supported
+            , nonce : Attributes.Supported
+            , spellcheck : Attributes.Supported
+            , style : Attributes.Supported
+            , tabindex : Attributes.Supported
+            , title : Attributes.Supported
+            , translate : Attributes.Supported
+            , data : Attributes.Supported
+        }
 
 
 type Node nodes msg
@@ -266,58 +276,58 @@ type alias MetadataContent =
 {--SECTIONS https://html.spec.whatwg.org/multipage/sections.html --}
 
 
-article : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | article : Supported } msg
+article : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | article : Supported } msg
 article =
     node "article"
 
 
-section : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | section : Supported } msg
+section : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | section : Supported } msg
 section =
     node "section"
 
 
-nav : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | nav : Supported } msg
+nav : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | nav : Supported } msg
 nav =
     node "nav"
 
 
-aside : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | aside : Supported } msg
+aside : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | aside : Supported } msg
 aside =
     node "aside"
 
 
-h1 : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | h1 : Supported } msg
+h1 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h1 : Supported } msg
 h1 =
     node "h1"
 
 
-h2 : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | h2 : Supported } msg
+h2 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h2 : Supported } msg
 h2 =
     node "h2"
 
 
-h3 : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | h3 : Supported } msg
+h3 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h3 : Supported } msg
 h3 =
     node "h3"
 
 
-h4 : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | h4 : Supported } msg
+h4 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h4 : Supported } msg
 h4 =
     node "h4"
 
 
-h5 : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | h5 : Supported } msg
+h5 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h5 : Supported } msg
 h5 =
     node "h5"
 
 
-h6 : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | h6 : Supported } msg
+h6 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h6 : Supported } msg
 h6 =
     node "h6"
 
 
 hgroup :
-    List (VirtualDom.Attribute msg)
+    List (GlobalAttributes {})
     ->
         List
             (Node
@@ -339,7 +349,7 @@ hgroup =
 {--Exclude header, footer descendant --}
 
 
-header : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | header : Supported } msg
+header : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | header : Supported } msg
 header =
     node "header"
 
@@ -348,7 +358,7 @@ header =
 {--Exclude header, footer descendant --}
 
 
-footer : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | footer : Supported } msg
+footer : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | footer : Supported } msg
 footer =
     node "footer"
 
@@ -357,7 +367,7 @@ footer =
 {--Exclude heading content, sectioning content, header, footer, address descendant --}
 
 
-address : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | address : Supported } msg
+address : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | address : Supported } msg
 address =
     node "address"
 
@@ -366,52 +376,67 @@ address =
 {--GROUPING https://html.spec.whatwg.org/multipage/grouping-content.html --}
 
 
-p : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | p : Supported } msg
+p : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | p : Supported } msg
 p =
     node "p"
 
 
-hr : List (VirtualDom.Attribute msg) -> Node { compatible | hr : Supported } msg
+hr : List (GlobalAttributes {}) -> Node { compatible | hr : Supported } msg
 hr attributes =
     node "hr" attributes []
 
 
-pre : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | pre : Supported } msg
+pre : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | pre : Supported } msg
 pre =
     node "pre"
 
 
-blockquote : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | blockquote : Supported } msg
+blockquote :
+    List (GlobalAttributes { cite : Attributes.Supported })
+    -> List (Node FlowContent msg)
+    -> Node { compatible | blockquote : Supported } msg
 blockquote =
     node "blockquote"
 
 
-ol : List (VirtualDom.Attribute msg) -> List (Node { li : Supported } msg) -> Node { compatible | ol : Supported } msg
+ol :
+    List
+        (GlobalAttributes
+            { reversed : Attributes.Supported
+            , start : Attributes.Supported
+            , type_ : Attributes.Supported
+            }
+        )
+    -> List (Node { li : Supported } msg)
+    -> Node { compatible | ol : Supported } msg
 ol =
     node "ol"
 
 
-ul : List (VirtualDom.Attribute msg) -> List (Node { li : Supported } msg) -> Node { compatible | ul : Supported } msg
+ul : List (GlobalAttributes {}) -> List (Node { li : Supported } msg) -> Node { compatible | ul : Supported } msg
 ul =
     node "ul"
 
 
-menu : List (VirtualDom.Attribute msg) -> List (Node { li : Supported } msg) -> Node { compatible | menu : Supported } msg
+menu : List (GlobalAttributes {}) -> List (Node { li : Supported } msg) -> Node { compatible | menu : Supported } msg
 menu =
     node "menu"
 
 
-li : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | li : Supported } msg
+li :
+    List (GlobalAttributes { value : Attributes.Supported })
+    -> List (Node FlowContent msg)
+    -> Node { compatible | li : Supported } msg
 li =
     node "li"
 
 
-dl : List (VirtualDom.Attribute msg) -> List (Node { dt : Supported, dd : Supported } msg) -> Node { compatible | dl : Supported } msg
+dl : List (GlobalAttributes {}) -> List (Node { dt : Supported, dd : Supported } msg) -> Node { compatible | dl : Supported } msg
 dl =
     node "dl"
 
 
-dl1 : List (VirtualDom.Attribute msg) -> List (Node { dataDiv : Supported } msg) -> Node { compatible | dl : Supported } msg
+dl1 : List (GlobalAttributes {}) -> List (Node { dataDiv : Supported } msg) -> Node { compatible | dl : Supported } msg
 dl1 =
     node "dl"
 
@@ -420,18 +445,18 @@ dl1 =
 {--Exclude heading content, sectioning content, header, footer descendant --}
 
 
-dt : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | dt : Supported } msg
+dt : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | dt : Supported } msg
 dt =
     node "dt"
 
 
-dd : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | dd : Supported } msg
+dd : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | dd : Supported } msg
 dd =
     node "dd"
 
 
 figure :
-    List (VirtualDom.Attribute msg)
+    List (GlobalAttributes {})
     -> List (Node FlowContent msg)
     -> Node { compatible | figure : Supported } msg
 figure =
@@ -439,39 +464,39 @@ figure =
 
 
 figure1 :
-    List (VirtualDom.Attribute msg)
+    List (GlobalAttributes {})
     -> Node { figcaption : Supported } msg
     -> List (Node FlowContent msg)
     -> Node { compatible | figure : Supported } msg
 figure1 attributes figCaption nodes =
-    Node "figure" attributes (toHtml figCaption :: List.map toHtml nodes)
+    Node "figure" (List.map toAttribute attributes) (toHtml figCaption :: List.map toHtml nodes)
 
 
 figure2 :
-    List (VirtualDom.Attribute msg)
+    List (GlobalAttributes {})
     -> List (Node FlowContent msg)
     -> Node { figcaption : Supported } msg
     -> Node { compatible | figure : Supported } msg
 figure2 attributes nodes figCaption =
-    Node "figure" attributes (List.map toHtml nodes ++ [ toHtml figCaption ])
+    Node "figure" (List.map toAttribute attributes) (List.map toHtml nodes ++ [ toHtml figCaption ])
 
 
-figcaption : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | figcaption : Supported } msg
+figcaption : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | figcaption : Supported } msg
 figcaption =
     node "figcaption"
 
 
-main_ : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | main_ : Supported } msg
+main_ : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | main_ : Supported } msg
 main_ =
     node "main"
 
 
-div : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | div : Supported } msg
+div : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | div : Supported } msg
 div =
     node "div"
 
 
-dataDiv : List (VirtualDom.Attribute msg) -> List (Node { dt : Supported, dd : Supported } msg) -> Node { compatible | dataDiv : Supported } msg
+dataDiv : List (GlobalAttributes {}) -> List (Node { dt : Supported, dd : Supported } msg) -> Node { compatible | dataDiv : Supported } msg
 dataDiv =
     node "div"
 
@@ -480,37 +505,54 @@ dataDiv =
 {--TEXT LEVEL https://html.spec.whatwg.org/multipage/text-level-semantics.html --}
 
 
-a : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | a : Supported } msg
+a :
+    List
+        (GlobalAttributes
+            { href : Attributes.Supported
+            , target : Attributes.Supported
+            , download : Attributes.Supported
+            , ping : Attributes.Supported
+            , rel : Attributes.Supported
+            , hreflang : Attributes.Supported
+            , type_ : Attributes.Supported
+            , referrerpolicy : Attributes.Supported
+            }
+        )
+    -> List (Node FlowContent msg)
+    -> Node { compatible | a : Supported } msg
 a =
     node "a"
 
 
-em : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | em : Supported } msg
+em : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | em : Supported } msg
 em =
     node "em"
 
 
-strong : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | strong : Supported } msg
+strong : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | strong : Supported } msg
 strong =
     node "strong"
 
 
-small : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | small : Supported } msg
+small : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | small : Supported } msg
 small =
     node "small"
 
 
-s : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | s : Supported } msg
+s : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | s : Supported } msg
 s =
     node "s"
 
 
-cite : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | cite : Supported } msg
+cite : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | cite : Supported } msg
 cite =
     node "cite"
 
 
-q : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | q : Supported } msg
+q :
+    List (GlobalAttributes { cite : Attributes.Supported })
+    -> List (Node PhrasingContent msg)
+    -> Node { compatible | q : Supported } msg
 q =
     node "q"
 
@@ -519,12 +561,12 @@ q =
 {--Exclude dfn descendant --}
 
 
-dfn : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | dfn : Supported } msg
+dfn : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | dfn : Supported } msg
 dfn =
     node "dfn"
 
 
-abbr : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | abbr : Supported } msg
+abbr : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | abbr : Supported } msg
 abbr =
     node "abbr"
 
@@ -533,28 +575,28 @@ abbr =
 {--Exclude ruby descendant --}
 
 
-ruby : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | ruby : Supported } msg
+ruby : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | ruby : Supported } msg
 ruby =
     node "ruby"
 
 
-ruby1 : List (VirtualDom.Attribute msg) -> Node { ruby : Supported } msg -> Node { compatible | ruby1 : Supported } msg
+ruby1 : List (GlobalAttributes {}) -> Node { ruby : Supported } msg -> Node { compatible | ruby1 : Supported } msg
 ruby1 attributes rubyChild =
-    Node "ruby" attributes [ toHtml rubyChild ]
+    Node "ruby" (List.map toAttribute attributes) [ toHtml rubyChild ]
 
 
-ruby2 : List (VirtualDom.Attribute msg) -> List (Node { rt : Supported } msg) -> Node { compatible | ruby2 : Supported } msg
+ruby2 : List (GlobalAttributes {}) -> List (Node { rt : Supported } msg) -> Node { compatible | ruby2 : Supported } msg
 ruby2 =
     node "ruby"
 
 
 ruby3 :
-    List (VirtualDom.Attribute msg)
+    List (GlobalAttributes {})
     -> Node { rp : Supported } msg
     -> List ( Node { rt : Supported } msg, Node { rp : Supported } msg )
     -> Node { compatible | ruby3 : Supported } msg
 ruby3 attributes rpFirst rtrpTuples =
-    Node "ruby" attributes (toHtml rpFirst :: List.foldl ruby3Help [] rtrpTuples)
+    Node "ruby" (List.map toAttribute attributes) (toHtml rpFirst :: List.foldl ruby3Help [] rtrpTuples)
 
 
 ruby3Help :
@@ -565,102 +607,111 @@ ruby3Help tuple childrenSoFar =
     childrenSoFar ++ [ toHtml (Tuple.first tuple), toHtml (Tuple.second tuple) ]
 
 
-rt : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | rt : Supported } msg
+rt : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | rt : Supported } msg
 rt =
     node "rt"
 
 
-rp : List (VirtualDom.Attribute msg) -> String -> Node { compatible | rp : Supported } msg
+rp : List (GlobalAttributes {}) -> String -> Node { compatible | rp : Supported } msg
 rp attributes content =
-    Node "rp" attributes [ VirtualDom.text content ]
+    Node "rp" (List.map toAttribute attributes) [ VirtualDom.text content ]
 
 
-data : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | data : Supported } msg
+data :
+    List (GlobalAttributes { value : Attributes.Supported })
+    -> List (Node PhrasingContent msg)
+    -> Node { compatible | data : Supported } msg
 data =
     node "data"
 
 
-time : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | time : Supported } msg
+time :
+    List (GlobalAttributes { datetime : Attributes.Supported })
+    -> List (Node PhrasingContent msg)
+    -> Node { compatible | time : Supported } msg
 time =
     node "time"
 
 
-timeText : List (VirtualDom.Attribute msg) -> String -> Node { compatible | time : Supported } msg
+timeText :
+    List (GlobalAttributes { datetime : Attributes.Supported })
+    -> String
+    -> Node { compatible | time : Supported } msg
 timeText attributes content =
-    Node "time" attributes [ VirtualDom.text content ]
+    Node "time" (List.map toAttribute attributes) [ VirtualDom.text content ]
 
 
-code : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | code : Supported } msg
+code : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | code : Supported } msg
 code =
     node "code"
 
 
-var : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | var : Supported } msg
+var : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | var : Supported } msg
 var =
     node "var"
 
 
-samp : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | samp : Supported } msg
+samp : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | samp : Supported } msg
 samp =
     node "samp"
 
 
-kbd : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | kbd : Supported } msg
+kbd : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | kbd : Supported } msg
 kbd =
     node "kbd"
 
 
-sub : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | sub : Supported } msg
+sub : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | sub : Supported } msg
 sub =
     node "sub"
 
 
-sup : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | sup : Supported } msg
+sup : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | sup : Supported } msg
 sup =
     node "sup"
 
 
-i : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | i : Supported } msg
+i : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | i : Supported } msg
 i =
     node "i"
 
 
-b : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | b : Supported } msg
+b : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | b : Supported } msg
 b =
     node "b"
 
 
-u : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | u : Supported } msg
+u : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | u : Supported } msg
 u =
     node "u"
 
 
-mark : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | mark : Supported } msg
+mark : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | mark : Supported } msg
 mark =
     node "mark"
 
 
-bdi : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | bdi : Supported } msg
+bdi : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | bdi : Supported } msg
 bdi =
     node "bdi"
 
 
-bdo : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | bdo : Supported } msg
+bdo : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | bdo : Supported } msg
 bdo =
     node "bdo"
 
 
-span : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | span : Supported } msg
+span : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | span : Supported } msg
 span =
     node "span"
 
 
-br : List (VirtualDom.Attribute msg) -> Node { compatible | br : Supported } msg
+br : List (GlobalAttributes {}) -> Node { compatible | br : Supported } msg
 br attributes =
     node "br" attributes []
 
 
-wbr : List (VirtualDom.Attribute msg) -> Node { compatible | wbr : Supported } msg
+wbr : List (GlobalAttributes {}) -> Node { compatible | wbr : Supported } msg
 wbr attributes =
     node "wbr" attributes []
 
@@ -669,12 +720,28 @@ wbr attributes =
 {--EDITS https://html.spec.whatwg.org/multipage/edits.html --}
 
 
-ins : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | ins : Supported } msg
+ins :
+    List
+        (GlobalAttributes
+            { cite : Attributes.Supported
+            , datetime : Attributes.Supported
+            }
+        )
+    -> List (Node FlowContent msg)
+    -> Node { compatible | ins : Supported } msg
 ins =
     node "ins"
 
 
-del : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | del : Supported } msg
+del :
+    List
+        (GlobalAttributes
+            { cite : Attributes.Supported
+            , datetime : Attributes.Supported
+            }
+        )
+    -> List (Node FlowContent msg)
+    -> Node { compatible | del : Supported } msg
 del =
     node "del"
 
@@ -684,20 +751,46 @@ del =
 
 
 picture :
-    List (VirtualDom.Attribute msg)
+    List (GlobalAttributes {})
     -> List (Node { source : Supported } msg)
     -> Node { img : Supported } msg
     -> Node { compatible | picture : Supported } msg
 picture attributes sources image =
-    Node "picture" attributes (List.map toHtml sources ++ [ toHtml image ])
+    Node "picture" (List.map toAttribute attributes) (List.map toHtml sources ++ [ toHtml image ])
 
 
-source : List (VirtualDom.Attribute msg) -> Node { compatible | source : Supported } msg
+source :
+    List
+        (GlobalAttributes
+            { src : Attributes.Supported
+            , type_ : Attributes.Supported
+            , srcset : Attributes.Supported
+            , sizes : Attributes.Supported
+            , media : Attributes.Supported
+            }
+        )
+    -> Node { compatible | source : Supported } msg
 source attributes =
     node "source" attributes []
 
 
-img : List (VirtualDom.Attribute msg) -> Node { compatible | img : Supported } msg
+img :
+    List
+        (GlobalAttributes
+            { alt : Attributes.Supported
+            , src : Attributes.Supported
+            , srcset : Attributes.Supported
+            , sizes : Attributes.Supported
+            , crossorigin : Attributes.Supported
+            , usemap : Attributes.Supported
+            , ismap : Attributes.Supported
+            , width : Attributes.Supported
+            , height : Attributes.Supported
+            , referrerpolicy : Attributes.Supported
+            , decoding : Attributes.Supported
+            }
+        )
+    -> Node { compatible | img : Supported } msg
 img attributes =
     node "img" attributes []
 
@@ -706,26 +799,67 @@ img attributes =
 {--IFRAME EMBED https://html.spec.whatwg.org/multipage/iframe-embed-object.html --}
 
 
-iframe : List (VirtualDom.Attribute msg) -> Node { compatible | iframe : Supported } msg
+iframe :
+    List
+        (GlobalAttributes
+            { src : Attributes.Supported
+            , srcdoc : Attributes.Supported
+            , name : Attributes.Supported
+            , sandbox : Attributes.Supported
+            , allow : Attributes.Supported
+            , allowfullscreen : Attributes.Supported
+            , allowpaymentrequest : Attributes.Supported
+            , width : Attributes.Supported
+            , height : Attributes.Supported
+            , referrerpolicy : Attributes.Supported
+            }
+        )
+    -> Node { compatible | iframe : Supported } msg
 iframe attributes =
     node "iframe" attributes []
 
 
-embed : List (VirtualDom.Attribute msg) -> Node { compatible | embed : Supported } msg
+embed :
+    List
+        (GlobalAttributes
+            { src : Attributes.Supported
+            , type_ : Attributes.Supported
+            , width : Attributes.Supported
+            , height : Attributes.Supported
+            }
+        )
+    -> Node { compatible | embed : Supported } msg
 embed attributes =
     node "embed" attributes []
 
 
 object :
-    List (VirtualDom.Attribute msg)
+    List
+        (GlobalAttributes
+            { data : Attributes.Supported
+            , type_ : Attributes.Supported
+            , name : Attributes.Supported
+            , usemap : Attributes.Supported
+            , form : Attributes.Supported
+            , width : Attributes.Supported
+            , height : Attributes.Supported
+            }
+        )
     -> List (Node { param : Supported } msg)
     -> List (Node FlowContent msg)
     -> Node { compatible | object : Supported } msg
 object attributes params contents =
-    Node "object" attributes (List.map toHtml params ++ List.map toHtml contents)
+    Node "object" (List.map toAttribute attributes) (List.map toHtml params ++ List.map toHtml contents)
 
 
-param : List (VirtualDom.Attribute msg) -> Node { compatible | param : Supported } msg
+param :
+    List
+        (GlobalAttributes
+            { name : Attributes.Supported
+            , value : Attributes.Supported
+            }
+        )
+    -> Node { compatible | param : Supported } msg
 param attributes =
     node "param" attributes []
 
@@ -735,44 +869,102 @@ param attributes =
 
 
 video :
-    List (VirtualDom.Attribute msg)
+    List
+        (GlobalAttributes
+            { src : Attributes.Supported
+            , crossorigin : Attributes.Supported
+            , poster : Attributes.Supported
+            , preload : Attributes.Supported
+            , autoplay : Attributes.Supported
+            , playsinline : Attributes.Supported
+            , loop : Attributes.Supported
+            , muted : Attributes.Supported
+            , controls : Attributes.Supported
+            , width : Attributes.Supported
+            , height : Attributes.Supported
+            }
+        )
     -> List (Node { track : Supported } msg)
     -> List (Node FlowContent msg)
     -> Node { compatible | video : Supported } msg
 video attributes tracks contents =
-    Node "video" attributes (List.map toHtml tracks ++ List.map toHtml contents)
+    Node "video" (List.map toAttribute attributes) (List.map toHtml tracks ++ List.map toHtml contents)
 
 
 video1 :
-    List (VirtualDom.Attribute msg)
+    List
+        (GlobalAttributes
+            { src : Attributes.Supported
+            , crossorigin : Attributes.Supported
+            , poster : Attributes.Supported
+            , preload : Attributes.Supported
+            , autoplay : Attributes.Supported
+            , playsinline : Attributes.Supported
+            , loop : Attributes.Supported
+            , muted : Attributes.Supported
+            , controls : Attributes.Supported
+            , width : Attributes.Supported
+            , height : Attributes.Supported
+            }
+        )
     -> List (Node { source : Supported } msg)
     -> List (Node { track : Supported } msg)
     -> List (Node FlowContent msg)
     -> Node { compatible | video : Supported } msg
 video1 attributes sources tracks contents =
-    Node "video" attributes (List.map toHtml sources ++ List.map toHtml tracks ++ List.map toHtml contents)
+    Node "video" (List.map toAttribute attributes) (List.map toHtml sources ++ List.map toHtml tracks ++ List.map toHtml contents)
 
 
 audio :
-    List (VirtualDom.Attribute msg)
+    List
+        (GlobalAttributes
+            { src : Attributes.Supported
+            , crossorigin : Attributes.Supported
+            , preload : Attributes.Supported
+            , autoplay : Attributes.Supported
+            , loop : Attributes.Supported
+            , muted : Attributes.Supported
+            , controls : Attributes.Supported
+            }
+        )
     -> List (Node { track : Supported } msg)
     -> List (Node FlowContent msg)
     -> Node { compatible | audio : Supported } msg
 audio attributes tracks contents =
-    Node "video" attributes (List.map toHtml tracks ++ List.map toHtml contents)
+    Node "video" (List.map toAttribute attributes) (List.map toHtml tracks ++ List.map toHtml contents)
 
 
 audio1 :
-    List (VirtualDom.Attribute msg)
+    List
+        (GlobalAttributes
+            { src : Attributes.Supported
+            , crossorigin : Attributes.Supported
+            , preload : Attributes.Supported
+            , autoplay : Attributes.Supported
+            , loop : Attributes.Supported
+            , muted : Attributes.Supported
+            , controls : Attributes.Supported
+            }
+        )
     -> List (Node { source : Supported } msg)
     -> List (Node { track : Supported } msg)
     -> List (Node FlowContent msg)
     -> Node { compatible | audio : Supported } msg
 audio1 attributes sources tracks contents =
-    Node "video" attributes (List.map toHtml sources ++ List.map toHtml tracks ++ List.map toHtml contents)
+    Node "video" (List.map toAttribute attributes) (List.map toHtml sources ++ List.map toHtml tracks ++ List.map toHtml contents)
 
 
-track : List (VirtualDom.Attribute msg) -> Node { compatible | track : Supported } msg
+track :
+    List
+        (GlobalAttributes
+            { kind : Attributes.Supported
+            , src : Attributes.Supported
+            , srclang : Attributes.Supported
+            , label : Attributes.Supported
+            , default : Attributes.Supported
+            }
+        )
+    -> Node { compatible | track : Supported } msg
 track attributes =
     node "track" attributes []
 
@@ -781,12 +973,29 @@ track attributes =
 {--MAPS https://html.spec.whatwg.org/multipage/image-maps.html--}
 
 
-map : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | map : Supported } msg
+map :
+    List (GlobalAttributes { name : Attributes.Supported })
+    -> List (Node FlowContent msg)
+    -> Node { compatible | map : Supported } msg
 map =
     node "map"
 
 
-area : List (VirtualDom.Attribute msg) -> Node { compatible | area : Supported } msg
+area :
+    List
+        (GlobalAttributes
+            { alt : Attributes.Supported
+            , coords : Attributes.Supported
+            , shape : Attributes.Supported
+            , href : Attributes.Supported
+            , target : Attributes.Supported
+            , download : Attributes.Supported
+            , ping : Attributes.Supported
+            , rel : Attributes.Supported
+            , referrerpolicy : Attributes.Supported
+            }
+        )
+    -> Node { compatible | area : Supported } msg
 area attributes =
     node "area" attributes []
 
@@ -804,59 +1013,63 @@ type alias TableContents msg =
 
 
 type Table msg
-    = Table (List (VirtualDom.Attribute msg)) (TableContents msg)
+    = Table (List (GlobalAttributes {})) (TableContents msg)
 
 
-table : List (VirtualDom.Attribute msg) -> Table msg
+table : List (GlobalAttributes {}) -> Table msg
 table attributes =
     Table attributes (TableContents Nothing [] Nothing Nothing)
 
 
-caption : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Table msg -> Table msg
+caption : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Table msg -> Table msg
 caption attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
         { tableContents
-            | caption = Just (VirtualDom.node "caption" attributes (List.map toHtml contents))
+            | caption = Just (VirtualDom.node "caption" (List.map toAttribute attributes) (List.map toHtml contents))
         }
 
 
-colgroup : List (VirtualDom.Attribute msg) -> List (Node { col : Supported } msg) -> Table msg -> Table msg
+colgroup :
+    List (GlobalAttributes { span : Attributes.Supported })
+    -> List (Node { col : Supported } msg)
+    -> Table msg
+    -> Table msg
 colgroup attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
         { tableContents
-            | colgroups = tableContents.colgroups ++ [ VirtualDom.node "colgroup" attributes (List.map toHtml contents) ]
+            | colgroups = tableContents.colgroups ++ [ VirtualDom.node "colgroup" (List.map toAttribute attributes) (List.map toHtml contents) ]
         }
 
 
-col : List (VirtualDom.Attribute msg) -> Node { compatible | col : Supported } msg
+col : List (GlobalAttributes { span : Attributes.Supported }) -> Node { compatible | col : Supported } msg
 col attributes =
     node "col" attributes []
 
 
-thead : List (VirtualDom.Attribute msg) -> List (Node { tr : Supported } msg) -> Table msg -> Table msg
+thead : List (GlobalAttributes {}) -> List (Node { tr : Supported } msg) -> Table msg -> Table msg
 thead attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
         { tableContents
-            | thead = Just (VirtualDom.node "thead" attributes (List.map toHtml contents))
+            | thead = Just (VirtualDom.node "thead" (List.map toAttribute attributes) (List.map toHtml contents))
         }
 
 
-tfoot : List (VirtualDom.Attribute msg) -> List (Node { tr : Supported } msg) -> Table msg -> Table msg
+tfoot : List (GlobalAttributes {}) -> List (Node { tr : Supported } msg) -> Table msg -> Table msg
 tfoot attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
         { tableContents
-            | tfoot = Just (VirtualDom.node "tfoot" attributes (List.map toHtml contents))
+            | tfoot = Just (VirtualDom.node "tfoot" (List.map toAttribute attributes) (List.map toHtml contents))
         }
 
 
-tbody : List (VirtualDom.Attribute msg) -> List (Node { tr : Supported } msg) -> Table msg -> Node { compatible | table : Supported } msg
+tbody : List (GlobalAttributes {}) -> List (Node { tr : Supported } msg) -> Table msg -> Node { compatible | table : Supported } msg
 tbody attributes rows (Table tableAttributes contents) =
     Node "table"
-        tableAttributes
+        (List.map toAttribute tableAttributes)
         (maybeVirutalNodeToList contents.caption
             ++ contents.colgroups
             ++ maybeVirutalNodeToList contents.thead
-            ++ [ VirtualDom.node "tbody" attributes (List.map toHtml rows) ]
+            ++ [ VirtualDom.node "tbody" (List.map toAttribute attributes) (List.map toHtml rows) ]
             ++ maybeVirutalNodeToList contents.tfoot
         )
 
@@ -864,7 +1077,7 @@ tbody attributes rows (Table tableAttributes contents) =
 trbody : List (Node { tr : Supported } msg) -> Table msg -> Node { compatible | table : Supported } msg
 trbody rows (Table tableAttributes contents) =
     Node "table"
-        tableAttributes
+        (List.map toAttribute tableAttributes)
         (maybeVirutalNodeToList contents.caption
             ++ contents.colgroups
             ++ maybeVirutalNodeToList contents.thead
@@ -873,12 +1086,21 @@ trbody rows (Table tableAttributes contents) =
         )
 
 
-tr : List (VirtualDom.Attribute msg) -> List (Node { td : Supported, th : Supported } msg) -> Node { compatible | tr : Supported } msg
+tr : List (GlobalAttributes {}) -> List (Node { td : Supported, th : Supported } msg) -> Node { compatible | tr : Supported } msg
 tr =
     node "tr"
 
 
-td : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | td : Supported } msg
+td :
+    List
+        (GlobalAttributes
+            { colspan : Attributes.Supported
+            , rowspan : Attributes.Supported
+            , headers : Attributes.Supported
+            }
+        )
+    -> List (Node FlowContent msg)
+    -> Node { compatible | td : Supported } msg
 td =
     node "td"
 
@@ -887,7 +1109,18 @@ td =
 {--Excluding header, footer, sectioning content, heading content--}
 
 
-th : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | th : Supported } msg
+th :
+    List
+        (GlobalAttributes
+            { colspan : Attributes.Supported
+            , rowspan : Attributes.Supported
+            , headers : Attributes.Supported
+            , scope : Attributes.Supported
+            , abbr : Attributes.Supported
+            }
+        )
+    -> List (Node FlowContent msg)
+    -> Node { compatible | th : Supported } msg
 th =
     node "th"
 
@@ -897,12 +1130,30 @@ th =
 {--Excluding form--}
 
 
-form : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | form : Supported } msg
+form :
+    List
+        (GlobalAttributes
+            { acceptcharset : Attributes.Supported
+            , action : Attributes.Supported
+            , autocomplete : Attributes.Supported
+            , enctype : Attributes.Supported
+            , method : Attributes.Supported
+            , name : Attributes.Supported
+            , novalidate : Attributes.Supported
+            , target : Attributes.Supported
+            , rel : Attributes.Supported
+            }
+        )
+    -> List (Node FlowContent msg)
+    -> Node { compatible | form : Supported } msg
 form =
     node "form"
 
 
-label : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | label : Supported } msg
+label :
+    List (GlobalAttributes { for : Attributes.Supported })
+    -> List (Node PhrasingContent msg)
+    -> Node { compatible | label : Supported } msg
 label =
     node "label"
 
@@ -911,7 +1162,42 @@ label =
 {--INPUTS https://html.spec.whatwg.org/multipage/input.html --}
 
 
-input : List (VirtualDom.Attribute msg) -> Node { compatible | input : Supported } msg
+input :
+    List
+        (GlobalAttributes
+            { accept : Attributes.Supported
+            , alt : Attributes.Supported
+            , autocomplete : Attributes.Supported
+            , checked : Attributes.Supported
+            , dirname : Attributes.Supported
+            , disabled : Attributes.Supported
+            , form : Attributes.Supported
+            , formaction : Attributes.Supported
+            , formenctype : Attributes.Supported
+            , formmethod : Attributes.Supported
+            , formnovalidate : Attributes.Supported
+            , formtarget : Attributes.Supported
+            , height : Attributes.Supported
+            , list : Attributes.Supported
+            , max : Attributes.Supported
+            , maxlength : Attributes.Supported
+            , min : Attributes.Supported
+            , minlength : Attributes.Supported
+            , multiple : Attributes.Supported
+            , name : Attributes.Supported
+            , pattern : Attributes.Supported
+            , placeholder : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , size : Attributes.Supported
+            , src : Attributes.Supported
+            , step : Attributes.Supported
+            , type_ : Attributes.Supported
+            , value : Attributes.Supported
+            , width : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
 input attributes =
     node "input" attributes []
 
@@ -920,76 +1206,194 @@ input attributes =
 {--FORM ELEMENTS https://html.spec.whatwg.org/multipage/form-elements.html --}
 
 
-button : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | button : Supported } msg
+button :
+    List
+        (GlobalAttributes
+            { disabled : Attributes.Supported
+            , form : Attributes.Supported
+            , formaction : Attributes.Supported
+            , formenctype : Attributes.Supported
+            , formmethod : Attributes.Supported
+            , formnovalidate : Attributes.Supported
+            , formtarget : Attributes.Supported
+            , name : Attributes.Supported
+            , type_ : Attributes.Supported
+            , value : Attributes.Supported
+            }
+        )
+    -> List (Node PhrasingContent msg)
+    -> Node { compatible | button : Supported } msg
 button =
     node "button"
 
 
-select : List (VirtualDom.Attribute msg) -> List (Node { option : Supported, optgroup : Supported } msg) -> Node { compatible | select : Supported } msg
+select :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , disabled : Attributes.Supported
+            , form : Attributes.Supported
+            , multiple : Attributes.Supported
+            , name : Attributes.Supported
+            , required : Attributes.Supported
+            , size : Attributes.Supported
+            }
+        )
+    -> List (Node { option : Supported, optgroup : Supported } msg)
+    -> Node { compatible | select : Supported } msg
 select =
     node "select"
 
 
-optgroup : List (VirtualDom.Attribute msg) -> List (Node { option : Supported } msg) -> Node { compatible | optgroup : Supported } msg
+optgroup :
+    List
+        (GlobalAttributes
+            { disabled : Attributes.Supported
+            , label : Attributes.Supported
+            }
+        )
+    -> List (Node { option : Supported } msg)
+    -> Node { compatible | optgroup : Supported } msg
 optgroup =
     node "optgroup"
 
 
-datalist : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | datalist : Supported } msg
+datalist : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | datalist : Supported } msg
 datalist =
     node "datalist"
 
 
-datalist1 : List (VirtualDom.Attribute msg) -> List (Node { option : Supported } msg) -> Node { compatible | datalist : Supported } msg
+datalist1 : List (GlobalAttributes {}) -> List (Node { option : Supported } msg) -> Node { compatible | datalist : Supported } msg
 datalist1 =
     node "datalist"
 
 
-option : List (VirtualDom.Attribute msg) -> String -> Node { compatible | option : Supported } msg
+option :
+    List
+        (GlobalAttributes
+            { disabled : Attributes.Supported
+            , selected : Attributes.Supported
+            , value : Attributes.Supported
+            }
+        )
+    -> String
+    -> Node { compatible | option : Supported } msg
 option attributes contents =
-    Node "option" attributes [ VirtualDom.text contents ]
+    Node "option" (List.map toAttribute attributes) [ VirtualDom.text contents ]
 
 
-optionLabelled : List (VirtualDom.Attribute msg) -> String -> Node { compatible | option : Supported } msg
+optionLabelled :
+    List
+        (GlobalAttributes
+            { disabled : Attributes.Supported
+            , selected : Attributes.Supported
+            , value : Attributes.Supported
+            }
+        )
+    -> String
+    -> Node { compatible | option : Supported } msg
 optionLabelled attributes contents =
-    Node "option" (VirtualDom.attribute "label" contents :: attributes) []
+    Node "option" (VirtualDom.attribute "label" contents :: List.map toAttribute attributes) []
 
 
-textarea : List (VirtualDom.Attribute msg) -> String -> Node { compatible | textarea : Supported } msg
+textarea :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , cols : Attributes.Supported
+            , dirname : Attributes.Supported
+            , disabled : Attributes.Supported
+            , form : Attributes.Supported
+            , maxlength : Attributes.Supported
+            , minlength : Attributes.Supported
+            , name : Attributes.Supported
+            , placeholder : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , rows : Attributes.Supported
+            , wrap : Attributes.Supported
+            }
+        )
+    -> String
+    -> Node { compatible | textarea : Supported } msg
 textarea attributes contents =
-    Node "textarea" attributes [ VirtualDom.text contents ]
+    Node "textarea" (List.map toAttribute attributes) [ VirtualDom.text contents ]
 
 
-output : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | output : Supported } msg
+output :
+    List
+        (GlobalAttributes
+            { for : Attributes.Supported
+            , form : Attributes.Supported
+            , name : Attributes.Supported
+            }
+        )
+    -> List (Node PhrasingContent msg)
+    -> Node { compatible | output : Supported } msg
 output =
     node "output"
 
 
-progress : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | progress : Supported } msg
+progress :
+    List
+        (GlobalAttributes
+            { value : Attributes.Supported
+            , max : Attributes.Supported
+            }
+        )
+    -> List (Node PhrasingContent msg)
+    -> Node { compatible | progress : Supported } msg
 progress =
     node "progress"
 
 
-meter : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | meter : Supported } msg
+meter :
+    List
+        (GlobalAttributes
+            { value : Attributes.Supported
+            , min : Attributes.Supported
+            , max : Attributes.Supported
+            , low : Attributes.Supported
+            , high : Attributes.Supported
+            , optimum : Attributes.Supported
+            }
+        )
+    -> List (Node PhrasingContent msg)
+    -> Node { compatible | meter : Supported } msg
 meter =
     node "meter"
 
 
-fieldset : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | fieldset : Supported } msg
+fieldset :
+    List
+        (GlobalAttributes
+            { disabled : Attributes.Supported
+            , form : Attributes.Supported
+            , name : Attributes.Supported
+            }
+        )
+    -> List (Node FlowContent msg)
+    -> Node { compatible | fieldset : Supported } msg
 fieldset =
     node "fieldset"
 
 
 fieldset1 :
-    List (VirtualDom.Attribute msg)
+    List
+        (GlobalAttributes
+            { disabled : Attributes.Supported
+            , form : Attributes.Supported
+            , name : Attributes.Supported
+            }
+        )
     -> Node { legend : Supported } msg
     -> List (Node FlowContent msg)
     -> Node { compatible | fieldset : Supported } msg
 fieldset1 attributes legendNode contents =
-    Node "fieldset" attributes (toHtml legendNode :: List.map toHtml contents)
+    Node "fieldset" (List.map toAttribute attributes) (toHtml legendNode :: List.map toHtml contents)
 
 
-legend : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | legend : Supported } msg
+legend : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | legend : Supported } msg
 legend =
     node "legend"
 
@@ -999,25 +1403,28 @@ legend =
 
 
 details :
-    List (VirtualDom.Attribute msg)
+    List (GlobalAttributes { open : Attributes.Supported })
     -> Node { summary : Supported } msg
     -> List (Node FlowContent msg)
     -> Node { compatible | details : Supported } msg
 details attributes summaryNode contents =
-    Node "details" attributes (toHtml summaryNode :: List.map toHtml contents)
+    Node "details" (List.map toAttribute attributes) (toHtml summaryNode :: List.map toHtml contents)
 
 
-summary : List (VirtualDom.Attribute msg) -> List (Node PhrasingContent msg) -> Node { compatible | summary : Supported } msg
+summary : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | summary : Supported } msg
 summary =
     node "summary"
 
 
-summaryHeader : List (VirtualDom.Attribute msg) -> Node HeadingContent msg -> Node { compatible | summary : Supported } msg
+summaryHeader : List (GlobalAttributes {}) -> Node HeadingContent msg -> Node { compatible | summary : Supported } msg
 summaryHeader attributes headingNode =
-    Node "summary" attributes [ toHtml headingNode ]
+    Node "summary" (List.map toAttribute attributes) [ toHtml headingNode ]
 
 
-dialog : List (VirtualDom.Attribute msg) -> List (Node FlowContent msg) -> Node { compatible | dialog : Supported } msg
+dialog :
+    List (GlobalAttributes { open : Attributes.Supported })
+    -> List (Node FlowContent msg)
+    -> Node { compatible | dialog : Supported } msg
 dialog =
     node "dialog"
 
@@ -1042,9 +1449,14 @@ maybeNodeToList maybeNode =
             []
 
 
-node : String -> List (VirtualDom.Attribute msg) -> List (Node a msg) -> Node b msg
+node : String -> List (Attributes.Attribute msg) -> List (Node a msg) -> Node b msg
 node tagName attributes nodes =
-    Node tagName attributes (List.map toHtml nodes)
+    Node tagName (List.map toAttribute attributes) (List.map toHtml nodes)
+
+
+toAttribute : Attributes.Attribute a -> VirtualDom.Attribute msg
+toAttribute (Attributes.Attribute name value) =
+    VirtualDom.attribute name value
 
 
 toHtml : Node a msg -> VirtualDom.Node msg
