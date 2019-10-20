@@ -1449,7 +1449,7 @@ maybeNodeToList maybeNode =
             []
 
 
-node : String -> List (Attributes.Attribute msg) -> List (Node a msg) -> Node b msg
+node : String -> List (Attributes.Attribute a) -> List (Node b msg) -> Node c msg
 node tagName attributes nodes =
     Node tagName (List.map toAttribute attributes) (List.map toHtml nodes)
 
