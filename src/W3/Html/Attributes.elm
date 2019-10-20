@@ -28,9 +28,19 @@ autofocus =
     W3.bool "autofocus"
 
 
+class : List String -> W3.Attribute { compatible | class : W3.Supported }
+class =
+    W3.values "class"
+
+
 contenteditable : Maybe Bool -> W3.Attribute { compatible | contenteditable : W3.Supported }
 contenteditable =
     W3.maybeBool "contenteditable" ""
+
+
+data_ : String -> String -> W3.Attribute { compatible | data_ : W3.Supported }
+data_ key value =
+    W3.Attribute ("data-" ++ key) value
 
 
 dir :
@@ -67,6 +77,11 @@ enterkeyhint =
 hidden : Bool -> W3.Attribute { compatible | hidden : W3.Supported }
 hidden =
     W3.bool "hidden"
+
+
+id : String -> W3.Attribute { compatible | id : W3.Supported }
+id =
+    W3.string "id"
 
 
 inputmode :
@@ -120,6 +135,11 @@ nonce =
     W3.number "nonce"
 
 
+slot : String -> W3.Attribute { compatible | slot : W3.Supported }
+slot =
+    W3.string "slot"
+
+
 spellcheck : Maybe Bool -> W3.Attribute { compatible | spellcheck : W3.Supported }
 spellcheck =
     W3.maybeBool "spellcheck" ""
@@ -148,11 +168,6 @@ translate :
     -> W3.Attribute { compatible | translate : W3.Supported }
 translate =
     W3.value "translate"
-
-
-data_ : String -> String -> W3.Attribute { compatible | data_ : W3.Supported }
-data_ key value =
-    W3.Attribute ("data-" ++ key) value
 
 
 

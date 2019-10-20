@@ -10,11 +10,14 @@ type alias GlobalAttributes a =
             | accesskey : Attributes.Supported
             , autocapitalize : Attributes.Supported
             , autofocus : Attributes.Supported
+            , class : Attributes.Supported
             , contenteditable : Attributes.Supported
+            , data_ : Attributes.Supported
             , dir : Attributes.Supported
             , draggable : Attributes.Supported
             , enterkeyhint : Attributes.Supported
             , hidden : Attributes.Supported
+            , id : Attributes.Supported
             , inputmode : Attributes.Supported
             , is : Attributes.Supported
             , itemid : Attributes.Supported
@@ -24,15 +27,12 @@ type alias GlobalAttributes a =
             , itemtype : Attributes.Supported
             , lang : Attributes.Supported
             , nonce : Attributes.Supported
+            , slot : Attributes.Supported
             , spellcheck : Attributes.Supported
             , style : Attributes.Supported
             , tabindex : Attributes.Supported
             , title : Attributes.Supported
             , translate : Attributes.Supported
-            , data_ : Attributes.Supported
-            , class : Attributes.Supported
-            , id : Attributes.Supported
-            , slot : Attributes.Supported
         }
 
 
