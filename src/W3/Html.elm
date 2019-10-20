@@ -30,6 +30,9 @@ type alias GlobalAttributes a =
             , title : Attributes.Supported
             , translate : Attributes.Supported
             , data : Attributes.Supported
+            , class : Attributes.Supported
+            , id : Attributes.Supported
+            , slot : Attributes.Supported
         }
 
 
@@ -1200,6 +1203,338 @@ input :
     -> Node { compatible | input : Supported } msg
 input attributes =
     node "input" attributes []
+
+
+hidden : List (GlobalAttributes { autocomplete : Attributes.Supported }) -> Node { compatible | input : Supported } msg
+hidden attributes =
+    node "input" (Attributes.Attribute "type" "hidden" :: attributes) []
+
+
+textInput :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , dirname : Attributes.Supported
+            , list : Attributes.Supported
+            , maxlength : Attributes.Supported
+            , minlength : Attributes.Supported
+            , pattern : Attributes.Supported
+            , placeholder : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , size : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+textInput attributes =
+    node "input" (Attributes.Attribute "type" "text" :: attributes) []
+
+
+search :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , dirname : Attributes.Supported
+            , list : Attributes.Supported
+            , maxlength : Attributes.Supported
+            , minlength : Attributes.Supported
+            , pattern : Attributes.Supported
+            , placeholder : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , size : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+search attributes =
+    node "input" (Attributes.Attribute "type" "search" :: attributes) []
+
+
+url :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , list : Attributes.Supported
+            , maxlength : Attributes.Supported
+            , minlength : Attributes.Supported
+            , pattern : Attributes.Supported
+            , placeholder : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , size : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+url attributes =
+    node "input" (Attributes.Attribute "type" "url" :: attributes) []
+
+
+tel :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , list : Attributes.Supported
+            , maxlength : Attributes.Supported
+            , minlength : Attributes.Supported
+            , pattern : Attributes.Supported
+            , placeholder : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , size : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+tel attributes =
+    node "input" (Attributes.Attribute "type" "tel" :: attributes) []
+
+
+email :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , list : Attributes.Supported
+            , maxlength : Attributes.Supported
+            , minlength : Attributes.Supported
+            , multiple : Attributes.Supported
+            , pattern : Attributes.Supported
+            , placeholder : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , size : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+email attributes =
+    node "input" (Attributes.Attribute "type" "email" :: attributes) []
+
+
+password :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , maxlength : Attributes.Supported
+            , minlength : Attributes.Supported
+            , pattern : Attributes.Supported
+            , placeholder : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , size : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+password attributes =
+    node "input" (Attributes.Attribute "type" "password" :: attributes) []
+
+
+date :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , list : Attributes.Supported
+            , max : Attributes.Supported
+            , min : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , step : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+date attributes =
+    node "input" (Attributes.Attribute "type" "date" :: attributes) []
+
+
+month :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , list : Attributes.Supported
+            , max : Attributes.Supported
+            , min : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , step : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+month attributes =
+    node "input" (Attributes.Attribute "type" "month" :: attributes) []
+
+
+week :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , list : Attributes.Supported
+            , max : Attributes.Supported
+            , min : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , step : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+week attributes =
+    node "input" (Attributes.Attribute "type" "week" :: attributes) []
+
+
+timeInput :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , list : Attributes.Supported
+            , max : Attributes.Supported
+            , min : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , step : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+timeInput attributes =
+    node "input" (Attributes.Attribute "type" "time" :: attributes) []
+
+
+datetime :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , list : Attributes.Supported
+            , max : Attributes.Supported
+            , min : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , step : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+datetime attributes =
+    node "input" (Attributes.Attribute "type" "datetime-local" :: attributes) []
+
+
+number :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , list : Attributes.Supported
+            , max : Attributes.Supported
+            , min : Attributes.Supported
+            , placeholder : Attributes.Supported
+            , readonly : Attributes.Supported
+            , required : Attributes.Supported
+            , step : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+number attributes =
+    node "input" (Attributes.Attribute "type" "number" :: attributes) []
+
+
+range :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , list : Attributes.Supported
+            , max : Attributes.Supported
+            , min : Attributes.Supported
+            , step : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+range attributes =
+    node "input" (Attributes.Attribute "type" "range" :: attributes) []
+
+
+color :
+    List
+        (GlobalAttributes
+            { autocomplete : Attributes.Supported
+            , list : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+color attributes =
+    node "input" (Attributes.Attribute "type" "color" :: attributes) []
+
+
+checkbox :
+    List
+        (GlobalAttributes
+            { checked : Attributes.Supported
+            , required : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+checkbox attributes =
+    node "input" (Attributes.Attribute "type" "checkbox" :: attributes) []
+
+
+radio :
+    List
+        (GlobalAttributes
+            { checked : Attributes.Supported
+            , required : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+radio attributes =
+    node "input" (Attributes.Attribute "type" "radio" :: attributes) []
+
+
+file :
+    List
+        (GlobalAttributes
+            { accept : Attributes.Supported
+            , multiple : Attributes.Supported
+            , required : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+file attributes =
+    node "input" (Attributes.Attribute "type" "file" :: attributes) []
+
+
+submit :
+    List
+        (GlobalAttributes
+            { formaction : Attributes.Supported
+            , formenctype : Attributes.Supported
+            , formmethod : Attributes.Supported
+            , formnovalidate : Attributes.Supported
+            , formtarget : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+submit attributes =
+    node "input" (Attributes.Attribute "type" "submit" :: attributes) []
+
+
+imageButton :
+    List
+        (GlobalAttributes
+            { alt : Attributes.Supported
+            , formaction : Attributes.Supported
+            , formenctype : Attributes.Supported
+            , formmethod : Attributes.Supported
+            , formnovalidate : Attributes.Supported
+            , formtarget : Attributes.Supported
+            , height : Attributes.Supported
+            , src : Attributes.Supported
+            , width : Attributes.Supported
+            }
+        )
+    -> Node { compatible | input : Supported } msg
+imageButton attributes =
+    node "input" (Attributes.Attribute "type" "image" :: attributes) []
+
+
+resetButton : List (GlobalAttributes {}) -> Node { compatible | input : Supported } msg
+resetButton attributes =
+    node "input" (Attributes.Attribute "type" "reset" :: attributes) []
+
+
+buttonInput : List (GlobalAttributes {}) -> Node { compatible | input : Supported } msg
+buttonInput attributes =
+    node "input" (Attributes.Attribute "type" "button" :: attributes) []
 
 
 
