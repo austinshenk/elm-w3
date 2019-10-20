@@ -53,7 +53,14 @@ atomic =
 
 {-| Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be presented if they are made.
 -}
-autoComplete : Aria.Value { inline : Aria.SupportedValue, list : Aria.SupportedValue, both : Aria.SupportedValue, none : Aria.SupportedValue } -> Aria.Attribute { compatible | autoComplete : Aria.Supported }
+autoComplete :
+    Aria.Value
+        { inline : Aria.SupportedValue
+        , list : Aria.SupportedValue
+        , both : Aria.SupportedValue
+        , none : Aria.SupportedValue
+        }
+    -> Aria.Attribute { compatible | autoComplete : Aria.Supported }
 autoComplete =
     Aria.value "autocomplete"
 
@@ -102,7 +109,17 @@ controls =
 
 {-| Indicates the element that represents the current item within a container or set of related elements.
 -}
-current : Aria.Value { page : Aria.SupportedValue, step : Aria.SupportedValue, location : Aria.SupportedValue, date : Aria.SupportedValue, time : Aria.SupportedValue, true : Aria.SupportedValue, false : Aria.SupportedValue } -> Aria.Attribute { compatible | current : Aria.Supported }
+current :
+    Aria.Value
+        { page : Aria.SupportedValue
+        , step : Aria.SupportedValue
+        , location : Aria.SupportedValue
+        , date : Aria.SupportedValue
+        , time : Aria.SupportedValue
+        , true : Aria.SupportedValue
+        , false : Aria.SupportedValue
+        }
+    -> Aria.Attribute { compatible | current : Aria.Supported }
 current =
     Aria.value "current"
 
@@ -130,7 +147,16 @@ disabled =
 
 {-| [Deprecated in ARIA 1.1] Indicates what functions can be performed when a dragged object is released on the drop target.
 -}
-dropEffect : Aria.Value { copy : Aria.SupportedValue, execute : Aria.SupportedValue, link : Aria.SupportedValue, move : Aria.SupportedValue, none : Aria.SupportedValue, popup : Aria.SupportedValue } -> Aria.Attribute { compatible | dropEffect : Aria.Supported }
+dropEffect :
+    Aria.Value
+        { copy : Aria.SupportedValue
+        , execute : Aria.SupportedValue
+        , link : Aria.SupportedValue
+        , move : Aria.SupportedValue
+        , none : Aria.SupportedValue
+        , popup : Aria.SupportedValue
+        }
+    -> Aria.Attribute { compatible | dropEffect : Aria.Supported }
 dropEffect =
     Aria.value "dropeffect"
 
@@ -165,7 +191,17 @@ grabbed =
 
 {-| Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 -}
-hasPopup : Aria.Value { menu : Aria.SupportedValue, listbox : Aria.SupportedValue, tree : Aria.SupportedValue, grid : Aria.SupportedValue, dialog : Aria.SupportedValue, true : Aria.SupportedValue, false : Aria.SupportedValue } -> Aria.Attribute { compatible | hasPopup : Aria.Supported }
+hasPopup :
+    Aria.Value
+        { menu : Aria.SupportedValue
+        , listbox : Aria.SupportedValue
+        , tree : Aria.SupportedValue
+        , grid : Aria.SupportedValue
+        , dialog : Aria.SupportedValue
+        , true : Aria.SupportedValue
+        , false : Aria.SupportedValue
+        }
+    -> Aria.Attribute { compatible | hasPopup : Aria.Supported }
 hasPopup =
     Aria.value "haspopup"
 
@@ -179,7 +215,14 @@ hidden =
 
 {-| Indicates the entered value does not conform to the format expected by the application. See related [errorMessage](#errorMessage).
 -}
-invalid : Aria.Value { grammar : Aria.SupportedValue, spelling : Aria.SupportedValue, true : Aria.SupportedValue, false : Aria.SupportedValue } -> Aria.Attribute { compatible | invalid : Aria.Supported }
+invalid :
+    Aria.Value
+        { grammar : Aria.SupportedValue
+        , spelling : Aria.SupportedValue
+        , true : Aria.SupportedValue
+        , false : Aria.SupportedValue
+        }
+    -> Aria.Attribute { compatible | invalid : Aria.Supported }
 invalid =
     Aria.value "invalid"
 
@@ -214,7 +257,13 @@ level =
 
 {-| Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.
 -}
-live : Aria.Value { assertive : Aria.SupportedValue, polite : Aria.SupportedValue, off : Aria.SupportedValue } -> Aria.Attribute { compatible | live : Aria.Supported }
+live :
+    Aria.Value
+        { assertive : Aria.SupportedValue
+        , polite : Aria.SupportedValue
+        , off : Aria.SupportedValue
+        }
+    -> Aria.Attribute { compatible | live : Aria.Supported }
 live =
     Aria.value "live"
 
@@ -242,7 +291,13 @@ multiSelectable =
 
 {-| Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.
 -}
-orientation : Aria.Value { horizontal : Aria.SupportedValue, vertical : Aria.SupportedValue, undefined : Aria.SupportedValue } -> Aria.Attribute { compatible | orientation : Aria.Supported }
+orientation :
+    Aria.Value
+        { horizontal : Aria.SupportedValue
+        , vertical : Aria.SupportedValue
+        , undefined : Aria.SupportedValue
+        }
+    -> Aria.Attribute { compatible | orientation : Aria.Supported }
 orientation =
     Aria.value "orientation"
 
@@ -284,7 +339,15 @@ readOnly =
 
 {-| Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified. See related [atomic](#atomic).
 -}
-relevant : List (Aria.Value { additions : Aria.SupportedValue, removals : Aria.SupportedValue, text : Aria.SupportedValue }) -> Aria.Attribute { compatible | relevant : Aria.Supported }
+relevant :
+    List
+        (Aria.Value
+            { additions : Aria.SupportedValue
+            , removals : Aria.SupportedValue
+            , text : Aria.SupportedValue
+            }
+        )
+    -> Aria.Attribute { compatible | relevant : Aria.Supported }
 relevant value =
     Aria.string "relevant" <| String.join "," (List.map Aria.valueToString value)
 
@@ -347,7 +410,14 @@ setSize =
 
 {-| Indicates if items in a table or grid are sorted in ascending or descending order.
 -}
-sort : Aria.Value { ascending : Aria.SupportedValue, descending : Aria.SupportedValue, none : Aria.SupportedValue, other : Aria.SupportedValue } -> Aria.Attribute { compatible | sort : Aria.Supported }
+sort :
+    Aria.Value
+        { ascending : Aria.SupportedValue
+        , descending : Aria.SupportedValue
+        , none : Aria.SupportedValue
+        , other : Aria.SupportedValue
+        }
+    -> Aria.Attribute { compatible | sort : Aria.Supported }
 sort =
     Aria.value "sort"
 
