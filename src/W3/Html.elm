@@ -29,7 +29,7 @@ type alias GlobalAttributes a =
             , tabindex : Attributes.Supported
             , title : Attributes.Supported
             , translate : Attributes.Supported
-            , data : Attributes.Supported
+            , data_ : Attributes.Supported
             , class : Attributes.Supported
             , id : Attributes.Supported
             , slot : Attributes.Supported

@@ -150,8 +150,8 @@ translate =
     W3.value "translate"
 
 
-data : String -> String -> W3.Attribute { compatible | data : W3.Supported }
-data key value =
+data_ : String -> String -> W3.Attribute { compatible | data_ : W3.Supported }
+data_ key value =
     W3.Attribute ("data-" ++ key) value
 
 
