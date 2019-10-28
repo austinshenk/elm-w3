@@ -1,4 +1,4 @@
-module W3.Html.Attributes.Help exposing (Attribute(..), Supported(..), SupportedValue(..), Value(..), bool, maybeBool, number, string, uniqueValues, value, values)
+module W3.Html.Attributes.Help exposing (Attribute(..), Supported(..), SupportedValue(..), Value(..), bool, maybeBool, number, string, tokens, uniqueTokens, value, values)
 
 import Set exposing (Set)
 
@@ -58,13 +58,13 @@ string key val =
         Attribute key val
 
 
-values : String -> List String -> Attribute a
-values key =
+tokens : String -> List String -> Attribute a
+tokens key =
     Attribute key << String.join " "
 
 
-uniqueValues : String -> Set String -> Attribute a
-uniqueValues key =
+uniqueTokens : String -> Set String -> Attribute a
+uniqueTokens key =
     Attribute key << setToString
 
 
@@ -75,6 +75,16 @@ setToString set =
 
 type Value a
     = Value String
+
+
+values : String -> List (Value a) -> Attribute b
+values key =
+    Attribute key << List.foldl valuesToString ""
+
+
+valuesToString : Value a -> String -> String
+valuesToString (Value val) existingVal =
+    val ++ " " ++ existingVal
 
 
 value : String -> Value a -> Attribute b

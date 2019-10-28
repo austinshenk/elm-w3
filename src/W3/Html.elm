@@ -407,7 +407,7 @@ ol :
         (GlobalAttributes
             { reversed : Attributes.Supported
             , start : Attributes.Supported
-            , type_ : Attributes.Supported
+            , marker : Attributes.Supported
             }
         )
     -> List (Node { li : Supported } msg)
@@ -427,7 +427,7 @@ menu =
 
 
 li :
-    List (GlobalAttributes { value : Attributes.Supported })
+    List (GlobalAttributes { ordinalValue : Attributes.Supported })
     -> List (Node FlowContent msg)
     -> Node { compatible | li : Supported } msg
 li =
@@ -517,8 +517,8 @@ a :
             , ping : Attributes.Supported
             , rel : Attributes.Supported
             , hreflang : Attributes.Supported
-            , type_ : Attributes.Supported
-            , referrerpolicy : Attributes.Supported
+            , mimeType : Attributes.Supported
+            , referrerPolicy : Attributes.Supported
             }
         )
     -> List (Node FlowContent msg)
@@ -766,7 +766,7 @@ source :
     List
         (GlobalAttributes
             { src : Attributes.Supported
-            , type_ : Attributes.Supported
+            , mimeType : Attributes.Supported
             , srcset : Attributes.Supported
             , sizes : Attributes.Supported
             , media : Attributes.Supported
@@ -789,7 +789,7 @@ img :
             , ismap : Attributes.Supported
             , width : Attributes.Supported
             , height : Attributes.Supported
-            , referrerpolicy : Attributes.Supported
+            , referrerPolicy : Attributes.Supported
             , decoding : Attributes.Supported
             }
         )
@@ -826,7 +826,7 @@ embed :
     List
         (GlobalAttributes
             { src : Attributes.Supported
-            , type_ : Attributes.Supported
+            , mimeType : Attributes.Supported
             , width : Attributes.Supported
             , height : Attributes.Supported
             }
@@ -840,7 +840,7 @@ object :
     List
         (GlobalAttributes
             { data : Attributes.Supported
-            , type_ : Attributes.Supported
+            , mimeType : Attributes.Supported
             , name : Attributes.Supported
             , usemap : Attributes.Supported
             , form : Attributes.Supported
@@ -856,15 +856,16 @@ object attributes params contents =
 
 
 param :
-    List
-        (GlobalAttributes
-            { name : Attributes.Supported
-            , value : Attributes.Supported
-            }
-        )
+    ( String, String )
+    -> List (GlobalAttributes {})
     -> Node { compatible | param : Supported } msg
-param attributes =
-    node "param" attributes []
+param ( name, value ) attributes =
+    Node "param"
+        (VirtualDom.attribute "name" name
+            :: VirtualDom.attribute "value" value
+            :: List.map toAttribute attributes
+        )
+        []
 
 
 
@@ -1195,7 +1196,7 @@ input :
             , size : Attributes.Supported
             , src : Attributes.Supported
             , step : Attributes.Supported
-            , type_ : Attributes.Supported
+            , inputType : Attributes.Supported
             , value : Attributes.Supported
             , width : Attributes.Supported
             }
@@ -1552,7 +1553,7 @@ button :
             , formnovalidate : Attributes.Supported
             , formtarget : Attributes.Supported
             , name : Attributes.Supported
-            , type_ : Attributes.Supported
+            , buttonType : Attributes.Supported
             , value : Attributes.Supported
             }
         )
@@ -1672,7 +1673,7 @@ output =
 progress :
     List
         (GlobalAttributes
-            { value : Attributes.Supported
+            { ordinalValue : Attributes.Supported
             , max : Attributes.Supported
             }
         )
@@ -1685,7 +1686,7 @@ progress =
 meter :
     List
         (GlobalAttributes
-            { value : Attributes.Supported
+            { ordinalValue : Attributes.Supported
             , min : Attributes.Supported
             , max : Attributes.Supported
             , low : Attributes.Supported
