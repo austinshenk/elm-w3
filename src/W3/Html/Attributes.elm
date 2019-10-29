@@ -691,7 +691,7 @@ shape :
     W3.Value
         { circle : W3.SupportedValue
         , circ : W3.SupportedValue
-        , default : W3.SupportedValue
+        , default_ : W3.SupportedValue
         , poly : W3.SupportedValue
         , polygon : W3.SupportedValue
         , rect : W3.SupportedValue
@@ -921,8 +921,8 @@ decimal =
 
 
 {-| -}
-default : W3.Value { compatible | default : W3.SupportedValue }
-default =
+default_ : W3.Value { compatible | default_ : W3.SupportedValue }
+default_ =
     W3.Value "default"
 
 
