@@ -1,9 +1,135 @@
-module W3.Html exposing (Node, blockquote, dataDiv, dd, div, dl, dl1, dt, figcaption, figure, figure1, figure2, hr, li, menu, ol, p, pre, toHtml, ul)
+module W3.Html exposing
+    ( Node, GlobalAttributes
+    , FlowContent, HeadingContent, SectioningContent, PhrasingContent, EmbeddedContent, InteractiveContent
+    , article, section, nav, aside, h1, h2, h3, h4, h5, h6, hgroup, header, footer, address
+    , p, hr, pre, blockquote, ol, ul, menu, li, dl, dl1, dt, dd, figure, figure1, figure2, figcaption, main_, div, dataDiv
+    , a, em, strong, small, s, cite, q, dfn, abbr, ruby, ruby1, ruby2, ruby3, rt, rp, data, time, timeText, code, var, samp, kbd, sub, sup, i, b, u, mark, bdi, bdo, span, br, wbr
+    , ins, del
+    , picture, source, img
+    , iframe, embed, object, param
+    , video, video1, audio, audio1, track
+    , map, area
+    , Table, TableContents, table, caption, colgroup, col, thead, tfoot, tbody, trbody, tr, td, th
+    , form, label
+    , input, hidden, textInput, search, url, tel, email, password, date, month, week, timeInput, datetime, number, range, color, checkbox, radio, file, submit, imageButton, resetButton, buttonInput
+    , button, select, optgroup, datalist, datalist1, option, optionLabelled, textarea, output, progress, meter, fieldset, fieldset1, legend
+    , details, summary, summaryHeader, dialog
+    , toHtml
+    )
+
+{-| A module that defines all usable HTML elements, their content models, and supported attributes.
+
+
+# Definitions
+
+@docs Node, GlobalAttributes
+
+
+# Content Categories
+
+Each HTML element can be categorized by zero or more of the following categories. The categories are related to each other by [this chart](https://html.spec.whatwg.org/multipage/dom.html#kinds-of-content).
+
+Note: _MetadataContent is not supported since all of its content needs to be located within a Head element or it is a script supporting element. These are not usable currently and script elements should not be supported by elm unless they are eventually just links to external resources._
+
+@docs FlowContent, HeadingContent, SectioningContent, PhrasingContent, EmbeddedContent, InteractiveContent
+
+
+# Elements
+
+The following attempts to group elements together by function and use.
+
+
+## Sections
+
+<https://html.spec.whatwg.org/multipage/sections.html>
+
+@docs article, section, nav, aside, h1, h2, h3, h4, h5, h6, hgroup, header, footer, address
+
+
+## Grouping
+
+<https://html.spec.whatwg.org/multipage/grouping-content.html>
+
+@docs p, hr, pre, blockquote, ol, ul, menu, li, dl, dl1, dt, dd, figure, figure1, figure2, figcaption, main_, div, dataDiv
+
+
+## Text
+
+@docs a, em, strong, small, s, cite, q, dfn, abbr, ruby, ruby1, ruby2, ruby3, rt, rp, data, time, timeText, code, var, samp, kbd, sub, sup, i, b, u, mark, bdi, bdo, span, br, wbr
+
+
+## Edits
+
+@docs ins, del
+
+
+## Embedded
+
+@docs picture, source, img
+
+
+## Iframe
+
+@docs iframe, embed, object, param
+
+
+## Media
+
+@docs video, video1, audio, audio1, track
+
+
+## Map
+
+@docs map, area
+
+
+## Table
+
+@docs Table, TableContents, table, caption, colgroup, col, thead, tfoot, tbody, trbody, tr, td, th
+
+
+## Forms
+
+@docs form, label
+
+
+## Inputs
+
+@docs input, hidden, textInput, search, url, tel, email, password, date, month, week, timeInput, datetime, number, range, color, checkbox, radio, file, submit, imageButton, resetButton, buttonInput
+
+
+## Form Elements
+
+@docs button, select, optgroup, datalist, datalist1, option, optionLabelled, textarea, output, progress, meter, fieldset, fieldset1, legend
+
+
+## Interactive Elements
+
+@docs details, summary, summaryHeader, dialog
+
+
+## Utility
+
+@docs toHtml
+
+-}
 
 import VirtualDom
 import W3.Html.Attributes.Help as Attributes
 
 
+type Supported
+    = Supported
+
+
+{-| Type for each element
+-}
+type Node nodes msg
+    = Node String (List (VirtualDom.Attribute msg)) (List (VirtualDom.Node msg))
+
+
+{-| All elements support the use of these attributes as defined by [html.spec.whatwg.org/GlobalAttributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
+-}
 type alias GlobalAttributes a =
     Attributes.Attribute
         { a
@@ -36,14 +162,8 @@ type alias GlobalAttributes a =
         }
 
 
-type Node nodes msg
-    = Node String (List (VirtualDom.Attribute msg)) (List (VirtualDom.Node msg))
-
-
-type Supported
-    = Supported
-
-
+{-| Flow Content Category as defined by [html.spec.whatwg.org/FlowContent](https://html.spec.whatwg.org/multipage/dom.html#flow-content-2)
+-}
 type alias FlowContent =
     { -- Flow Content
       address : Supported
@@ -150,6 +270,8 @@ type alias FlowContent =
     }
 
 
+{-| The Heading Content Category as defined by [html.spec.whatwg.org/HeadingContent](https://html.spec.whatwg.org/multipage/dom.html#heading-content)
+-}
 type alias HeadingContent =
     { h1 : Supported
     , h2 : Supported
@@ -161,6 +283,8 @@ type alias HeadingContent =
     }
 
 
+{-| The Sectioning Content Category as defined by [html.spec.whatwg.org/SectioningContent](https://html.spec.whatwg.org/multipage/dom.html#sectioning-content)
+-}
 type alias SectioningContent =
     { article : Supported
     , aside : Supported
@@ -169,6 +293,8 @@ type alias SectioningContent =
     }
 
 
+{-| The Phrasing Content Category as defined by [html.spec.whatwg.org/PhrasingContent](https://html.spec.whatwg.org/multipage/dom.html#phrasing-content)
+-}
 type alias PhrasingContent =
     { a : Supported
     , abbr : Supported
@@ -232,6 +358,8 @@ type alias PhrasingContent =
     }
 
 
+{-| The Embedded Content Category as defined by [html.spec.whatwg.org/EmbeddedContent](https://html.spec.whatwg.org/multipage/dom.html#embedded-content)
+-}
 type alias EmbeddedContent =
     { audio : Supported
     , canvas : Supported
@@ -246,6 +374,8 @@ type alias EmbeddedContent =
     }
 
 
+{-| The Interactive Content Category as defined by [html.spec.whatwg.org/InteractiveContent](https://html.spec.whatwg.org/multipage/dom.html#interactive-content)
+-}
 type alias InteractiveContent =
     { a : Supported
     , audio : Supported
@@ -263,72 +393,78 @@ type alias InteractiveContent =
     }
 
 
-type alias MetadataContent =
-    { base : Supported
-    , link : Supported
-    , meta : Supported
-    , noscript : Supported
-    , script : Supported
-    , style : Supported
-    , template : Supported
-    , title : Supported
-    }
-
-
-
-{--SECTIONS https://html.spec.whatwg.org/multipage/sections.html --}
-
-
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-article-element>
+-}
 article : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | article : Supported } msg
 article =
     node "article"
 
 
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-section-element>
+-}
 section : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | section : Supported } msg
 section =
     node "section"
 
 
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-nav-element>
+-}
 nav : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | nav : Supported } msg
 nav =
     node "nav"
 
 
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-aside-element>
+-}
 aside : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | aside : Supported } msg
 aside =
     node "aside"
 
 
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements>
+-}
 h1 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h1 : Supported } msg
 h1 =
     node "h1"
 
 
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements>
+-}
 h2 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h2 : Supported } msg
 h2 =
     node "h2"
 
 
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements>
+-}
 h3 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h3 : Supported } msg
 h3 =
     node "h3"
 
 
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements>
+-}
 h4 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h4 : Supported } msg
 h4 =
     node "h4"
 
 
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements>
+-}
 h5 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h5 : Supported } msg
 h5 =
     node "h5"
 
 
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements>
+-}
 h6 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h6 : Supported } msg
 h6 =
     node "h6"
 
 
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-hgroup-element>
+-}
 hgroup :
     List (GlobalAttributes {})
     ->
@@ -348,30 +484,27 @@ hgroup =
     node "hgroup"
 
 
-
-{--Exclude header, footer descendant --}
-
-
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-header-element>
+-}
 header : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | header : Supported } msg
 header =
+    -- Exclude header, footer descendant
     node "header"
 
 
-
-{--Exclude header, footer descendant --}
-
-
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-header-element>
+-}
 footer : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | footer : Supported } msg
 footer =
+    -- Exclude header, footer descendant
     node "footer"
 
 
-
-{--Exclude heading content, sectioning content, header, footer, address descendant --}
-
-
+{-| <https://html.spec.whatwg.org/multipage/sections.html#the-address-element>
+-}
 address : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | address : Supported } msg
 address =
+    -- Exclude heading content, sectioning content, header, footer, address descendant
     node "address"
 
 
@@ -379,21 +512,25 @@ address =
 {--GROUPING https://html.spec.whatwg.org/multipage/grouping-content.html --}
 
 
+{-| -}
 p : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | p : Supported } msg
 p =
     node "p"
 
 
+{-| -}
 hr : List (GlobalAttributes {}) -> Node { compatible | hr : Supported } msg
 hr attributes =
     node "hr" attributes []
 
 
+{-| -}
 pre : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | pre : Supported } msg
 pre =
     node "pre"
 
 
+{-| -}
 blockquote :
     List (GlobalAttributes { cite : Attributes.Supported })
     -> List (Node FlowContent msg)
@@ -402,6 +539,7 @@ blockquote =
     node "blockquote"
 
 
+{-| -}
 ol :
     List
         (GlobalAttributes
@@ -416,16 +554,19 @@ ol =
     node "ol"
 
 
+{-| -}
 ul : List (GlobalAttributes {}) -> List (Node { li : Supported } msg) -> Node { compatible | ul : Supported } msg
 ul =
     node "ul"
 
 
+{-| -}
 menu : List (GlobalAttributes {}) -> List (Node { li : Supported } msg) -> Node { compatible | menu : Supported } msg
 menu =
     node "menu"
 
 
+{-| -}
 li :
     List (GlobalAttributes { ordinalValue : Attributes.Supported })
     -> List (Node FlowContent msg)
@@ -434,11 +575,13 @@ li =
     node "li"
 
 
+{-| -}
 dl : List (GlobalAttributes {}) -> List (Node { dt : Supported, dd : Supported } msg) -> Node { compatible | dl : Supported } msg
 dl =
     node "dl"
 
 
+{-| -}
 dl1 : List (GlobalAttributes {}) -> List (Node { dataDiv : Supported } msg) -> Node { compatible | dl : Supported } msg
 dl1 =
     node "dl"
@@ -448,16 +591,19 @@ dl1 =
 {--Exclude heading content, sectioning content, header, footer descendant --}
 
 
+{-| -}
 dt : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | dt : Supported } msg
 dt =
     node "dt"
 
 
+{-| -}
 dd : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | dd : Supported } msg
 dd =
     node "dd"
 
 
+{-| -}
 figure :
     List (GlobalAttributes {})
     -> List (Node FlowContent msg)
@@ -466,6 +612,7 @@ figure =
     node "figure"
 
 
+{-| -}
 figure1 :
     List (GlobalAttributes {})
     -> Node { figcaption : Supported } msg
@@ -475,6 +622,7 @@ figure1 attributes figCaption nodes =
     Node "figure" (List.map toAttribute attributes) (toHtml figCaption :: List.map toHtml nodes)
 
 
+{-| -}
 figure2 :
     List (GlobalAttributes {})
     -> List (Node FlowContent msg)
@@ -484,21 +632,25 @@ figure2 attributes nodes figCaption =
     Node "figure" (List.map toAttribute attributes) (List.map toHtml nodes ++ [ toHtml figCaption ])
 
 
+{-| -}
 figcaption : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | figcaption : Supported } msg
 figcaption =
     node "figcaption"
 
 
+{-| -}
 main_ : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | main_ : Supported } msg
 main_ =
     node "main"
 
 
+{-| -}
 div : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | div : Supported } msg
 div =
     node "div"
 
 
+{-| -}
 dataDiv : List (GlobalAttributes {}) -> List (Node { dt : Supported, dd : Supported } msg) -> Node { compatible | dataDiv : Supported } msg
 dataDiv =
     node "div"
@@ -508,6 +660,7 @@ dataDiv =
 {--TEXT LEVEL https://html.spec.whatwg.org/multipage/text-level-semantics.html --}
 
 
+{-| -}
 a :
     List
         (GlobalAttributes
@@ -527,31 +680,37 @@ a =
     node "a"
 
 
+{-| -}
 em : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | em : Supported } msg
 em =
     node "em"
 
 
+{-| -}
 strong : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | strong : Supported } msg
 strong =
     node "strong"
 
 
+{-| -}
 small : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | small : Supported } msg
 small =
     node "small"
 
 
+{-| -}
 s : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | s : Supported } msg
 s =
     node "s"
 
 
+{-| -}
 cite : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | cite : Supported } msg
 cite =
     node "cite"
 
 
+{-| -}
 q :
     List (GlobalAttributes { cite : Attributes.Supported })
     -> List (Node PhrasingContent msg)
@@ -564,11 +723,13 @@ q =
 {--Exclude dfn descendant --}
 
 
+{-| -}
 dfn : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | dfn : Supported } msg
 dfn =
     node "dfn"
 
 
+{-| -}
 abbr : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | abbr : Supported } msg
 abbr =
     node "abbr"
@@ -578,21 +739,25 @@ abbr =
 {--Exclude ruby descendant --}
 
 
+{-| -}
 ruby : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | ruby : Supported } msg
 ruby =
     node "ruby"
 
 
+{-| -}
 ruby1 : List (GlobalAttributes {}) -> Node { ruby : Supported } msg -> Node { compatible | ruby1 : Supported } msg
 ruby1 attributes rubyChild =
     Node "ruby" (List.map toAttribute attributes) [ toHtml rubyChild ]
 
 
+{-| -}
 ruby2 : List (GlobalAttributes {}) -> List (Node { rt : Supported } msg) -> Node { compatible | ruby2 : Supported } msg
 ruby2 =
     node "ruby"
 
 
+{-| -}
 ruby3 :
     List (GlobalAttributes {})
     -> Node { rp : Supported } msg
@@ -610,16 +775,19 @@ ruby3Help tuple childrenSoFar =
     childrenSoFar ++ [ toHtml (Tuple.first tuple), toHtml (Tuple.second tuple) ]
 
 
+{-| -}
 rt : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | rt : Supported } msg
 rt =
     node "rt"
 
 
+{-| -}
 rp : List (GlobalAttributes {}) -> String -> Node { compatible | rp : Supported } msg
 rp attributes content =
     Node "rp" (List.map toAttribute attributes) [ VirtualDom.text content ]
 
 
+{-| -}
 data :
     List (GlobalAttributes { value : Attributes.Supported })
     -> List (Node PhrasingContent msg)
@@ -628,6 +796,7 @@ data =
     node "data"
 
 
+{-| -}
 time :
     List (GlobalAttributes { datetime : Attributes.Supported })
     -> List (Node PhrasingContent msg)
@@ -636,6 +805,7 @@ time =
     node "time"
 
 
+{-| -}
 timeText :
     List (GlobalAttributes { datetime : Attributes.Supported })
     -> String
@@ -644,76 +814,91 @@ timeText attributes content =
     Node "time" (List.map toAttribute attributes) [ VirtualDom.text content ]
 
 
+{-| -}
 code : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | code : Supported } msg
 code =
     node "code"
 
 
+{-| -}
 var : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | var : Supported } msg
 var =
     node "var"
 
 
+{-| -}
 samp : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | samp : Supported } msg
 samp =
     node "samp"
 
 
+{-| -}
 kbd : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | kbd : Supported } msg
 kbd =
     node "kbd"
 
 
+{-| -}
 sub : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | sub : Supported } msg
 sub =
     node "sub"
 
 
+{-| -}
 sup : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | sup : Supported } msg
 sup =
     node "sup"
 
 
+{-| -}
 i : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | i : Supported } msg
 i =
     node "i"
 
 
+{-| -}
 b : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | b : Supported } msg
 b =
     node "b"
 
 
+{-| -}
 u : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | u : Supported } msg
 u =
     node "u"
 
 
+{-| -}
 mark : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | mark : Supported } msg
 mark =
     node "mark"
 
 
+{-| -}
 bdi : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | bdi : Supported } msg
 bdi =
     node "bdi"
 
 
+{-| -}
 bdo : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | bdo : Supported } msg
 bdo =
     node "bdo"
 
 
+{-| -}
 span : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | span : Supported } msg
 span =
     node "span"
 
 
+{-| -}
 br : List (GlobalAttributes {}) -> Node { compatible | br : Supported } msg
 br attributes =
     node "br" attributes []
 
 
+{-| -}
 wbr : List (GlobalAttributes {}) -> Node { compatible | wbr : Supported } msg
 wbr attributes =
     node "wbr" attributes []
@@ -723,6 +908,7 @@ wbr attributes =
 {--EDITS https://html.spec.whatwg.org/multipage/edits.html --}
 
 
+{-| -}
 ins :
     List
         (GlobalAttributes
@@ -736,6 +922,7 @@ ins =
     node "ins"
 
 
+{-| -}
 del :
     List
         (GlobalAttributes
@@ -753,6 +940,7 @@ del =
 {--EMBEDDED CONTENT https://html.spec.whatwg.org/multipage/embedded-content.html --}
 
 
+{-| -}
 picture :
     List (GlobalAttributes {})
     -> List (Node { source : Supported } msg)
@@ -762,6 +950,7 @@ picture attributes sources image =
     Node "picture" (List.map toAttribute attributes) (List.map toHtml sources ++ [ toHtml image ])
 
 
+{-| -}
 source :
     List
         (GlobalAttributes
@@ -777,6 +966,7 @@ source attributes =
     node "source" attributes []
 
 
+{-| -}
 img :
     List
         (GlobalAttributes
@@ -802,6 +992,7 @@ img attributes =
 {--IFRAME EMBED https://html.spec.whatwg.org/multipage/iframe-embed-object.html --}
 
 
+{-| -}
 iframe :
     List
         (GlobalAttributes
@@ -822,6 +1013,7 @@ iframe attributes =
     node "iframe" attributes []
 
 
+{-| -}
 embed :
     List
         (GlobalAttributes
@@ -836,6 +1028,7 @@ embed attributes =
     node "embed" attributes []
 
 
+{-| -}
 object :
     List
         (GlobalAttributes
@@ -855,6 +1048,7 @@ object attributes params contents =
     Node "object" (List.map toAttribute attributes) (List.map toHtml params ++ List.map toHtml contents)
 
 
+{-| -}
 param :
     ( String, String )
     -> List (GlobalAttributes {})
@@ -872,6 +1066,7 @@ param ( name, value ) attributes =
 {--MEDIA https://html.spec.whatwg.org/multipage/media.html--}
 
 
+{-| -}
 video :
     List
         (GlobalAttributes
@@ -895,6 +1090,7 @@ video attributes tracks contents =
     Node "video" (List.map toAttribute attributes) (List.map toHtml tracks ++ List.map toHtml contents)
 
 
+{-| -}
 video1 :
     List
         (GlobalAttributes
@@ -919,6 +1115,7 @@ video1 attributes sources tracks contents =
     Node "video" (List.map toAttribute attributes) (List.map toHtml sources ++ List.map toHtml tracks ++ List.map toHtml contents)
 
 
+{-| -}
 audio :
     List
         (GlobalAttributes
@@ -938,6 +1135,7 @@ audio attributes tracks contents =
     Node "video" (List.map toAttribute attributes) (List.map toHtml tracks ++ List.map toHtml contents)
 
 
+{-| -}
 audio1 :
     List
         (GlobalAttributes
@@ -958,6 +1156,7 @@ audio1 attributes sources tracks contents =
     Node "video" (List.map toAttribute attributes) (List.map toHtml sources ++ List.map toHtml tracks ++ List.map toHtml contents)
 
 
+{-| -}
 track :
     List
         (GlobalAttributes
@@ -977,6 +1176,7 @@ track attributes =
 {--MAPS https://html.spec.whatwg.org/multipage/image-maps.html--}
 
 
+{-| -}
 map :
     List (GlobalAttributes { name : Attributes.Supported })
     -> List (Node FlowContent msg)
@@ -985,6 +1185,7 @@ map =
     node "map"
 
 
+{-| -}
 area :
     List
         (GlobalAttributes
@@ -1008,6 +1209,7 @@ area attributes =
 {--TABULAR https://html.spec.whatwg.org/multipage/tables.html --}
 
 
+{-| -}
 type alias TableContents msg =
     { caption : Maybe (VirtualDom.Node msg)
     , colgroups : List (VirtualDom.Node msg)
@@ -1016,15 +1218,18 @@ type alias TableContents msg =
     }
 
 
+{-| -}
 type Table msg
     = Table (List (GlobalAttributes {})) (TableContents msg)
 
 
+{-| -}
 table : List (GlobalAttributes {}) -> Table msg
 table attributes =
     Table attributes (TableContents Nothing [] Nothing Nothing)
 
 
+{-| -}
 caption : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Table msg -> Table msg
 caption attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
@@ -1033,6 +1238,7 @@ caption attributes contents (Table tableAttributes tableContents) =
         }
 
 
+{-| -}
 colgroup :
     List (GlobalAttributes { span : Attributes.Supported })
     -> List (Node { col : Supported } msg)
@@ -1045,11 +1251,13 @@ colgroup attributes contents (Table tableAttributes tableContents) =
         }
 
 
+{-| -}
 col : List (GlobalAttributes { span : Attributes.Supported }) -> Node { compatible | col : Supported } msg
 col attributes =
     node "col" attributes []
 
 
+{-| -}
 thead : List (GlobalAttributes {}) -> List (Node { tr : Supported } msg) -> Table msg -> Table msg
 thead attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
@@ -1058,6 +1266,7 @@ thead attributes contents (Table tableAttributes tableContents) =
         }
 
 
+{-| -}
 tfoot : List (GlobalAttributes {}) -> List (Node { tr : Supported } msg) -> Table msg -> Table msg
 tfoot attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
@@ -1066,6 +1275,7 @@ tfoot attributes contents (Table tableAttributes tableContents) =
         }
 
 
+{-| -}
 tbody : List (GlobalAttributes {}) -> List (Node { tr : Supported } msg) -> Table msg -> Node { compatible | table : Supported } msg
 tbody attributes rows (Table tableAttributes contents) =
     Node "table"
@@ -1078,6 +1288,7 @@ tbody attributes rows (Table tableAttributes contents) =
         )
 
 
+{-| -}
 trbody : List (Node { tr : Supported } msg) -> Table msg -> Node { compatible | table : Supported } msg
 trbody rows (Table tableAttributes contents) =
     Node "table"
@@ -1090,11 +1301,13 @@ trbody rows (Table tableAttributes contents) =
         )
 
 
+{-| -}
 tr : List (GlobalAttributes {}) -> List (Node { td : Supported, th : Supported } msg) -> Node { compatible | tr : Supported } msg
 tr =
     node "tr"
 
 
+{-| -}
 td :
     List
         (GlobalAttributes
@@ -1113,6 +1326,7 @@ td =
 {--Excluding header, footer, sectioning content, heading content--}
 
 
+{-| -}
 th :
     List
         (GlobalAttributes
@@ -1134,6 +1348,7 @@ th =
 {--Excluding form--}
 
 
+{-| -}
 form :
     List
         (GlobalAttributes
@@ -1154,6 +1369,7 @@ form =
     node "form"
 
 
+{-| -}
 label :
     List (GlobalAttributes { for : Attributes.Supported })
     -> List (Node PhrasingContent msg)
@@ -1166,6 +1382,7 @@ label =
 {--INPUTS https://html.spec.whatwg.org/multipage/input.html --}
 
 
+{-| -}
 input :
     List
         (GlobalAttributes
@@ -1206,11 +1423,13 @@ input attributes =
     node "input" attributes []
 
 
+{-| -}
 hidden : List (GlobalAttributes { autocomplete : Attributes.Supported }) -> Node { compatible | input : Supported } msg
 hidden attributes =
     node "input" (Attributes.Attribute "type" "hidden" :: attributes) []
 
 
+{-| -}
 textInput :
     List
         (GlobalAttributes
@@ -1231,6 +1450,7 @@ textInput attributes =
     node "input" (Attributes.Attribute "type" "text" :: attributes) []
 
 
+{-| -}
 search :
     List
         (GlobalAttributes
@@ -1251,6 +1471,7 @@ search attributes =
     node "input" (Attributes.Attribute "type" "search" :: attributes) []
 
 
+{-| -}
 url :
     List
         (GlobalAttributes
@@ -1270,6 +1491,7 @@ url attributes =
     node "input" (Attributes.Attribute "type" "url" :: attributes) []
 
 
+{-| -}
 tel :
     List
         (GlobalAttributes
@@ -1289,6 +1511,7 @@ tel attributes =
     node "input" (Attributes.Attribute "type" "tel" :: attributes) []
 
 
+{-| -}
 email :
     List
         (GlobalAttributes
@@ -1309,6 +1532,7 @@ email attributes =
     node "input" (Attributes.Attribute "type" "email" :: attributes) []
 
 
+{-| -}
 password :
     List
         (GlobalAttributes
@@ -1327,6 +1551,7 @@ password attributes =
     node "input" (Attributes.Attribute "type" "password" :: attributes) []
 
 
+{-| -}
 date :
     List
         (GlobalAttributes
@@ -1344,6 +1569,7 @@ date attributes =
     node "input" (Attributes.Attribute "type" "date" :: attributes) []
 
 
+{-| -}
 month :
     List
         (GlobalAttributes
@@ -1361,6 +1587,7 @@ month attributes =
     node "input" (Attributes.Attribute "type" "month" :: attributes) []
 
 
+{-| -}
 week :
     List
         (GlobalAttributes
@@ -1378,6 +1605,7 @@ week attributes =
     node "input" (Attributes.Attribute "type" "week" :: attributes) []
 
 
+{-| -}
 timeInput :
     List
         (GlobalAttributes
@@ -1395,6 +1623,7 @@ timeInput attributes =
     node "input" (Attributes.Attribute "type" "time" :: attributes) []
 
 
+{-| -}
 datetime :
     List
         (GlobalAttributes
@@ -1412,6 +1641,7 @@ datetime attributes =
     node "input" (Attributes.Attribute "type" "datetime-local" :: attributes) []
 
 
+{-| -}
 number :
     List
         (GlobalAttributes
@@ -1430,6 +1660,7 @@ number attributes =
     node "input" (Attributes.Attribute "type" "number" :: attributes) []
 
 
+{-| -}
 range :
     List
         (GlobalAttributes
@@ -1445,6 +1676,7 @@ range attributes =
     node "input" (Attributes.Attribute "type" "range" :: attributes) []
 
 
+{-| -}
 color :
     List
         (GlobalAttributes
@@ -1457,6 +1689,7 @@ color attributes =
     node "input" (Attributes.Attribute "type" "color" :: attributes) []
 
 
+{-| -}
 checkbox :
     List
         (GlobalAttributes
@@ -1469,6 +1702,7 @@ checkbox attributes =
     node "input" (Attributes.Attribute "type" "checkbox" :: attributes) []
 
 
+{-| -}
 radio :
     List
         (GlobalAttributes
@@ -1481,6 +1715,7 @@ radio attributes =
     node "input" (Attributes.Attribute "type" "radio" :: attributes) []
 
 
+{-| -}
 file :
     List
         (GlobalAttributes
@@ -1494,6 +1729,7 @@ file attributes =
     node "input" (Attributes.Attribute "type" "file" :: attributes) []
 
 
+{-| -}
 submit :
     List
         (GlobalAttributes
@@ -1509,6 +1745,7 @@ submit attributes =
     node "input" (Attributes.Attribute "type" "submit" :: attributes) []
 
 
+{-| -}
 imageButton :
     List
         (GlobalAttributes
@@ -1528,11 +1765,13 @@ imageButton attributes =
     node "input" (Attributes.Attribute "type" "image" :: attributes) []
 
 
+{-| -}
 resetButton : List (GlobalAttributes {}) -> Node { compatible | input : Supported } msg
 resetButton attributes =
     node "input" (Attributes.Attribute "type" "reset" :: attributes) []
 
 
+{-| -}
 buttonInput : List (GlobalAttributes {}) -> Node { compatible | input : Supported } msg
 buttonInput attributes =
     node "input" (Attributes.Attribute "type" "button" :: attributes) []
@@ -1542,6 +1781,7 @@ buttonInput attributes =
 {--FORM ELEMENTS https://html.spec.whatwg.org/multipage/form-elements.html --}
 
 
+{-| -}
 button :
     List
         (GlobalAttributes
@@ -1563,6 +1803,7 @@ button =
     node "button"
 
 
+{-| -}
 select :
     List
         (GlobalAttributes
@@ -1581,6 +1822,7 @@ select =
     node "select"
 
 
+{-| -}
 optgroup :
     List
         (GlobalAttributes
@@ -1594,16 +1836,19 @@ optgroup =
     node "optgroup"
 
 
+{-| -}
 datalist : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | datalist : Supported } msg
 datalist =
     node "datalist"
 
 
+{-| -}
 datalist1 : List (GlobalAttributes {}) -> List (Node { option : Supported } msg) -> Node { compatible | datalist : Supported } msg
 datalist1 =
     node "datalist"
 
 
+{-| -}
 option :
     List
         (GlobalAttributes
@@ -1618,6 +1863,7 @@ option attributes contents =
     Node "option" (List.map toAttribute attributes) [ VirtualDom.text contents ]
 
 
+{-| -}
 optionLabelled :
     List
         (GlobalAttributes
@@ -1632,6 +1878,7 @@ optionLabelled attributes contents =
     Node "option" (VirtualDom.attribute "label" contents :: List.map toAttribute attributes) []
 
 
+{-| -}
 textarea :
     List
         (GlobalAttributes
@@ -1656,6 +1903,7 @@ textarea attributes contents =
     Node "textarea" (List.map toAttribute attributes) [ VirtualDom.text contents ]
 
 
+{-| -}
 output :
     List
         (GlobalAttributes
@@ -1670,6 +1918,7 @@ output =
     node "output"
 
 
+{-| -}
 progress :
     List
         (GlobalAttributes
@@ -1683,6 +1932,7 @@ progress =
     node "progress"
 
 
+{-| -}
 meter :
     List
         (GlobalAttributes
@@ -1700,6 +1950,7 @@ meter =
     node "meter"
 
 
+{-| -}
 fieldset :
     List
         (GlobalAttributes
@@ -1714,6 +1965,7 @@ fieldset =
     node "fieldset"
 
 
+{-| -}
 fieldset1 :
     List
         (GlobalAttributes
@@ -1729,6 +1981,7 @@ fieldset1 attributes legendNode contents =
     Node "fieldset" (List.map toAttribute attributes) (toHtml legendNode :: List.map toHtml contents)
 
 
+{-| -}
 legend : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | legend : Supported } msg
 legend =
     node "legend"
@@ -1738,6 +1991,7 @@ legend =
 {--INTERACTIVE https://html.spec.whatwg.org/multipage/interactive-elements.html --}
 
 
+{-| -}
 details :
     List (GlobalAttributes { open : Attributes.Supported })
     -> Node { summary : Supported } msg
@@ -1747,16 +2001,19 @@ details attributes summaryNode contents =
     Node "details" (List.map toAttribute attributes) (toHtml summaryNode :: List.map toHtml contents)
 
 
+{-| -}
 summary : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | summary : Supported } msg
 summary =
     node "summary"
 
 
+{-| -}
 summaryHeader : List (GlobalAttributes {}) -> Node HeadingContent msg -> Node { compatible | summary : Supported } msg
 summaryHeader attributes headingNode =
     Node "summary" (List.map toAttribute attributes) [ toHtml headingNode ]
 
 
+{-| -}
 dialog :
     List (GlobalAttributes { open : Attributes.Supported })
     -> List (Node FlowContent msg)
@@ -1795,6 +2052,11 @@ toAttribute (Attributes.Attribute name value) =
     VirtualDom.attribute name value
 
 
+{-| Function that allows converting the internal [Node](#Node) structure to VirtualDom.Node. This only needs to be done on the root element since ancestors are automatically converted as they are processed.
+
+    W3.Html.div [] [ W3.Html.a [] [] ] |> W3.Html.toHtml
+
+-}
 toHtml : Node a msg -> VirtualDom.Node msg
 toHtml (Node tagName attributes contents) =
     VirtualDom.node tagName attributes contents
