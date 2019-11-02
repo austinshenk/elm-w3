@@ -688,7 +688,7 @@ a :
             , rel : Attributes.Supported
             , hreflang : Attributes.Supported
             , mimeType : Attributes.Supported
-            , referrerPolicy : Attributes.Supported
+            , referrerpolicy : Attributes.Supported
             }
         )
     -> List (Node FlowContent msg)
@@ -1030,7 +1030,7 @@ img :
             , ismap : Attributes.Supported
             , width : Attributes.Supported
             , height : Attributes.Supported
-            , referrerPolicy : Attributes.Supported
+            , referrerpolicy : Attributes.Supported
             , decoding : Attributes.Supported
             }
         )
