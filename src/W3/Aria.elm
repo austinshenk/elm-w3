@@ -1,19 +1,19 @@
 module W3.Aria exposing
     ( Attribute
-    , alert, alertDialog, application, article, banner, button, cell, checkBox, columnHeader, comboBox, complementary, contentInfo, definition, dialog, directory, document, feed, figure, form, grid, gridCell, group, heading, img, link, list, listBox, listItem, log, main_, marquee, math, menu, menuBar, menuItem, menuItemCheckBox, menuItemRadio, navigation, none, note, option, presentation, progressBar, radio, radioGroup, region, row, rowGroup, rowHeader, scrollBar, search, searchBox, separator, slider, spinButton, status, switch, tab, tabList, tabPanel, table, term, textBox, timer, toolBar, toolTip, tree, treeGrid, treeItem
+    , alert, alertdialog, application, article, banner, button, cell, checkbox, columnheader, combobox, complementary, contentinfo, definition, dialog, directory, document, feed, figure, form, grid, gridcell, group, heading, img, link, list, listbox, listitem, log, main_, marquee, math, menu, menubar, menuitem, menuitemcheckbox, menuitemradio, navigation, none, note, option, presentation, progressbar, radio, radiogroup, region, row, rowgroup, rowheader, scrollbar, search, searchbox, separator, slider, spinbutton, status, switch, tab, tablist, tabpanel, table, term, textbox, timer, toolbar, tooltip, tree, treegrid, treeitem
     )
 
 {-| File that contains all WAI-ARIA roles as defined by W3's specification and in alphabetical order. If you want to read more about a role's purpose, take a look at the [role definitions list](https://www.w3.org/TR/wai-aria-1.1/#role_definitions).
 
 
-# Types
+# Definitions
 
-@docs Attribute
+@docs Attribute, GlobalAttributes
 
 
 # Roles
 
-@docs alert, alertDialog, application, article, banner, button, cell, checkBox, columnHeader, comboBox, complementary, contentInfo, definition, dialog, directory, document, feed, figure, form, grid, gridCell, group, heading, img, link, list, listBox, listItem, log, main_, marquee, math, menu, menuBar, menuItem, menuItemCheckBox, menuItemRadio, navigation, none, note, option, presentation, progressBar, radio, radioGroup, region, row, rowGroup, rowHeader, scrollBar, search, searchBox, separator, slider, spinButton, status, switch, tab, tabList, tabPanel, table, term, textBox, timer, toolBar, toolTip, tree, treeGrid, treeItem
+@docs alert, alertdialog, application, article, banner, button, cell, checkbox, columnheader, combobox, complementary, contentinfo, definition, dialog, directory, document, feed, figure, form, grid, gridcell, group, heading, img, link, list, listbox, listitem, log, main_, marquee, math, menu, menubar, menuitem, menuitemcheckbox, menuitemradio, navigation, none, note, option, presentation, progressbar, radio, radiogroup, region, row, rowgroup, rowheader, scrollbar, search, searchbox, separator, slider, spinbutton, status, switch, tab, tablist, tabpanel, table, term, textbox, timer, toolbar, tooltip, tree, treegrid, treeitem
 
 -}
 
@@ -26,6 +26,7 @@ type alias Attribute a =
     Aria.Attribute a
 
 
+{-| -}
 type alias GlobalAttributes a =
     Aria.Attribute
         { a
@@ -62,8 +63,8 @@ alert =
 
 {-| A type of dialog that contains an alert message, where initial focus goes to an element within the dialog.
 -}
-alertDialog : List (GlobalAttributes { expanded : Aria.Supported, modal : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-alertDialog =
+alertdialog : List (GlobalAttributes { expanded : Aria.Supported, modal : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+alertdialog =
     Aria.role "alertdialog"
 
 
@@ -104,22 +105,22 @@ cell =
 
 {-| A checkable input that has three possible values: true, false, or mixed.
 -}
-checkBox : List (GlobalAttributes { checked : Aria.Supported, readOnly : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-checkBox =
+checkbox : List (GlobalAttributes { checked : Aria.Supported, readOnly : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+checkbox =
     Aria.role "checkbox"
 
 
 {-| A cell containing header information for a column.
 -}
-columnHeader : List (GlobalAttributes { colIndex : Aria.Supported, colSpan : Aria.Supported, expanded : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, rowIndex : Aria.Supported, rowSpan : Aria.Supported, selected : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-columnHeader =
+columnheader : List (GlobalAttributes { colIndex : Aria.Supported, colSpan : Aria.Supported, expanded : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, rowIndex : Aria.Supported, rowSpan : Aria.Supported, selected : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+columnheader =
     Aria.role "columnheader"
 
 
 {-| A composite widget containing a single-line textbox and another element, such as a listbox or grid, that can dynamically pop up to help the user set the value of the textbox.
 -}
-comboBox : List (GlobalAttributes { controls : Aria.Supported, expanded : Aria.Supported, autoComplete : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, activeDescendant : Aria.Supported, orientation : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-comboBox =
+combobox : List (GlobalAttributes { controls : Aria.Supported, expanded : Aria.Supported, autoComplete : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, activeDescendant : Aria.Supported, orientation : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+combobox =
     Aria.role "combobox"
 
 
@@ -132,8 +133,8 @@ complementary =
 
 {-| A large perceivable region that contains information about the parent document.
 -}
-contentInfo : List (GlobalAttributes { expanded : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-contentInfo =
+contentinfo : List (GlobalAttributes { expanded : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+contentinfo =
     Aria.role "contentinfo"
 
 
@@ -195,8 +196,8 @@ grid =
 
 {-| A cell in a grid or treegrid.
 -}
-gridCell : List (GlobalAttributes { colIndex : Aria.Supported, colSpan : Aria.Supported, expanded : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, rowIndex : Aria.Supported, rowSpan : Aria.Supported, selected : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-gridCell =
+gridcell : List (GlobalAttributes { colIndex : Aria.Supported, colSpan : Aria.Supported, expanded : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, rowIndex : Aria.Supported, rowSpan : Aria.Supported, selected : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+gridcell =
     Aria.role "gridcell"
 
 
@@ -237,15 +238,15 @@ list =
 
 {-| A widget that allows the user to select one or more items from a list of choices.
 -}
-listBox : List (GlobalAttributes { multiSelectable : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, activeDescendant : Aria.Supported, expanded : Aria.Supported, orientation : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-listBox =
+listbox : List (GlobalAttributes { multiSelectable : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, activeDescendant : Aria.Supported, expanded : Aria.Supported, orientation : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+listbox =
     Aria.role "listbox"
 
 
 {-| A single item in a list or directory.
 -}
-listItem : List (GlobalAttributes { level : Aria.Supported, posInSet : Aria.Supported, setSize : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-listItem =
+listitem : List (GlobalAttributes { level : Aria.Supported, posInSet : Aria.Supported, setSize : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+listitem =
     Aria.role "listitem"
 
 
@@ -286,29 +287,29 @@ menu =
 
 {-| A presentation of menu that usually remains visible and is usually presented horizontally.
 -}
-menuBar : List (GlobalAttributes { activeDescendant : Aria.Supported, expanded : Aria.Supported, orientation : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-menuBar =
+menubar : List (GlobalAttributes { activeDescendant : Aria.Supported, expanded : Aria.Supported, orientation : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+menubar =
     Aria.role "menubar"
 
 
 {-| An option in a set of choices contained by a menu or menubar.
 -}
-menuItem : List (GlobalAttributes { posInSet : Aria.Supported, setSize : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-menuItem =
+menuitem : List (GlobalAttributes { posInSet : Aria.Supported, setSize : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+menuitem =
     Aria.role "menuitem"
 
 
 {-| A menuitem with a checkable state whose possible values are true, false, or mixed.
 -}
-menuItemCheckBox : List (GlobalAttributes { checked : Aria.Supported, posInSet : Aria.Supported, readOnly : Aria.Supported, setSize : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-menuItemCheckBox =
+menuitemcheckbox : List (GlobalAttributes { checked : Aria.Supported, posInSet : Aria.Supported, readOnly : Aria.Supported, setSize : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+menuitemcheckbox =
     Aria.role "menuitemcheckbox"
 
 
 {-| A checkable menuitem in a set of elements with the same role, only one of which can be checked at a time.
 -}
-menuItemRadio : List (GlobalAttributes { checked : Aria.Supported, posInSet : Aria.Supported, readOnly : Aria.Supported, setSize : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-menuItemRadio =
+menuitemradio : List (GlobalAttributes { checked : Aria.Supported, posInSet : Aria.Supported, readOnly : Aria.Supported, setSize : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+menuitemradio =
     Aria.role "menuitemradio"
 
 
@@ -349,8 +350,8 @@ presentation =
 
 {-| An element that displays the progress status for tasks that take a long time.
 -}
-progressBar : List (GlobalAttributes { expanded : Aria.Supported, valueMax : Aria.Supported, valueMin : Aria.Supported, valueNow : Aria.Supported, valueText : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-progressBar =
+progressbar : List (GlobalAttributes { expanded : Aria.Supported, valueMax : Aria.Supported, valueMin : Aria.Supported, valueNow : Aria.Supported, valueText : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+progressbar =
     Aria.role "progressbar"
 
 
@@ -363,8 +364,8 @@ radio =
 
 {-| A group of radio buttons.
 -}
-radioGroup : List (GlobalAttributes { readOnly : Aria.Supported, required : Aria.Supported, activeDescendant : Aria.Supported, expanded : Aria.Supported, orientation : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-radioGroup =
+radiogroup : List (GlobalAttributes { readOnly : Aria.Supported, required : Aria.Supported, activeDescendant : Aria.Supported, expanded : Aria.Supported, orientation : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+radiogroup =
     Aria.role "radiogroup"
 
 
@@ -384,22 +385,22 @@ row =
 
 {-| A structure containing one or more row elements in a tabular container.
 -}
-rowGroup : List (GlobalAttributes {}) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-rowGroup =
+rowgroup : List (GlobalAttributes {}) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+rowgroup =
     Aria.role "rowgroup"
 
 
 {-| A cell containing header information for a row in a grid.
 -}
-rowHeader : List (GlobalAttributes { sort : Aria.Supported, colIndex : Aria.Supported, colSpan : Aria.Supported, expanded : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, rowIndex : Aria.Supported, rowSpan : Aria.Supported, selected : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-rowHeader =
+rowheader : List (GlobalAttributes { sort : Aria.Supported, colIndex : Aria.Supported, colSpan : Aria.Supported, expanded : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, rowIndex : Aria.Supported, rowSpan : Aria.Supported, selected : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+rowheader =
     Aria.role "rowheader"
 
 
 {-| A graphical object that controls the scrolling of content within a viewing area, regardless of whether the content is fully displayed within the viewing area.
 -}
-scrollBar : List (GlobalAttributes { controls : Aria.Supported, orientation : Aria.Supported, valueMax : Aria.Supported, valueMin : Aria.Supported, valueNow : Aria.Supported, valueText : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-scrollBar =
+scrollbar : List (GlobalAttributes { controls : Aria.Supported, orientation : Aria.Supported, valueMax : Aria.Supported, valueMin : Aria.Supported, valueNow : Aria.Supported, valueText : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+scrollbar =
     Aria.role "scrollbar"
 
 
@@ -412,8 +413,8 @@ search =
 
 {-| A type of textbox intended for specifying search criteria.
 -}
-searchBox : List (GlobalAttributes { activeDescendant : Aria.Supported, autoComplete : Aria.Supported, multiLine : Aria.Supported, placeholder : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-searchBox =
+searchbox : List (GlobalAttributes { activeDescendant : Aria.Supported, autoComplete : Aria.Supported, multiLine : Aria.Supported, placeholder : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+searchbox =
     Aria.role "searchbox"
 
 
@@ -433,8 +434,8 @@ slider =
 
 {-| A form of range that expects the user to select from among discrete choices.
 -}
-spinButton : List (GlobalAttributes { valueMax : Aria.Supported, valueMin : Aria.Supported, valueNow : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, activeDescendant : Aria.Supported, valueText : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-spinButton =
+spinbutton : List (GlobalAttributes { valueMax : Aria.Supported, valueMin : Aria.Supported, valueNow : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, activeDescendant : Aria.Supported, valueText : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+spinbutton =
     Aria.role "spinbutton"
 
 
@@ -468,15 +469,15 @@ table =
 
 {-| A list of tab elements, which are references to tabpanel elements.
 -}
-tabList : List (GlobalAttributes { level : Aria.Supported, multiSelectable : Aria.Supported, orientation : Aria.Supported, activeDescendant : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-tabList =
+tablist : List (GlobalAttributes { level : Aria.Supported, multiSelectable : Aria.Supported, orientation : Aria.Supported, activeDescendant : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+tablist =
     Aria.role "tablist"
 
 
 {-| A container for the resources associated with a tab, where each tab is contained in a tablist.
 -}
-tabPanel : List (GlobalAttributes { expanded : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-tabPanel =
+tabpanel : List (GlobalAttributes { expanded : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+tabpanel =
     Aria.role "tabpanel"
 
 
@@ -489,8 +490,8 @@ term =
 
 {-| A type of input that allows free-form text as its value.
 -}
-textBox : List (GlobalAttributes { activeDescendant : Aria.Supported, autoComplete : Aria.Supported, multiLine : Aria.Supported, placeholder : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-textBox =
+textbox : List (GlobalAttributes { activeDescendant : Aria.Supported, autoComplete : Aria.Supported, multiLine : Aria.Supported, placeholder : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+textbox =
     Aria.role "textbox"
 
 
@@ -503,15 +504,15 @@ timer =
 
 {-| A collection of commonly used function buttons or controls represented in compact visual form.
 -}
-toolBar : List (GlobalAttributes { orientation : Aria.Supported, activeDescendant : Aria.Supported, expanded : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-toolBar =
+toolbar : List (GlobalAttributes { orientation : Aria.Supported, activeDescendant : Aria.Supported, expanded : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+toolbar =
     Aria.role "toolbar"
 
 
 {-| A contextual popup that displays a description for an element.
 -}
-toolTip : List (GlobalAttributes { expanded : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-toolTip =
+tooltip : List (GlobalAttributes { expanded : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+tooltip =
     Aria.role "tooltip"
 
 
@@ -524,13 +525,13 @@ tree =
 
 {-| A grid whose rows can be expanded and collapsed in the same manner as for a tree.
 -}
-treeGrid : List (GlobalAttributes { activeDescendant : Aria.Supported, colCount : Aria.Supported, expanded : Aria.Supported, level : Aria.Supported, multiSelectable : Aria.Supported, orientation : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, rowCount : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-treeGrid =
+treegrid : List (GlobalAttributes { activeDescendant : Aria.Supported, colCount : Aria.Supported, expanded : Aria.Supported, level : Aria.Supported, multiSelectable : Aria.Supported, orientation : Aria.Supported, readOnly : Aria.Supported, required : Aria.Supported, rowCount : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+treegrid =
     Aria.role "treegrid"
 
 
 {-| An option item of a tree. This is an element within a tree that may be expanded or collapsed if it contains a sub-level group of tree item elements.
 -}
-treeItem : List (GlobalAttributes { checked : Aria.Supported, expanded : Aria.Supported, level : Aria.Supported, posInSet : Aria.Supported, selected : Aria.Supported, setSize : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
-treeItem =
+treeitem : List (GlobalAttributes { checked : Aria.Supported, expanded : Aria.Supported, level : Aria.Supported, posInSet : Aria.Supported, selected : Aria.Supported, setSize : Aria.Supported }) -> List (VirtualDom.Attribute msg) -> List (VirtualDom.Attribute msg)
+treeitem =
     Aria.role "treeitem"
