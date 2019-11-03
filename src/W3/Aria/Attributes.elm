@@ -7,7 +7,8 @@ module W3.Aria.Attributes exposing
 
 {-| File that contains all WAI-ARIA attributes and their values. More information about Aria attributes can be found in the [state and properties section](https://www.w3.org/TR/wai-aria-1.1/#state_prop_def) and different attribute value types can be found in the [property characteristics section](https://www.w3.org/TR/wai-aria-1.1/#propcharacteristic_value)
 
-#Types
+
+# Types
 
 @docs Value, IdReference, TriState
 

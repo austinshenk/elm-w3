@@ -1,8 +1,8 @@
 module W3.Html.Attributes exposing
     ( Value
     , accesskey, autocapitalize, autofocus, class, contenteditable, data_, dir, draggable, enterkeyhint, hidden, id, inputmode, itemid, itemprop, itemref, itemscope, itemtype, lang, nonce, slot, spellcheck, style, tabindex, title, translate
-    , abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, buttonType, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, inputType, ismap, kind, label, list, loop, low, marker, max, maxlength, media, method, mimeType, min, minlength, multiple, muted, name, novalidate, open, optimum, ordinalValue, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, usemap, value, width, wrap
-    , allowForms, allowModals, allowOrientationLock, allowPointerLock, allowPopups, allowPopupsToEscapeSandbox, allowPresentation, allowSameOrigin, allowScripts, allowTopNavigation, allowTopNavigationByUserActivation, anonymous, auto, async, blank, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, formData, formUrlEncoded, frame, get, go, hard, lowerAlpha, lowerRoman, ltr, metadata, next, none, numeric, off, on, ordinal, parent, plainText, poly, polygon, post, previous, rect, rectangle, reset, rowgroup, rtl, search, self, send, sentences, soft, submit, subtitles, sync, tel, text, top, upperAlpha, upperRoman, url, useCredentials, words
+    , abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, ismap, kind, label, list, loop, low, max, maxlength, media, method, min, minlength, multiple, muted, name, novalidate, open, optimum, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, type_button, type_input, type_list, type_mime, usemap, value, value_ordinal, width, wrap
+    , allow_forms, allow_modals, allow_orientation_lock, allow_pointer_lock, allow_popups, allow_popups_to_escape_sandbox, allow_presentation, allow_same_origin, allow_scripts, allow_top_navigation, allow_top_navigation_by_user_activation, anonymous, auto, async, blank_, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, form_data, form_url_encoded, frame, get, go, hard, loweralpha, lowerroman, ltr, metadata, next, none, numeric, off, on, ordinal, parent_, plaintext, poly, polygon, post, previous, rect, rectangle, reset, rowgroup, rtl, search, self_, send, sentences, soft, submit, subtitles, sync, tel, text, top_, upperalpha, upperroman, url, use_credentials, words
     , attribute
     )
 
@@ -25,14 +25,14 @@ These Attributes can be assigned to any HTML element as defined by [html.spec.wh
 
 These Attributes may be assigned to only specific elements. That is defined on a per-element basis.
 
-@docs abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, buttonType, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, inputType, ismap, kind, label, list, loop, low, marker, max, maxlength, media, method, mimeType, min, minlength, multiple, muted, name, novalidate, open, optimum, ordinalValue, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, usemap, value, width, wrap
+@docs abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, ismap, kind, label, list, loop, low, max, maxlength, media, method, min, minlength, multiple, muted, name, novalidate, open, optimum, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, type_button, type_input, type_list, type_mime, usemap, value, value_ordinal, width, wrap
 
 
 # Values
 
 All of the enumerated values that particular Attributes may have.
 
-@docs allowForms, allowModals, allowOrientationLock, allowPointerLock, allowPopups, allowPopupsToEscapeSandbox, allowPresentation, allowSameOrigin, allowScripts, allowTopNavigation, allowTopNavigationByUserActivation, anonymous, auto, async, blank, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, formData, formUrlEncoded, frame, get, go, hard, lowerAlpha, lowerRoman, ltr, metadata, next, none, numeric, off, on, ordinal, parent, plainText, poly, polygon, post, previous, rect, rectangle, reset, rowgroup, rtl, search, self, send, sentences, soft, submit, subtitles, sync, tel, text, top, upperAlpha, upperRoman, url, useCredentials, words
+@docs allow_forms, allow_modals, allow_orientation_lock, allow_pointer_lock, allow_popups, allow_popups_to_escape_sandbox, allow_presentation, allow_same_origin, allow_scripts, allow_top_navigation, allow_top_navigation_by_user_activation, anonymous, auto, async, blank_, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, form_data, form_url_encoded, frame, get, go, hard, loweralpha, lowerroman, ltr, metadata, next, none, numeric, off, on, ordinal, parent_, plaintext, poly, polygon, post, previous, rect, rectangle, reset, rowgroup, rtl, search, self_, send, sentences, soft, submit, subtitles, sync, tel, text, top_, upperalpha, upperroman, url, use_credentials, words
 
 
 # Escape Hatch
@@ -361,19 +361,6 @@ autoplay =
     Html.bool "autoplay"
 
 
-{-| Follows the attribute definition at [html.spec.whatwg.org/button-type](https://html.spec.whatwg.org/multipage/form-elements.html#attr-button-type)
--}
-buttonType :
-    Html.Value
-        { submit : Html.SupportedValue
-        , reset : Html.SupportedValue
-        , button : Html.SupportedValue
-        }
-    -> Html.Attribute { compatible | buttonType : Html.Supported }
-buttonType =
-    Html.value "type"
-
-
 {-| Follows the attribute definition at [html.spec.whatwg.org/checked](https://html.spec.whatwg.org/multipage/input.html#attr-input-checked)
 -}
 checked : Bool -> Html.Attribute { compatible | checked : Html.Supported }
@@ -607,13 +594,6 @@ hreflang =
     Html.string "hreflang"
 
 
-{-| Follows the attribute definition at [html.spec.whatwg.org/input-type](https://html.spec.whatwg.org/multipage/input.html#attr-input-type)
--}
-inputType : String -> Html.Attribute { compatible | inputType : Html.Supported }
-inputType =
-    Html.string "type"
-
-
 {-| Follows the attribute definition at [html.spec.whatwg.org/ismap](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-ismap)
 -}
 ismap : Bool -> Html.Attribute { compatible | ismap : Html.Supported }
@@ -666,21 +646,6 @@ low =
     Html.number "low"
 
 
-{-| Follows the attribute definition at [html.spec.whatwg.org/ol-type](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-ol-type)
--}
-marker :
-    Html.Value
-        { ordinal : Html.SupportedValue
-        , lowerAlpha : Html.SupportedValue
-        , upperAlpha : Html.SupportedValue
-        , lowerRoman : Html.SupportedValue
-        , upperRoman : Html.SupportedValue
-        }
-    -> Html.Attribute { compatible | marker : Html.Supported }
-marker =
-    Html.value "type"
-
-
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-max](https://html.spec.whatwg.org/multipage/input.html#attr-input-max),
 [html.spec.whatwg.org/meter-max](https://html.spec.whatwg.org/multipage/form-elements.html#attr-meter-max),
 [html.spec.whatwg.org/progress-max](https://html.spec.whatwg.org/multipage/form-elements.html#attr-progress-max)
@@ -716,16 +681,6 @@ method :
     -> Html.Attribute { compatible | method : Html.Supported }
 method =
     Html.value "method"
-
-
-{-| Follows the attribute definition at [html.spec.whatwg.org/a-mimeType](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-type),
-[html.spec.whatwg.org/embed-mimeType](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-embed-type),
-[html.spec.whatwg.org/object-mimeType](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-object-type),
-[html.spec.whatwg.org/source-mimeType](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-source-type)
--}
-mimeType : String -> Html.Attribute { compatible | mimeType : Html.Supported }
-mimeType =
-    Html.string "type"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-min](https://html.spec.whatwg.org/multipage/input.html#attr-input-min),
@@ -791,15 +746,6 @@ open =
 optimum : Int -> Html.Attribute { compatible | optimum : Html.Supported }
 optimum =
     Html.number "optimum"
-
-
-{-| Follows the attribute definition at [html.spec.whatwg.org/li-value](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-li-value),
-[html.spec.whatwg.org/meter-value](https://html.spec.whatwg.org/multipage/form-elements.html#attr-meter-value),
-[html.spec.whatwg.org/progress-value](https://html.spec.whatwg.org/multipage/form-elements.html#attr-progress-value)
--}
-ordinalValue : Int -> Html.Attribute { compatible | ordinalValue : Html.Supported }
-ordinalValue =
-    Html.number "value"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/pattern](https://html.spec.whatwg.org/multipage/input.html#attr-input-pattern)
@@ -1048,6 +994,51 @@ target =
     Html.value "target"
 
 
+{-| Follows the attribute definition at [html.spec.whatwg.org/button-type](https://html.spec.whatwg.org/multipage/form-elements.html#attr-button-type)
+-}
+type_button :
+    Html.Value
+        { submit : Html.SupportedValue
+        , reset : Html.SupportedValue
+        , button : Html.SupportedValue
+        }
+    -> Html.Attribute { compatible | type_button : Html.Supported }
+type_button =
+    Html.value "type"
+
+
+{-| Follows the attribute definition at [html.spec.whatwg.org/input-type](https://html.spec.whatwg.org/multipage/input.html#attr-input-type)
+-}
+type_input : String -> Html.Attribute { compatible | type_input : Html.Supported }
+type_input =
+    Html.string "type"
+
+
+{-| Follows the attribute definition at [html.spec.whatwg.org/ol-type](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-ol-type)
+-}
+type_list :
+    Html.Value
+        { ordinal : Html.SupportedValue
+        , lowerAlpha : Html.SupportedValue
+        , upperAlpha : Html.SupportedValue
+        , lowerRoman : Html.SupportedValue
+        , upperRoman : Html.SupportedValue
+        }
+    -> Html.Attribute { compatible | type_list : Html.Supported }
+type_list =
+    Html.value "type"
+
+
+{-| Follows the attribute definition at [html.spec.whatwg.org/a-mimeType](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-type),
+[html.spec.whatwg.org/embed-mimeType](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-embed-type),
+[html.spec.whatwg.org/object-mimeType](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-object-type),
+[html.spec.whatwg.org/source-mimeType](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-source-type)
+-}
+type_mime : String -> Html.Attribute { compatible | type_mime : Html.Supported }
+type_mime =
+    Html.string "type"
+
+
 {-| Follows the attribute definition at [html.spec.whatwg.org/usemap](https://html.spec.whatwg.org/multipage/image-maps.html#attr-hyperlink-usemap)
 -}
 usemap : String -> Html.Attribute { compatible | usemap : Html.Supported }
@@ -1064,6 +1055,15 @@ usemap =
 value : String -> Html.Attribute { compatible | value : Html.Supported }
 value =
     Html.string "value"
+
+
+{-| Follows the attribute definition at [html.spec.whatwg.org/li-value](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-li-value),
+[html.spec.whatwg.org/meter-value](https://html.spec.whatwg.org/multipage/form-elements.html#attr-meter-value),
+[html.spec.whatwg.org/progress-value](https://html.spec.whatwg.org/multipage/form-elements.html#attr-progress-value)
+-}
+value_ordinal : Int -> Html.Attribute { compatible | value_ordinal : Html.Supported }
+value_ordinal =
+    Html.number "value"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/width](https://html.spec.whatwg.org/multipage/embedded-content-other.html#attr-dim-width),
@@ -1087,68 +1087,68 @@ wrap =
 
 
 {-| -}
-allowForms : Html.Value { compatible | allowForms : Html.SupportedValue }
-allowForms =
+allow_forms : Html.Value { compatible | allow_forms : Html.SupportedValue }
+allow_forms =
     Html.Value "allow-forms"
 
 
 {-| -}
-allowModals : Html.Value { compatible | allowModals : Html.SupportedValue }
-allowModals =
+allow_modals : Html.Value { compatible | allow_modals : Html.SupportedValue }
+allow_modals =
     Html.Value "allow-modals"
 
 
 {-| -}
-allowOrientationLock : Html.Value { compatible | allowOrientationLock : Html.SupportedValue }
-allowOrientationLock =
+allow_orientation_lock : Html.Value { compatible | allow_orientation_lock : Html.SupportedValue }
+allow_orientation_lock =
     Html.Value "allow-orientation-lock"
 
 
 {-| -}
-allowPointerLock : Html.Value { compatible | allowPointerLock : Html.SupportedValue }
-allowPointerLock =
+allow_pointer_lock : Html.Value { compatible | allow_pointer_lock : Html.SupportedValue }
+allow_pointer_lock =
     Html.Value "allow-pointer-lock"
 
 
 {-| -}
-allowPopups : Html.Value { compatible | allowPopups : Html.SupportedValue }
-allowPopups =
+allow_popups : Html.Value { compatible | allow_popups : Html.SupportedValue }
+allow_popups =
     Html.Value "allow-popups"
 
 
 {-| -}
-allowPopupsToEscapeSandbox : Html.Value { compatible | allowPopupsToEscapeSandbox : Html.SupportedValue }
-allowPopupsToEscapeSandbox =
+allow_popups_to_escape_sandbox : Html.Value { compatible | allow_popups_to_escape_sandbox : Html.SupportedValue }
+allow_popups_to_escape_sandbox =
     Html.Value "allow-popups-to-escape-sandbox"
 
 
 {-| -}
-allowPresentation : Html.Value { compatible | allowPresentation : Html.SupportedValue }
-allowPresentation =
+allow_presentation : Html.Value { compatible | allow_presentation : Html.SupportedValue }
+allow_presentation =
     Html.Value "allow-presentation"
 
 
 {-| -}
-allowSameOrigin : Html.Value { compatible | allowSameOrigin : Html.SupportedValue }
-allowSameOrigin =
+allow_same_origin : Html.Value { compatible | allow_same_origin : Html.SupportedValue }
+allow_same_origin =
     Html.Value "allow-same-origin"
 
 
 {-| -}
-allowScripts : Html.Value { compatible | allowScripts : Html.SupportedValue }
-allowScripts =
+allow_scripts : Html.Value { compatible | allow_scripts : Html.SupportedValue }
+allow_scripts =
     Html.Value "allow-scripts"
 
 
 {-| -}
-allowTopNavigation : Html.Value { compatible | allowTopNavigation : Html.SupportedValue }
-allowTopNavigation =
+allow_top_navigation : Html.Value { compatible | allow_top_navigation : Html.SupportedValue }
+allow_top_navigation =
     Html.Value "allow-top-navigation"
 
 
 {-| -}
-allowTopNavigationByUserActivation : Html.Value { compatible | allowTopNavigationByUserActivation : Html.SupportedValue }
-allowTopNavigationByUserActivation =
+allow_top_navigation_by_user_activation : Html.Value { compatible | allow_top_navigation_by_user_activation : Html.SupportedValue }
+allow_top_navigation_by_user_activation =
     Html.Value "allow-top-navigation-by-user-activation"
 
 
@@ -1171,8 +1171,8 @@ async =
 
 
 {-| -}
-blank : Html.Value { compatible | blank : Html.SupportedValue }
-blank =
+blank_ : Html.Value { compatible | blank_ : Html.SupportedValue }
+blank_ =
     Html.Value "_blank"
 
 
@@ -1267,14 +1267,14 @@ enter =
 
 
 {-| -}
-formData : Html.Value { compatible | formData : Html.SupportedValue }
-formData =
+form_data : Html.Value { compatible | formData : Html.SupportedValue }
+form_data =
     Html.Value "multipart/form-data"
 
 
 {-| -}
-formUrlEncoded : Html.Value { compatible | formUrlEncoded : Html.SupportedValue }
-formUrlEncoded =
+form_url_encoded : Html.Value { compatible | formUrlEncoded : Html.SupportedValue }
+form_url_encoded =
     Html.Value "application/x-www-form-urlencoded"
 
 
@@ -1303,14 +1303,14 @@ hard =
 
 
 {-| -}
-lowerAlpha : Html.Value { compatible | lowerAlpha : Html.SupportedValue }
-lowerAlpha =
+loweralpha : Html.Value { compatible | loweralpha : Html.SupportedValue }
+loweralpha =
     Html.Value "a"
 
 
 {-| -}
-lowerRoman : Html.Value { compatible | lowerRoman : Html.SupportedValue }
-lowerRoman =
+lowerroman : Html.Value { compatible | lowerroman : Html.SupportedValue }
+lowerroman =
     Html.Value "i"
 
 
@@ -1363,14 +1363,14 @@ ordinal =
 
 
 {-| -}
-parent : Html.Value { compatible | parent : Html.SupportedValue }
-parent =
+parent_ : Html.Value { compatible | parent_ : Html.SupportedValue }
+parent_ =
     Html.Value "_parent"
 
 
 {-| -}
-plainText : Html.Value { compatible | plainText : Html.SupportedValue }
-plainText =
+plaintext : Html.Value { compatible | plaintext : Html.SupportedValue }
+plaintext =
     Html.Value "text/plain"
 
 
@@ -1441,8 +1441,8 @@ search =
 
 
 {-| -}
-self : Html.Value { compatible | self : Html.SupportedValue }
-self =
+self_ : Html.Value { compatible | self_ : Html.SupportedValue }
+self_ =
     Html.Value "_self"
 
 
@@ -1495,20 +1495,20 @@ text =
 
 
 {-| -}
-top : Html.Value { compatible | top : Html.SupportedValue }
-top =
+top_ : Html.Value { compatible | top_ : Html.SupportedValue }
+top_ =
     Html.Value "_top"
 
 
 {-| -}
-upperAlpha : Html.Value { compatible | upperAlpha : Html.SupportedValue }
-upperAlpha =
+upperalpha : Html.Value { compatible | upperalpha : Html.SupportedValue }
+upperalpha =
     Html.Value "A"
 
 
 {-| -}
-upperRoman : Html.Value { compatible | upperRoman : Html.SupportedValue }
-upperRoman =
+upperroman : Html.Value { compatible | upperroman : Html.SupportedValue }
+upperroman =
     Html.Value "I"
 
 
@@ -1519,8 +1519,8 @@ url =
 
 
 {-| -}
-useCredentials : Html.Value { compatible | useCredentials : Html.SupportedValue }
-useCredentials =
+use_credentials : Html.Value { compatible | use_credentials : Html.SupportedValue }
+use_credentials =
     Html.Value "use-credentials"
 
 
