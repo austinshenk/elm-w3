@@ -49,657 +49,657 @@ Some Attributes are not supported as they either break elm's guarantee or they a
 -}
 
 import Set exposing (Set)
-import W3.Html.Attributes.Help as W3
+import W3.Html.Help as Html
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/accesskey](https://html.spec.whatwg.org/multipage/interaction.html#the-accesskey-attribute)
 -}
-accesskey : Set String -> W3.Attribute { compatible | accesskey : W3.Supported }
+accesskey : Set String -> Html.Attribute { compatible | accesskey : Html.Supported }
 accesskey =
-    W3.uniqueTokens "accesskey"
+    Html.uniqueTokens "accesskey"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/autocapitalize](https://html.spec.whatwg.org/multipage/interaction.html#attr-autocapitalize)
 -}
 autocapitalize :
-    W3.Value
-        { off : W3.SupportedValue
-        , none : W3.SupportedValue
-        , on : W3.SupportedValue
-        , sentences : W3.SupportedValue
-        , words : W3.SupportedValue
-        , characters : W3.SupportedValue
+    Html.Value
+        { off : Html.SupportedValue
+        , none : Html.SupportedValue
+        , on : Html.SupportedValue
+        , sentences : Html.SupportedValue
+        , words : Html.SupportedValue
+        , characters : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | autocapitalize : W3.Supported }
+    -> Html.Attribute { compatible | autocapitalize : Html.Supported }
 autocapitalize =
-    W3.value "autocapitalize"
+    Html.value "autocapitalize"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/autofocus](https://html.spec.whatwg.org/multipage/interaction.html#attr-fe-autofocus)
 -}
-autofocus : Bool -> W3.Attribute { compatible | autofocus : W3.Supported }
+autofocus : Bool -> Html.Attribute { compatible | autofocus : Html.Supported }
 autofocus =
-    W3.bool "autofocus"
+    Html.bool "autofocus"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/class](https://html.spec.whatwg.org/multipage/dom.html#classes)
 -}
-class : List String -> W3.Attribute { compatible | class : W3.Supported }
+class : List String -> Html.Attribute { compatible | class : Html.Supported }
 class =
-    W3.tokens "class"
+    Html.tokens "class"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/contenteditable](https://html.spec.whatwg.org/multipage/interaction.html#attr-contenteditable)
 -}
-contenteditable : Maybe Bool -> W3.Attribute { compatible | contenteditable : W3.Supported }
+contenteditable : Maybe Bool -> Html.Attribute { compatible | contenteditable : Html.Supported }
 contenteditable =
-    W3.maybeBool "contenteditable" ""
+    Html.maybeBool "contenteditable" ""
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/custom data](https://html.spec.whatwg.org/multipage/dom.html#custom-data-attribute)
 -}
-data_ : String -> String -> W3.Attribute { compatible | data_ : W3.Supported }
+data_ : String -> String -> Html.Attribute { compatible | data_ : Html.Supported }
 data_ key val =
-    W3.Attribute ("data-" ++ key) val
+    Html.Attribute ("data-" ++ key) val
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/dir](https://html.spec.whatwg.org/multipage/dom.html#the-dir-attribute)
 -}
 dir :
-    W3.Value
-        { ltr : W3.SupportedValue
-        , rtl : W3.SupportedValue
-        , auto : W3.SupportedValue
+    Html.Value
+        { ltr : Html.SupportedValue
+        , rtl : Html.SupportedValue
+        , auto : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | dir : W3.Supported }
+    -> Html.Attribute { compatible | dir : Html.Supported }
 dir =
-    W3.value "dir"
+    Html.value "dir"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/draggable](https://html.spec.whatwg.org/multipage/dnd.html#the-draggable-attribute)
 -}
-draggable : Maybe Bool -> W3.Attribute { compatible | draggable : W3.Supported }
+draggable : Maybe Bool -> Html.Attribute { compatible | draggable : Html.Supported }
 draggable =
-    W3.maybeBool "draggable" ""
+    Html.maybeBool "draggable" ""
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/enterkeyhint](https://html.spec.whatwg.org/multipage/interaction.html#attr-enterkeyhint)
 -}
 enterkeyhint :
-    W3.Value
-        { enter : W3.SupportedValue
-        , done : W3.SupportedValue
-        , go : W3.SupportedValue
-        , next : W3.SupportedValue
-        , previous : W3.SupportedValue
-        , search : W3.SupportedValue
-        , send : W3.SupportedValue
+    Html.Value
+        { enter : Html.SupportedValue
+        , done : Html.SupportedValue
+        , go : Html.SupportedValue
+        , next : Html.SupportedValue
+        , previous : Html.SupportedValue
+        , search : Html.SupportedValue
+        , send : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | enterkeyhint : W3.Supported }
+    -> Html.Attribute { compatible | enterkeyhint : Html.Supported }
 enterkeyhint =
-    W3.value "enterkeyhint"
+    Html.value "enterkeyhint"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/hidden](https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute)
 -}
-hidden : Bool -> W3.Attribute { compatible | hidden : W3.Supported }
+hidden : Bool -> Html.Attribute { compatible | hidden : Html.Supported }
 hidden =
-    W3.bool "hidden"
+    Html.bool "hidden"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/id](https://html.spec.whatwg.org/multipage/dom.html#the-id-attribute)
 -}
-id : String -> W3.Attribute { compatible | id : W3.Supported }
+id : String -> Html.Attribute { compatible | id : Html.Supported }
 id =
-    W3.string "id"
+    Html.string "id"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/inputmode](https://html.spec.whatwg.org/multipage/interaction.html#attr-inputmode)
 -}
 inputmode :
-    W3.Value
-        { none : W3.SupportedValue
-        , text : W3.SupportedValue
-        , tel : W3.SupportedValue
-        , url : W3.SupportedValue
-        , email : W3.SupportedValue
-        , numeric : W3.SupportedValue
-        , decimal : W3.SupportedValue
-        , search : W3.SupportedValue
+    Html.Value
+        { none : Html.SupportedValue
+        , text : Html.SupportedValue
+        , tel : Html.SupportedValue
+        , url : Html.SupportedValue
+        , email : Html.SupportedValue
+        , numeric : Html.SupportedValue
+        , decimal : Html.SupportedValue
+        , search : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | inputmode : W3.Supported }
+    -> Html.Attribute { compatible | inputmode : Html.Supported }
 inputmode =
-    W3.value "inputmode"
+    Html.value "inputmode"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemid](https://html.spec.whatwg.org/multipage/microdata.html#attr-itemid)
 -}
-itemid : String -> W3.Attribute { compatible | itemid : W3.Supported }
+itemid : String -> Html.Attribute { compatible | itemid : Html.Supported }
 itemid =
-    W3.string "itemid"
+    Html.string "itemid"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemprop](https://html.spec.whatwg.org/multipage/microdata.html#names:-the-itemprop-attribute)
 -}
-itemprop : Set String -> W3.Attribute { compatible | itemprop : W3.Supported }
+itemprop : Set String -> Html.Attribute { compatible | itemprop : Html.Supported }
 itemprop =
-    W3.uniqueTokens "itemprop"
+    Html.uniqueTokens "itemprop"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemref](https://html.spec.whatwg.org/multipage/microdata.html#attr-itemref)
 -}
-itemref : Set String -> W3.Attribute { compatible | itemref : W3.Supported }
+itemref : Set String -> Html.Attribute { compatible | itemref : Html.Supported }
 itemref =
-    W3.uniqueTokens "itemref"
+    Html.uniqueTokens "itemref"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemscope](https://html.spec.whatwg.org/multipage/microdata.html#attr-itemscope)
 -}
-itemscope : Bool -> W3.Attribute { compatible | itemscope : W3.Supported }
+itemscope : Bool -> Html.Attribute { compatible | itemscope : Html.Supported }
 itemscope =
-    W3.bool "itemscope"
+    Html.bool "itemscope"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemtype](https://html.spec.whatwg.org/multipage/microdata.html#attr-itemtype)
 -}
-itemtype : Set String -> W3.Attribute { compatible | itemtype : W3.Supported }
+itemtype : Set String -> Html.Attribute { compatible | itemtype : Html.Supported }
 itemtype =
-    W3.uniqueTokens "itemtype"
+    Html.uniqueTokens "itemtype"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/lang](https://html.spec.whatwg.org/multipage/dom.html#attr-lang)
 -}
-lang : String -> W3.Attribute { compatible | lang : W3.Supported }
+lang : String -> Html.Attribute { compatible | lang : Html.Supported }
 lang =
-    W3.string "lang"
+    Html.string "lang"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/nonce](https://html.spec.whatwg.org/multipage/urls-and-fetching.html#attr-nonce)
 -}
-nonce : Int -> W3.Attribute { compatible | nonce : W3.Supported }
+nonce : Int -> Html.Attribute { compatible | nonce : Html.Supported }
 nonce =
-    W3.number "nonce"
+    Html.number "nonce"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/slot](https://html.spec.whatwg.org/multipage/dom.html#the-id-attribute)
 -}
-slot : String -> W3.Attribute { compatible | slot : W3.Supported }
+slot : String -> Html.Attribute { compatible | slot : Html.Supported }
 slot =
-    W3.string "slot"
+    Html.string "slot"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/spellcheck](https://html.spec.whatwg.org/multipage/interaction.html#attr-spellcheck)
 -}
-spellcheck : Maybe Bool -> W3.Attribute { compatible | spellcheck : W3.Supported }
+spellcheck : Maybe Bool -> Html.Attribute { compatible | spellcheck : Html.Supported }
 spellcheck =
-    W3.maybeBool "spellcheck" ""
+    Html.maybeBool "spellcheck" ""
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/style](https://html.spec.whatwg.org/multipage/dom.html#the-style-attribute)
 -}
-style : String -> W3.Attribute { compatible | style : W3.Supported }
+style : String -> Html.Attribute { compatible | style : Html.Supported }
 style =
-    W3.string "style"
+    Html.string "style"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/tabindex](https://html.spec.whatwg.org/multipage/interaction.html#attr-tabindex)
 -}
-tabindex : Int -> W3.Attribute { compatible | tabindex : W3.Supported }
+tabindex : Int -> Html.Attribute { compatible | tabindex : Html.Supported }
 tabindex =
-    W3.number "tabindex"
+    Html.number "tabindex"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/title](https://html.spec.whatwg.org/multipage/dom.html#attr-title)
 -}
-title : String -> W3.Attribute { compatible | title : W3.Supported }
+title : String -> Html.Attribute { compatible | title : Html.Supported }
 title =
-    W3.string "title"
+    Html.string "title"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/translate](https://html.spec.whatwg.org/multipage/dom.html#attr-translate)
 -}
 translate :
-    W3.Value
-        { yes : W3.SupportedValue
-        , no : W3.SupportedValue
+    Html.Value
+        { yes : Html.SupportedValue
+        , no : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | translate : W3.Supported }
+    -> Html.Attribute { compatible | translate : Html.Supported }
 translate =
-    W3.value "translate"
+    Html.value "translate"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/abbr](https://html.spec.whatwg.org/multipage/tables.html#attr-th-abbr)
 -}
-abbr : String -> W3.Attribute { compatible | abbr : W3.Supported }
+abbr : String -> Html.Attribute { compatible | abbr : Html.Supported }
 abbr =
-    W3.string "abbr"
+    Html.string "abbr"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/accept](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept)
 -}
-accept : List String -> W3.Attribute { compatible | acceptcharset : W3.Supported }
+accept : List String -> Html.Attribute { compatible | acceptcharset : Html.Supported }
 accept values =
-    W3.Attribute "accept" (String.join "," values)
+    Html.Attribute "accept" (String.join "," values)
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/acceptcharset](https://html.spec.whatwg.org/multipage/forms.html#attr-form-accept-charset)
 -}
-acceptcharset : Set String -> W3.Attribute { compatible | acceptcharset : W3.Supported }
+acceptcharset : Set String -> Html.Attribute { compatible | acceptcharset : Html.Supported }
 acceptcharset =
-    W3.uniqueTokens "acceptcharset"
+    Html.uniqueTokens "acceptcharset"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/action](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-action)
 -}
-action : String -> W3.Attribute { compatible | action : W3.Supported }
+action : String -> Html.Attribute { compatible | action : Html.Supported }
 action =
-    W3.string "action"
+    Html.string "action"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/allow](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-allow)
 -}
-allow : String -> W3.Attribute { compatible | allow : W3.Supported }
+allow : String -> Html.Attribute { compatible | allow : Html.Supported }
 allow =
-    W3.string "allow"
+    Html.string "allow"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/allowfullscreen](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-allowfullscreen)
 -}
-allowfullscreen : Bool -> W3.Attribute { compatible | allowfullscreen : W3.Supported }
+allowfullscreen : Bool -> Html.Attribute { compatible | allowfullscreen : Html.Supported }
 allowfullscreen =
-    W3.bool "allowfullscreen"
+    Html.bool "allowfullscreen"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/allowpaymentrequest](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-allowpaymentrequest)
 -}
-allowpaymentrequest : Bool -> W3.Attribute { compatible | allowpaymentrequest : W3.Supported }
+allowpaymentrequest : Bool -> Html.Attribute { compatible | allowpaymentrequest : Html.Supported }
 allowpaymentrequest =
-    W3.bool "allowpaymentrequest"
+    Html.bool "allowpaymentrequest"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/area-alt](https://html.spec.whatwg.org/multipage/image-maps.html#attr-area-alt),
 [html.spec.whatwg.org/image-alt](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-alt),
 [html.spec.whatwg.org/input-alt](https://html.spec.whatwg.org/multipage/input.html#attr-input-alt)
 -}
-alt : String -> W3.Attribute { compatible | alt : W3.Supported }
+alt : String -> Html.Attribute { compatible | alt : Html.Supported }
 alt =
-    W3.string "alt"
+    Html.string "alt"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/autocomplete](https://html.spec.whatwg.org/multipage/forms.html#attr-form-autocomplete)
 -}
 autocomplete :
-    W3.Value
-        { on : W3.SupportedValue
-        , off : W3.SupportedValue
+    Html.Value
+        { on : Html.SupportedValue
+        , off : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | autocomplete : W3.Supported }
+    -> Html.Attribute { compatible | autocomplete : Html.Supported }
 autocomplete =
-    W3.value "autocomplete"
+    Html.value "autocomplete"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/autoplay](https://html.spec.whatwg.org/multipage/media.html#attr-media-autoplay),
 -}
-autoplay : Bool -> W3.Attribute { compatible | autoplay : W3.Supported }
+autoplay : Bool -> Html.Attribute { compatible | autoplay : Html.Supported }
 autoplay =
-    W3.bool "autoplay"
+    Html.bool "autoplay"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/button-type](https://html.spec.whatwg.org/multipage/form-elements.html#attr-button-type)
 -}
 buttonType :
-    W3.Value
-        { submit : W3.SupportedValue
-        , reset : W3.SupportedValue
-        , button : W3.SupportedValue
+    Html.Value
+        { submit : Html.SupportedValue
+        , reset : Html.SupportedValue
+        , button : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | buttonType : W3.Supported }
+    -> Html.Attribute { compatible | buttonType : Html.Supported }
 buttonType =
-    W3.value "type"
+    Html.value "type"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/checked](https://html.spec.whatwg.org/multipage/input.html#attr-input-checked)
 -}
-checked : Bool -> W3.Attribute { compatible | checked : W3.Supported }
+checked : Bool -> Html.Attribute { compatible | checked : Html.Supported }
 checked =
-    W3.bool "checked"
+    Html.bool "checked"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/blockquote-cite](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-blockquote-cite),
 [html.spec.whatwg.org/mod-cite](https://html.spec.whatwg.org/multipage/edits.html#attr-mod-cite),
 [html.spec.whatwg.org/q-cite](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-q-cite)
 -}
-cite : String -> W3.Attribute { compatible | cite : W3.Supported }
+cite : String -> Html.Attribute { compatible | cite : Html.Supported }
 cite =
-    W3.string "cite"
+    Html.string "cite"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/cols](https://html.spec.whatwg.org/multipage/form-elements.html#attr-textarea-cols)
 -}
-cols : Int -> W3.Attribute { compatible | cols : W3.Supported }
+cols : Int -> Html.Attribute { compatible | cols : Html.Supported }
 cols =
-    W3.number "cols"
+    Html.number "cols"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/colspan](https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-colspan)
 -}
-colspan : Int -> W3.Attribute { compatible | colspan : W3.Supported }
+colspan : Int -> Html.Attribute { compatible | colspan : Html.Supported }
 colspan =
-    W3.number "colspan"
+    Html.number "colspan"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/controls](https://html.spec.whatwg.org/multipage/media.html#attr-media-controls)
 -}
-controls : Bool -> W3.Attribute { compatible | controls : W3.Supported }
+controls : Bool -> Html.Attribute { compatible | controls : Html.Supported }
 controls =
-    W3.bool "controls"
+    Html.bool "controls"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/coords](https://html.spec.whatwg.org/multipage/image-maps.html#attr-area-coords)
 -}
-coords : List Int -> W3.Attribute { compatible | coords : W3.Supported }
+coords : List Int -> Html.Attribute { compatible | coords : Html.Supported }
 coords numbers =
-    W3.Attribute "coords" (List.map String.fromInt numbers |> String.join ",")
+    Html.Attribute "coords" (List.map String.fromInt numbers |> String.join ",")
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/media-crossorigin](https://html.spec.whatwg.org/multipage/media.html#attr-media-crossorigin),
 [html.spec.whatwg.org/img-crossorigin](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-crossorigin)
 -}
 crossorigin :
-    W3.Value
-        { anonymous : W3.SupportedValue
-        , useCredentials : W3.SupportedValue
+    Html.Value
+        { anonymous : Html.SupportedValue
+        , useCredentials : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | crossorigin : W3.Supported }
+    -> Html.Attribute { compatible | crossorigin : Html.Supported }
 crossorigin =
-    W3.value "crossorigin"
+    Html.value "crossorigin"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/data](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-object-data)
 -}
-data : String -> W3.Attribute { compatible | data : W3.Supported }
+data : String -> Html.Attribute { compatible | data : Html.Supported }
 data =
-    W3.string "data"
+    Html.string "data"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/mod-datetime](https://html.spec.whatwg.org/multipage/edits.html#attr-mod-datetime),
 [html.spec.whatwg.org/time-datetime](https://html.spec.whatwg.org/multipage/text-level-semantics.html#attr-time-datetime)
 -}
-datetime : String -> W3.Attribute { compatible | datetime : W3.Supported }
+datetime : String -> Html.Attribute { compatible | datetime : Html.Supported }
 datetime =
-    W3.string "datetime"
+    Html.string "datetime"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/decoding](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-decoding)
 -}
 decoding :
-    W3.Value
-        { sync : W3.SupportedValue
-        , asyc : W3.SupportedValue
-        , auto : W3.SupportedValue
+    Html.Value
+        { sync : Html.SupportedValue
+        , asyc : Html.SupportedValue
+        , auto : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | decoding : W3.Supported }
+    -> Html.Attribute { compatible | decoding : Html.Supported }
 decoding =
-    W3.value "decoding"
+    Html.value "decoding"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/default](https://html.spec.whatwg.org/multipage/media.html#attr-track-default)
 -}
-default : Bool -> W3.Attribute { compatible | default : W3.Supported }
+default : Bool -> Html.Attribute { compatible | default : Html.Supported }
 default =
-    W3.bool "default"
+    Html.bool "default"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/dirname](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-dirname)
 -}
-dirname : String -> W3.Attribute { compatible | dirname : W3.Supported }
+dirname : String -> Html.Attribute { compatible | dirname : Html.Supported }
 dirname =
-    W3.string "dirname"
+    Html.string "dirname"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/disabled](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-disabled),
 [html.spec.whatwg.org/fieldset-disabled](https://html.spec.whatwg.org/multipage/form-elements.html#attr-fieldset-disabled)
 -}
-disabled : Bool -> W3.Attribute { compatible | disabled : W3.Supported }
+disabled : Bool -> Html.Attribute { compatible | disabled : Html.Supported }
 disabled =
-    W3.bool "disabled"
+    Html.bool "disabled"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/download](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-download)
 -}
-download : String -> W3.Attribute { compatible | download : W3.Supported }
+download : String -> Html.Attribute { compatible | download : Html.Supported }
 download =
-    W3.string "download"
+    Html.string "download"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/enctype](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-enctype)
 -}
 enctype :
-    W3.Value
-        { formUrlEncoded : W3.SupportedValue
-        , formData : W3.SupportedValue
-        , plainText : W3.SupportedValue
+    Html.Value
+        { formUrlEncoded : Html.SupportedValue
+        , formData : Html.SupportedValue
+        , plainText : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | enctype : W3.Supported }
+    -> Html.Attribute { compatible | enctype : Html.Supported }
 enctype =
-    W3.value "enctype"
+    Html.value "enctype"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/label-for](https://html.spec.whatwg.org/multipage/forms.html#attr-label-for),
 [html.spec.whatwg.org/output-for](https://html.spec.whatwg.org/multipage/form-elements.html#attr-output-for)
 -}
-for : String -> W3.Attribute { compatible | for : W3.Supported }
+for : String -> Html.Attribute { compatible | for : Html.Supported }
 for =
-    W3.string "for"
+    Html.string "for"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/form](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fae-form)
 -}
-form : String -> W3.Attribute { compatible | form : W3.Supported }
+form : String -> Html.Attribute { compatible | form : Html.Supported }
 form =
-    W3.string "form"
+    Html.string "form"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/formaction](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formaction)
 -}
-formaction : String -> W3.Attribute { compatible | formaction : W3.Supported }
+formaction : String -> Html.Attribute { compatible | formaction : Html.Supported }
 formaction =
-    W3.string "formaction"
+    Html.string "formaction"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/formenctype](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formenctype)
 -}
 formenctype :
-    W3.Value
-        { formUrlEncoded : W3.SupportedValue
-        , formData : W3.SupportedValue
-        , plainText : W3.SupportedValue
+    Html.Value
+        { formUrlEncoded : Html.SupportedValue
+        , formData : Html.SupportedValue
+        , plainText : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | formenctype : W3.Supported }
+    -> Html.Attribute { compatible | formenctype : Html.Supported }
 formenctype =
-    W3.value "formenctype"
+    Html.value "formenctype"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/formmethod](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formmethod)
 -}
 formmethod :
-    W3.Value
-        { get : W3.SupportedValue
-        , post : W3.SupportedValue
-        , dialog : W3.SupportedValue
+    Html.Value
+        { get : Html.SupportedValue
+        , post : Html.SupportedValue
+        , dialog : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | formmethod : W3.Supported }
+    -> Html.Attribute { compatible | formmethod : Html.Supported }
 formmethod =
-    W3.value "formmethod"
+    Html.value "formmethod"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/formnovalidate](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formnovalidate)
 -}
-formnovalidate : Bool -> W3.Attribute { compatible | formnovalidate : W3.Supported }
+formnovalidate : Bool -> Html.Attribute { compatible | formnovalidate : Html.Supported }
 formnovalidate =
-    W3.bool "formnovalidate"
+    Html.bool "formnovalidate"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/formtarget](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formtarget)
 -}
 formtarget :
-    W3.Value
-        { blank : W3.SupportedValue
-        , self : W3.SupportedValue
-        , parent : W3.SupportedValue
-        , top : W3.SupportedValue
-        , frame : W3.SupportedValue
+    Html.Value
+        { blank : Html.SupportedValue
+        , self : Html.SupportedValue
+        , parent : Html.SupportedValue
+        , top : Html.SupportedValue
+        , frame : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | formtarget : W3.Supported }
+    -> Html.Attribute { compatible | formtarget : Html.Supported }
 formtarget =
-    W3.value "formtarget"
+    Html.value "formtarget"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/headers](https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-headers)
 -}
-headers : Set String -> W3.Attribute { compatible | headers : W3.Supported }
+headers : Set String -> Html.Attribute { compatible | headers : Html.Supported }
 headers =
-    W3.uniqueTokens "headers"
+    Html.uniqueTokens "headers"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/height](https://html.spec.whatwg.org/multipage/embedded-content-other.html#attr-dim-height),
 [html.spec.whatwg.org/canvas-height](https://html.spec.whatwg.org/multipage/canvas.html#attr-canvas-height)
 -}
-height : Int -> W3.Attribute { compatible | height : W3.Supported }
+height : Int -> Html.Attribute { compatible | height : Html.Supported }
 height =
-    W3.number "height"
+    Html.number "height"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/high](https://html.spec.whatwg.org/multipage/form-elements.html#attr-meter-high)
 -}
-high : Int -> W3.Attribute { compatible | high : W3.Supported }
+high : Int -> Html.Attribute { compatible | high : Html.Supported }
 high =
-    W3.number "high"
+    Html.number "high"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/href](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-href)
 -}
-href : String -> W3.Attribute { compatible | href : W3.Supported }
+href : String -> Html.Attribute { compatible | href : Html.Supported }
 href =
-    W3.string "href"
+    Html.string "href"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/hreflang](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-hreflang)
 -}
-hreflang : String -> W3.Attribute { compatible | hreflang : W3.Supported }
+hreflang : String -> Html.Attribute { compatible | hreflang : Html.Supported }
 hreflang =
-    W3.string "hreflang"
+    Html.string "hreflang"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-type](https://html.spec.whatwg.org/multipage/input.html#attr-input-type)
 -}
-inputType : String -> W3.Attribute { compatible | inputType : W3.Supported }
+inputType : String -> Html.Attribute { compatible | inputType : Html.Supported }
 inputType =
-    W3.string "type"
+    Html.string "type"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/ismap](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-ismap)
 -}
-ismap : Bool -> W3.Attribute { compatible | ismap : W3.Supported }
+ismap : Bool -> Html.Attribute { compatible | ismap : Html.Supported }
 ismap =
-    W3.bool "ismap"
+    Html.bool "ismap"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/kind](https://html.spec.whatwg.org/multipage/media.html#attr-track-kind)
 -}
 kind :
-    W3.Value
-        { subtitles : W3.SupportedValue
-        , captions : W3.SupportedValue
-        , description : W3.SupportedValue
-        , chapters : W3.SupportedValue
-        , metadata : W3.SupportedValue
+    Html.Value
+        { subtitles : Html.SupportedValue
+        , captions : Html.SupportedValue
+        , description : Html.SupportedValue
+        , chapters : Html.SupportedValue
+        , metadata : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | kind : W3.Supported }
+    -> Html.Attribute { compatible | kind : Html.Supported }
 kind =
-    W3.value "kind"
+    Html.value "kind"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/optgroup-label](https://html.spec.whatwg.org/multipage/form-elements.html#attr-optgroup-label),
 [html.spec.whatwg.org/option-label](https://html.spec.whatwg.org/multipage/form-elements.html#attr-option-label),
 [html.spec.whatwg.org/track-label](https://html.spec.whatwg.org/multipage/media.html#attr-track-label)
 -}
-label : String -> W3.Attribute { compatible | label : W3.Supported }
+label : String -> Html.Attribute { compatible | label : Html.Supported }
 label =
-    W3.string "label"
+    Html.string "label"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/list](https://html.spec.whatwg.org/multipage/input.html#attr-input-list)
 -}
-list : String -> W3.Attribute { compatible | list : W3.Supported }
+list : String -> Html.Attribute { compatible | list : Html.Supported }
 list =
-    W3.string "list"
+    Html.string "list"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/loop](https://html.spec.whatwg.org/multipage/media.html#attr-media-loop)
 -}
-loop : Bool -> W3.Attribute { compatible | loop : W3.Supported }
+loop : Bool -> Html.Attribute { compatible | loop : Html.Supported }
 loop =
-    W3.bool "loop"
+    Html.bool "loop"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/low](https://html.spec.whatwg.org/multipage/form-elements.html#attr-meter-low)
 -}
-low : Int -> W3.Attribute { compatible | low : W3.Supported }
+low : Int -> Html.Attribute { compatible | low : Html.Supported }
 low =
-    W3.number "low"
+    Html.number "low"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/ol-type](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-ol-type)
 -}
 marker :
-    W3.Value
-        { ordinal : W3.SupportedValue
-        , lowerAlpha : W3.SupportedValue
-        , upperAlpha : W3.SupportedValue
-        , lowerRoman : W3.SupportedValue
-        , upperRoman : W3.SupportedValue
+    Html.Value
+        { ordinal : Html.SupportedValue
+        , lowerAlpha : Html.SupportedValue
+        , upperAlpha : Html.SupportedValue
+        , lowerRoman : Html.SupportedValue
+        , upperRoman : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | marker : W3.Supported }
+    -> Html.Attribute { compatible | marker : Html.Supported }
 marker =
-    W3.value "type"
+    Html.value "type"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-max](https://html.spec.whatwg.org/multipage/input.html#attr-input-max),
 [html.spec.whatwg.org/meter-max](https://html.spec.whatwg.org/multipage/form-elements.html#attr-meter-max),
 [html.spec.whatwg.org/progress-max](https://html.spec.whatwg.org/multipage/form-elements.html#attr-progress-max)
 -}
-max : Int -> W3.Attribute { compatible | max : W3.Supported }
+max : Int -> Html.Attribute { compatible | max : Html.Supported }
 max =
-    W3.number "max"
+    Html.number "max"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-maxlength](https://html.spec.whatwg.org/multipage/input.html#attr-input-maxlength),
 [html.spec.whatwg.org/textarea-maxlength](https://html.spec.whatwg.org/multipage/form-elements.html#attr-textarea-maxlength)
 -}
-maxlength : Int -> W3.Attribute { compatible | maxlength : W3.Supported }
+maxlength : Int -> Html.Attribute { compatible | maxlength : Html.Supported }
 maxlength =
-    W3.number "maxlength"
+    Html.number "maxlength"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/media](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-source-media)
 -}
-media : String -> W3.Attribute { compatible | media : W3.Supported }
+media : String -> Html.Attribute { compatible | media : Html.Supported }
 media =
-    W3.string "media"
+    Html.string "media"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/method](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-method)
 -}
 method :
-    W3.Value
-        { get : W3.SupportedValue
-        , post : W3.SupportedValue
-        , dialog : W3.SupportedValue
+    Html.Value
+        { get : Html.SupportedValue
+        , post : Html.SupportedValue
+        , dialog : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | method : W3.Supported }
+    -> Html.Attribute { compatible | method : Html.Supported }
 method =
-    W3.value "method"
+    Html.value "method"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/a-mimeType](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-type),
@@ -707,40 +707,40 @@ method =
 [html.spec.whatwg.org/object-mimeType](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-object-type),
 [html.spec.whatwg.org/source-mimeType](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-source-type)
 -}
-mimeType : String -> W3.Attribute { compatible | mimeType : W3.Supported }
+mimeType : String -> Html.Attribute { compatible | mimeType : Html.Supported }
 mimeType =
-    W3.string "type"
+    Html.string "type"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-min](https://html.spec.whatwg.org/multipage/input.html#attr-input-min),
 [html.spec.whatwg.org/meter-min](https://html.spec.whatwg.org/multipage/form-elements.html#attr-meter-min)
 -}
-min : Int -> W3.Attribute { compatible | min : W3.Supported }
+min : Int -> Html.Attribute { compatible | min : Html.Supported }
 min =
-    W3.number "min"
+    Html.number "min"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-minlength](https://html.spec.whatwg.org/multipage/input.html#attr-input-minlength),
 [html.spec.whatwg.org/textarea-minlength](https://html.spec.whatwg.org/multipage/form-elements.html#attr-textarea-minlength)
 -}
-minlength : Int -> W3.Attribute { compatible | minlength : W3.Supported }
+minlength : Int -> Html.Attribute { compatible | minlength : Html.Supported }
 minlength =
-    W3.number "minlength"
+    Html.number "minlength"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-multiple](https://html.spec.whatwg.org/multipage/input.html#attr-input-multiple),
 [html.spec.whatwg.org/select-multiple](https://html.spec.whatwg.org/multipage/form-elements.html#attr-select-multiple)
 -}
-multiple : Bool -> W3.Attribute { compatible | multiple : W3.Supported }
+multiple : Bool -> Html.Attribute { compatible | multiple : Html.Supported }
 multiple =
-    W3.bool "multiple"
+    Html.bool "multiple"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/muted](https://html.spec.whatwg.org/multipage/media.html#attr-media-muted)
 -}
-muted : Bool -> W3.Attribute { compatible | muted : W3.Supported }
+muted : Bool -> Html.Attribute { compatible | muted : Html.Supported }
 muted =
-    W3.bool "muted"
+    Html.bool "muted"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/name](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-name),
@@ -750,293 +750,293 @@ muted =
 [html.spec.whatwg.org/map-name](https://html.spec.whatwg.org/multipage/image-maps.html#attr-map-name),
 [html.spec.whatwg.org/param-name](https://html.spec.whatwg.org/multipage/image-maps.html#attr-map-name)
 -}
-name : String -> W3.Attribute { compatible | name : W3.Supported }
+name : String -> Html.Attribute { compatible | name : Html.Supported }
 name =
-    W3.string "name"
+    Html.string "name"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/novalidate](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-novalidate)
 -}
-novalidate : Bool -> W3.Attribute { compatible | novalidate : W3.Supported }
+novalidate : Bool -> Html.Attribute { compatible | novalidate : Html.Supported }
 novalidate =
-    W3.bool "novalidate"
+    Html.bool "novalidate"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/details-open](https://html.spec.whatwg.org/multipage/interactive-elements.html#attr-details-open),
 [html.spec.whatwg.org/dialog-open](https://html.spec.whatwg.org/multipage/interactive-elements.html#attr-dialog-open)
 -}
-open : Bool -> W3.Attribute { compatible | open : W3.Supported }
+open : Bool -> Html.Attribute { compatible | open : Html.Supported }
 open =
-    W3.bool "open"
+    Html.bool "open"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/optimum](https://html.spec.whatwg.org/multipage/form-elements.html#attr-meter-optimum)
 -}
-optimum : Int -> W3.Attribute { compatible | optimum : W3.Supported }
+optimum : Int -> Html.Attribute { compatible | optimum : Html.Supported }
 optimum =
-    W3.number "optimum"
+    Html.number "optimum"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/li-value](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-li-value),
 [html.spec.whatwg.org/meter-value](https://html.spec.whatwg.org/multipage/form-elements.html#attr-meter-value),
 [html.spec.whatwg.org/progress-value](https://html.spec.whatwg.org/multipage/form-elements.html#attr-progress-value)
 -}
-ordinalValue : Int -> W3.Attribute { compatible | ordinalValue : W3.Supported }
+ordinalValue : Int -> Html.Attribute { compatible | ordinalValue : Html.Supported }
 ordinalValue =
-    W3.number "value"
+    Html.number "value"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/pattern](https://html.spec.whatwg.org/multipage/input.html#attr-input-pattern)
 -}
-pattern : String -> W3.Attribute { compatible | pattern : W3.Supported }
+pattern : String -> Html.Attribute { compatible | pattern : Html.Supported }
 pattern =
-    W3.string "pattern"
+    Html.string "pattern"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/ping](https://html.spec.whatwg.org/multipage/links.html#ping)
 -}
-ping : List String -> W3.Attribute { compatible | ping : W3.Supported }
+ping : List String -> Html.Attribute { compatible | ping : Html.Supported }
 ping =
-    W3.tokens "ping"
+    Html.tokens "ping"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-placeholder](https://html.spec.whatwg.org/multipage/input.html#attr-input-placeholder),
 [html.spec.whatwg.org/textarea-placeholder](https://html.spec.whatwg.org/multipage/form-elements.html#attr-textarea-placeholder)
 -}
-placeholder : String -> W3.Attribute { compatible | placeholder : W3.Supported }
+placeholder : String -> Html.Attribute { compatible | placeholder : Html.Supported }
 placeholder =
-    W3.string "placeholder"
+    Html.string "placeholder"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/playsinline](https://html.spec.whatwg.org/multipage/media.html#attr-video-playsinline)
 -}
-playsinline : Bool -> W3.Attribute { compatible | playsinline : W3.Supported }
+playsinline : Bool -> Html.Attribute { compatible | playsinline : Html.Supported }
 playsinline =
-    W3.bool "playsinline"
+    Html.bool "playsinline"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/poster](https://html.spec.whatwg.org/multipage/media.html#attr-video-poster)
 -}
-poster : String -> W3.Attribute { compatible | poster : W3.Supported }
+poster : String -> Html.Attribute { compatible | poster : Html.Supported }
 poster =
-    W3.string "poster"
+    Html.string "poster"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/preload](https://html.spec.whatwg.org/multipage/media.html#attr-media-preload)
 -}
 preload :
-    W3.Value
-        { none : W3.SupportedValue
-        , metadata : W3.SupportedValue
-        , auto : W3.SupportedValue
+    Html.Value
+        { none : Html.SupportedValue
+        , metadata : Html.SupportedValue
+        , auto : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | preload : W3.Supported }
+    -> Html.Attribute { compatible | preload : Html.Supported }
 preload =
-    W3.value "preload"
+    Html.value "preload"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-readonly](https://html.spec.whatwg.org/multipage/input.html#attr-input-readonly),
 [html.spec.whatwg.org/textarea-readonly](https://html.spec.whatwg.org/multipage/form-elements.html#attr-textarea-readonly)
 -}
-readonly : Bool -> W3.Attribute { compatible | readonly : W3.Supported }
+readonly : Bool -> Html.Attribute { compatible | readonly : Html.Supported }
 readonly =
-    W3.bool "readonly"
+    Html.bool "readonly"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/referrerpolicy](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-referrerpolicy)
 -}
-referrerpolicy : String -> W3.Attribute { compatible | referrerpolicy : W3.Supported }
+referrerpolicy : String -> Html.Attribute { compatible | referrerpolicy : Html.Supported }
 referrerpolicy =
-    W3.string "referrerpolicy"
+    Html.string "referrerpolicy"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/rel](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-rel)
 -}
-rel : Set String -> W3.Attribute { compatible | rel : W3.Supported }
+rel : Set String -> Html.Attribute { compatible | rel : Html.Supported }
 rel =
-    W3.uniqueTokens "rel"
+    Html.uniqueTokens "rel"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-required](https://html.spec.whatwg.org/multipage/input.html#attr-input-required),
 [html.spec.whatwg.org/select-required](https://html.spec.whatwg.org/multipage/form-elements.html#attr-select-required),
 [html.spec.whatwg.org/textarea-required](https://html.spec.whatwg.org/multipage/form-elements.html#attr-textarea-required)
 -}
-required : Bool -> W3.Attribute { compatible | required : W3.Supported }
+required : Bool -> Html.Attribute { compatible | required : Html.Supported }
 required =
-    W3.bool "required"
+    Html.bool "required"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/reversed](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-ol-reversed)
 -}
-reversed : Bool -> W3.Attribute { compatible | reversed : W3.Supported }
+reversed : Bool -> Html.Attribute { compatible | reversed : Html.Supported }
 reversed =
-    W3.bool "reversed"
+    Html.bool "reversed"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/rows](https://html.spec.whatwg.org/multipage/form-elements.html#attr-textarea-rows)
 -}
-rows : Int -> W3.Attribute { compatible | rows : W3.Supported }
+rows : Int -> Html.Attribute { compatible | rows : Html.Supported }
 rows =
-    W3.number "rows"
+    Html.number "rows"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/rowspan](https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-rowspan)
 -}
-rowspan : Int -> W3.Attribute { compatible | rowspan : W3.Supported }
+rowspan : Int -> Html.Attribute { compatible | rowspan : Html.Supported }
 rowspan =
-    W3.number "rowspan"
+    Html.number "rowspan"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/sandbox](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-sandbox)
 -}
 sandbox :
     List
-        (W3.Value
-            { allowForms : W3.SupportedValue
-            , allowModals : W3.SupportedValue
-            , allowOrientationLock : W3.SupportedValue
-            , allowPointerLock : W3.SupportedValue
-            , allowPopups : W3.SupportedValue
-            , allowPopupsToEscapeSandbox : W3.SupportedValue
-            , allowPresentation : W3.SupportedValue
-            , allowSameOrigin : W3.SupportedValue
-            , allowScripts : W3.SupportedValue
-            , allowTopNavigation : W3.SupportedValue
-            , allowTopNavigationByUserActivation : W3.SupportedValue
+        (Html.Value
+            { allowForms : Html.SupportedValue
+            , allowModals : Html.SupportedValue
+            , allowOrientationLock : Html.SupportedValue
+            , allowPointerLock : Html.SupportedValue
+            , allowPopups : Html.SupportedValue
+            , allowPopupsToEscapeSandbox : Html.SupportedValue
+            , allowPresentation : Html.SupportedValue
+            , allowSameOrigin : Html.SupportedValue
+            , allowScripts : Html.SupportedValue
+            , allowTopNavigation : Html.SupportedValue
+            , allowTopNavigationByUserActivation : Html.SupportedValue
             }
         )
-    -> W3.Attribute { compatible | sandbox : W3.Supported }
+    -> Html.Attribute { compatible | sandbox : Html.Supported }
 sandbox =
-    W3.values "sandbox"
+    Html.values "sandbox"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/scope](https://html.spec.whatwg.org/multipage/tables.html#attr-th-scope)
 -}
 scope :
-    W3.Value
-        { row : W3.SupportedValue
-        , col : W3.SupportedValue
-        , rowgroup : W3.SupportedValue
-        , colgroup : W3.SupportedValue
-        , auto : W3.SupportedValue
+    Html.Value
+        { row : Html.SupportedValue
+        , col : Html.SupportedValue
+        , rowgroup : Html.SupportedValue
+        , colgroup : Html.SupportedValue
+        , auto : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | scope : W3.Supported }
+    -> Html.Attribute { compatible | scope : Html.Supported }
 scope =
-    W3.value "scope"
+    Html.value "scope"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/selected](https://html.spec.whatwg.org/multipage/form-elements.html#attr-option-selected)
 -}
-selected : Bool -> W3.Attribute { compatible | selected : W3.Supported }
+selected : Bool -> Html.Attribute { compatible | selected : Html.Supported }
 selected =
-    W3.bool "selected"
+    Html.bool "selected"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/shape](https://html.spec.whatwg.org/multipage/image-maps.html#attr-area-shape)
 -}
 shape :
-    W3.Value
-        { circle : W3.SupportedValue
-        , circ : W3.SupportedValue
-        , default_ : W3.SupportedValue
-        , poly : W3.SupportedValue
-        , polygon : W3.SupportedValue
-        , rect : W3.SupportedValue
-        , rectangle : W3.SupportedValue
+    Html.Value
+        { circle : Html.SupportedValue
+        , circ : Html.SupportedValue
+        , default_ : Html.SupportedValue
+        , poly : Html.SupportedValue
+        , polygon : Html.SupportedValue
+        , rect : Html.SupportedValue
+        , rectangle : Html.SupportedValue
         }
-    -> W3.Attribute { shape | start : W3.Supported }
+    -> Html.Attribute { shape | start : Html.Supported }
 shape =
-    W3.value "shape"
+    Html.value "shape"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-size](https://html.spec.whatwg.org/multipage/input.html#attr-input-size),
 [html.spec.whatwg.org/select-size](https://html.spec.whatwg.org/multipage/form-elements.html#attr-select-size)
 -}
-size : Int -> W3.Attribute { compatible | size : W3.Supported }
+size : Int -> Html.Attribute { compatible | size : Html.Supported }
 size =
-    W3.number "size"
+    Html.number "size"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/img-sizes](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-sizes),
 [html.spec.whatwg.org/source-sizes](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-source-sizes)
 -}
-sizes : List String -> W3.Attribute { compatible | sizes : W3.Supported }
+sizes : List String -> Html.Attribute { compatible | sizes : Html.Supported }
 sizes =
-    W3.tokens "sizes"
+    Html.tokens "sizes"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/col-span](https://html.spec.whatwg.org/multipage/tables.html#attr-col-span),
 [html.spec.whatwg.org/colgroup-span](https://html.spec.whatwg.org/multipage/tables.html#attr-colgroup-span)
 -}
-span : Int -> W3.Attribute { compatible | span : W3.Supported }
+span : Int -> Html.Attribute { compatible | span : Html.Supported }
 span =
-    W3.number "span"
+    Html.number "span"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/src](https://html.spec.whatwg.org/multipage/media.html#attr-media-src)
 -}
-src : String -> W3.Attribute { compatible | src : W3.Supported }
+src : String -> Html.Attribute { compatible | src : Html.Supported }
 src =
-    W3.string "src"
+    Html.string "src"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/srcdoc](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-srcdoc)
 -}
-srcdoc : String -> W3.Attribute { compatible | srcdoc : W3.Supported }
+srcdoc : String -> Html.Attribute { compatible | srcdoc : Html.Supported }
 srcdoc =
-    W3.string "srcdoc"
+    Html.string "srcdoc"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/srclang](https://html.spec.whatwg.org/multipage/media.html#attr-track-srclang)
 -}
-srclang : String -> W3.Attribute { compatible | srclang : W3.Supported }
+srclang : String -> Html.Attribute { compatible | srclang : Html.Supported }
 srclang =
-    W3.string "srclang"
+    Html.string "srclang"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/img-srcset](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-srcset),
 [html.spec.whatwg.org/source-srcset](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-source-srcset)
 -}
-srcset : List String -> W3.Attribute { compatible | srcset : W3.Supported }
+srcset : List String -> Html.Attribute { compatible | srcset : Html.Supported }
 srcset =
-    W3.tokens "srcset"
+    Html.tokens "srcset"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/start](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-ol-start)
 -}
-start : Int -> W3.Attribute { compatible | start : W3.Supported }
+start : Int -> Html.Attribute { compatible | start : Html.Supported }
 start =
-    W3.number "start"
+    Html.number "start"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/step](https://html.spec.whatwg.org/multipage/input.html#attr-input-step)
 -}
-step : Int -> W3.Attribute { compatible | step : W3.Supported }
+step : Int -> Html.Attribute { compatible | step : Html.Supported }
 step =
-    W3.number "step"
+    Html.number "step"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/target](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-target)
 [html.spec.whatwg.org/form-target](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-target)
 -}
 target :
-    W3.Value
-        { blank : W3.SupportedValue
-        , self : W3.SupportedValue
-        , parent : W3.SupportedValue
-        , top : W3.SupportedValue
-        , frame : W3.SupportedValue
+    Html.Value
+        { blank : Html.SupportedValue
+        , self : Html.SupportedValue
+        , parent : Html.SupportedValue
+        , top : Html.SupportedValue
+        , frame : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | target : W3.Supported }
+    -> Html.Attribute { compatible | target : Html.Supported }
 target =
-    W3.value "target"
+    Html.value "target"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/usemap](https://html.spec.whatwg.org/multipage/image-maps.html#attr-hyperlink-usemap)
 -}
-usemap : String -> W3.Attribute { compatible | usemap : W3.Supported }
+usemap : String -> Html.Attribute { compatible | usemap : Html.Supported }
 usemap =
-    W3.string "usemap"
+    Html.string "usemap"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/button-value](https://html.spec.whatwg.org/multipage/form-elements.html#attr-button-value),
@@ -1045,470 +1045,470 @@ usemap =
 [html.spec.whatwg.org/input-value](https://html.spec.whatwg.org/multipage/input.html#attr-input-value),
 [html.spec.whatwg.org/param-value](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-param-value)
 -}
-value : String -> W3.Attribute { compatible | value : W3.Supported }
+value : String -> Html.Attribute { compatible | value : Html.Supported }
 value =
-    W3.string "value"
+    Html.string "value"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/width](https://html.spec.whatwg.org/multipage/embedded-content-other.html#attr-dim-width),
 [html.spec.whatwg.org/canvas-width](https://html.spec.whatwg.org/multipage/canvas.html#attr-canvas-width)
 -}
-width : Int -> W3.Attribute { compatible | width : W3.Supported }
+width : Int -> Html.Attribute { compatible | width : Html.Supported }
 width =
-    W3.number "width"
+    Html.number "width"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/wrap](https://html.spec.whatwg.org/multipage/form-elements.html#attr-textarea-wrap)
 -}
 wrap :
-    W3.Value
-        { soft : W3.SupportedValue
-        , hard : W3.SupportedValue
+    Html.Value
+        { soft : Html.SupportedValue
+        , hard : Html.SupportedValue
         }
-    -> W3.Attribute { compatible | wrap : W3.Supported }
+    -> Html.Attribute { compatible | wrap : Html.Supported }
 wrap =
-    W3.value "wrap"
+    Html.value "wrap"
 
 
 {-| -}
-allowForms : W3.Value { compatible | allowForms : W3.SupportedValue }
+allowForms : Html.Value { compatible | allowForms : Html.SupportedValue }
 allowForms =
-    W3.Value "allow-forms"
+    Html.Value "allow-forms"
 
 
 {-| -}
-allowModals : W3.Value { compatible | allowModals : W3.SupportedValue }
+allowModals : Html.Value { compatible | allowModals : Html.SupportedValue }
 allowModals =
-    W3.Value "allow-modals"
+    Html.Value "allow-modals"
 
 
 {-| -}
-allowOrientationLock : W3.Value { compatible | allowOrientationLock : W3.SupportedValue }
+allowOrientationLock : Html.Value { compatible | allowOrientationLock : Html.SupportedValue }
 allowOrientationLock =
-    W3.Value "allow-orientation-lock"
+    Html.Value "allow-orientation-lock"
 
 
 {-| -}
-allowPointerLock : W3.Value { compatible | allowPointerLock : W3.SupportedValue }
+allowPointerLock : Html.Value { compatible | allowPointerLock : Html.SupportedValue }
 allowPointerLock =
-    W3.Value "allow-pointer-lock"
+    Html.Value "allow-pointer-lock"
 
 
 {-| -}
-allowPopups : W3.Value { compatible | allowPopups : W3.SupportedValue }
+allowPopups : Html.Value { compatible | allowPopups : Html.SupportedValue }
 allowPopups =
-    W3.Value "allow-popups"
+    Html.Value "allow-popups"
 
 
 {-| -}
-allowPopupsToEscapeSandbox : W3.Value { compatible | allowPopupsToEscapeSandbox : W3.SupportedValue }
+allowPopupsToEscapeSandbox : Html.Value { compatible | allowPopupsToEscapeSandbox : Html.SupportedValue }
 allowPopupsToEscapeSandbox =
-    W3.Value "allow-popups-to-escape-sandbox"
+    Html.Value "allow-popups-to-escape-sandbox"
 
 
 {-| -}
-allowPresentation : W3.Value { compatible | allowPresentation : W3.SupportedValue }
+allowPresentation : Html.Value { compatible | allowPresentation : Html.SupportedValue }
 allowPresentation =
-    W3.Value "allow-presentation"
+    Html.Value "allow-presentation"
 
 
 {-| -}
-allowSameOrigin : W3.Value { compatible | allowSameOrigin : W3.SupportedValue }
+allowSameOrigin : Html.Value { compatible | allowSameOrigin : Html.SupportedValue }
 allowSameOrigin =
-    W3.Value "allow-same-origin"
+    Html.Value "allow-same-origin"
 
 
 {-| -}
-allowScripts : W3.Value { compatible | allowScripts : W3.SupportedValue }
+allowScripts : Html.Value { compatible | allowScripts : Html.SupportedValue }
 allowScripts =
-    W3.Value "allow-scripts"
+    Html.Value "allow-scripts"
 
 
 {-| -}
-allowTopNavigation : W3.Value { compatible | allowTopNavigation : W3.SupportedValue }
+allowTopNavigation : Html.Value { compatible | allowTopNavigation : Html.SupportedValue }
 allowTopNavigation =
-    W3.Value "allow-top-navigation"
+    Html.Value "allow-top-navigation"
 
 
 {-| -}
-allowTopNavigationByUserActivation : W3.Value { compatible | allowTopNavigationByUserActivation : W3.SupportedValue }
+allowTopNavigationByUserActivation : Html.Value { compatible | allowTopNavigationByUserActivation : Html.SupportedValue }
 allowTopNavigationByUserActivation =
-    W3.Value "allow-top-navigation-by-user-activation"
+    Html.Value "allow-top-navigation-by-user-activation"
 
 
 {-| -}
-anonymous : W3.Value { compatible | anonymous : W3.SupportedValue }
+anonymous : Html.Value { compatible | anonymous : Html.SupportedValue }
 anonymous =
-    W3.Value "anonymous"
+    Html.Value "anonymous"
 
 
 {-| -}
-auto : W3.Value { compatible | auto : W3.SupportedValue }
+auto : Html.Value { compatible | auto : Html.SupportedValue }
 auto =
-    W3.Value "auto"
+    Html.Value "auto"
 
 
 {-| -}
-async : W3.Value { compatible | async : W3.SupportedValue }
+async : Html.Value { compatible | async : Html.SupportedValue }
 async =
-    W3.Value "async"
+    Html.Value "async"
 
 
 {-| -}
-blank : W3.Value { compatible | blank : W3.SupportedValue }
+blank : Html.Value { compatible | blank : Html.SupportedValue }
 blank =
-    W3.Value "_blank"
+    Html.Value "_blank"
 
 
 {-| -}
-button : W3.Value { compatible | button : W3.SupportedValue }
+button : Html.Value { compatible | button : Html.SupportedValue }
 button =
-    W3.Value "button"
+    Html.Value "button"
 
 
 {-| -}
-captions : W3.Value { compatible | captions : W3.SupportedValue }
+captions : Html.Value { compatible | captions : Html.SupportedValue }
 captions =
-    W3.Value "captions"
+    Html.Value "captions"
 
 
 {-| -}
-chapters : W3.Value { compatible | chapters : W3.SupportedValue }
+chapters : Html.Value { compatible | chapters : Html.SupportedValue }
 chapters =
-    W3.Value "chapters"
+    Html.Value "chapters"
 
 
 {-| -}
-characters : W3.Value { compatible | characters : W3.SupportedValue }
+characters : Html.Value { compatible | characters : Html.SupportedValue }
 characters =
-    W3.Value "characters"
+    Html.Value "characters"
 
 
 {-| -}
-circ : W3.Value { compatible | circ : W3.SupportedValue }
+circ : Html.Value { compatible | circ : Html.SupportedValue }
 circ =
-    W3.Value "circ"
+    Html.Value "circ"
 
 
 {-| -}
-circle : W3.Value { compatible | circle : W3.SupportedValue }
+circle : Html.Value { compatible | circle : Html.SupportedValue }
 circle =
-    W3.Value "circle"
+    Html.Value "circle"
 
 
 {-| -}
-col : W3.Value { compatible | col : W3.SupportedValue }
+col : Html.Value { compatible | col : Html.SupportedValue }
 col =
-    W3.Value "col"
+    Html.Value "col"
 
 
 {-| -}
-colgroup : W3.Value { compatible | colgroup : W3.SupportedValue }
+colgroup : Html.Value { compatible | colgroup : Html.SupportedValue }
 colgroup =
-    W3.Value "colgroup"
+    Html.Value "colgroup"
 
 
 {-| -}
-decimal : W3.Value { compatible | decimal : W3.SupportedValue }
+decimal : Html.Value { compatible | decimal : Html.SupportedValue }
 decimal =
-    W3.Value "decimal"
+    Html.Value "decimal"
 
 
 {-| -}
-default_ : W3.Value { compatible | default_ : W3.SupportedValue }
+default_ : Html.Value { compatible | default_ : Html.SupportedValue }
 default_ =
-    W3.Value "default"
+    Html.Value "default"
 
 
 {-| -}
-description : W3.Value { compatible | description : W3.SupportedValue }
+description : Html.Value { compatible | description : Html.SupportedValue }
 description =
-    W3.Value "description"
+    Html.Value "description"
 
 
 {-| -}
-dialog : W3.Value { compatible | dialog : W3.SupportedValue }
+dialog : Html.Value { compatible | dialog : Html.SupportedValue }
 dialog =
-    W3.Value "dialog"
+    Html.Value "dialog"
 
 
 {-| -}
-done : W3.Value { compatible | done : W3.SupportedValue }
+done : Html.Value { compatible | done : Html.SupportedValue }
 done =
-    W3.Value "done"
+    Html.Value "done"
 
 
 {-| -}
-email : W3.Value { compatible | email : W3.SupportedValue }
+email : Html.Value { compatible | email : Html.SupportedValue }
 email =
-    W3.Value "email"
+    Html.Value "email"
 
 
 {-| -}
-enter : W3.Value { compatible | enter : W3.SupportedValue }
+enter : Html.Value { compatible | enter : Html.SupportedValue }
 enter =
-    W3.Value "enter"
+    Html.Value "enter"
 
 
 {-| -}
-formData : W3.Value { compatible | formData : W3.SupportedValue }
+formData : Html.Value { compatible | formData : Html.SupportedValue }
 formData =
-    W3.Value "multipart/form-data"
+    Html.Value "multipart/form-data"
 
 
 {-| -}
-formUrlEncoded : W3.Value { compatible | formUrlEncoded : W3.SupportedValue }
+formUrlEncoded : Html.Value { compatible | formUrlEncoded : Html.SupportedValue }
 formUrlEncoded =
-    W3.Value "application/x-www-form-urlencoded"
+    Html.Value "application/x-www-form-urlencoded"
 
 
 {-| -}
-frame : String -> W3.Value { compatible | frame : W3.SupportedValue }
+frame : String -> Html.Value { compatible | frame : Html.SupportedValue }
 frame val =
-    W3.Value val
+    Html.Value val
 
 
 {-| -}
-get : W3.Value { compatible | get : W3.SupportedValue }
+get : Html.Value { compatible | get : Html.SupportedValue }
 get =
-    W3.Value "get"
+    Html.Value "get"
 
 
 {-| -}
-go : W3.Value { compatible | go : W3.SupportedValue }
+go : Html.Value { compatible | go : Html.SupportedValue }
 go =
-    W3.Value "go"
+    Html.Value "go"
 
 
 {-| -}
-hard : W3.Value { compatible | hard : W3.SupportedValue }
+hard : Html.Value { compatible | hard : Html.SupportedValue }
 hard =
-    W3.Value "hard"
+    Html.Value "hard"
 
 
 {-| -}
-lowerAlpha : W3.Value { compatible | lowerAlpha : W3.SupportedValue }
+lowerAlpha : Html.Value { compatible | lowerAlpha : Html.SupportedValue }
 lowerAlpha =
-    W3.Value "a"
+    Html.Value "a"
 
 
 {-| -}
-lowerRoman : W3.Value { compatible | lowerRoman : W3.SupportedValue }
+lowerRoman : Html.Value { compatible | lowerRoman : Html.SupportedValue }
 lowerRoman =
-    W3.Value "i"
+    Html.Value "i"
 
 
 {-| -}
-ltr : W3.Value { compatible | ltr : W3.SupportedValue }
+ltr : Html.Value { compatible | ltr : Html.SupportedValue }
 ltr =
-    W3.Value "ltr"
+    Html.Value "ltr"
 
 
 {-| -}
-metadata : W3.Value { compatible | metadata : W3.SupportedValue }
+metadata : Html.Value { compatible | metadata : Html.SupportedValue }
 metadata =
-    W3.Value "metadata"
+    Html.Value "metadata"
 
 
 {-| -}
-next : W3.Value { compatible | next : W3.SupportedValue }
+next : Html.Value { compatible | next : Html.SupportedValue }
 next =
-    W3.Value "next"
+    Html.Value "next"
 
 
 {-| -}
-none : W3.Value { compatible | none : W3.SupportedValue }
+none : Html.Value { compatible | none : Html.SupportedValue }
 none =
-    W3.Value "none"
+    Html.Value "none"
 
 
 {-| -}
-numeric : W3.Value { compatible | numeric : W3.SupportedValue }
+numeric : Html.Value { compatible | numeric : Html.SupportedValue }
 numeric =
-    W3.Value "numeric"
+    Html.Value "numeric"
 
 
 {-| -}
-off : W3.Value { compatible | off : W3.SupportedValue }
+off : Html.Value { compatible | off : Html.SupportedValue }
 off =
-    W3.Value "off"
+    Html.Value "off"
 
 
 {-| -}
-on : W3.Value { compatible | on : W3.SupportedValue }
+on : Html.Value { compatible | on : Html.SupportedValue }
 on =
-    W3.Value "on"
+    Html.Value "on"
 
 
 {-| -}
-ordinal : W3.Value { compatible | ordinal : W3.SupportedValue }
+ordinal : Html.Value { compatible | ordinal : Html.SupportedValue }
 ordinal =
-    W3.Value "1"
+    Html.Value "1"
 
 
 {-| -}
-parent : W3.Value { compatible | parent : W3.SupportedValue }
+parent : Html.Value { compatible | parent : Html.SupportedValue }
 parent =
-    W3.Value "_parent"
+    Html.Value "_parent"
 
 
 {-| -}
-plainText : W3.Value { compatible | plainText : W3.SupportedValue }
+plainText : Html.Value { compatible | plainText : Html.SupportedValue }
 plainText =
-    W3.Value "text/plain"
+    Html.Value "text/plain"
 
 
 {-| -}
-poly : W3.Value { compatible | poly : W3.SupportedValue }
+poly : Html.Value { compatible | poly : Html.SupportedValue }
 poly =
-    W3.Value "poly"
+    Html.Value "poly"
 
 
 {-| -}
-polygon : W3.Value { compatible | polygon : W3.SupportedValue }
+polygon : Html.Value { compatible | polygon : Html.SupportedValue }
 polygon =
-    W3.Value "polygon"
+    Html.Value "polygon"
 
 
 {-| -}
-post : W3.Value { compatible | post : W3.SupportedValue }
+post : Html.Value { compatible | post : Html.SupportedValue }
 post =
-    W3.Value "post"
+    Html.Value "post"
 
 
 {-| -}
-previous : W3.Value { compatible | previous : W3.SupportedValue }
+previous : Html.Value { compatible | previous : Html.SupportedValue }
 previous =
-    W3.Value "previous"
+    Html.Value "previous"
 
 
 {-| -}
-rect : W3.Value { compatible | rect : W3.SupportedValue }
+rect : Html.Value { compatible | rect : Html.SupportedValue }
 rect =
-    W3.Value "rect"
+    Html.Value "rect"
 
 
 {-| -}
-rectangle : W3.Value { compatible | rectangle : W3.SupportedValue }
+rectangle : Html.Value { compatible | rectangle : Html.SupportedValue }
 rectangle =
-    W3.Value "rectangle"
+    Html.Value "rectangle"
 
 
 {-| -}
-reset : W3.Value { compatible | reset : W3.SupportedValue }
+reset : Html.Value { compatible | reset : Html.SupportedValue }
 reset =
-    W3.Value "reset"
+    Html.Value "reset"
 
 
 {-| -}
-row : W3.Value { compatible | row : W3.SupportedValue }
+row : Html.Value { compatible | row : Html.SupportedValue }
 row =
-    W3.Value "row"
+    Html.Value "row"
 
 
 {-| -}
-rowgroup : W3.Value { compatible | rowgroup : W3.SupportedValue }
+rowgroup : Html.Value { compatible | rowgroup : Html.SupportedValue }
 rowgroup =
-    W3.Value "rowgroup"
+    Html.Value "rowgroup"
 
 
 {-| -}
-rtl : W3.Value { compatible | rtl : W3.SupportedValue }
+rtl : Html.Value { compatible | rtl : Html.SupportedValue }
 rtl =
-    W3.Value "rtl"
+    Html.Value "rtl"
 
 
 {-| -}
-search : W3.Value { compatible | search : W3.SupportedValue }
+search : Html.Value { compatible | search : Html.SupportedValue }
 search =
-    W3.Value "search"
+    Html.Value "search"
 
 
 {-| -}
-self : W3.Value { compatible | self : W3.SupportedValue }
+self : Html.Value { compatible | self : Html.SupportedValue }
 self =
-    W3.Value "_self"
+    Html.Value "_self"
 
 
 {-| -}
-send : W3.Value { compatible | send : W3.SupportedValue }
+send : Html.Value { compatible | send : Html.SupportedValue }
 send =
-    W3.Value "send"
+    Html.Value "send"
 
 
 {-| -}
-sentences : W3.Value { compatible | sentences : W3.SupportedValue }
+sentences : Html.Value { compatible | sentences : Html.SupportedValue }
 sentences =
-    W3.Value "sentences"
+    Html.Value "sentences"
 
 
 {-| -}
-soft : W3.Value { compatible | soft : W3.SupportedValue }
+soft : Html.Value { compatible | soft : Html.SupportedValue }
 soft =
-    W3.Value "soft"
+    Html.Value "soft"
 
 
 {-| -}
-submit : W3.Value { compatible | submit : W3.SupportedValue }
+submit : Html.Value { compatible | submit : Html.SupportedValue }
 submit =
-    W3.Value "submit"
+    Html.Value "submit"
 
 
 {-| -}
-subtitles : W3.Value { compatible | subtitles : W3.SupportedValue }
+subtitles : Html.Value { compatible | subtitles : Html.SupportedValue }
 subtitles =
-    W3.Value "subtitles"
+    Html.Value "subtitles"
 
 
 {-| -}
-sync : W3.Value { compatible | sync : W3.SupportedValue }
+sync : Html.Value { compatible | sync : Html.SupportedValue }
 sync =
-    W3.Value "sync"
+    Html.Value "sync"
 
 
 {-| -}
-tel : W3.Value { compatible | tel : W3.SupportedValue }
+tel : Html.Value { compatible | tel : Html.SupportedValue }
 tel =
-    W3.Value "tel"
+    Html.Value "tel"
 
 
 {-| -}
-text : W3.Value { compatible | text : W3.SupportedValue }
+text : Html.Value { compatible | text : Html.SupportedValue }
 text =
-    W3.Value "text"
+    Html.Value "text"
 
 
 {-| -}
-top : W3.Value { compatible | top : W3.SupportedValue }
+top : Html.Value { compatible | top : Html.SupportedValue }
 top =
-    W3.Value "_top"
+    Html.Value "_top"
 
 
 {-| -}
-upperAlpha : W3.Value { compatible | upperAlpha : W3.SupportedValue }
+upperAlpha : Html.Value { compatible | upperAlpha : Html.SupportedValue }
 upperAlpha =
-    W3.Value "A"
+    Html.Value "A"
 
 
 {-| -}
-upperRoman : W3.Value { compatible | upperRoman : W3.SupportedValue }
+upperRoman : Html.Value { compatible | upperRoman : Html.SupportedValue }
 upperRoman =
-    W3.Value "I"
+    Html.Value "I"
 
 
 {-| -}
-url : W3.Value { compatible | url : W3.SupportedValue }
+url : Html.Value { compatible | url : Html.SupportedValue }
 url =
-    W3.Value "url"
+    Html.Value "url"
 
 
 {-| -}
-useCredentials : W3.Value { compatible | useCredentials : W3.SupportedValue }
+useCredentials : Html.Value { compatible | useCredentials : Html.SupportedValue }
 useCredentials =
-    W3.Value "use-credentials"
+    Html.Value "use-credentials"
 
 
 {-| -}
-words : W3.Value { compatible | words : W3.SupportedValue }
+words : Html.Value { compatible | words : Html.SupportedValue }
 words =
-    W3.Value "words"
+    Html.Value "words"

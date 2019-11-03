@@ -19,14 +19,17 @@ module W3.Aria exposing
 
 import VirtualDom
 import W3.Aria.Help as Aria
+import W3.Html.Help as Html
 
 
-{-| -}
+{-| Base Type for Aria Attributes
+-}
 type alias Attribute a =
     Aria.Attribute a
 
 
-{-| -}
+{-| Attributes that can be assigned to any Role
+-}
 type alias GlobalAttributes a =
     Aria.Attribute
         { a
