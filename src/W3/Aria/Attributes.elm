@@ -1,6 +1,6 @@
 module W3.Aria.Attributes exposing
     ( Value, IdReference, TriState
-    , activeDescendant, atomic, autoComplete, busy, checked, colCount, colIndex, colSpan, controls, current, describedBy, details, disabled, dropEffect, errorMessage, expanded, flowTo, grabbed, hasPopup, hidden, invalid, keyShortcuts, label, labelledBy, level, live, modal, multiLine, multiSelectable, orientation, owns, placeholder, posInSet, pressed, readOnly, relevant, relevantAll, required, roleDescription, rowCount, rowIndex, rowSpan, selected, setSize, sort, valueMax, valueMin, valueNow, valueText
+    , activedescendant, atomic, autocomplete, busy, checked, colcount, colindex, colspan, controls, current, describedby, details, disabled, dropeffect, errormessage, expanded, flowto, grabbed, haspopup, hidden, invalid, keyshortcuts, label, labelledby, level, live, modal, multiline, multiselectable, orientation, owns, placeholder, posinset, pressed, readonly, relevant, relevantAll, required, roledescription, rowcount, rowindex, rowspan, selected, setsize, sort, valuemax, valuemin, valuenow, valuetext
     , additions, ascending, assertive, both, copy, date, descending, dialog, execute, false, grammar, grid, horizontal, inline, link, list, listbox, location, menu, move, none, off, other, page, polite, popup, removals, spelling, step, text, time, tree, true, undefined, vertical
     , attribute
     )
@@ -14,7 +14,7 @@ module W3.Aria.Attributes exposing
 
 # Attributes
 
-@docs activeDescendant, atomic, autoComplete, busy, checked, colCount, colIndex, colSpan, controls, current, describedBy, details, disabled, dropEffect, errorMessage, expanded, flowTo, grabbed, hasPopup, hidden, invalid, keyShortcuts, label, labelledBy, level, live, modal, multiLine, multiSelectable, orientation, owns, placeholder, posInSet, pressed, readOnly, relevant, relevantAll, required, roleDescription, rowCount, rowIndex, rowSpan, selected, setSize, sort, valueMax, valueMin, valueNow, valueText
+@docs activedescendant, atomic, autocomplete, busy, checked, colcount, colindex, colspan, controls, current, describedby, details, disabled, dropeffect, errormessage, expanded, flowto, grabbed, haspopup, hidden, invalid, keyshortcuts, label, labelledby, level, live, modal, multiline, multiselectable, orientation, owns, placeholder, posinset, pressed, readonly, relevant, relevantAll, required, roledescription, rowcount, rowindex, rowspan, selected, setsize, sort, valuemax, valuemin, valuenow, valuetext
 
 
 # Values
@@ -48,8 +48,8 @@ type alias TriState =
 
 {-| Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application.
 -}
-activeDescendant : Aria.IdReference -> Aria.Attribute { compatible | activeDescendant : Aria.Supported }
-activeDescendant =
+activedescendant : Aria.IdReference -> Aria.Attribute { compatible | activedescendant : Aria.Supported }
+activedescendant =
     Aria.idReference "activedescendant"
 
 
@@ -62,15 +62,15 @@ atomic =
 
 {-| Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be presented if they are made.
 -}
-autoComplete :
+autocomplete :
     Aria.Value
         { inline : Aria.SupportedValue
         , list : Aria.SupportedValue
         , both : Aria.SupportedValue
         , none : Aria.SupportedValue
         }
-    -> Aria.Attribute { compatible | autoComplete : Aria.Supported }
-autoComplete =
+    -> Aria.Attribute { compatible | autocomplete : Aria.Supported }
+autocomplete =
     Aria.value "autocomplete"
 
 
@@ -90,22 +90,22 @@ checked =
 
 {-| Defines the total number of columns in a table, grid, or treegrid. See related [colIndex](#colIndex).
 -}
-colCount : Int -> Aria.Attribute { compatible | colCount : Aria.Supported }
-colCount =
+colcount : Int -> Aria.Attribute { compatible | colcount : Aria.Supported }
+colcount =
     Aria.integer "colcount" -1
 
 
 {-| Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid. See related [colCount](#colCount) and [colSpan](#colSpan).
 -}
-colIndex : Int -> Aria.Attribute { compatible | colIndex : Aria.Supported }
-colIndex =
+colindex : Int -> Aria.Attribute { compatible | colindex : Aria.Supported }
+colindex =
     Aria.integer "colindex" 1
 
 
 {-| Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid. See related [colIndex](#colIndex) and [rowspan](#rowSpan).
 -}
-colSpan : Int -> Aria.Attribute { compatible | colSpan : Aria.Supported }
-colSpan =
+colspan : Int -> Aria.Attribute { compatible | colspan : Aria.Supported }
+colspan =
     Aria.integer "colspan" 1
 
 
@@ -135,8 +135,8 @@ current =
 
 {-| Identifies the element (or elements) that describes the object. See related [labelledBy](#labelledBy).
 -}
-describedBy : List Aria.IdReference -> Aria.Attribute { compatible | describedBy : Aria.Supported }
-describedBy =
+describedby : List Aria.IdReference -> Aria.Attribute { compatible | describedby : Aria.Supported }
+describedby =
     Aria.idReferenceList "describedby"
 
 
@@ -156,7 +156,7 @@ disabled =
 
 {-| [Deprecated in ARIA 1.1] Indicates what functions can be performed when a dragged object is released on the drop target.
 -}
-dropEffect :
+dropeffect :
     Aria.Value
         { copy : Aria.SupportedValue
         , execute : Aria.SupportedValue
@@ -165,15 +165,15 @@ dropEffect :
         , none : Aria.SupportedValue
         , popup : Aria.SupportedValue
         }
-    -> Aria.Attribute { compatible | dropEffect : Aria.Supported }
-dropEffect =
+    -> Aria.Attribute { compatible | dropeffect : Aria.Supported }
+dropeffect =
     Aria.value "dropeffect"
 
 
 {-| Identifies the element that provides an error message for the object. See related [invalid](#invalid) and [describedBy](#describedBy).
 -}
-errorMessage : Aria.IdReference -> Aria.Attribute { compatible | errorMessage : Aria.Supported }
-errorMessage =
+errormessage : Aria.IdReference -> Aria.Attribute { compatible | errormessage : Aria.Supported }
+errormessage =
     Aria.idReference "errormessage"
 
 
@@ -186,8 +186,8 @@ expanded =
 
 {-| Identifies the next element (or elements) in an alternate reading order of content which, at the user's discretion, allows assistive technology to override the general default of reading in document source order.
 -}
-flowTo : List Aria.IdReference -> Aria.Attribute { compatible | flowTo : Aria.Supported }
-flowTo =
+flowto : List Aria.IdReference -> Aria.Attribute { compatible | flowto : Aria.Supported }
+flowto =
     Aria.idReferenceList "flowto"
 
 
@@ -200,7 +200,7 @@ grabbed =
 
 {-| Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 -}
-hasPopup :
+haspopup :
     Aria.Value
         { menu : Aria.SupportedValue
         , listbox : Aria.SupportedValue
@@ -210,8 +210,8 @@ hasPopup :
         , true : Aria.SupportedValue
         , false : Aria.SupportedValue
         }
-    -> Aria.Attribute { compatible | hasPopup : Aria.Supported }
-hasPopup =
+    -> Aria.Attribute { compatible | haspopup : Aria.Supported }
+haspopup =
     Aria.value "haspopup"
 
 
@@ -238,8 +238,8 @@ invalid =
 
 {-| Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element.
 -}
-keyShortcuts : String -> Aria.Attribute { compatible | keyShortcuts : Aria.Supported }
-keyShortcuts =
+keyshortcuts : String -> Aria.Attribute { compatible | keyshortcuts : Aria.Supported }
+keyshortcuts =
     Aria.string "keyshortcuts"
 
 
@@ -252,8 +252,8 @@ label =
 
 {-| Identifies the element (or elements) that labels the current element. See related [describedBy](#describedBy).
 -}
-labelledBy : List Aria.IdReference -> Aria.Attribute { compatible | labelledBy : Aria.Supported }
-labelledBy =
+labelledby : List Aria.IdReference -> Aria.Attribute { compatible | labelledby : Aria.Supported }
+labelledby =
     Aria.idReferenceList "labelledby"
 
 
@@ -286,15 +286,15 @@ modal =
 
 {-| Indicates whether a text box accepts multiple lines of input or only a single line.
 -}
-multiLine : Bool -> Aria.Attribute { compatible | multiLine : Aria.Supported }
-multiLine =
+multiline : Bool -> Aria.Attribute { compatible | multiline : Aria.Supported }
+multiline =
     Aria.bool "multiline"
 
 
 {-| Indicates that the user may select more than one item from the current selectable descendants.
 -}
-multiSelectable : Bool -> Aria.Attribute { compatible | multiSelectable : Aria.Supported }
-multiSelectable =
+multiselectable : Bool -> Aria.Attribute { compatible | multiselectable : Aria.Supported }
+multiselectable =
     Aria.bool "multiselectable"
 
 
@@ -327,8 +327,8 @@ placeholder =
 
 {-| Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. See related [setSize](#setSize).
 -}
-posInSet : Int -> Aria.Attribute { compatible | posInSet : Aria.Supported }
-posInSet =
+posinset : Int -> Aria.Attribute { compatible | posinset : Aria.Supported }
+posinset =
     Aria.integer "posinset" 1
 
 
@@ -341,8 +341,8 @@ pressed =
 
 {-| Indicates that the element is not editable, but is otherwise operable. See related [disabled](#disabled).
 -}
-readOnly : Bool -> Aria.Attribute { compatible | readOnly : Aria.Supported }
-readOnly =
+readonly : Bool -> Aria.Attribute { compatible | readonly : Aria.Supported }
+readonly =
     Aria.bool "readonly"
 
 
@@ -377,29 +377,29 @@ required =
 
 {-| Defines a human-readable, author-localized description for the role of an element.
 -}
-roleDescription : String -> Aria.Attribute { compatible | roleDescription : Aria.Supported }
-roleDescription =
+roledescription : String -> Aria.Attribute { compatible | roledescription : Aria.Supported }
+roledescription =
     Aria.string "roledescription"
 
 
 {-| Defines the total number of rows in a table, grid, or treegrid. See related [rowIndex](#rowIndex).
 -}
-rowCount : Int -> Aria.Attribute { compatible | rowCount : Aria.Supported }
-rowCount =
+rowcount : Int -> Aria.Attribute { compatible | rowcount : Aria.Supported }
+rowcount =
     Aria.integer "rowcount" -1
 
 
 {-| Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid. See related [rowCount](#rowCount) and [rowSpan](#rowSpan).
 -}
-rowIndex : Int -> Aria.Attribute { compatible | rowIndex : Aria.Supported }
-rowIndex =
+rowindex : Int -> Aria.Attribute { compatible | rowindex : Aria.Supported }
+rowindex =
     Aria.integer "rowindex" 1
 
 
 {-| Defines the number of rows spanned by a cell or gridcell within a table, grid, or treegrid. See related [rowIndex](#rowIndex) and [colSpan](#colSpan).
 -}
-rowSpan : Int -> Aria.Attribute { compatible | rowSpan : Aria.Supported }
-rowSpan =
+rowspan : Int -> Aria.Attribute { compatible | rowspan : Aria.Supported }
+rowspan =
     Aria.integer "rowspan" 0
 
 
@@ -412,8 +412,8 @@ selected =
 
 {-| Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. See related [posInSet](#posInSet).
 -}
-setSize : Int -> Aria.Attribute { compatible | setSize : Aria.Supported }
-setSize =
+setsize : Int -> Aria.Attribute { compatible | setsize : Aria.Supported }
+setsize =
     Aria.integer "setsize" -1
 
 
@@ -433,29 +433,29 @@ sort =
 
 {-| Defines the maximum allowed value for a range widget.
 -}
-valueMax : Int -> Aria.Attribute { compatible | valueMax : Aria.Supported }
-valueMax =
+valuemax : Int -> Aria.Attribute { compatible | valuemax : Aria.Supported }
+valuemax =
     Aria.number "valuemax"
 
 
 {-| Defines the minimum allowed value for a range widget.
 -}
-valueMin : Int -> Aria.Attribute { compatible | valueMin : Aria.Supported }
-valueMin =
+valuemin : Int -> Aria.Attribute { compatible | valuemin : Aria.Supported }
+valuemin =
     Aria.number "valuemin"
 
 
 {-| Defines the current value for a range widget. See related [valueText](#valueText).
 -}
-valueNow : Int -> Aria.Attribute { compatible | valueNow : Aria.Supported }
-valueNow =
+valuenow : Int -> Aria.Attribute { compatible | valuenow : Aria.Supported }
+valuenow =
     Aria.number "valuenow"
 
 
 {-| Defines the human readable text alternative of [valueNow](#valueNow) for a range widget.
 -}
-valueText : String -> Aria.Attribute { compatible | valueText : Aria.Supported }
-valueText =
+valuetext : String -> Aria.Attribute { compatible | valueext : Aria.Supported }
+valuetext =
     Aria.string "valuetext"
 
 
