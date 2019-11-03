@@ -1,8 +1,8 @@
 module W3.Html.Attributes exposing
     ( accesskey, autocapitalize, autofocus, class, contenteditable, data_, dir, draggable, enterkeyhint, hidden, id, inputmode, itemid, itemprop, itemref, itemscope, itemtype, lang, nonce, slot, spellcheck, style, tabindex, title, translate
-    , abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, buttonType, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, inputType, ismap, kind, label, list, loop, low, marker, max, maxlength, media, method, mimeType, min, minlength, multiple, muted, name, novalidate, open, optimum, ordinalValue, pattern, ping, placeholder, playsinline, poster, preload, readonly, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, usemap, value, width, wrap
+    , abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, buttonType, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, inputType, ismap, kind, label, list, loop, low, marker, max, maxlength, media, method, mimeType, min, minlength, multiple, muted, name, novalidate, open, optimum, ordinalValue, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, usemap, value, width, wrap
     , allowForms, allowModals, allowOrientationLock, allowPointerLock, allowPopups, allowPopupsToEscapeSandbox, allowPresentation, allowSameOrigin, allowScripts, allowTopNavigation, allowTopNavigationByUserActivation, anonymous, auto, async, blank, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, formData, formUrlEncoded, frame, get, go, hard, lowerAlpha, lowerRoman, ltr, metadata, next, none, numeric, off, on, ordinal, parent, plainText, poly, polygon, post, previous, rect, rectangle, reset, rowgroup, rtl, search, self, send, sentences, soft, submit, subtitles, sync, tel, text, top, upperAlpha, upperRoman, url, useCredentials, words
-    , referrerpolicy
+    , attribute
     )
 
 {-| Module that defines all HTML attributes and values
@@ -19,7 +19,7 @@ These Attributes can be assigned to any HTML element as defined by [html.spec.wh
 
 These Attributes may be assigned to only specific elements. That is defined on a per-element basis.
 
-@docs abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, buttonType, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, inputType, ismap, kind, label, list, loop, low, marker, max, maxlength, media, method, mimeType, min, minlength, multiple, muted, name, novalidate, open, optimum, ordinalValue, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerPolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, usemap, value, width, wrap
+@docs abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, buttonType, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, inputType, ismap, kind, label, list, loop, low, marker, max, maxlength, media, method, mimeType, min, minlength, multiple, muted, name, novalidate, open, optimum, ordinalValue, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, usemap, value, width, wrap
 
 
 # Values
@@ -27,6 +27,11 @@ These Attributes may be assigned to only specific elements. That is defined on a
 All of the enumerated values that particular Attributes may have.
 
 @docs allowForms, allowModals, allowOrientationLock, allowPointerLock, allowPopups, allowPopupsToEscapeSandbox, allowPresentation, allowSameOrigin, allowScripts, allowTopNavigation, allowTopNavigationByUserActivation, anonymous, auto, async, blank, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, formData, formUrlEncoded, frame, get, go, hard, lowerAlpha, lowerRoman, ltr, metadata, next, none, numeric, off, on, ordinal, parent, plainText, poly, polygon, post, previous, rect, rectangle, reset, rowgroup, rtl, search, self, send, sentences, soft, submit, subtitles, sync, tel, text, top, upperAlpha, upperRoman, url, useCredentials, words
+
+
+# Escape Hatch
+
+@docs attribute
 
 
 # Not Supported
@@ -1512,3 +1517,10 @@ useCredentials =
 words : Html.Value { compatible | words : Html.SupportedValue }
 words =
     Html.Value "words"
+
+
+{-| Use this to break out of this package's requirements. Useful if there is something that this package does not allow and you want to support it.
+-}
+attribute : String -> String -> Html.Attribute a
+attribute =
+    Html.Attribute

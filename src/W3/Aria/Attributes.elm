@@ -664,8 +664,8 @@ vertical =
     Aria.Value "vertical"
 
 
-{-| Use this to break out of this package's requirements. Useful if there is something that this package does not allow and you want to support it.
+{-| Use this to break out of this package's requirements. Useful if there is an attribute that this package does not support yet.
 -}
-attribute : Aria.Attribute a -> VirtualDom.Attribute msg
+attribute : String -> String -> Aria.Attribute a
 attribute =
-    Aria.toAttribute
+    Aria.Attribute

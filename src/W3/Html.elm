@@ -15,6 +15,7 @@ module W3.Html exposing
     , button, select, optgroup, datalist, datalist1, option, optionLabelled, textarea, output, progress, meter, fieldset, fieldset1, legend
     , details, summary, summaryHeader, dialog
     , toHtml
+    , node
     )
 
 {-| Module that defines all usable HTML elements, their content models, and supported attributes.
@@ -111,6 +112,11 @@ The following attempts to group elements together by function and use.
 ## Utility
 
 @docs toHtml
+
+
+# Escape Hatch
+
+@docs node
 
 -}
 
@@ -2157,16 +2163,6 @@ maybeNodeToList maybeNode =
             []
 
 
-node : String -> List (Html.Attribute a) -> List (Node b msg) -> Node c msg
-node tagName attributes nodes =
-    Node tagName (List.map toAttribute attributes) (List.map toHtml nodes)
-
-
-toAttribute : Html.Attribute a -> VirtualDom.Attribute msg
-toAttribute (Html.Attribute name value) =
-    VirtualDom.attribute name value
-
-
 {-| Function that allows converting the internal [Node](#Node) structure to VirtualDom.Node. This only needs to be done on the root element since ancestors are automatically converted as they are processed.
 
     W3.Html.div [] [ W3.Html.a [] [] ] |> W3.Html.toHtml
@@ -2175,3 +2171,15 @@ toAttribute (Html.Attribute name value) =
 toHtml : Node a msg -> VirtualDom.Node msg
 toHtml (Node tagName attributes contents) =
     VirtualDom.node tagName attributes contents
+
+
+{-| Use this function as an escape hatch to support elements that may not be supported by this package.
+-}
+node : String -> List (Html.Attribute a) -> List (Node b msg) -> Node c msg
+node tagName attributes nodes =
+    Node tagName (List.map toAttribute attributes) (List.map toHtml nodes)
+
+
+toAttribute : Html.Attribute a -> VirtualDom.Attribute msg
+toAttribute (Html.Attribute name value) =
+    VirtualDom.attribute name value
