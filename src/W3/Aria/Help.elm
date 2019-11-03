@@ -1,6 +1,5 @@
 module W3.Aria.Help exposing (Attribute(..), IdReference, Supported, SupportedValue, TriState, Value(..), bool, boolToString, idReference, idReferenceList, integer, maybeBool, maybeBoolToString, number, role, string, toHtmlAttribute, triState, value, valueToString)
 
-import VirtualDom
 import W3.Html.Help as Html
 
 

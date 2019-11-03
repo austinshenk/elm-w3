@@ -1,5 +1,5 @@
 module W3.Html exposing
-    ( Node, GlobalAttributes
+    ( Node, Attribute, GlobalAttributes
     , FlowContent, HeadingContent, SectioningContent, PhrasingContent, EmbeddedContent, InteractiveContent
     , article, section, nav, aside, h1, h2, h3, h4, h5, h6, hgroup, header, footer, address
     , p, hr, pre, blockquote, ol, ul, menu, li, dl, dl1, dt, dd, figure, figure1, figure2, figcaption, main_, div, dataDiv
@@ -23,7 +23,7 @@ module W3.Html exposing
 
 # Definitions
 
-@docs Node, GlobalAttributes
+@docs Node, Attribute, GlobalAttributes
 
 
 # Content Categories
@@ -128,6 +128,12 @@ import W3.Html.Help as Html
 -}
 type Node nodes msg
     = Node String (List (VirtualDom.Attribute msg)) (List (VirtualDom.Node msg))
+
+
+{-| Type for each attribute
+-}
+type alias Attribute msg =
+    Html.Attribute msg
 
 
 {-| All elements support the use of these attributes as defined by [html.spec.whatwg.org/GlobalAttributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
