@@ -1,7 +1,7 @@
 module W3.Aria.Attributes exposing
     ( Value, IdReference, TriState
     , activedescendant, atomic, autocomplete, busy, checked, colcount, colindex, colspan, controls, current, describedby, details, disabled, dropeffect, errormessage, expanded, flowto, grabbed, haspopup, hidden, invalid, keyshortcuts, label, labelledby, level, live, modal, multiline, multiselectable, orientation, owns, placeholder, posinset, pressed, readonly, relevant, relevantAll, required, roledescription, rowcount, rowindex, rowspan, selected, setsize, sort, valuemax, valuemin, valuenow, valuetext
-    , additions, ascending, assertive, both, copy, date, descending, dialog, execute, false, grammar, grid, horizontal, inline, link, list, listbox, location, menu, move, none, off, other, page, polite, popup, removals, spelling, step, text, time, tree, true, undefined, vertical
+    , additions, ascending, assertive, both, copy, date, descending, dialog, execute, false, grammar, grid, horizontal, inline, link, list, listbox, location, menu, mixed, move, none, off, other, page, polite, popup, removals, spelling, step, text, time, tree, true, undefined, vertical
     , attribute
     )
 
@@ -20,7 +20,7 @@ module W3.Aria.Attributes exposing
 
 # Values
 
-@docs additions, ascending, assertive, both, copy, date, descending, dialog, execute, false, grammar, grid, horizontal, inline, link, list, listbox, location, menu, move, none, off, other, page, polite, popup, removals, spelling, step, text, time, tree, true, undefined, vertical
+@docs additions, ascending, assertive, both, copy, date, descending, dialog, execute, false, grammar, grid, horizontal, inline, link, list, listbox, location, menu, mixed, move, none, off, other, page, polite, popup, removals, spelling, step, text, time, tree, true, undefined, vertical
 
 
 # Escape Hatch
@@ -579,6 +579,12 @@ menu =
 
 
 {-| -}
+mixed : Aria.Value { compatible | mixed : Aria.SupportedValue }
+mixed =
+    Aria.Value "mixed"
+
+
+{-| -}
 move : Aria.Value { compatible | move : Aria.SupportedValue }
 move =
     Aria.Value "move"
@@ -591,7 +597,7 @@ none =
 
 
 {-| -}
-off : Aria.Value { compatible | none : Aria.SupportedValue }
+off : Aria.Value { compatible | off : Aria.SupportedValue }
 off =
     Aria.Value "off"
 
@@ -639,7 +645,7 @@ step =
 
 
 {-| -}
-text : Aria.Value { compatible | step : Aria.SupportedValue }
+text : Aria.Value { compatible | text : Aria.SupportedValue }
 text =
     Aria.Value "text"
 
