@@ -87,16 +87,7 @@ type alias IdReference =
 
 idReference : String -> IdReference -> Attribute a
 idReference key =
-    Attribute key << idReferenceToString
-
-
-idReferenceToString : IdReference -> String
-idReferenceToString idRef =
-    if String.isEmpty idRef || String.contains " " idRef then
-        ""
-
-    else
-        idRef
+    Attribute key
 
 
 idReferenceList : String -> List IdReference -> Attribute a
@@ -107,22 +98,22 @@ idReferenceList key =
 idReferenceListToString : List IdReference -> String
 idReferenceListToString idReferences =
     idReferences
-        |> List.map idReferenceToString
         |> String.join " "
 
 
 string : String -> String -> Attribute a
 string key val =
-    if val |> String.trim |> String.isEmpty then
-        Attribute "" ""
-
-    else
-        Attribute key val
+    Attribute key val
 
 
 role : String -> List (Attribute a) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
 role name attributes htmlAttributes =
-    Html.Attribute "role" name :: List.concat [ List.map toHtmlAttribute attributes, htmlAttributes ]
+    Html.Attribute "role" name :: List.foldl toHtmlAttributes htmlAttributes attributes
+
+
+toHtmlAttributes : Attribute a -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+toHtmlAttributes attribute htmlAttributes =
+    toHtmlAttribute attribute :: htmlAttributes
 
 
 toHtmlAttribute : Attribute a -> Html.Attribute msg
