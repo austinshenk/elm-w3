@@ -455,7 +455,7 @@ valuenow =
 
 {-| Defines the human readable text alternative of [valueNow](#valueNow) for a range widget.
 -}
-valuetext : String -> Aria.Attribute { compatible | valueext : Aria.Supported }
+valuetext : String -> Aria.Attribute { compatible | valuetext : Aria.Supported }
 valuetext =
     Aria.string "valuetext"
 
