@@ -92,18 +92,12 @@ idReference key =
 
 idReferenceList : String -> List IdReference -> Attribute a
 idReferenceList key =
-    Attribute key << idReferenceListToString
-
-
-idReferenceListToString : List IdReference -> String
-idReferenceListToString idReferences =
-    idReferences
-        |> String.join " "
+    Attribute key << String.join " "
 
 
 string : String -> String -> Attribute a
-string key val =
-    Attribute key val
+string =
+    Attribute
 
 
 role : String -> List (Attribute a) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
