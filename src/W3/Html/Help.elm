@@ -1,10 +1,12 @@
-module W3.Html.Help exposing (Attribute(..), Supported, SupportedAttribute, SupportedValue, Value(..), bool, maybeBool, number, string, tokens, uniqueTokens, value, values)
+module W3.Html.Help exposing (Attribute(..), Supported, SupportedAttribute, SupportedValue, Value(..), bool, maybeBool, number, property, string, tokens, uniqueTokens, value, values)
 
+import Json.Decode
 import Set exposing (Set)
 
 
 type Attribute a
     = Attribute String String
+    | Property String Json.Decode.Value
 
 
 type Supported
@@ -16,7 +18,7 @@ type SupportedAttribute
 
 
 type SupportedValue
-    = SuppotedValue
+    = SupportedValue
 
 
 bool : String -> Bool -> Attribute a
@@ -88,7 +90,7 @@ values key =
 
 valuesToString : Value a -> String -> String
 valuesToString (Value val) existingVal =
-    val ++ " " ++ existingVal
+    existingVal ++ " " ++ val
 
 
 value : String -> Value a -> Attribute b
@@ -99,3 +101,8 @@ value key =
 valueToString : Value a -> String
 valueToString (Value val) =
     val
+
+
+property : String -> Json.Decode.Value -> Attribute a
+property =
+    Property

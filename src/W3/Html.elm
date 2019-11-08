@@ -2181,11 +2181,16 @@ toHtml (Node tagName attributes contents) =
 
 {-| Use this function as an escape hatch to support elements that may not be supported by this package.
 -}
-node : String -> List (Html.Attribute a) -> List (Node b msg) -> Node c msg
+node : String -> List (Attribute a) -> List (Node b msg) -> Node c msg
 node tagName attributes nodes =
     Node tagName (List.map toAttribute attributes) (List.map toHtml nodes)
 
 
-toAttribute : Html.Attribute a -> VirtualDom.Attribute msg
-toAttribute (Html.Attribute name value) =
-    VirtualDom.attribute name value
+toAttribute : Attribute a -> VirtualDom.Attribute msg
+toAttribute attribute =
+    case attribute of
+        Html.Attribute name value ->
+            VirtualDom.attribute name value
+
+        Html.Property name value ->
+            VirtualDom.property name value
