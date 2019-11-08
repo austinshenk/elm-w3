@@ -2,7 +2,7 @@ module W3.Html.Attributes exposing
     ( Value
     , accesskey, autocapitalize, autofocus, class, contenteditable, data_, dir, draggable, enterkeyhint, hidden, id, inputmode, itemid, itemprop, itemref, itemscope, itemtype, lang, nonce, slot, spellcheck, style, tabindex, title, translate
     , abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, ismap, kind, label, list, loop, low, max, maxlength, media, method, min, minlength, multiple, muted, name, novalidate, open, optimum, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, type_button, type_input, type_list, type_mime, usemap, value, value_ordinal, width, wrap
-    , allow_forms, allow_modals, allow_orientation_lock, allow_pointer_lock, allow_popups, allow_popups_to_escape_sandbox, allow_presentation, allow_same_origin, allow_scripts, allow_top_navigation, allow_top_navigation_by_user_activation, anonymous, auto, async, blank_, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, form_data, form_url_encoded, frame, get, go, hard, loweralpha, lowerroman, ltr, metadata, next, none, numeric, off, on, ordinal, parent_, plaintext, poly, polygon, post, previous, rect, rectangle, reset, rowgroup, rtl, search, self_, send, sentences, soft, submit, subtitles, sync, tel, text, top_, upperalpha, upperroman, url, use_credentials, words
+    , allow_forms, allow_modals, allow_orientation_lock, allow_pointer_lock, allow_popups, allow_popups_to_escape_sandbox, allow_presentation, allow_same_origin, allow_scripts, allow_top_navigation, allow_top_navigation_by_user_activation, anonymous, auto, async, blank_, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, form_data, form_url_encoded, frame, get, go, hard, loweralpha, lowerroman, ltr, metadata, next, no, none, numeric, off, on, ordinal, parent_, plaintext, poly, polygon, post, previous, rect, rectangle, reset, row, rowgroup, rtl, search, self_, send, sentences, soft, submit, subtitles, sync, tel, text, top_, upperalpha, upperroman, url, use_credentials, words, yes
     , attribute
     )
 
@@ -32,7 +32,7 @@ These Attributes may be assigned to only specific elements. That is defined on a
 
 All of the enumerated values that particular Attributes may have.
 
-@docs allow_forms, allow_modals, allow_orientation_lock, allow_pointer_lock, allow_popups, allow_popups_to_escape_sandbox, allow_presentation, allow_same_origin, allow_scripts, allow_top_navigation, allow_top_navigation_by_user_activation, anonymous, auto, async, blank_, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, form_data, form_url_encoded, frame, get, go, hard, loweralpha, lowerroman, ltr, metadata, next, none, numeric, off, on, ordinal, parent_, plaintext, poly, polygon, post, previous, rect, rectangle, reset, rowgroup, rtl, search, self_, send, sentences, soft, submit, subtitles, sync, tel, text, top_, upperalpha, upperroman, url, use_credentials, words
+@docs allow_forms, allow_modals, allow_orientation_lock, allow_pointer_lock, allow_popups, allow_popups_to_escape_sandbox, allow_presentation, allow_same_origin, allow_scripts, allow_top_navigation, allow_top_navigation_by_user_activation, anonymous, auto, async, blank_, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, form_data, form_url_encoded, frame, get, go, hard, loweralpha, lowerroman, ltr, metadata, next, no, none, numeric, off, on, ordinal, parent_, plaintext, poly, polygon, post, previous, rect, rectangle, reset, row, rowgroup, rtl, search, self_, send, sentences, soft, submit, subtitles, sync, tel, text, top_, upperalpha, upperroman, url, use_credentials, words, yes
 
 
 # Escape Hatch
@@ -59,6 +59,7 @@ Some Attributes are not supported as they either break elm's guarantee or they a
 
 -}
 
+import Json.Encode as Json
 import Set exposing (Set)
 import W3.Html.Help as Html
 
@@ -101,8 +102,8 @@ autofocus =
 {-| Follows the attribute definition at [html.spec.whatwg.org/class](https://html.spec.whatwg.org/multipage/dom.html#classes)
 -}
 class : List String -> Html.Attribute { compatible | class : Html.Supported }
-class =
-    Html.tokens "class"
+class val =
+    Html.property "className" (Json.string (String.join " " val))
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/contenteditable](https://html.spec.whatwg.org/multipage/interaction.html#attr-contenteditable)
@@ -411,7 +412,7 @@ coords numbers =
 crossorigin :
     Html.Value
         { anonymous : Html.SupportedValue
-        , useCredentials : Html.SupportedValue
+        , use_credentials : Html.SupportedValue
         }
     -> Html.Attribute { compatible | crossorigin : Html.Supported }
 crossorigin =
@@ -438,7 +439,7 @@ datetime =
 decoding :
     Html.Value
         { sync : Html.SupportedValue
-        , asyc : Html.SupportedValue
+        , async : Html.SupportedValue
         , auto : Html.SupportedValue
         }
     -> Html.Attribute { compatible | decoding : Html.Supported }
@@ -479,9 +480,9 @@ download =
 -}
 enctype :
     Html.Value
-        { formUrlEncoded : Html.SupportedValue
-        , formData : Html.SupportedValue
-        , plainText : Html.SupportedValue
+        { form_url_encoded : Html.SupportedValue
+        , form_data : Html.SupportedValue
+        , plaintext : Html.SupportedValue
         }
     -> Html.Attribute { compatible | enctype : Html.Supported }
 enctype =
@@ -514,9 +515,9 @@ formaction =
 -}
 formenctype :
     Html.Value
-        { formUrlEncoded : Html.SupportedValue
-        , formData : Html.SupportedValue
-        , plainText : Html.SupportedValue
+        { form_url_encoded : Html.SupportedValue
+        , form_data : Html.SupportedValue
+        , plaintext : Html.SupportedValue
         }
     -> Html.Attribute { compatible | formenctype : Html.Supported }
 formenctype =
@@ -547,10 +548,10 @@ formnovalidate =
 -}
 formtarget :
     Html.Value
-        { blank : Html.SupportedValue
-        , self : Html.SupportedValue
-        , parent : Html.SupportedValue
-        , top : Html.SupportedValue
+        { blank_ : Html.SupportedValue
+        , self_ : Html.SupportedValue
+        , parent_ : Html.SupportedValue
+        , top_ : Html.SupportedValue
         , frame : Html.SupportedValue
         }
     -> Html.Attribute { compatible | formtarget : Html.Supported }
@@ -854,17 +855,17 @@ rowspan =
 sandbox :
     List
         (Html.Value
-            { allowForms : Html.SupportedValue
-            , allowModals : Html.SupportedValue
-            , allowOrientationLock : Html.SupportedValue
-            , allowPointerLock : Html.SupportedValue
-            , allowPopups : Html.SupportedValue
-            , allowPopupsToEscapeSandbox : Html.SupportedValue
-            , allowPresentation : Html.SupportedValue
-            , allowSameOrigin : Html.SupportedValue
-            , allowScripts : Html.SupportedValue
-            , allowTopNavigation : Html.SupportedValue
-            , allowTopNavigationByUserActivation : Html.SupportedValue
+            { allow_forms : Html.SupportedValue
+            , allow_modals : Html.SupportedValue
+            , allow_orientation_lock : Html.SupportedValue
+            , allow_pointer_lock : Html.SupportedValue
+            , allow_popups : Html.SupportedValue
+            , allow_popups_to_escape_sandbox : Html.SupportedValue
+            , allow_presentation : Html.SupportedValue
+            , allow_same_origin : Html.SupportedValue
+            , allow_scripts : Html.SupportedValue
+            , allow_top_navigation : Html.SupportedValue
+            , allow_top_navigation_by_user_activation : Html.SupportedValue
             }
         )
     -> Html.Attribute { compatible | sandbox : Html.Supported }
@@ -983,10 +984,10 @@ step =
 -}
 target :
     Html.Value
-        { blank : Html.SupportedValue
-        , self : Html.SupportedValue
-        , parent : Html.SupportedValue
-        , top : Html.SupportedValue
+        { blank_ : Html.SupportedValue
+        , self_ : Html.SupportedValue
+        , parent_ : Html.SupportedValue
+        , top_ : Html.SupportedValue
         , frame : Html.SupportedValue
         }
     -> Html.Attribute { compatible | target : Html.Supported }
@@ -1019,10 +1020,10 @@ type_input =
 type_list :
     Html.Value
         { ordinal : Html.SupportedValue
-        , lowerAlpha : Html.SupportedValue
-        , upperAlpha : Html.SupportedValue
-        , lowerRoman : Html.SupportedValue
-        , upperRoman : Html.SupportedValue
+        , loweralpha : Html.SupportedValue
+        , upperalpha : Html.SupportedValue
+        , lowerroman : Html.SupportedValue
+        , upperroman : Html.SupportedValue
         }
     -> Html.Attribute { compatible | type_list : Html.Supported }
 type_list =
@@ -1267,13 +1268,13 @@ enter =
 
 
 {-| -}
-form_data : Html.Value { compatible | formData : Html.SupportedValue }
+form_data : Html.Value { compatible | form_data : Html.SupportedValue }
 form_data =
     Html.Value "multipart/form-data"
 
 
 {-| -}
-form_url_encoded : Html.Value { compatible | formUrlEncoded : Html.SupportedValue }
+form_url_encoded : Html.Value { compatible | form_url_encoded : Html.SupportedValue }
 form_url_encoded =
     Html.Value "application/x-www-form-urlencoded"
 
@@ -1330,6 +1331,12 @@ metadata =
 next : Html.Value { compatible | next : Html.SupportedValue }
 next =
     Html.Value "next"
+
+
+{-| -}
+no : Html.Value { compatible | no : Html.SupportedValue }
+no =
+    Html.Value "no"
 
 
 {-| -}
@@ -1528,6 +1535,12 @@ use_credentials =
 words : Html.Value { compatible | words : Html.SupportedValue }
 words =
     Html.Value "words"
+
+
+{-| -}
+yes : Html.Value { compatible | yes : Html.SupportedValue }
+yes =
+    Html.Value "yes"
 
 
 {-| Use this to break out of this package's requirements. Useful if there is something that this package does not allow and you want to support it.
