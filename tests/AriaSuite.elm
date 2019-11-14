@@ -1,4 +1,4 @@
-module AriaSuite exposing (..)
+module AriaSuite exposing (suite)
 
 import Test exposing (..)
 import Test.Html.Query as Query

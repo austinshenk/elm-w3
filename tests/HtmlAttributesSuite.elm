@@ -1,4 +1,4 @@
-module HtmlAttributesSuite exposing (..)
+module HtmlAttributesSuite exposing (suite)
 
 import Help
 import Test exposing (..)
