@@ -2182,16 +2182,6 @@ maybeVirutalNodeToList maybeNode =
             []
 
 
-maybeNodeToList : Maybe (Node a msg) -> List (VirtualDom.Node msg)
-maybeNodeToList maybeNode =
-    case maybeNode of
-        Just n ->
-            [ toHtml n ]
-
-        Nothing ->
-            []
-
-
 {-| Function that allows converting the internal [Node](#Node) structure to VirtualDom.Node. This only needs to be done on the root element since ancestors are automatically converted as they are processed.
 
     W3.Html.div [] [ W3.Html.a [] [] ] |> W3.Html.toHtml
