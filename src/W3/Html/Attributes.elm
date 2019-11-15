@@ -60,7 +60,6 @@ Some Attributes are not supported as they either break elm's guarantee or they a
 -}
 
 import Json.Encode as Json
-import Set exposing (Set)
 import W3.Html.Help as Html
 
 
@@ -71,9 +70,9 @@ type alias Value a =
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/accesskey](https://html.spec.whatwg.org/multipage/interaction.html#the-accesskey-attribute)
 -}
-accesskey : Set String -> Html.Attribute { compatible | accesskey : Html.SupportedAttribute }
+accesskey : List String -> Html.Attribute { compatible | accesskey : Html.SupportedAttribute }
 accesskey =
-    Html.uniqueTokens "accesskey"
+    Html.tokens "accesskey"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/autocapitalize](https://html.spec.whatwg.org/multipage/interaction.html#attr-autocapitalize)
@@ -205,16 +204,16 @@ itemid =
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemprop](https://html.spec.whatwg.org/multipage/microdata.html#names:-the-itemprop-attribute)
 -}
-itemprop : Set String -> Html.Attribute { compatible | itemprop : Html.SupportedAttribute }
+itemprop : List String -> Html.Attribute { compatible | itemprop : Html.SupportedAttribute }
 itemprop =
-    Html.uniqueTokens "itemprop"
+    Html.tokens "itemprop"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemref](https://html.spec.whatwg.org/multipage/microdata.html#attr-itemref)
 -}
-itemref : Set String -> Html.Attribute { compatible | itemref : Html.SupportedAttribute }
+itemref : List String -> Html.Attribute { compatible | itemref : Html.SupportedAttribute }
 itemref =
-    Html.uniqueTokens "itemref"
+    Html.tokens "itemref"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemscope](https://html.spec.whatwg.org/multipage/microdata.html#attr-itemscope)
@@ -226,9 +225,9 @@ itemscope =
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemtype](https://html.spec.whatwg.org/multipage/microdata.html#attr-itemtype)
 -}
-itemtype : Set String -> Html.Attribute { compatible | itemtype : Html.SupportedAttribute }
+itemtype : List String -> Html.Attribute { compatible | itemtype : Html.SupportedAttribute }
 itemtype =
-    Html.uniqueTokens "itemtype"
+    Html.tokens "itemtype"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/lang](https://html.spec.whatwg.org/multipage/dom.html#attr-lang)
@@ -303,9 +302,9 @@ accept values =
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/acceptcharset](https://html.spec.whatwg.org/multipage/forms.html#attr-form-accept-charset)
 -}
-acceptcharset : Set String -> Html.Attribute { compatible | acceptcharset : Html.SupportedAttribute }
+acceptcharset : List String -> Html.Attribute { compatible | acceptcharset : Html.SupportedAttribute }
 acceptcharset =
-    Html.uniqueTokens "acceptcharset"
+    Html.tokens "acceptcharset"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/action](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-action)
@@ -558,9 +557,9 @@ formtarget =
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/headers](https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-headers)
 -}
-headers : Set String -> Html.Attribute { compatible | headers : Html.SupportedAttribute }
+headers : List String -> Html.Attribute { compatible | headers : Html.SupportedAttribute }
 headers =
-    Html.uniqueTokens "headers"
+    Html.tokens "headers"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/height](https://html.spec.whatwg.org/multipage/embedded-content-other.html#attr-dim-height),
@@ -812,9 +811,9 @@ referrerpolicy =
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/rel](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-rel)
 -}
-rel : Set String -> Html.Attribute { compatible | rel : Html.SupportedAttribute }
+rel : List String -> Html.Attribute { compatible | rel : Html.SupportedAttribute }
 rel =
-    Html.uniqueTokens "rel"
+    Html.tokens "rel"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-required](https://html.spec.whatwg.org/multipage/input.html#attr-input-required),

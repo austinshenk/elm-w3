@@ -24,7 +24,7 @@ suite : Test
 suite =
     describe "Html attributes"
         --Global Attributes
-        (Help.stringsUnique test "accesskey" Attributes.accesskey
+        (Help.stringsSpaceSeparated test "accesskey" Attributes.accesskey
             ++ Help.value test
                 "autocapitalize"
                 Attributes.autocapitalize
@@ -80,10 +80,10 @@ suite =
                 , ( Attributes.search, "search" )
                 ]
             ++ Help.string test "itemid" Attributes.itemid
-            ++ Help.stringsUnique test "itemprop" Attributes.itemprop
-            ++ Help.stringsUnique test "itemref" Attributes.itemref
+            ++ Help.stringsSpaceSeparated test "itemprop" Attributes.itemprop
+            ++ Help.stringsSpaceSeparated test "itemref" Attributes.itemref
             ++ Help.bool test "itemscope" Attributes.itemscope
-            ++ Help.stringsUnique test "itemtype" Attributes.itemtype
+            ++ Help.stringsSpaceSeparated test "itemtype" Attributes.itemtype
             ++ Help.string test "lang" Attributes.lang
             ++ Help.number test "nonce" Attributes.nonce
             ++ Help.string test "slot" Attributes.slot
@@ -99,7 +99,7 @@ suite =
             -- Attributes
             ++ Help.string test "abbr" Attributes.abbr
             ++ Help.stringsCommaSeparated test "accept" Attributes.accept
-            ++ Help.stringsUnique test "acceptcharset" Attributes.acceptcharset
+            ++ Help.stringsSpaceSeparated test "acceptcharset" Attributes.acceptcharset
             ++ Help.string test "action" Attributes.action
             ++ Help.string test "allow" Attributes.allow
             ++ Help.bool test "allowfullscreen" Attributes.allowfullscreen
@@ -170,7 +170,7 @@ suite =
                 , ( Attributes.top_, "_top" )
                 , ( Attributes.frame "test", "test" )
                 ]
-            ++ Help.stringsUnique test "headers" Attributes.headers
+            ++ Help.stringsSpaceSeparated test "headers" Attributes.headers
             ++ Help.number test "height" Attributes.height
             ++ Help.number test "high" Attributes.high
             ++ Help.string test "href" Attributes.href
@@ -221,7 +221,7 @@ suite =
                 ]
             ++ Help.bool test "readonly" Attributes.readonly
             ++ Help.string test "referrerpolicy" Attributes.referrerpolicy
-            ++ Help.stringsUnique test "rel" Attributes.rel
+            ++ Help.stringsSpaceSeparated test "rel" Attributes.rel
             ++ Help.bool test "required" Attributes.required
             ++ Help.bool test "reversed" Attributes.reversed
             ++ Help.number test "rows" Attributes.rows

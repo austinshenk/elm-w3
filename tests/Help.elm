@@ -1,6 +1,5 @@
-module Help exposing (bool, boolValue, boundedNumber, maybeBool, number, string, stringsCommaSeparated, stringsSpaceSeparated, stringsUnique, value, values)
+module Help exposing (bool, boolValue, boundedNumber, maybeBool, number, string, stringsCommaSeparated, stringsSpaceSeparated, value, values)
 
-import Set exposing (Set)
 import Test exposing (..)
 
 
@@ -11,11 +10,6 @@ type alias TestConstructor a =
 string : TestConstructor a -> String -> (String -> a) -> List Test
 string test name attribute =
     [ test (name ++ " is \"testValue\"") name (attribute "testValue") "testValue" ]
-
-
-stringsUnique : TestConstructor a -> String -> (Set String -> a) -> List Test
-stringsUnique test attributeName attribute =
-    [ test (attributeName ++ " is test") attributeName (attribute (Set.singleton "test")) "test" ]
 
 
 stringsSpaceSeparated : TestConstructor a -> String -> (List String -> a) -> List Test

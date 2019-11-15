@@ -1,6 +1,5 @@
 module HtmlSuite exposing (..)
 
-import Set
 import Test exposing (..)
 import Test.Html.Query as Query
 import Test.Html.Selector as Selector
@@ -287,7 +286,7 @@ suite =
                 )
             ++ supports "GlobalAttributes"
                 (globalAttributesNode
-                    [ Attributes.accesskey Set.empty
+                    [ Attributes.accesskey []
                     , Attributes.autocapitalize Attributes.on
                     , Attributes.autofocus True
                     , Attributes.class []
@@ -301,10 +300,10 @@ suite =
                     , Attributes.inputmode Attributes.none
                     , Attributes.is ""
                     , Attributes.itemid ""
-                    , Attributes.itemprop Set.empty
-                    , Attributes.itemref Set.empty
+                    , Attributes.itemprop []
+                    , Attributes.itemref []
                     , Attributes.itemscope True
-                    , Attributes.itemtype Set.empty
+                    , Attributes.itemtype []
                     , Attributes.lang ""
                     , Attributes.nonce 0
                     , Attributes.slot ""
@@ -376,7 +375,7 @@ suite =
                     , Attributes.target Attributes.blank_
                     , Attributes.download ""
                     , Attributes.ping []
-                    , Attributes.rel Set.empty
+                    , Attributes.rel []
                     , Attributes.hreflang ""
                     , Attributes.type_mime ""
                     , Attributes.referrerpolicy ""
@@ -557,7 +556,7 @@ suite =
                     , Attributes.target Attributes.blank_
                     , Attributes.download ""
                     , Attributes.ping []
-                    , Attributes.rel Set.empty
+                    , Attributes.rel []
                     , Attributes.referrerpolicy ""
                     ]
                 )
@@ -580,7 +579,7 @@ suite =
                 (Html.td
                     [ Attributes.colspan 0
                     , Attributes.rowspan 0
-                    , Attributes.headers Set.empty
+                    , Attributes.headers []
                     ]
                     []
                 )
@@ -588,7 +587,7 @@ suite =
                 (Html.th
                     [ Attributes.colspan 0
                     , Attributes.rowspan 0
-                    , Attributes.headers Set.empty
+                    , Attributes.headers []
                     , Attributes.scope Attributes.row
                     , Attributes.abbr ""
                     ]
@@ -596,7 +595,7 @@ suite =
                 )
             ++ test "form"
                 (Html.form
-                    [ Attributes.acceptcharset Set.empty
+                    [ Attributes.acceptcharset []
                     , Attributes.action ""
                     , Attributes.autocomplete True
                     , Attributes.enctype Attributes.form_url_encoded
@@ -604,7 +603,7 @@ suite =
                     , Attributes.name ""
                     , Attributes.novalidate True
                     , Attributes.target Attributes.blank_
-                    , Attributes.rel Set.empty
+                    , Attributes.rel []
                     ]
                     []
                 )

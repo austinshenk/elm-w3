@@ -1,7 +1,6 @@
-module W3.Html.Help exposing (Attribute(..), Supported, SupportedAttribute, SupportedValue, Value(..), bool, boolValue, maybeBool, number, property, string, tokens, uniqueTokens, value, values)
+module W3.Html.Help exposing (Attribute(..), Supported, SupportedAttribute, SupportedValue, Value(..), bool, boolValue, maybeBool, number, property, string, tokens, value, values)
 
 import Json.Decode
-import Set exposing (Set)
 
 
 type Attribute a
@@ -78,16 +77,6 @@ string key val =
 tokens : String -> List String -> Attribute a
 tokens key =
     Attribute key << String.join " "
-
-
-uniqueTokens : String -> Set String -> Attribute a
-uniqueTokens key =
-    Attribute key << setToString
-
-
-setToString : Set String -> String
-setToString set =
-    set |> Set.toList |> String.join " "
 
 
 type Value a
