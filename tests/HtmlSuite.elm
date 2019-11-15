@@ -312,7 +312,7 @@ suite =
                     , Attributes.style ""
                     , Attributes.tabindex -1
                     , Attributes.title ""
-                    , Attributes.translate Attributes.yes
+                    , Attributes.translate True
                     ]
                 )
             ++ test "article" (Html.article [] [])
@@ -598,7 +598,7 @@ suite =
                 (Html.form
                     [ Attributes.acceptcharset Set.empty
                     , Attributes.action ""
-                    , Attributes.autocomplete Attributes.on
+                    , Attributes.autocomplete True
                     , Attributes.enctype Attributes.form_url_encoded
                     , Attributes.method Attributes.get
                     , Attributes.name ""
@@ -613,7 +613,7 @@ suite =
                 (Html.input
                     [ Attributes.accept []
                     , Attributes.alt ""
-                    , Attributes.autocomplete Attributes.on
+                    , Attributes.autocomplete True
                     , Attributes.checked True
                     , Attributes.dirname ""
                     , Attributes.disabled True
@@ -643,11 +643,11 @@ suite =
                     , Attributes.width 0
                     ]
                 )
-            ++ numbered "input" 1 (Html.hidden [ Attributes.autocomplete Attributes.on ])
+            ++ numbered "input" 1 (Html.hidden [ Attributes.autocomplete True ])
             ++ numbered "input"
                 2
                 (Html.textInput
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.dirname ""
                     , Attributes.list ""
                     , Attributes.maxlength 0
@@ -662,7 +662,7 @@ suite =
             ++ numbered "input"
                 3
                 (Html.search
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.dirname ""
                     , Attributes.list ""
                     , Attributes.maxlength 0
@@ -677,7 +677,7 @@ suite =
             ++ numbered "input"
                 4
                 (Html.url
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.list ""
                     , Attributes.maxlength 0
                     , Attributes.minlength 0
@@ -691,7 +691,7 @@ suite =
             ++ numbered "input"
                 5
                 (Html.tel
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.list ""
                     , Attributes.maxlength 0
                     , Attributes.minlength 0
@@ -705,7 +705,7 @@ suite =
             ++ numbered "input"
                 6
                 (Html.email
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.list ""
                     , Attributes.maxlength 0
                     , Attributes.minlength 0
@@ -720,7 +720,7 @@ suite =
             ++ numbered "input"
                 7
                 (Html.password
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.maxlength 0
                     , Attributes.minlength 0
                     , Attributes.pattern ""
@@ -733,7 +733,7 @@ suite =
             ++ numbered "input"
                 8
                 (Html.date
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.list ""
                     , Attributes.max 0
                     , Attributes.min 0
@@ -745,7 +745,7 @@ suite =
             ++ numbered "input"
                 9
                 (Html.month
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.list ""
                     , Attributes.max 0
                     , Attributes.min 0
@@ -757,7 +757,7 @@ suite =
             ++ numbered "input"
                 10
                 (Html.week
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.list ""
                     , Attributes.max 0
                     , Attributes.min 0
@@ -769,7 +769,7 @@ suite =
             ++ numbered "input"
                 11
                 (Html.timeInput
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.list ""
                     , Attributes.max 0
                     , Attributes.min 0
@@ -781,7 +781,7 @@ suite =
             ++ numbered "input"
                 12
                 (Html.datetime
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.list ""
                     , Attributes.max 0
                     , Attributes.min 0
@@ -793,7 +793,7 @@ suite =
             ++ numbered "input"
                 13
                 (Html.number
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.list ""
                     , Attributes.max 0
                     , Attributes.min 0
@@ -806,7 +806,7 @@ suite =
             ++ numbered "input"
                 14
                 (Html.range
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.list ""
                     , Attributes.max 0
                     , Attributes.min 0
@@ -816,7 +816,7 @@ suite =
             ++ numbered "input"
                 15
                 (Html.color
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.list ""
                     ]
                 )
@@ -883,7 +883,7 @@ suite =
                 )
             ++ test "select"
                 (Html.select
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.disabled True
                     , Attributes.form ""
                     , Attributes.multiple True
@@ -906,7 +906,7 @@ suite =
             ++ numbered "option" 1 (Html.optionLabelled [] "")
             ++ test "textarea"
                 (Html.textarea
-                    [ Attributes.autocomplete Attributes.on
+                    [ Attributes.autocomplete True
                     , Attributes.cols 0
                     , Attributes.dirname ""
                     , Attributes.disabled True

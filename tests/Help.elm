@@ -1,4 +1,4 @@
-module Help exposing (bool, boundedNumber, maybeBool, number, string, stringsCommaSeparated, stringsSpaceSeparated, stringsUnique, value, values)
+module Help exposing (bool, boolValue, boundedNumber, maybeBool, number, string, stringsCommaSeparated, stringsSpaceSeparated, stringsUnique, value, values)
 
 import Set exposing (Set)
 import Test exposing (..)
@@ -50,6 +50,13 @@ bool : TestConstructor a -> String -> (Bool -> a) -> List Test
 bool test name attribute =
     [ test (name ++ " is true") name (attribute True) "true"
     , test (name ++ " is false") name (attribute False) "false"
+    ]
+
+
+boolValue : TestConstructor a -> String -> (Bool -> a) -> String -> String -> List Test
+boolValue test name attribute trueValue falseValue =
+    [ test (name ++ " is " ++ trueValue) name (attribute True) trueValue
+    , test (name ++ " is " ++ falseValue) name (attribute False) falseValue
     ]
 
 

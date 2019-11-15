@@ -282,14 +282,9 @@ title =
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/translate](https://html.spec.whatwg.org/multipage/dom.html#attr-translate)
 -}
-translate :
-    Html.Value
-        { yes : Html.SupportedValue
-        , no : Html.SupportedValue
-        }
-    -> Html.Attribute { compatible | translate : Html.SupportedAttribute }
+translate : Bool -> Html.Attribute { compatible | translate : Html.SupportedAttribute }
 translate =
-    Html.value "translate"
+    Html.boolValue "translate" yes no
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/abbr](https://html.spec.whatwg.org/multipage/tables.html#attr-th-abbr)
@@ -352,14 +347,9 @@ alt =
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/autocomplete](https://html.spec.whatwg.org/multipage/forms.html#attr-form-autocomplete)
 -}
-autocomplete :
-    Html.Value
-        { on : Html.SupportedValue
-        , off : Html.SupportedValue
-        }
-    -> Html.Attribute { compatible | autocomplete : Html.SupportedAttribute }
+autocomplete : Bool -> Html.Attribute { compatible | autocomplete : Html.SupportedAttribute }
 autocomplete =
-    Html.value "autocomplete"
+    Html.boolValue "autocomplete" on off
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/autoplay](https://html.spec.whatwg.org/multipage/media.html#attr-media-autoplay),

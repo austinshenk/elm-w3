@@ -91,12 +91,11 @@ suite =
             ++ Help.string test "style" Attributes.style
             ++ Help.number test "tabindex" Attributes.tabindex
             ++ Help.string test "title" Attributes.title
-            ++ Help.value test
+            ++ Help.boolValue test
                 "translate"
                 Attributes.translate
-                [ ( Attributes.yes, "yes" )
-                , ( Attributes.no, "no" )
-                ]
+                "yes"
+                "no"
             -- Attributes
             ++ Help.string test "abbr" Attributes.abbr
             ++ Help.stringsCommaSeparated test "accept" Attributes.accept
@@ -106,12 +105,11 @@ suite =
             ++ Help.bool test "allowfullscreen" Attributes.allowfullscreen
             ++ Help.bool test "allowpaymentrequest" Attributes.allowpaymentrequest
             ++ Help.string test "alt" Attributes.alt
-            ++ Help.value test
+            ++ Help.boolValue test
                 "autocomplete"
                 Attributes.autocomplete
-                [ ( Attributes.on, "on" )
-                , ( Attributes.off, "off" )
-                ]
+                "on"
+                "off"
             ++ Help.bool test "autoplay" Attributes.autoplay
             ++ Help.bool test "checked" Attributes.checked
             ++ Help.string test "cite" Attributes.cite

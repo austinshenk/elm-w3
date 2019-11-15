@@ -1,4 +1,4 @@
-module W3.Html.Help exposing (Attribute(..), Supported, SupportedAttribute, SupportedValue, Value(..), bool, maybeBool, number, property, string, tokens, uniqueTokens, value, values)
+module W3.Html.Help exposing (Attribute(..), Supported, SupportedAttribute, SupportedValue, Value(..), bool, boolValue, maybeBool, number, property, string, tokens, uniqueTokens, value, values)
 
 import Json.Decode
 import Set exposing (Set)
@@ -24,6 +24,17 @@ type SupportedValue
 bool : String -> Bool -> Attribute a
 bool key =
     Attribute key << boolToString
+
+
+boolValue : String -> Value a -> Value a -> Bool -> Attribute b
+boolValue key trueValue falseValue true =
+    Attribute key
+        (if true then
+            valueToString trueValue
+
+         else
+            valueToString falseValue
+        )
 
 
 boolToString : Bool -> String
