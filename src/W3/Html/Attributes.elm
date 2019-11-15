@@ -1,6 +1,6 @@
 module W3.Html.Attributes exposing
     ( Value
-    , accesskey, autocapitalize, autofocus, class, contenteditable, data_, dir, draggable, enterkeyhint, hidden, id, inputmode, itemid, itemprop, itemref, itemscope, itemtype, lang, nonce, slot, spellcheck, style, tabindex, title, translate
+    , accesskey, autocapitalize, autofocus, class, contenteditable, data_, dir, draggable, enterkeyhint, hidden, id, inputmode, is, itemid, itemprop, itemref, itemscope, itemtype, lang, nonce, slot, spellcheck, style, tabindex, title, translate
     , abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, ismap, kind, label, list, loop, low, max, maxlength, media, method, min, minlength, multiple, muted, name, novalidate, open, optimum, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, type_button, type_input, type_list, type_mime, usemap, value, value_ordinal, width, wrap
     , allow_forms, allow_modals, allow_orientation_lock, allow_pointer_lock, allow_popups, allow_popups_to_escape_sandbox, allow_presentation, allow_same_origin, allow_scripts, allow_top_navigation, allow_top_navigation_by_user_activation, anonymous, auto, async, blank_, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, form_data, form_url_encoded, frame, get, go, hard, loweralpha, lowerroman, ltr, metadata, next, no, none, numeric, off, on, ordinal, parent_, plaintext, poly, polygon, post, previous, rect, rectangle, reset, row, rowgroup, rtl, search, self_, send, sentences, soft, submit, subtitles, sync, tel, text, top_, upperalpha, upperroman, url, use_credentials, words, yes
     , attribute
@@ -18,7 +18,7 @@ module W3.Html.Attributes exposing
 
 These Attributes can be assigned to any HTML element as defined by [html.spec.whatwg.org/GlobalAttributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
 
-@docs accesskey, autocapitalize, autofocus, class, contenteditable, data_, dir, draggable, enterkeyhint, hidden, id, inputmode, itemid, itemprop, itemref, itemscope, itemtype, lang, nonce, slot, spellcheck, style, tabindex, title, translate
+@docs accesskey, autocapitalize, autofocus, class, contenteditable, data_, dir, draggable, enterkeyhint, hidden, id, inputmode, is, itemid, itemprop, itemref, itemscope, itemtype, lang, nonce, slot, spellcheck, style, tabindex, title, translate
 
 
 # Attributes
@@ -189,6 +189,13 @@ inputmode =
     Html.value "inputmode"
 
 
+{-| Follows the attribute definition at [html.spec.whatwg.org/is](https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is)
+-}
+is : String -> Html.Attribute { compatible | is : Html.SupportedAttribute }
+is =
+    Html.string "is"
+
+
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemid](https://html.spec.whatwg.org/multipage/microdata.html#attr-itemid)
 -}
 itemid : String -> Html.Attribute { compatible | itemid : Html.SupportedAttribute }
@@ -294,7 +301,7 @@ abbr =
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/accept](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept)
 -}
-accept : List String -> Html.Attribute { compatible | acceptcharset : Html.SupportedAttribute }
+accept : List String -> Html.Attribute { compatible | accept : Html.SupportedAttribute }
 accept values =
     Html.Attribute "accept" (String.join "," values)
 
@@ -907,7 +914,7 @@ shape :
         , rect : Html.SupportedValue
         , rectangle : Html.SupportedValue
         }
-    -> Html.Attribute { shape | start : Html.SupportedAttribute }
+    -> Html.Attribute { compatible | shape : Html.SupportedAttribute }
 shape =
     Html.value "shape"
 

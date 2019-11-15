@@ -14,6 +14,7 @@ module W3.Html exposing
     , input, hidden, textInput, search, url, tel, email, password, date, month, week, timeInput, datetime, number, range, color, checkbox, radio, file, submit, imageButton, resetButton, buttonInput
     , button, select, optgroup, datalist, datalist1, option, optionLabelled, textarea, output, progress, meter, fieldset, fieldset1, legend
     , details, summary, summaryHeader, dialog
+    , canvas
     , toHtml
     , node
     )
@@ -107,6 +108,11 @@ The following attempts to group elements together by function and use.
 ## Interactive Elements
 
 @docs details, summary, summaryHeader, dialog
+
+
+## Canvas
+
+@docs canvas
 
 
 ## Utility
@@ -218,11 +224,10 @@ type alias FlowContent =
     , q : Html.Supported
     , ruby : Html.Supported
     , ruby1 : Html.Supported
-    , ruby2 : Html.Supported
-    , ruby3 : Html.Supported
     , s : Html.Supported
     , samp : Html.Supported
-    , slot : Html.Supported
+
+    -- , slot : Html.Supported, Not Supported since templates aren't a thing
     , small : Html.Supported
     , span : Html.Supported
     , strong : Html.Supported
@@ -250,10 +255,11 @@ type alias FlowContent =
 
     -- Embedded Content
     , canvas : Html.Supported
-    , math : Html.Supported
-    , picture : Html.Supported
-    , svg : Html.Supported
 
+    -- , math : Html.Supported: Not Supported yet
+    , picture : Html.Supported
+
+    -- , svg : Html.Supported: Not Supported yet
     -- Interactive Content
     , a : Html.Supported
     , audio : Html.Supported
@@ -329,13 +335,16 @@ type alias PhrasingContent =
     , ins : Html.Supported
     , kbd : Html.Supported
     , label : Html.Supported
-    , link : Html.Supported
+
+    --, link : Html.Supported
     , map : Html.Supported
     , mark : Html.Supported
-    , math : Html.Supported
-    , meta : Html.Supported
+
+    --, math : Html.Supported
+    --, meta : Html.Supported
     , meter : Html.Supported
-    , noscript : Html.Supported
+
+    --, noscript : Html.Supported
     , object : Html.Supported
     , output : Html.Supported
     , picture : Html.Supported
@@ -343,20 +352,21 @@ type alias PhrasingContent =
     , q : Html.Supported
     , ruby : Html.Supported
     , ruby1 : Html.Supported
-    , ruby2 : Html.Supported
-    , ruby3 : Html.Supported
     , s : Html.Supported
     , samp : Html.Supported
-    , script : Html.Supported
+
+    --, script : Html.Supported
     , select : Html.Supported
-    , slot : Html.Supported
+
+    --, slot : Html.Supported
     , small : Html.Supported
     , span : Html.Supported
     , strong : Html.Supported
     , sub : Html.Supported
     , sup : Html.Supported
-    , svg : Html.Supported
-    , template : Html.Supported
+
+    --, svg : Html.Supported
+    --, template : Html.Supported
     , textarea : Html.Supported
     , time : Html.Supported
     , u : Html.Supported
@@ -374,10 +384,12 @@ type alias EmbeddedContent =
     , embed : Html.Supported
     , iframe : Html.Supported
     , img : Html.Supported
-    , math : Html.Supported
+
+    --, math : Html.Supported
     , object : Html.Supported
     , picture : Html.Supported
-    , svg : Html.Supported
+
+    --, svg : Html.Supported
     , video : Html.Supported
     }
 
@@ -558,7 +570,7 @@ ol :
         (GlobalAttributes
             { reversed : Html.SupportedAttribute
             , start : Html.SupportedAttribute
-            , marker : Html.SupportedAttribute
+            , type_list : Html.SupportedAttribute
             }
         )
     -> List (Node { li : Html.Supported } msg)
@@ -584,7 +596,7 @@ menu =
 {-| Follows the element definition at [html.spec.whatwg.org/li](https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element)
 -}
 li :
-    List (GlobalAttributes { ordinalValue : Html.SupportedAttribute })
+    List (GlobalAttributes { value_ordinal : Html.SupportedAttribute })
     -> List (Node FlowContent msg)
     -> Node { compatible | li : Html.Supported } msg
 li =
@@ -695,7 +707,7 @@ a :
             , ping : Html.SupportedAttribute
             , rel : Html.SupportedAttribute
             , hreflang : Html.SupportedAttribute
-            , mimeType : Html.SupportedAttribute
+            , type_mime : Html.SupportedAttribute
             , referrerpolicy : Html.SupportedAttribute
             }
         )
@@ -774,7 +786,6 @@ ruby =
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/ruby](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element)
-Content model: _Exclude ruby descendant_
 -}
 ruby1 : List (GlobalAttributes {}) -> Node { ruby : Html.Supported } msg -> Node { compatible | ruby1 : Html.Supported } msg
 ruby1 attributes rubyChild =
@@ -782,21 +793,19 @@ ruby1 attributes rubyChild =
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/ruby](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element)
-Content model: _Exclude ruby descendant_
 -}
-ruby2 : List (GlobalAttributes {}) -> List (Node { rt : Html.Supported } msg) -> Node { compatible | ruby2 : Html.Supported } msg
+ruby2 : List (GlobalAttributes {}) -> List (Node { rt : Html.Supported } msg) -> Node { compatible | ruby : Html.Supported } msg
 ruby2 =
     node "ruby"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/ruby](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element)
-Content model: _Exclude ruby descendant_
 -}
 ruby3 :
     List (GlobalAttributes {})
     -> Node { rp : Html.Supported } msg
     -> List ( Node { rt : Html.Supported } msg, Node { rp : Html.Supported } msg )
-    -> Node { compatible | ruby3 : Html.Supported } msg
+    -> Node { compatible | ruby : Html.Supported } msg
 ruby3 attributes rpFirst rtrpTuples =
     Node "ruby" (List.map toAttribute attributes) (toHtml rpFirst :: List.foldl ruby3Help [] rtrpTuples)
 
@@ -1004,7 +1013,12 @@ picture :
     -> Node { img : Html.Supported } msg
     -> Node { compatible | picture : Html.Supported } msg
 picture attributes sources image =
-    Node "picture" (List.map toAttribute attributes) (List.map toHtml sources ++ [ toHtml image ])
+    Node "picture" (List.map toAttribute attributes) (List.foldr pictureHelp [ toHtml image ] sources)
+
+
+pictureHelp : Node { source : Html.Supported } msg -> List (VirtualDom.Node msg) -> List (VirtualDom.Node msg)
+pictureHelp sourceNode children =
+    toHtml sourceNode :: children
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/source](https://html.spec.whatwg.org/multipage/embedded-content.html#the-source-element)
@@ -1013,7 +1027,7 @@ source :
     List
         (GlobalAttributes
             { src : Html.SupportedAttribute
-            , mimeType : Html.SupportedAttribute
+            , type_mime : Html.SupportedAttribute
             , srcset : Html.SupportedAttribute
             , sizes : Html.SupportedAttribute
             , media : Html.SupportedAttribute
@@ -1079,7 +1093,7 @@ embed :
     List
         (GlobalAttributes
             { src : Html.SupportedAttribute
-            , mimeType : Html.SupportedAttribute
+            , type_mime : Html.SupportedAttribute
             , width : Html.SupportedAttribute
             , height : Html.SupportedAttribute
             }
@@ -1095,7 +1109,7 @@ object :
     List
         (GlobalAttributes
             { data : Html.SupportedAttribute
-            , mimeType : Html.SupportedAttribute
+            , type_mime : Html.SupportedAttribute
             , name : Html.SupportedAttribute
             , usemap : Html.SupportedAttribute
             , form : Html.SupportedAttribute
@@ -1113,10 +1127,10 @@ object attributes params contents =
 {-| Follows the element definition at [html.spec.whatwg.org/param](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-param-element)
 -}
 param :
-    ( String, String )
-    -> List (GlobalAttributes {})
+    List (GlobalAttributes {})
+    -> ( String, String )
     -> Node { compatible | param : Html.Supported } msg
-param ( name, value ) attributes =
+param attributes ( name, value ) =
     Node "param"
         (VirtualDom.attribute "name" name
             :: VirtualDom.attribute "value" value
@@ -1198,7 +1212,7 @@ audio :
     -> List (Node FlowContent msg)
     -> Node { compatible | audio : Html.Supported } msg
 audio attributes tracks contents =
-    Node "video" (List.map toAttribute attributes) (List.map toHtml tracks ++ List.map toHtml contents)
+    Node "audio" (List.map toAttribute attributes) (List.map toHtml tracks ++ List.map toHtml contents)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/audio](https://html.spec.whatwg.org/multipage/media.html#the-audio-element)
@@ -1220,7 +1234,7 @@ audio1 :
     -> List (Node FlowContent msg)
     -> Node { compatible | audio : Html.Supported } msg
 audio1 attributes sources tracks contents =
-    Node "video" (List.map toAttribute attributes) (List.map toHtml sources ++ List.map toHtml tracks ++ List.map toHtml contents)
+    Node "audio" (List.map toAttribute attributes) (List.map toHtml sources ++ List.map toHtml tracks ++ List.map toHtml contents)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/track](https://html.spec.whatwg.org/multipage/media.html#the-track-element)
@@ -1500,7 +1514,7 @@ input :
             , size : Html.SupportedAttribute
             , src : Html.SupportedAttribute
             , step : Html.SupportedAttribute
-            , inputType : Html.SupportedAttribute
+            , type_input : Html.SupportedAttribute
             , value : Html.SupportedAttribute
             , width : Html.SupportedAttribute
             }
@@ -1903,7 +1917,7 @@ button :
             , formnovalidate : Html.SupportedAttribute
             , formtarget : Html.SupportedAttribute
             , name : Html.SupportedAttribute
-            , buttonType : Html.SupportedAttribute
+            , type_button : Html.SupportedAttribute
             , value : Html.SupportedAttribute
             }
         )
@@ -2041,7 +2055,7 @@ output =
 progress :
     List
         (GlobalAttributes
-            { ordinalValue : Html.SupportedAttribute
+            { value_ordinal : Html.SupportedAttribute
             , max : Html.SupportedAttribute
             }
         )
@@ -2056,7 +2070,7 @@ progress =
 meter :
     List
         (GlobalAttributes
-            { ordinalValue : Html.SupportedAttribute
+            { value_ordinal : Html.SupportedAttribute
             , min : Html.SupportedAttribute
             , max : Html.SupportedAttribute
             , low : Html.SupportedAttribute
@@ -2147,6 +2161,15 @@ dialog :
     -> Node { compatible | dialog : Html.Supported } msg
 dialog =
     node "dialog"
+
+
+{-| Follows the element definition at [html.spec.whatwg.org/canvas](https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element)
+-}
+canvas :
+    List (GlobalAttributes { width : Html.SupportedAttribute, height : Html.SupportedAttribute })
+    -> Node { compatible | canvas : Html.Supported } msg
+canvas attributes =
+    node "canvas" attributes []
 
 
 maybeVirutalNodeToList : Maybe (VirtualDom.Node msg) -> List (VirtualDom.Node msg)
