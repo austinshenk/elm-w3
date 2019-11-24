@@ -2,7 +2,7 @@ module W3.Html exposing
     ( Node, Attribute, GlobalAttributes
     , FlowContent, HeadingContent, SectioningContent, PhrasingContent, EmbeddedContent, InteractiveContent
     , article, section, nav, aside, h1, h2, h3, h4, h5, h6, hgroup, header, footer, address
-    , p, hr, pre, blockquote, ol, ul, menu, li, dl, dlWrapped, dt, dd, figure, figureEndingCaption, figureNoCaption, figcaption, main_, div, divDl
+    , p, hr, pre, blockquote, ol, olKeyed, ul, ulKeyed, menu, li, dl, dlKeyed, dlWrapped, dlWrappedKeyed, dt, dd, figure, figureEndingCaption, figureNoCaption, figcaption, main_, div, divDl
     , a, em, strong, small, s, cite, q, dfn, abbr, ruby, rubyWrapper, rubyDescendent, rt, rp, data, time, timeText, code, var, samp, kbd, sub, sup, i, b, u, mark, bdi, bdo, span, br, wbr
     , ins, del
     , picture, source, img
@@ -17,6 +17,7 @@ module W3.Html exposing
     , canvas
     , toHtml
     , node
+    , keyed
     , lazy, lazy2, lazy3, lazy4, lazy5, lazy6, lazy7, lazy8
     )
 
@@ -53,7 +54,7 @@ The following attempts to group elements together by function and use.
 
 <https://html.spec.whatwg.org/multipage/grouping-content.html>
 
-@docs p, hr, pre, blockquote, ol, ul, menu, li, dl, dlWrapped, dt, dd, figure, figureEndingCaption, figureNoCaption, figcaption, main_, div, divDl
+@docs p, hr, pre, blockquote, ol, olKeyed, ul, ulKeyed, menu, li, dl, dlKeyed, dlWrapped, dlWrappedKeyed, dt, dd, figure, figureEndingCaption, figureNoCaption, figcaption, main_, div, divDl
 
 
 ## Text
@@ -126,9 +127,14 @@ The following attempts to group elements together by function and use.
 @docs node
 
 
+# Keyed nodes
+
+@docs keyed
+
+
 # Lazy rendering
 
-Various functions to make node rendering lazy
+Various functions to make node rendering lazy.
 
 @docs lazy, lazy2, lazy3, lazy4, lazy5, lazy6, lazy7, lazy8
 
@@ -142,6 +148,7 @@ import W3.Html.Help as Html
 -}
 type Node nodes msg
     = Node String (List (VirtualDom.Attribute msg)) (List (VirtualDom.Node msg))
+    | Keyed String (List (VirtualDom.Attribute msg)) (List ( String, VirtualDom.Node msg ))
     | Lazy (VirtualDom.Node msg)
 
 
@@ -586,11 +593,34 @@ ol =
     node "ol"
 
 
+{-| Follows the element definition at [html.spec.whatwg.org/ol](https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element)
+-}
+olKeyed :
+    List
+        (GlobalAttributes
+            { reversed : Html.SupportedAttribute
+            , start : Html.SupportedAttribute
+            , type_list : Html.SupportedAttribute
+            }
+        )
+    -> List ( String, Node { li : Html.Supported } msg )
+    -> Node { compatible | ol : Html.Supported } msg
+olKeyed =
+    keyed "ol"
+
+
 {-| Follows the element definition at [html.spec.whatwg.org/ul](https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element)
 -}
 ul : List (GlobalAttributes {}) -> List (Node { li : Html.Supported } msg) -> Node { compatible | ul : Html.Supported } msg
 ul =
     node "ul"
+
+
+{-| Follows the element definition at [html.spec.whatwg.org/ul](https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element)
+-}
+ulKeyed : List (GlobalAttributes {}) -> List ( String, Node { li : Html.Supported } msg ) -> Node { compatible | ul : Html.Supported } msg
+ulKeyed =
+    keyed "ul"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/menu](https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element)
@@ -619,9 +649,23 @@ dl =
 
 {-| Follows the element definition at [html.spec.whatwg.org/dl](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element)
 -}
+dlKeyed : List (GlobalAttributes {}) -> List ( String, Node { dt : Html.Supported, dd : Html.Supported } msg ) -> Node { compatible | dl : Html.Supported } msg
+dlKeyed =
+    keyed "dl"
+
+
+{-| Follows the element definition at [html.spec.whatwg.org/dl](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element)
+-}
 dlWrapped : List (GlobalAttributes {}) -> List (Node { divDl : Html.Supported } msg) -> Node { compatible | dl : Html.Supported } msg
 dlWrapped =
     node "dl"
+
+
+{-| Follows the element definition at [html.spec.whatwg.org/dl](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element)
+-}
+dlWrappedKeyed : List (GlobalAttributes {}) -> List ( String, Node { divDl : Html.Supported } msg ) -> Node { compatible | dl : Html.Supported } msg
+dlWrappedKeyed =
+    keyed "dl"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/dt](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dt-element)
@@ -2132,6 +2176,9 @@ toHtml typedNode =
         Lazy contents ->
             contents
 
+        Keyed tagName attributes contents ->
+            VirtualDom.keyedNode tagName attributes contents
+
 
 {-| Use this function as an escape hatch to support elements that may not be supported by this package.
 -}
@@ -2148,6 +2195,11 @@ toAttribute attribute =
 
         Html.Property name value ->
             VirtualDom.property name value
+
+
+keyed : String -> List (Attribute a) -> List ( String, Node b msg ) -> Node c msg
+keyed tagName attributes nodes =
+    Keyed tagName (List.map toAttribute attributes) (List.map (\n -> Tuple.mapSecond toHtml n) nodes)
 
 
 {-| -}

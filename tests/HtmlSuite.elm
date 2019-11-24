@@ -90,7 +90,9 @@ suite =
                 , Html.dialog [] []
                 , Html.div [] []
                 , Html.dl [] []
+                , Html.dlKeyed [] []
                 , Html.dlWrapped [] []
+                , Html.dlWrappedKeyed [] []
                 , Html.fieldset [] ( [], [] ) []
                 , Html.figureNoCaption [] []
                 , Html.figure [] (Html.figcaption [] []) []
@@ -102,10 +104,12 @@ suite =
                 , Html.main_ [] []
                 , Html.menu [] []
                 , Html.ol [] []
+                , Html.olKeyed [] []
                 , Html.p [] []
                 , Html.pre [] []
                 , Html.table [] |> Html.tbody [] []
                 , Html.ul [] []
+                , Html.ulKeyed [] []
                 , Html.abbr [] []
                 , Html.area []
                 , Html.b [] []
@@ -337,9 +341,23 @@ suite =
                     ]
                     [ Html.li [] [] ]
                 )
+            ++ numbered "ol"
+                1
+                (Html.olKeyed
+                    [ Attributes.reversed True
+                    , Attributes.start 0
+                    , Attributes.type_list Attributes.ordinal
+                    ]
+                    [ ( "1", Html.li [] [] ) ]
+                )
             ++ test "ul"
                 (Html.ul []
                     [ Html.li [] [] ]
+                )
+            ++ numbered "ul"
+                1
+                (Html.ulKeyed []
+                    [ ( "1", Html.li [] [] ) ]
                 )
             ++ test "menu"
                 (Html.menu []
@@ -347,7 +365,9 @@ suite =
                 )
             ++ test "li" (Html.li [ Attributes.value_ordinal 0 ] [])
             ++ test "dl" (Html.dl [] [ Html.dt [] [], Html.dd [] [] ])
-            ++ numbered "dl" 1 (Html.dlWrapped [] [ Html.divDl [] [] ])
+            ++ numbered "dl" 1 (Html.dlKeyed [] [ ( "1", Html.dt [] [] ), ( "2", Html.dd [] [] ) ])
+            ++ numbered "dl" 2 (Html.dlWrapped [] [ Html.divDl [] [] ])
+            ++ numbered "dl" 3 (Html.dlWrappedKeyed [] [ ( "1", Html.divDl [] [] ) ])
             ++ test "dt" (Html.dt [] [])
             ++ test "dd" (Html.dd [] [])
             ++ test "figure" (Html.figureNoCaption [] [])
@@ -915,6 +935,14 @@ suite =
             ++ numbered "summary" 1 (Html.summaryHeader [] (Html.h1 [] []))
             ++ test "dialog" (Html.dialog [ Attributes.open True ] [])
             ++ test "canvas" (Html.canvas [ Attributes.width 0, Attributes.height 0 ])
+            ++ [ Test.test "keyed nodes are supported"
+                    (\() ->
+                        Html.node "basic" [] [ Html.keyed "test" [] [] ]
+                            |> Html.toHtml
+                            |> Query.fromHtml
+                            |> Query.has [ Selector.tag "test" ]
+                    )
+               ]
             ++ [ Test.test "lazy is supported"
                     (\() ->
                         Html.lazy (\v1 -> Html.node "test" [] []) 1
