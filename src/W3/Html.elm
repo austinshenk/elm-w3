@@ -2197,6 +2197,7 @@ toAttribute attribute =
             VirtualDom.property name value
 
 
+{-| -}
 keyed : String -> List (Attribute a) -> List ( String, Node b msg ) -> Node c msg
 keyed tagName attributes nodes =
     Keyed tagName (List.map toAttribute attributes) (List.map (\n -> Tuple.mapSecond toHtml n) nodes)
