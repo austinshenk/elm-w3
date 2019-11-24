@@ -309,4 +309,12 @@ suite =
                 [ ( Attributes.soft, "soft" )
                 , ( Attributes.hard, "hard" )
                 ]
+            ++ [ Test.test "custom Aria Attribute is supported"
+                    (\() ->
+                        Html.node "node" [ Attributes.attribute "test" "test" ] []
+                            |> Html.toHtml
+                            |> Query.fromHtml
+                            |> Query.has [ Selector.attribute (VirtualDom.attribute "test" "test") ]
+                    )
+               ]
         )

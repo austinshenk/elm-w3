@@ -84,7 +84,8 @@ suite =
         (supports
             "FlowContent"
             (flowNode []
-                [ Html.address [] []
+                [ Html.node "test" [] []
+                , Html.address [] []
                 , Html.blockquote [] []
                 , Html.dialog [] []
                 , Html.div [] []

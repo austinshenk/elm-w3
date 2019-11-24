@@ -418,4 +418,11 @@ suite =
                 , Attributes.setsize 0
                 ]
             )
+        , Test.test "custom Attribute is Supported"
+            (\() ->
+                Html.node "node" (Aria.role "test" [] []) []
+                    |> Html.toHtml
+                    |> Query.fromHtml
+                    |> Query.has [ Selector.attribute (VirtualDom.attribute "role" "test") ]
+            )
         ]

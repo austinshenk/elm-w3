@@ -153,4 +153,12 @@ suite =
             ++ Help.number test "valuemin" AriaAttributes.valuemin
             ++ Help.number test "valuenow" AriaAttributes.valuenow
             ++ Help.string test "valuetext" AriaAttributes.valuetext
+            ++ [ Test.test "custom Attribute is Supported"
+                    (\() ->
+                        Html.node "node" (Aria.role "basic" [ AriaAttributes.attribute "test" "test" ] []) []
+                            |> Html.toHtml
+                            |> Query.fromHtml
+                            |> Query.has [ Selector.attribute (VirtualDom.attribute "aria-test" "test") ]
+                    )
+               ]
         )
