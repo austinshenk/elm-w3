@@ -2,17 +2,17 @@ module W3.Html exposing
     ( Node, Attribute, GlobalAttributes
     , FlowContent, HeadingContent, SectioningContent, PhrasingContent, EmbeddedContent, InteractiveContent
     , article, section, nav, aside, h1, h2, h3, h4, h5, h6, hgroup, header, footer, address
-    , p, hr, pre, blockquote, ol, ul, menu, li, dl, dl1, dt, dd, figure, figure1, figure2, figcaption, main_, div, dataDiv
-    , a, em, strong, small, s, cite, q, dfn, abbr, ruby, ruby1, ruby2, ruby3, rt, rp, data, time, timeText, code, var, samp, kbd, sub, sup, i, b, u, mark, bdi, bdo, span, br, wbr
+    , p, hr, pre, blockquote, ol, ul, menu, li, dl, dlWrapped, dt, dd, figure, figureEndingCaption, figureNoCaption, figcaption, main_, div, divDl
+    , a, em, strong, small, s, cite, q, dfn, abbr, ruby, rubyWrapper, rubyDescendent, rt, rp, data, time, timeText, code, var, samp, kbd, sub, sup, i, b, u, mark, bdi, bdo, span, br, wbr
     , ins, del
     , picture, source, img
     , iframe, embed, object, param
-    , video, video1, audio, audio1, track
+    , video, audio, track
     , map, area
     , Table, TableContents, table, caption, colgroup, col, thead, tfoot, tbody, trbody, tr, td, th
     , form, label
     , input, hidden, textInput, search, url, tel, email, password, date, month, week, timeInput, datetime, number, range, color, checkbox, radio, file, submit, imageButton, resetButton, buttonInput
-    , button, select, optgroup, datalist, datalist1, option, optionLabelled, textarea, output, progress, meter, fieldset, fieldset1, legend
+    , button, select, optgroup, datalist, datalistText, option, optionLabelled, textarea, output, progress, meter, fieldset
     , details, summary, summaryHeader, dialog
     , canvas
     , toHtml
@@ -52,12 +52,12 @@ The following attempts to group elements together by function and use.
 
 <https://html.spec.whatwg.org/multipage/grouping-content.html>
 
-@docs p, hr, pre, blockquote, ol, ul, menu, li, dl, dl1, dt, dd, figure, figure1, figure2, figcaption, main_, div, dataDiv
+@docs p, hr, pre, blockquote, ol, ul, menu, li, dl, dlWrapped, dt, dd, figure, figureEndingCaption, figureNoCaption, figcaption, main_, div, divDl
 
 
 ## Text
 
-@docs a, em, strong, small, s, cite, q, dfn, abbr, ruby, ruby1, ruby2, ruby3, rt, rp, data, time, timeText, code, var, samp, kbd, sub, sup, i, b, u, mark, bdi, bdo, span, br, wbr
+@docs a, em, strong, small, s, cite, q, dfn, abbr, ruby, rubyWrapper, rubyDescendent, rt, rp, data, time, timeText, code, var, samp, kbd, sub, sup, i, b, u, mark, bdi, bdo, span, br, wbr
 
 
 ## Edits
@@ -77,7 +77,7 @@ The following attempts to group elements together by function and use.
 
 ## Media
 
-@docs video, video1, audio, audio1, track
+@docs video, audio, track
 
 
 ## Map
@@ -102,7 +102,7 @@ The following attempts to group elements together by function and use.
 
 ## Form Elements
 
-@docs button, select, optgroup, datalist, datalist1, option, optionLabelled, textarea, output, progress, meter, fieldset, fieldset1, legend
+@docs button, select, optgroup, datalist, datalistText, option, optionLabelled, textarea, output, progress, meter, fieldset
 
 
 ## Interactive Elements
@@ -223,7 +223,6 @@ type alias FlowContent =
     , progress : Html.Supported
     , q : Html.Supported
     , ruby : Html.Supported
-    , ruby1 : Html.Supported
     , s : Html.Supported
     , samp : Html.Supported
 
@@ -351,7 +350,6 @@ type alias PhrasingContent =
     , progress : Html.Supported
     , q : Html.Supported
     , ruby : Html.Supported
-    , ruby1 : Html.Supported
     , s : Html.Supported
     , samp : Html.Supported
 
@@ -612,8 +610,8 @@ dl =
 
 {-| Follows the element definition at [html.spec.whatwg.org/dl](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element)
 -}
-dl1 : List (GlobalAttributes {}) -> List (Node { dataDiv : Html.Supported } msg) -> Node { compatible | dl : Html.Supported } msg
-dl1 =
+dlWrapped : List (GlobalAttributes {}) -> List (Node { divDl : Html.Supported } msg) -> Node { compatible | dl : Html.Supported } msg
+dlWrapped =
     node "dl"
 
 
@@ -636,32 +634,32 @@ dd =
 -}
 figure :
     List (GlobalAttributes {})
-    -> List (Node FlowContent msg)
-    -> Node { compatible | figure : Html.Supported } msg
-figure =
-    node "figure"
-
-
-{-| Follows the element definition at [html.spec.whatwg.org/figure](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element)
--}
-figure1 :
-    List (GlobalAttributes {})
     -> Node { figcaption : Html.Supported } msg
     -> List (Node FlowContent msg)
     -> Node { compatible | figure : Html.Supported } msg
-figure1 attributes figCaption nodes =
+figure attributes figCaption nodes =
     Node "figure" (List.map toAttribute attributes) (toHtml figCaption :: List.map toHtml nodes)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/figure](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element)
 -}
-figure2 :
+figureEndingCaption :
     List (GlobalAttributes {})
     -> List (Node FlowContent msg)
     -> Node { figcaption : Html.Supported } msg
     -> Node { compatible | figure : Html.Supported } msg
-figure2 attributes nodes figCaption =
+figureEndingCaption attributes nodes figCaption =
     Node "figure" (List.map toAttribute attributes) (List.map toHtml nodes ++ [ toHtml figCaption ])
+
+
+{-| Follows the element definition at [html.spec.whatwg.org/figure](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element)
+-}
+figureNoCaption :
+    List (GlobalAttributes {})
+    -> List (Node FlowContent msg)
+    -> Node { compatible | figure : Html.Supported } msg
+figureNoCaption =
+    node "figure"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/figcaption](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figcaption-element)
@@ -687,8 +685,8 @@ div =
 
 {-| Follows the element definition at [html.spec.whatwg.org/div](https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element)
 -}
-dataDiv : List (GlobalAttributes {}) -> List (Node { dt : Html.Supported, dd : Html.Supported } msg) -> Node { compatible | dataDiv : Html.Supported } msg
-dataDiv =
+divDl : List (GlobalAttributes {}) -> List (Node { dt : Html.Supported, dd : Html.Supported } msg) -> Node { compatible | divDl : Html.Supported } msg
+divDl =
     node "div"
 
 
@@ -780,42 +778,34 @@ abbr =
 {-| Follows the element definition at [html.spec.whatwg.org/ruby](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element)
 Content model: _Exclude ruby descendant_
 -}
-ruby : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | ruby : Html.Supported } msg
-ruby =
-    node "ruby"
-
-
-{-| Follows the element definition at [html.spec.whatwg.org/ruby](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element)
--}
-ruby1 : List (GlobalAttributes {}) -> Node { ruby : Html.Supported } msg -> Node { compatible | ruby1 : Html.Supported } msg
-ruby1 attributes rubyChild =
-    Node "ruby" (List.map toAttribute attributes) [ toHtml rubyChild ]
-
-
-{-| Follows the element definition at [html.spec.whatwg.org/ruby](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element)
--}
-ruby2 : List (GlobalAttributes {}) -> List (Node { rt : Html.Supported } msg) -> Node { compatible | ruby : Html.Supported } msg
-ruby2 =
-    node "ruby"
-
-
-{-| Follows the element definition at [html.spec.whatwg.org/ruby](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element)
--}
-ruby3 :
+ruby :
     List (GlobalAttributes {})
-    -> Node { rp : Html.Supported } msg
-    -> List ( Node { rt : Html.Supported } msg, Node { rp : Html.Supported } msg )
+    -> List (Node PhrasingContent msg)
+    -> List (Node { rt : Html.Supported, rp : Html.Supported } msg)
     -> Node { compatible | ruby : Html.Supported } msg
-ruby3 attributes rpFirst rtrpTuples =
-    Node "ruby" (List.map toAttribute attributes) (toHtml rpFirst :: List.foldl ruby3Help [] rtrpTuples)
+ruby attributes contents rtrpContents =
+    Node "ruby" (List.map toAttribute attributes) (List.map toHtml contents ++ List.map toHtml rtrpContents)
 
 
-ruby3Help :
-    ( Node { rt : Html.Supported } msg, Node { rp : Html.Supported } msg )
-    -> List (VirtualDom.Node msg)
-    -> List (VirtualDom.Node msg)
-ruby3Help tuple childrenSoFar =
-    childrenSoFar ++ [ toHtml (Tuple.first tuple), toHtml (Tuple.second tuple) ]
+{-| Follows the element definition at [html.spec.whatwg.org/ruby](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element)
+-}
+rubyWrapper :
+    List (GlobalAttributes {})
+    -> Node { rubyDescendent : Html.Supported } msg
+    -> List (Node { rt : Html.Supported, rp : Html.Supported } msg)
+    -> Node { compatible | ruby : Html.Supported } msg
+rubyWrapper attributes rubyChild rtrpContents =
+    Node "ruby" (List.map toAttribute attributes) (toHtml rubyChild :: List.map toHtml rtrpContents)
+
+
+{-| Follows the element definition at [html.spec.whatwg.org/ruby](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element)
+-}
+rubyDescendent :
+    List (GlobalAttributes {})
+    -> List (Node { rt : Html.Supported, rp : Html.Supported } msg)
+    -> Node { compatible | rubyDescendent : Html.Supported } msg
+rubyDescendent attributes rtrpContents =
+    Node "ruby" (List.map toAttribute attributes) (List.map toHtml rtrpContents)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/rt](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-rt-element)
@@ -1161,36 +1151,11 @@ video :
             , height : Html.SupportedAttribute
             }
         )
-    -> List (Node { track : Html.Supported } msg)
-    -> List (Node FlowContent msg)
-    -> Node { compatible | video : Html.Supported } msg
-video attributes tracks contents =
-    Node "video" (List.map toAttribute attributes) (List.map toHtml tracks ++ List.map toHtml contents)
-
-
-{-| Follows the element definition at [html.spec.whatwg.org/video](https://html.spec.whatwg.org/multipage/media.html#the-video-element)
--}
-video1 :
-    List
-        (GlobalAttributes
-            { src : Html.SupportedAttribute
-            , crossorigin : Html.SupportedAttribute
-            , poster : Html.SupportedAttribute
-            , preload : Html.SupportedAttribute
-            , autoplay : Html.SupportedAttribute
-            , playsinline : Html.SupportedAttribute
-            , loop : Html.SupportedAttribute
-            , muted : Html.SupportedAttribute
-            , controls : Html.SupportedAttribute
-            , width : Html.SupportedAttribute
-            , height : Html.SupportedAttribute
-            }
-        )
     -> List (Node { source : Html.Supported } msg)
     -> List (Node { track : Html.Supported } msg)
     -> List (Node FlowContent msg)
     -> Node { compatible | video : Html.Supported } msg
-video1 attributes sources tracks contents =
+video attributes sources tracks contents =
     Node "video" (List.map toAttribute attributes) (List.map toHtml sources ++ List.map toHtml tracks ++ List.map toHtml contents)
 
 
@@ -1208,32 +1173,11 @@ audio :
             , controls : Html.SupportedAttribute
             }
         )
-    -> List (Node { track : Html.Supported } msg)
-    -> List (Node FlowContent msg)
-    -> Node { compatible | audio : Html.Supported } msg
-audio attributes tracks contents =
-    Node "audio" (List.map toAttribute attributes) (List.map toHtml tracks ++ List.map toHtml contents)
-
-
-{-| Follows the element definition at [html.spec.whatwg.org/audio](https://html.spec.whatwg.org/multipage/media.html#the-audio-element)
--}
-audio1 :
-    List
-        (GlobalAttributes
-            { src : Html.SupportedAttribute
-            , crossorigin : Html.SupportedAttribute
-            , preload : Html.SupportedAttribute
-            , autoplay : Html.SupportedAttribute
-            , loop : Html.SupportedAttribute
-            , muted : Html.SupportedAttribute
-            , controls : Html.SupportedAttribute
-            }
-        )
     -> List (Node { source : Html.Supported } msg)
     -> List (Node { track : Html.Supported } msg)
     -> List (Node FlowContent msg)
     -> Node { compatible | audio : Html.Supported } msg
-audio1 attributes sources tracks contents =
+audio attributes sources tracks contents =
     Node "audio" (List.map toAttribute attributes) (List.map toHtml sources ++ List.map toHtml tracks ++ List.map toHtml contents)
 
 
@@ -1373,11 +1317,11 @@ tbody : List (GlobalAttributes {}) -> List (Node { tr : Html.Supported } msg) ->
 tbody attributes rows (Table tableAttributes contents) =
     Node "table"
         (List.map toAttribute tableAttributes)
-        (maybeVirutalNodeToList contents.caption
+        (maybeVirtualNodeToList contents.caption
             ++ contents.colgroups
-            ++ maybeVirutalNodeToList contents.thead
+            ++ maybeVirtualNodeToList contents.thead
             ++ [ VirtualDom.node "tbody" (List.map toAttribute attributes) (List.map toHtml rows) ]
-            ++ maybeVirutalNodeToList contents.tfoot
+            ++ maybeVirtualNodeToList contents.tfoot
         )
 
 
@@ -1387,11 +1331,11 @@ trbody : List (Node { tr : Html.Supported } msg) -> Table msg -> Node { compatib
 trbody rows (Table tableAttributes contents) =
     Node "table"
         (List.map toAttribute tableAttributes)
-        (maybeVirutalNodeToList contents.caption
+        (maybeVirtualNodeToList contents.caption
             ++ contents.colgroups
-            ++ maybeVirutalNodeToList contents.thead
+            ++ maybeVirtualNodeToList contents.thead
             ++ List.map toHtml rows
-            ++ maybeVirutalNodeToList contents.tfoot
+            ++ maybeVirtualNodeToList contents.tfoot
         )
 
 
@@ -1964,15 +1908,15 @@ optgroup =
 
 {-| Follows the element definition at [html.spec.whatwg.org/datalist](https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element)
 -}
-datalist : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | datalist : Html.Supported } msg
+datalist : List (GlobalAttributes {}) -> List (Node { option : Html.Supported } msg) -> Node { compatible | datalist : Html.Supported } msg
 datalist =
     node "datalist"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/datalist](https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element)
 -}
-datalist1 : List (GlobalAttributes {}) -> List (Node { option : Html.Supported } msg) -> Node { compatible | datalist : Html.Supported } msg
-datalist1 =
+datalistText : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | datalist : Html.Supported } msg
+datalistText =
     node "datalist"
 
 
@@ -2094,34 +2038,17 @@ fieldset :
             , name : Html.SupportedAttribute
             }
         )
+    -> ( List (GlobalAttributes {}), List (Node PhrasingContent msg) )
     -> List (Node FlowContent msg)
     -> Node { compatible | fieldset : Html.Supported } msg
-fieldset =
-    node "fieldset"
-
-
-{-| Follows the element definition at [html.spec.whatwg.org/fieldset](https://html.spec.whatwg.org/multipage/form-elements.html#the-fieldset-element)
--}
-fieldset1 :
-    List
-        (GlobalAttributes
-            { disabled : Html.SupportedAttribute
-            , form : Html.SupportedAttribute
-            , name : Html.SupportedAttribute
-            }
+fieldset attributes ( legendAttributes, legendContent ) contents =
+    Node "fieldset"
+        (List.map toAttribute attributes)
+        (VirtualDom.node "legend"
+            (List.map toAttribute legendAttributes)
+            (List.map toHtml legendContent)
+            :: List.map toHtml contents
         )
-    -> Node { legend : Html.Supported } msg
-    -> List (Node FlowContent msg)
-    -> Node { compatible | fieldset : Html.Supported } msg
-fieldset1 attributes legendNode contents =
-    Node "fieldset" (List.map toAttribute attributes) (toHtml legendNode :: List.map toHtml contents)
-
-
-{-| Follows the element definition at [html.spec.whatwg.org/legend](https://html.spec.whatwg.org/multipage/form-elements.html#the-legend-element)
--}
-legend : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | legend : Html.Supported } msg
-legend =
-    node "legend"
 
 
 
@@ -2172,8 +2099,8 @@ canvas attributes =
     node "canvas" attributes []
 
 
-maybeVirutalNodeToList : Maybe (VirtualDom.Node msg) -> List (VirtualDom.Node msg)
-maybeVirutalNodeToList maybeNode =
+maybeVirtualNodeToList : Maybe (VirtualDom.Node msg) -> List (VirtualDom.Node msg)
+maybeVirtualNodeToList maybeNode =
     case maybeNode of
         Just n ->
             [ n ]

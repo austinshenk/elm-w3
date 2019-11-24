@@ -89,12 +89,11 @@ suite =
                 , Html.dialog [] []
                 , Html.div [] []
                 , Html.dl [] []
-                , Html.dl1 [] []
-                , Html.fieldset [] []
-                , Html.fieldset1 [] (Html.legend [] []) []
-                , Html.figure [] []
-                , Html.figure1 [] (Html.figcaption [] []) []
-                , Html.figure2 [] [] (Html.figcaption [] [])
+                , Html.dlWrapped [] []
+                , Html.fieldset [] ( [], [] ) []
+                , Html.figureNoCaption [] []
+                , Html.figure [] (Html.figcaption [] []) []
+                , Html.figureEndingCaption [] [] (Html.figcaption [] [])
                 , Html.footer [] []
                 , Html.form [] []
                 , Html.header [] []
@@ -115,8 +114,8 @@ suite =
                 , Html.cite [] []
                 , Html.code [] []
                 , Html.data [] []
+                , Html.datalistText [] []
                 , Html.datalist [] []
-                , Html.datalist1 [] []
                 , Html.del [] []
                 , Html.dfn [] []
                 , Html.em [] []
@@ -129,10 +128,8 @@ suite =
                 , Html.output [] []
                 , Html.progress [] []
                 , Html.q [] []
-                , Html.ruby [] []
-                , Html.ruby1 [] (Html.ruby [] [])
-                , Html.ruby2 [] []
-                , Html.ruby3 [] (Html.rp [] "") []
+                , Html.ruby [] [] []
+                , Html.rubyWrapper [] (Html.rubyDescendent [] []) []
                 , Html.s [] []
                 , Html.samp [] []
                 , Html.small [] []
@@ -158,8 +155,7 @@ suite =
                 , Html.canvas []
                 , Html.picture [] [] (Html.img [])
                 , Html.a [] []
-                , Html.audio [] [] []
-                , Html.audio1 [] [] [] []
+                , Html.audio [] [] [] []
                 , Html.button [] []
                 , Html.details [] (Html.summary [] []) []
                 , Html.embed []
@@ -170,8 +166,7 @@ suite =
                 , Html.object [] [] []
                 , Html.select [] []
                 , Html.textarea [] ""
-                , Html.video [] [] []
-                , Html.video1 [] [] [] []
+                , Html.video [] [] [] []
                 ]
             )
             ++ supports "HeadingContent"
@@ -198,8 +193,7 @@ suite =
                     [ Html.a [] []
                     , Html.abbr [] []
                     , Html.area []
-                    , Html.audio [] [] []
-                    , Html.audio1 [] [] [] []
+                    , Html.audio [] [] [] []
                     , Html.b [] []
                     , Html.bdi [] []
                     , Html.bdo [] []
@@ -209,8 +203,8 @@ suite =
                     , Html.cite [] []
                     , Html.code [] []
                     , Html.data [] []
+                    , Html.datalistText [] []
                     , Html.datalist [] []
-                    , Html.datalist1 [] []
                     , Html.del [] []
                     , Html.dfn [] []
                     , Html.em [] []
@@ -230,10 +224,8 @@ suite =
                     , Html.picture [] [] (Html.img [])
                     , Html.progress [] []
                     , Html.q [] []
-                    , Html.ruby [] []
-                    , Html.ruby1 [] (Html.ruby [] [])
-                    , Html.ruby2 [] []
-                    , Html.ruby3 [] (Html.rp [] "") []
+                    , Html.ruby [] [] []
+                    , Html.rubyWrapper [] (Html.rubyDescendent [] []) []
                     , Html.s [] []
                     , Html.samp [] []
                     , Html.select [] []
@@ -246,30 +238,26 @@ suite =
                     , Html.time [] []
                     , Html.u [] []
                     , Html.var [] []
-                    , Html.video [] [] []
-                    , Html.video1 [] [] [] []
+                    , Html.video [] [] [] []
                     , Html.wbr []
                     ]
                 )
             ++ supports "EmbeddedContent"
                 (embeddedNode []
-                    [ Html.audio [] [] []
-                    , Html.audio1 [] [] [] []
+                    [ Html.audio [] [] [] []
                     , Html.canvas []
                     , Html.embed []
                     , Html.iframe []
                     , Html.img []
                     , Html.object [] [] []
                     , Html.picture [] [] (Html.img [])
-                    , Html.video [] [] []
-                    , Html.video1 [] [] [] []
+                    , Html.video [] [] [] []
                     ]
                 )
             ++ supports "InteractiveContent"
                 (interactiveNode []
                     [ Html.a [] []
-                    , Html.audio [] [] []
-                    , Html.audio1 [] [] [] []
+                    , Html.audio [] [] [] []
                     , Html.button [] []
                     , Html.details [] (Html.summary [] []) []
                     , Html.embed []
@@ -280,8 +268,7 @@ suite =
                     , Html.object [] [] []
                     , Html.select [] []
                     , Html.textarea [] ""
-                    , Html.video [] [] []
-                    , Html.video1 [] [] [] []
+                    , Html.video [] [] [] []
                     ]
                 )
             ++ supports "GlobalAttributes"
@@ -359,16 +346,16 @@ suite =
                 )
             ++ test "li" (Html.li [ Attributes.value_ordinal 0 ] [])
             ++ test "dl" (Html.dl [] [ Html.dt [] [], Html.dd [] [] ])
-            ++ numbered "dl" 1 (Html.dl1 [] [ Html.dataDiv [] [] ])
+            ++ numbered "dl" 1 (Html.dlWrapped [] [ Html.divDl [] [] ])
             ++ test "dt" (Html.dt [] [])
             ++ test "dd" (Html.dd [] [])
-            ++ test "figure" (Html.figure [] [])
-            ++ numbered "figure" 1 (Html.figure1 [] (Html.figcaption [] []) [])
-            ++ numbered "figure" 2 (Html.figure2 [] [] (Html.figcaption [] []))
+            ++ test "figure" (Html.figureNoCaption [] [])
+            ++ numbered "figure" 1 (Html.figure [] (Html.figcaption [] []) [])
+            ++ numbered "figure" 2 (Html.figureEndingCaption [] [] (Html.figcaption [] []))
             ++ test "figcaption" (Html.figcaption [] [])
             ++ test "main" (Html.main_ [] [])
             ++ test "div" (Html.div [] [])
-            ++ numbered "div" 1 (Html.dataDiv [] [])
+            ++ numbered "div" 1 (Html.divDl [] [])
             ++ test "a"
                 (Html.a
                     [ Attributes.href ""
@@ -390,10 +377,8 @@ suite =
             ++ test "q" (Html.q [ Attributes.cite "" ] [])
             ++ test "dfn" (Html.dfn [] [])
             ++ test "abbr" (Html.abbr [] [])
-            ++ test "ruby" (Html.ruby [] [])
-            ++ numbered "ruby" 1 (Html.ruby1 [] (Html.ruby [] []))
-            ++ numbered "ruby" 2 (Html.ruby2 [] [ Html.rt [] [] ])
-            ++ numbered "ruby" 3 (Html.ruby3 [] (Html.rp [] "") [ ( Html.rt [] [], Html.rp [] "" ) ])
+            ++ test "ruby" (Html.ruby [] [] [])
+            ++ numbered "ruby" 1 (Html.rubyWrapper [] (Html.rubyDescendent [] []) [])
             ++ test "rt" (Html.rt [] [])
             ++ test "rp" (Html.rp [] "")
             ++ test "data" (Html.data [ Attributes.value "" ] [])
@@ -487,44 +472,12 @@ suite =
                     , Attributes.width 0
                     , Attributes.height 0
                     ]
-                    [ Html.track [] ]
-                    []
-                )
-            ++ numbered "video"
-                1
-                (Html.video1
-                    [ Attributes.src ""
-                    , Attributes.crossorigin Attributes.anonymous
-                    , Attributes.poster ""
-                    , Attributes.preload Attributes.none
-                    , Attributes.autoplay True
-                    , Attributes.playsinline True
-                    , Attributes.loop True
-                    , Attributes.muted True
-                    , Attributes.controls True
-                    , Attributes.width 0
-                    , Attributes.height 0
-                    ]
                     [ Html.source [] ]
                     [ Html.track [] ]
                     []
                 )
             ++ test "audio"
                 (Html.audio
-                    [ Attributes.src ""
-                    , Attributes.crossorigin Attributes.anonymous
-                    , Attributes.preload Attributes.none
-                    , Attributes.autoplay True
-                    , Attributes.loop True
-                    , Attributes.muted True
-                    , Attributes.controls True
-                    ]
-                    [ Html.track [] ]
-                    []
-                )
-            ++ numbered "audio"
-                1
-                (Html.audio1
                     [ Attributes.src ""
                     , Attributes.crossorigin Attributes.anonymous
                     , Attributes.preload Attributes.none
@@ -899,8 +852,8 @@ suite =
                     ]
                     []
                 )
-            ++ test "datalist" (Html.datalist [] [])
-            ++ numbered "datalist" 1 (Html.datalist1 [] [ Html.option [] "" ])
+            ++ test "datalist" (Html.datalistText [] [])
+            ++ numbered "datalist" 1 (Html.datalist [] [ Html.option [] "" ])
             ++ test "option" (Html.option [] "")
             ++ numbered "option" 1 (Html.optionLabelled [] "")
             ++ test "textarea"
@@ -953,19 +906,9 @@ suite =
                     , Attributes.form ""
                     , Attributes.name ""
                     ]
+                    ( [], [] )
                     []
                 )
-            ++ numbered "fieldset"
-                1
-                (Html.fieldset1
-                    [ Attributes.disabled True
-                    , Attributes.form ""
-                    , Attributes.name ""
-                    ]
-                    (Html.legend [] [])
-                    []
-                )
-            ++ test "legend" (Html.legend [] [])
             ++ test "details" (Html.details [ Attributes.open True ] (Html.summary [] []) [])
             ++ test "summary" (Html.summary [] [])
             ++ numbered "summary" 1 (Html.summaryHeader [] (Html.h1 [] []))
