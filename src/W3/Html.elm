@@ -17,6 +17,7 @@ module W3.Html exposing
     , canvas
     , toHtml
     , node
+    , lazy, lazy2, lazy3, lazy4, lazy5, lazy6, lazy7, lazy8
     )
 
 {-| Module that defines all usable HTML elements, their content models, and supported attributes.
@@ -124,6 +125,13 @@ The following attempts to group elements together by function and use.
 
 @docs node
 
+
+# Lazy rendering
+
+Various functions to make node rendering lazy
+
+@docs lazy, lazy2, lazy3, lazy4, lazy5, lazy6, lazy7, lazy8
+
 -}
 
 import VirtualDom
@@ -134,6 +142,7 @@ import W3.Html.Help as Html
 -}
 type Node nodes msg
     = Node String (List (VirtualDom.Attribute msg)) (List (VirtualDom.Node msg))
+    | Lazy (VirtualDom.Node msg)
 
 
 {-| Type for each attribute
@@ -2115,8 +2124,13 @@ maybeVirtualNodeToList maybeNode =
 
 -}
 toHtml : Node a msg -> VirtualDom.Node msg
-toHtml (Node tagName attributes contents) =
-    VirtualDom.node tagName attributes contents
+toHtml typedNode =
+    case typedNode of
+        Node tagName attributes contents ->
+            VirtualDom.node tagName attributes contents
+
+        Lazy contents ->
+            contents
 
 
 {-| Use this function as an escape hatch to support elements that may not be supported by this package.
@@ -2134,3 +2148,51 @@ toAttribute attribute =
 
         Html.Property name value ->
             VirtualDom.property name value
+
+
+{-| -}
+lazy : (a -> Node b msg) -> a -> Node b msg
+lazy function v1 =
+    Lazy (VirtualDom.lazy (\av1 -> toHtml (function av1)) v1)
+
+
+{-| -}
+lazy2 : (a -> b -> Node c msg) -> a -> b -> Node c msg
+lazy2 function v1 v2 =
+    Lazy (VirtualDom.lazy2 (\av1 av2 -> toHtml (function av1 av2)) v1 v2)
+
+
+{-| -}
+lazy3 : (a -> b -> c -> Node d msg) -> a -> b -> c -> Node d msg
+lazy3 function v1 v2 v3 =
+    Lazy (VirtualDom.lazy3 (\av1 av2 av3 -> toHtml (function av1 av2 av3)) v1 v2 v3)
+
+
+{-| -}
+lazy4 : (a -> b -> c -> d -> Node e msg) -> a -> b -> c -> d -> Node e msg
+lazy4 function v1 v2 v3 v4 =
+    Lazy (VirtualDom.lazy4 (\av1 av2 av3 av4 -> toHtml (function av1 av2 av3 av4)) v1 v2 v3 v4)
+
+
+{-| -}
+lazy5 : (a -> b -> c -> d -> e -> Node f msg) -> a -> b -> c -> d -> e -> Node f msg
+lazy5 function v1 v2 v3 v4 v5 =
+    Lazy (VirtualDom.lazy5 (\av1 av2 av3 av4 av5 -> toHtml (function av1 av2 av3 av4 av5)) v1 v2 v3 v4 v5)
+
+
+{-| -}
+lazy6 : (a -> b -> c -> d -> e -> f -> Node g msg) -> a -> b -> c -> d -> e -> f -> Node g msg
+lazy6 function v1 v2 v3 v4 v5 v6 =
+    Lazy (VirtualDom.lazy6 (\av1 av2 av3 av4 av5 av6 -> toHtml (function av1 av2 av3 av4 av5 av6)) v1 v2 v3 v4 v5 v6)
+
+
+{-| -}
+lazy7 : (a -> b -> c -> d -> e -> f -> g -> Node h msg) -> a -> b -> c -> d -> e -> f -> g -> Node h msg
+lazy7 function v1 v2 v3 v4 v5 v6 v7 =
+    Lazy (VirtualDom.lazy7 (\av1 av2 av3 av4 av5 av6 av7 -> toHtml (function av1 av2 av3 av4 av5 av6 av7)) v1 v2 v3 v4 v5 v6 v7)
+
+
+{-| -}
+lazy8 : (a -> b -> c -> d -> e -> f -> g -> h -> Node i msg) -> a -> b -> c -> d -> e -> f -> g -> h -> Node i msg
+lazy8 function v1 v2 v3 v4 v5 v6 v7 v8 =
+    Lazy (VirtualDom.lazy8 (\av1 av2 av3 av4 av5 av6 av7 av8 -> toHtml (function av1 av2 av3 av4 av5 av6 av7 av8)) v1 v2 v3 v4 v5 v6 v7 v8)

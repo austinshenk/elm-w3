@@ -915,4 +915,61 @@ suite =
             ++ numbered "summary" 1 (Html.summaryHeader [] (Html.h1 [] []))
             ++ test "dialog" (Html.dialog [ Attributes.open True ] [])
             ++ test "canvas" (Html.canvas [ Attributes.width 0, Attributes.height 0 ])
+            ++ [ Test.test "lazy is supported"
+                    (\() ->
+                        Html.lazy (\v1 -> Html.node "test" [] []) 1
+                            |> Html.toHtml
+                            |> Query.fromHtml
+                            |> Query.has [ Selector.tag "test" ]
+                    )
+               , Test.test "lazy2 is supported"
+                    (\() ->
+                        Html.lazy2 (\v1 v2 -> Html.node "test" [] []) 1 2
+                            |> Html.toHtml
+                            |> Query.fromHtml
+                            |> Query.has [ Selector.tag "test" ]
+                    )
+               , Test.test "lazy3 is supported"
+                    (\() ->
+                        Html.lazy3 (\v1 v2 v3 -> Html.node "test" [] []) 1 2 3
+                            |> Html.toHtml
+                            |> Query.fromHtml
+                            |> Query.has [ Selector.tag "test" ]
+                    )
+               , Test.test "lazy4 is supported"
+                    (\() ->
+                        Html.lazy4 (\v1 v2 v3 v4 -> Html.node "test" [] []) 1 2 3 4
+                            |> Html.toHtml
+                            |> Query.fromHtml
+                            |> Query.has [ Selector.tag "test" ]
+                    )
+               , Test.test "lazy5 is supported"
+                    (\() ->
+                        Html.lazy5 (\v1 v2 v3 v4 v5 -> Html.node "test" [] []) 1 2 3 4 5
+                            |> Html.toHtml
+                            |> Query.fromHtml
+                            |> Query.has [ Selector.tag "test" ]
+                    )
+               , Test.test "lazy6 is supported"
+                    (\() ->
+                        Html.lazy6 (\v1 v2 v3 v4 v5 v6 -> Html.node "test" [] []) 1 2 3 4 5 6
+                            |> Html.toHtml
+                            |> Query.fromHtml
+                            |> Query.has [ Selector.tag "test" ]
+                    )
+               , Test.test "lazy7 is supported"
+                    (\() ->
+                        Html.lazy7 (\v1 v2 v3 v4 v5 v6 v7 -> Html.node "test" [] []) 1 2 3 4 5 6 7
+                            |> Html.toHtml
+                            |> Query.fromHtml
+                            |> Query.has [ Selector.tag "test" ]
+                    )
+               , Test.test "lazy8 is supported"
+                    (\() ->
+                        Html.lazy8 (\v1 v2 v3 v4 v5 v6 v7 v8 -> Html.node "test" [] []) 1 2 3 4 5 6 7 8
+                            |> Html.toHtml
+                            |> Query.fromHtml
+                            |> Query.has [ Selector.tag "test" ]
+                    )
+               ]
         )
