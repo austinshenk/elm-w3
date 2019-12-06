@@ -9,7 +9,7 @@ import W3.Html as Html
 import W3.Html.Attributes as Attributes
 
 
-test : String -> String -> Html.Attribute a -> String -> Test
+test : String -> String -> Html.Attribute a msg -> String -> Test
 test testName attributeName attribute expectedValue =
     Test.test testName
         (\() ->

@@ -1,11 +1,13 @@
 module W3.Html.Help exposing (Attribute(..), Supported, SupportedAttribute, SupportedValue, Value(..), bool, boolValue, maybeBool, number, property, string, tokens, value, values)
 
-import Json.Decode
+import Json.Decode as Json exposing (Value)
+import VirtualDom exposing (Handler)
 
 
-type Attribute a
+type Attribute a msg
     = Attribute String String
-    | Property String Json.Decode.Value
+    | Property String Json.Value
+    | Event String { message : msg, stopPropagation : Bool, preventDefault : Bool } ({ message : msg, stopPropagation : Bool, preventDefault : Bool } -> Handler msg)
 
 
 type Supported
@@ -20,12 +22,12 @@ type SupportedValue
     = SupportedValue
 
 
-bool : String -> Bool -> Attribute a
+bool : String -> Bool -> Attribute a msg
 bool key =
     Attribute key << boolToString
 
 
-boolValue : String -> Value a -> Value a -> Bool -> Attribute b
+boolValue : String -> Value a -> Value a -> Bool -> Attribute b msg
 boolValue key trueValue falseValue true =
     Attribute key
         (if true then
@@ -45,7 +47,7 @@ boolToString val =
         "false"
 
 
-maybeBool : String -> String -> Maybe Bool -> Attribute a
+maybeBool : String -> String -> Maybe Bool -> Attribute a msg
 maybeBool key defaultValue =
     Attribute key << maybeBoolToString defaultValue
 
@@ -60,12 +62,12 @@ maybeBoolToString defaultValue val =
             defaultValue
 
 
-number : String -> Int -> Attribute a
+number : String -> Int -> Attribute a msg
 number key =
     Attribute key << String.fromInt
 
 
-string : String -> String -> Attribute a
+string : String -> String -> Attribute a msg
 string key val =
     if val |> String.trim |> String.isEmpty then
         Attribute "" ""
@@ -74,7 +76,7 @@ string key val =
         Attribute key val
 
 
-tokens : String -> List String -> Attribute a
+tokens : String -> List String -> Attribute a msg
 tokens key =
     Attribute key << String.join " "
 
@@ -83,7 +85,7 @@ type Value a
     = Value String
 
 
-values : String -> List (Value a) -> Attribute b
+values : String -> List (Value a) -> Attribute b msg
 values key =
     Attribute key << List.foldl valuesToString ""
 
@@ -93,7 +95,7 @@ valuesToString (Value val) existingVal =
     existingVal ++ " " ++ val
 
 
-value : String -> Value a -> Attribute b
+value : String -> Value a -> Attribute b msg
 value key =
     Attribute key << valueToString
 
@@ -103,6 +105,6 @@ valueToString (Value val) =
     val
 
 
-property : String -> Json.Decode.Value -> Attribute a
+property : String -> Json.Value -> Attribute a msg
 property =
     Property

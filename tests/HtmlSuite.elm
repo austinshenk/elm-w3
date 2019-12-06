@@ -7,37 +7,37 @@ import W3.Html as Html
 import W3.Html.Attributes as Attributes
 
 
-flowNode : List (Html.Attribute a) -> List (Html.Node Html.FlowContent msg) -> Html.Node b msg
+flowNode : List (Html.Attribute a msg) -> List (Html.Node Html.FlowContent msg) -> Html.Node b msg
 flowNode =
     Html.node "node"
 
 
-headingNode : List (Html.Attribute a) -> List (Html.Node Html.HeadingContent msg) -> Html.Node b msg
+headingNode : List (Html.Attribute a msg) -> List (Html.Node Html.HeadingContent msg) -> Html.Node b msg
 headingNode =
     Html.node "node"
 
 
-sectioningNode : List (Html.Attribute a) -> List (Html.Node Html.SectioningContent msg) -> Html.Node b msg
+sectioningNode : List (Html.Attribute a msg) -> List (Html.Node Html.SectioningContent msg) -> Html.Node b msg
 sectioningNode =
     Html.node "node"
 
 
-phrasingNode : List (Html.Attribute a) -> List (Html.Node Html.PhrasingContent msg) -> Html.Node b msg
+phrasingNode : List (Html.Attribute a msg) -> List (Html.Node Html.PhrasingContent msg) -> Html.Node b msg
 phrasingNode =
     Html.node "node"
 
 
-embeddedNode : List (Html.Attribute a) -> List (Html.Node Html.EmbeddedContent msg) -> Html.Node b msg
+embeddedNode : List (Html.Attribute a msg) -> List (Html.Node Html.EmbeddedContent msg) -> Html.Node b msg
 embeddedNode =
     Html.node "node"
 
 
-interactiveNode : List (Html.Attribute a) -> List (Html.Node Html.InteractiveContent msg) -> Html.Node b msg
+interactiveNode : List (Html.Attribute a msg) -> List (Html.Node Html.InteractiveContent msg) -> Html.Node b msg
 interactiveNode =
     Html.node "node"
 
 
-globalAttributesNode : List (Html.GlobalAttributes {}) -> Html.Node b msg
+globalAttributesNode : List (Html.GlobalAttributes {} msg) -> Html.Node b msg
 globalAttributesNode attributes =
     Html.node "node" attributes []
 

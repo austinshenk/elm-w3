@@ -100,16 +100,16 @@ string =
     Attribute
 
 
-role : String -> List (Attribute a) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+role : String -> List (Attribute a) -> List (Html.Attribute b msg) -> List (Html.Attribute b msg)
 role name attributes htmlAttributes =
     Html.Attribute "role" name :: List.foldl toHtmlAttributes htmlAttributes attributes
 
 
-toHtmlAttributes : Attribute a -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+toHtmlAttributes : Attribute a -> List (Html.Attribute b msg) -> List (Html.Attribute b msg)
 toHtmlAttributes attribute htmlAttributes =
     toHtmlAttribute attribute :: htmlAttributes
 
 
-toHtmlAttribute : Attribute a -> Html.Attribute msg
+toHtmlAttribute : Attribute a -> Html.Attribute b msg
 toHtmlAttribute (Attribute name val) =
     Html.Attribute ("aria-" ++ name) val

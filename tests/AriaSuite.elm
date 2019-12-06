@@ -9,7 +9,7 @@ import W3.Aria.Attributes as Attributes
 import W3.Html as Html
 
 
-test : String -> (List (Html.Attribute msg) -> List (Html.Attribute msg)) -> Test
+test : String -> (List (Html.Attribute a msg) -> List (Html.Attribute b msg)) -> Test
 test roleName role =
     Test.test ("role: " ++ roleName)
         (\() ->
@@ -20,7 +20,7 @@ test roleName role =
         )
 
 
-basicRole : List (Aria.GlobalAttributes {}) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+basicRole : List (Aria.GlobalAttributes {}) -> List (Html.GlobalAttributes {} msg) -> List (Html.GlobalAttributes {} msg)
 basicRole =
     Aria.role "basic"
 

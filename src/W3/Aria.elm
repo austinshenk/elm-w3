@@ -64,7 +64,7 @@ type alias GlobalAttributes a =
 
 {-| A type of live region with important, and usually time-sensitive, information.
 -}
-alert : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+alert : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 alert =
     Aria.role "alert"
 
@@ -78,8 +78,8 @@ alertdialog :
             , modal : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 alertdialog =
     Aria.role "alertdialog"
 
@@ -88,8 +88,8 @@ alertdialog =
 -}
 application :
     List (GlobalAttributes { activedescendant : Aria.Supported })
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 application =
     Aria.role "application"
 
@@ -104,15 +104,15 @@ article :
             , setsize : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 article =
     Aria.role "article"
 
 
 {-| A region that contains mostly site-oriented content, rather than page-specific content.
 -}
-banner : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+banner : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 banner =
     Aria.role "banner"
 
@@ -126,8 +126,8 @@ button :
             , pressed : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 button =
     Aria.role "button"
 
@@ -144,8 +144,8 @@ cell :
             , rowspan : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 cell =
     Aria.role "cell"
 
@@ -159,8 +159,8 @@ checkbox :
             , readonly : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 checkbox =
     Aria.role "checkbox"
 
@@ -180,8 +180,8 @@ columnheader :
             , selected : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 columnheader =
     Aria.role "columnheader"
 
@@ -200,29 +200,29 @@ combobox :
             , orientation : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 combobox =
     Aria.role "combobox"
 
 
 {-| A supporting section of the document, designed to be complementary to the main content at a similar level in the DOM hierarchy, but remains meaningful when separated from the main content.
 -}
-complementary : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+complementary : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 complementary =
     Aria.role "complementary"
 
 
 {-| A large perceivable region that contains information about the parent document.
 -}
-contentinfo : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+contentinfo : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 contentinfo =
     Aria.role "contentinfo"
 
 
 {-| A definition of a term or concept.
 -}
-definition : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+definition : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 definition =
     Aria.role "definition"
 
@@ -236,43 +236,43 @@ dialog :
             , modal : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 dialog =
     Aria.role "dialog"
 
 
 {-| A list of references to members of a group, such as a static table of contents.
 -}
-directory : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+directory : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 directory =
     Aria.role "directory"
 
 
 {-| An element containing content that assistive technology users may want to browse in a reading mode.
 -}
-document : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+document : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 document =
     Aria.role "document"
 
 
 {-| A scrollable list of articles where scrolling may cause articles to be added to or removed from either end of the list.
 -}
-feed : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+feed : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 feed =
     Aria.role "feed"
 
 
 {-| A perceivable section of content that typically contains a graphical document, images, code snippets, or example text. The parts of a figure MAY be user-navigable.
 -}
-figure : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+figure : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 figure =
     Aria.role "figure"
 
 
 {-| A landmark region that contains a collection of items and objects that, as a whole, combine to create a form.
 -}
-form : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+form : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 form =
     Aria.role "form"
 
@@ -291,8 +291,8 @@ grid :
             , rowcount : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 grid =
     Aria.role "grid"
 
@@ -312,8 +312,8 @@ gridcell :
             , selected : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 gridcell =
     Aria.role "gridcell"
 
@@ -327,8 +327,8 @@ group :
             , expanded : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 group =
     Aria.role "group"
 
@@ -342,29 +342,29 @@ heading :
             , expanded : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 heading =
     Aria.role "heading"
 
 
 {-| A container for a collection of elements that form an image.
 -}
-img : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+img : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 img =
     Aria.role "img"
 
 
 {-| An interactive reference to an internal or external resource that, when activated, causes the user agent to navigate to that resource.
 -}
-link : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+link : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 link =
     Aria.role "link"
 
 
 {-| A section containing listitem elements.
 -}
-list : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+list : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 list =
     Aria.role "list"
 
@@ -382,8 +382,8 @@ listbox :
             , orientation : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 listbox =
     Aria.role "listbox"
 
@@ -398,36 +398,36 @@ listitem :
             , setsize : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 listitem =
     Aria.role "listitem"
 
 
 {-| A type of live region where new information is added in meaningful order and old information may disappear.
 -}
-log : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+log : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 log =
     Aria.role "log"
 
 
 {-| The main content of a document.
 -}
-main_ : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+main_ : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 main_ =
     Aria.role "main"
 
 
 {-| A type of live region where non-essential information changes frequently.
 -}
-marquee : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+marquee : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 marquee =
     Aria.role "marquee"
 
 
 {-| Content that represents a mathematical expression.
 -}
-math : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+math : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 math =
     Aria.role "math"
 
@@ -442,8 +442,8 @@ menu :
             , orientation : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 menu =
     Aria.role "menu"
 
@@ -458,8 +458,8 @@ menubar :
             , orientation : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 menubar =
     Aria.role "menubar"
 
@@ -473,8 +473,8 @@ menuitem :
             , setsize : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 menuitem =
     Aria.role "menuitem"
 
@@ -490,8 +490,8 @@ menuitemcheckbox :
             , setsize : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 menuitemcheckbox =
     Aria.role "menuitemcheckbox"
 
@@ -507,29 +507,29 @@ menuitemradio :
             , setsize : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 menuitemradio =
     Aria.role "menuitemradio"
 
 
 {-| A collection of navigational elements (usually links) for navigating the document or related documents.
 -}
-navigation : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+navigation : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 navigation =
     Aria.role "navigation"
 
 
 {-| An element whose implicit native role semantics will not be mapped to the accessibility API.
 -}
-none : List (GlobalAttributes {}) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+none : List (GlobalAttributes {}) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 none =
     Aria.role "none"
 
 
 {-| A section whose content is parenthetic or ancillary to the main content of the resource.
 -}
-note : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+note : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 note =
     Aria.role "note"
 
@@ -545,15 +545,15 @@ option :
             , setsize : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 option =
     Aria.role "option"
 
 
 {-| An element whose implicit native role semantics will not be mapped to the accessibility API.
 -}
-presentation : List (GlobalAttributes {}) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+presentation : List (GlobalAttributes {}) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 presentation =
     Aria.role "presentation"
 
@@ -570,8 +570,8 @@ progressbar :
             , valuetext : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 progressbar =
     Aria.role "progressbar"
 
@@ -586,8 +586,8 @@ radio :
             , setsize : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 radio =
     Aria.role "radio"
 
@@ -604,15 +604,15 @@ radiogroup :
             , orientation : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 radiogroup =
     Aria.role "radiogroup"
 
 
 {-| A perceivable section containing content that is relevant to a specific, author-specified purpose and sufficiently important that users will likely want to be able to navigate to the section easily and to have it listed in a summary of the page. Such a page summary could be generated dynamically by a user agent or assistive technology.
 -}
-region : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+region : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 region =
     Aria.role "region"
 
@@ -630,15 +630,15 @@ row :
             , expanded : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 row =
     Aria.role "row"
 
 
 {-| A structure containing one or more row elements in a tabular container.
 -}
-rowgroup : List (GlobalAttributes {}) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+rowgroup : List (GlobalAttributes {}) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 rowgroup =
     Aria.role "rowgroup"
 
@@ -659,8 +659,8 @@ rowheader :
             , selected : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 rowheader =
     Aria.role "rowheader"
 
@@ -678,15 +678,15 @@ scrollbar :
             , valuetext : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 scrollbar =
     Aria.role "scrollbar"
 
 
 {-| A landmark region that contains a collection of items and objects that, as a whole, combine to create a search facility.
 -}
-search : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+search : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 search =
     Aria.role "search"
 
@@ -704,8 +704,8 @@ searchbox :
             , required : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 searchbox =
     Aria.role "searchbox"
 
@@ -722,8 +722,8 @@ separator :
             , valuetext : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 separator =
     Aria.role "separator"
 
@@ -741,8 +741,8 @@ slider :
             , valuetext : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 slider =
     Aria.role "slider"
 
@@ -761,15 +761,15 @@ spinbutton :
             , valuetext : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 spinbutton =
     Aria.role "spinbutton"
 
 
 {-| A type of live region whose content is advisory information for the user but is not important enough to justify an alert, often but not necessarily presented as a status bar.
 -}
-status : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+status : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 status =
     Aria.role "status"
 
@@ -783,8 +783,8 @@ switch :
             , readonly : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 switch =
     Aria.role "switch"
 
@@ -800,8 +800,8 @@ tab :
             , expanded : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 tab =
     Aria.role "tab"
 
@@ -816,8 +816,8 @@ table :
             , expanded : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 table =
     Aria.role "table"
 
@@ -833,22 +833,22 @@ tablist :
             , activedescendant : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 tablist =
     Aria.role "tablist"
 
 
 {-| A container for the resources associated with a tab, where each tab is contained in a tablist.
 -}
-tabpanel : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+tabpanel : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 tabpanel =
     Aria.role "tabpanel"
 
 
 {-| A word or phrase with a corresponding definition.
 -}
-term : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+term : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 term =
     Aria.role "term"
 
@@ -866,15 +866,15 @@ textbox :
             , required : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 textbox =
     Aria.role "textbox"
 
 
 {-| A type of live region containing a numerical counter which indicates an amount of elapsed time from a start point, or the time remaining until an end point.
 -}
-timer : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+timer : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 timer =
     Aria.role "timer"
 
@@ -889,15 +889,15 @@ toolbar :
             , expanded : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 toolbar =
     Aria.role "toolbar"
 
 
 {-| A contextual popup that displays a description for an element.
 -}
-tooltip : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+tooltip : List (GlobalAttributes { expanded : Aria.Supported }) -> List (Html.Attribute a msg) -> List (Html.Attribute a msg)
 tooltip =
     Aria.role "tooltip"
 
@@ -914,8 +914,8 @@ tree :
             , orientation : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 tree =
     Aria.role "tree"
 
@@ -936,8 +936,8 @@ treegrid :
             , rowcount : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 treegrid =
     Aria.role "treegrid"
 
@@ -955,14 +955,14 @@ treeitem :
             , setsize : Aria.Supported
             }
         )
-    -> List (Html.Attribute msg)
-    -> List (Html.Attribute msg)
+    -> List (Html.Attribute a msg)
+    -> List (Html.Attribute a msg)
 treeitem =
     Aria.role "treeitem"
 
 
 {-| Use this to break out of this package's requirements. Useful if there is a role that this package does not support yet.
 -}
-role : String -> List (Aria.Attribute a) -> List (Html.Attribute msg) -> List (Html.Attribute msg)
+role : String -> List (Aria.Attribute a) -> List (Html.Attribute b msg) -> List (Html.Attribute b msg)
 role =
     Aria.role

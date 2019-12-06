@@ -140,7 +140,8 @@ Various functions to make node rendering lazy.
 
 -}
 
-import VirtualDom
+import Json.Decode as Json
+import VirtualDom exposing (Handler)
 import W3.Html.Help as Html
 
 
@@ -154,13 +155,13 @@ type Node nodes msg
 
 {-| Type for each attribute
 -}
-type alias Attribute msg =
-    Html.Attribute msg
+type alias Attribute a msg =
+    Html.Attribute a msg
 
 
 {-| All elements support the use of these attributes as defined by [html.spec.whatwg.org/GlobalAttributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
 -}
-type alias GlobalAttributes a =
+type alias GlobalAttributes a msg =
     Html.Attribute
         { a
             | accesskey : Html.SupportedAttribute
@@ -190,6 +191,7 @@ type alias GlobalAttributes a =
             , title : Html.SupportedAttribute
             , translate : Html.SupportedAttribute
         }
+        msg
 
 
 {-| Flow Content Category as defined by [html.spec.whatwg.org/FlowContent](https://html.spec.whatwg.org/multipage/dom.html#flow-content-2)
@@ -429,70 +431,70 @@ type alias InteractiveContent =
 
 {-| Follows the element definition at [html.spec.whatwg.org/article](https://html.spec.whatwg.org/multipage/sections.html#the-article-element)
 -}
-article : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | article : Html.Supported } msg
+article : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Node { compatible | article : Html.Supported } msg
 article =
     node "article"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/section](https://html.spec.whatwg.org/multipage/sections.html#the-section-element)
 -}
-section : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | section : Html.Supported } msg
+section : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Node { compatible | section : Html.Supported } msg
 section =
     node "section"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/nav](https://html.spec.whatwg.org/multipage/sections.html#the-nav-element)
 -}
-nav : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | nav : Html.Supported } msg
+nav : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Node { compatible | nav : Html.Supported } msg
 nav =
     node "nav"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/aside](https://html.spec.whatwg.org/multipage/sections.html#the-aside-element)
 -}
-aside : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | aside : Html.Supported } msg
+aside : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Node { compatible | aside : Html.Supported } msg
 aside =
     node "aside"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/h1](https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements)
 -}
-h1 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h1 : Html.Supported } msg
+h1 : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | h1 : Html.Supported } msg
 h1 =
     node "h1"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/h2](https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements)
 -}
-h2 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h2 : Html.Supported } msg
+h2 : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | h2 : Html.Supported } msg
 h2 =
     node "h2"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/h3](https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements)
 -}
-h3 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h3 : Html.Supported } msg
+h3 : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | h3 : Html.Supported } msg
 h3 =
     node "h3"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/h4](https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements)
 -}
-h4 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h4 : Html.Supported } msg
+h4 : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | h4 : Html.Supported } msg
 h4 =
     node "h4"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/h5](https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements)
 -}
-h5 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h5 : Html.Supported } msg
+h5 : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | h5 : Html.Supported } msg
 h5 =
     node "h5"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/h6](https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements)
 -}
-h6 : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | h6 : Html.Supported } msg
+h6 : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | h6 : Html.Supported } msg
 h6 =
     node "h6"
 
@@ -500,7 +502,7 @@ h6 =
 {-| Follows the element definition at [html.spec.whatwg.org/hgroup](https://html.spec.whatwg.org/multipage/sections.html#the-hgroup-element)
 -}
 hgroup :
-    List (GlobalAttributes {})
+    List (GlobalAttributes {} msg)
     ->
         List
             (Node
@@ -520,7 +522,7 @@ hgroup =
 
 {-| Follows the element definition at [html.spec.whatwg.org/header](https://html.spec.whatwg.org/multipage/sections.html#the-header-element)
 -}
-header : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | header : Html.Supported } msg
+header : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Node { compatible | header : Html.Supported } msg
 header =
     -- Exclude header, footer descendant
     node "header"
@@ -528,7 +530,7 @@ header =
 
 {-| Follows the element definition at [html.spec.whatwg.org/footer](https://html.spec.whatwg.org/multipage/sections.html#the-header-element)
 -}
-footer : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | footer : Html.Supported } msg
+footer : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Node { compatible | footer : Html.Supported } msg
 footer =
     -- Exclude header, footer descendant
     node "footer"
@@ -536,7 +538,7 @@ footer =
 
 {-| Follows the element definition at [html.spec.whatwg.org/address](https://html.spec.whatwg.org/multipage/sections.html#the-address-element)
 -}
-address : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | address : Html.Supported } msg
+address : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Node { compatible | address : Html.Supported } msg
 address =
     -- Exclude heading content, sectioning content, header, footer, address descendant
     node "address"
@@ -548,21 +550,21 @@ address =
 
 {-| Follows the element definition at [html.spec.whatwg.org/p](https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element)
 -}
-p : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | p : Html.Supported } msg
+p : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | p : Html.Supported } msg
 p =
     node "p"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/hr](https://html.spec.whatwg.org/multipage/grouping-content.html#the-hr-element)
 -}
-hr : List (GlobalAttributes {}) -> Node { compatible | hr : Html.Supported } msg
+hr : List (GlobalAttributes {} msg) -> Node { compatible | hr : Html.Supported } msg
 hr attributes =
     node "hr" attributes []
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/pre](https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element)
 -}
-pre : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | pre : Html.Supported } msg
+pre : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | pre : Html.Supported } msg
 pre =
     node "pre"
 
@@ -570,7 +572,7 @@ pre =
 {-| Follows the element definition at [html.spec.whatwg.org/blockquote](https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element)
 -}
 blockquote :
-    List (GlobalAttributes { cite : Html.SupportedAttribute })
+    List (GlobalAttributes { cite : Html.SupportedAttribute } msg)
     -> List (Node FlowContent msg)
     -> Node { compatible | blockquote : Html.Supported } msg
 blockquote =
@@ -586,6 +588,7 @@ ol :
             , start : Html.SupportedAttribute
             , type_list : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node { li : Html.Supported } msg)
     -> Node { compatible | ol : Html.Supported } msg
@@ -602,6 +605,7 @@ olKeyed :
             , start : Html.SupportedAttribute
             , type_list : Html.SupportedAttribute
             }
+            msg
         )
     -> List ( String, Node { li : Html.Supported } msg )
     -> Node { compatible | ol : Html.Supported } msg
@@ -611,21 +615,21 @@ olKeyed =
 
 {-| Follows the element definition at [html.spec.whatwg.org/ul](https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element)
 -}
-ul : List (GlobalAttributes {}) -> List (Node { li : Html.Supported } msg) -> Node { compatible | ul : Html.Supported } msg
+ul : List (GlobalAttributes {} msg) -> List (Node { li : Html.Supported } msg) -> Node { compatible | ul : Html.Supported } msg
 ul =
     node "ul"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/ul](https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element)
 -}
-ulKeyed : List (GlobalAttributes {}) -> List ( String, Node { li : Html.Supported } msg ) -> Node { compatible | ul : Html.Supported } msg
+ulKeyed : List (GlobalAttributes {} msg) -> List ( String, Node { li : Html.Supported } msg ) -> Node { compatible | ul : Html.Supported } msg
 ulKeyed =
     keyed "ul"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/menu](https://html.spec.whatwg.org/multipage/grouping-content.html#the-menu-element)
 -}
-menu : List (GlobalAttributes {}) -> List (Node { li : Html.Supported } msg) -> Node { compatible | menu : Html.Supported } msg
+menu : List (GlobalAttributes {} msg) -> List (Node { li : Html.Supported } msg) -> Node { compatible | menu : Html.Supported } msg
 menu =
     node "menu"
 
@@ -633,7 +637,7 @@ menu =
 {-| Follows the element definition at [html.spec.whatwg.org/li](https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element)
 -}
 li :
-    List (GlobalAttributes { value_ordinal : Html.SupportedAttribute })
+    List (GlobalAttributes { value_ordinal : Html.SupportedAttribute } msg)
     -> List (Node FlowContent msg)
     -> Node { compatible | li : Html.Supported } msg
 li =
@@ -642,28 +646,28 @@ li =
 
 {-| Follows the element definition at [html.spec.whatwg.org/dl](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element)
 -}
-dl : List (GlobalAttributes {}) -> List (Node { dt : Html.Supported, dd : Html.Supported } msg) -> Node { compatible | dl : Html.Supported } msg
+dl : List (GlobalAttributes {} msg) -> List (Node { dt : Html.Supported, dd : Html.Supported } msg) -> Node { compatible | dl : Html.Supported } msg
 dl =
     node "dl"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/dl](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element)
 -}
-dlKeyed : List (GlobalAttributes {}) -> List ( String, Node { dt : Html.Supported, dd : Html.Supported } msg ) -> Node { compatible | dl : Html.Supported } msg
+dlKeyed : List (GlobalAttributes {} msg) -> List ( String, Node { dt : Html.Supported, dd : Html.Supported } msg ) -> Node { compatible | dl : Html.Supported } msg
 dlKeyed =
     keyed "dl"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/dl](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element)
 -}
-dlWrapped : List (GlobalAttributes {}) -> List (Node { divDl : Html.Supported } msg) -> Node { compatible | dl : Html.Supported } msg
+dlWrapped : List (GlobalAttributes {} msg) -> List (Node { divDl : Html.Supported } msg) -> Node { compatible | dl : Html.Supported } msg
 dlWrapped =
     node "dl"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/dl](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element)
 -}
-dlWrappedKeyed : List (GlobalAttributes {}) -> List ( String, Node { divDl : Html.Supported } msg ) -> Node { compatible | dl : Html.Supported } msg
+dlWrappedKeyed : List (GlobalAttributes {} msg) -> List ( String, Node { divDl : Html.Supported } msg ) -> Node { compatible | dl : Html.Supported } msg
 dlWrappedKeyed =
     keyed "dl"
 
@@ -671,14 +675,14 @@ dlWrappedKeyed =
 {-| Follows the element definition at [html.spec.whatwg.org/dt](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dt-element)
 _Exclude heading content, sectioning content, header, footer descendant_
 -}
-dt : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | dt : Html.Supported } msg
+dt : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Node { compatible | dt : Html.Supported } msg
 dt =
     node "dt"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/dd](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element)
 -}
-dd : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | dd : Html.Supported } msg
+dd : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Node { compatible | dd : Html.Supported } msg
 dd =
     node "dd"
 
@@ -686,7 +690,7 @@ dd =
 {-| Follows the element definition at [html.spec.whatwg.org/figure](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element)
 -}
 figure :
-    List (GlobalAttributes {})
+    List (GlobalAttributes {} msg)
     -> Node { figcaption : Html.Supported } msg
     -> List (Node FlowContent msg)
     -> Node { compatible | figure : Html.Supported } msg
@@ -697,7 +701,7 @@ figure attributes figCaption nodes =
 {-| Follows the element definition at [html.spec.whatwg.org/figure](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element)
 -}
 figureEndingCaption :
-    List (GlobalAttributes {})
+    List (GlobalAttributes {} msg)
     -> List (Node FlowContent msg)
     -> Node { figcaption : Html.Supported } msg
     -> Node { compatible | figure : Html.Supported } msg
@@ -708,7 +712,7 @@ figureEndingCaption attributes nodes figCaption =
 {-| Follows the element definition at [html.spec.whatwg.org/figure](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element)
 -}
 figureNoCaption :
-    List (GlobalAttributes {})
+    List (GlobalAttributes {} msg)
     -> List (Node FlowContent msg)
     -> Node { compatible | figure : Html.Supported } msg
 figureNoCaption =
@@ -717,28 +721,28 @@ figureNoCaption =
 
 {-| Follows the element definition at [html.spec.whatwg.org/figcaption](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figcaption-element)
 -}
-figcaption : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | figcaption : Html.Supported } msg
+figcaption : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Node { compatible | figcaption : Html.Supported } msg
 figcaption =
     node "figcaption"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/main](https://html.spec.whatwg.org/multipage/grouping-content.html#the-main-element)
 -}
-main_ : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | main_ : Html.Supported } msg
+main_ : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Node { compatible | main_ : Html.Supported } msg
 main_ =
     node "main"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/div](https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element)
 -}
-div : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Node { compatible | div : Html.Supported } msg
+div : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Node { compatible | div : Html.Supported } msg
 div =
     node "div"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/div](https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element)
 -}
-divDl : List (GlobalAttributes {}) -> List (Node { dt : Html.Supported, dd : Html.Supported } msg) -> Node { compatible | divDl : Html.Supported } msg
+divDl : List (GlobalAttributes {} msg) -> List (Node { dt : Html.Supported, dd : Html.Supported } msg) -> Node { compatible | divDl : Html.Supported } msg
 divDl =
     node "div"
 
@@ -761,6 +765,7 @@ a :
             , type_mime : Html.SupportedAttribute
             , referrerpolicy : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node FlowContent msg)
     -> Node { compatible | a : Html.Supported } msg
@@ -770,35 +775,35 @@ a =
 
 {-| Follows the element definition at [html.spec.whatwg.org/em](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element)
 -}
-em : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | em : Html.Supported } msg
+em : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | em : Html.Supported } msg
 em =
     node "em"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/strong](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element)
 -}
-strong : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | strong : Html.Supported } msg
+strong : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | strong : Html.Supported } msg
 strong =
     node "strong"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/small](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element)
 -}
-small : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | small : Html.Supported } msg
+small : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | small : Html.Supported } msg
 small =
     node "small"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/s](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-s-element)
 -}
-s : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | s : Html.Supported } msg
+s : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | s : Html.Supported } msg
 s =
     node "s"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/cite](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-cite-element)
 -}
-cite : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | cite : Html.Supported } msg
+cite : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | cite : Html.Supported } msg
 cite =
     node "cite"
 
@@ -806,7 +811,7 @@ cite =
 {-| Follows the element definition at [html.spec.whatwg.org/q](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element)
 -}
 q :
-    List (GlobalAttributes { cite : Html.SupportedAttribute })
+    List (GlobalAttributes { cite : Html.SupportedAttribute } msg)
     -> List (Node PhrasingContent msg)
     -> Node { compatible | q : Html.Supported } msg
 q =
@@ -816,14 +821,14 @@ q =
 {-| Follows the element definition at [html.spec.whatwg.org/dfn](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element)
 _Exclude dfn descendant_
 -}
-dfn : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | dfn : Html.Supported } msg
+dfn : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | dfn : Html.Supported } msg
 dfn =
     node "dfn"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/abbr](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element)
 -}
-abbr : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | abbr : Html.Supported } msg
+abbr : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | abbr : Html.Supported } msg
 abbr =
     node "abbr"
 
@@ -832,7 +837,7 @@ abbr =
 Content model: _Exclude ruby descendant_
 -}
 ruby :
-    List (GlobalAttributes {})
+    List (GlobalAttributes {} msg)
     -> List (Node PhrasingContent msg)
     -> List (Node { rt : Html.Supported, rp : Html.Supported } msg)
     -> Node { compatible | ruby : Html.Supported } msg
@@ -843,7 +848,7 @@ ruby attributes contents rtrpContents =
 {-| Follows the element definition at [html.spec.whatwg.org/ruby](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element)
 -}
 rubyWrapper :
-    List (GlobalAttributes {})
+    List (GlobalAttributes {} msg)
     -> Node { rubyDescendent : Html.Supported } msg
     -> List (Node { rt : Html.Supported, rp : Html.Supported } msg)
     -> Node { compatible | ruby : Html.Supported } msg
@@ -854,7 +859,7 @@ rubyWrapper attributes rubyChild rtrpContents =
 {-| Follows the element definition at [html.spec.whatwg.org/ruby](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element)
 -}
 rubyDescendent :
-    List (GlobalAttributes {})
+    List (GlobalAttributes {} msg)
     -> List (Node { rt : Html.Supported, rp : Html.Supported } msg)
     -> Node { compatible | rubyDescendent : Html.Supported } msg
 rubyDescendent attributes rtrpContents =
@@ -863,14 +868,14 @@ rubyDescendent attributes rtrpContents =
 
 {-| Follows the element definition at [html.spec.whatwg.org/rt](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-rt-element)
 -}
-rt : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | rt : Html.Supported } msg
+rt : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | rt : Html.Supported } msg
 rt =
     node "rt"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/rp](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-rp-element)
 -}
-rp : List (GlobalAttributes {}) -> String -> Node { compatible | rp : Html.Supported } msg
+rp : List (GlobalAttributes {} msg) -> String -> Node { compatible | rp : Html.Supported } msg
 rp attributes content =
     Node "rp" (List.map toAttribute attributes) [ VirtualDom.text content ]
 
@@ -878,7 +883,7 @@ rp attributes content =
 {-| Follows the element definition at [html.spec.whatwg.org/data](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-data-element)
 -}
 data :
-    List (GlobalAttributes { value : Html.SupportedAttribute })
+    List (GlobalAttributes { value : Html.SupportedAttribute } msg)
     -> List (Node PhrasingContent msg)
     -> Node { compatible | data : Html.Supported } msg
 data =
@@ -888,7 +893,7 @@ data =
 {-| Follows the element definition at [html.spec.whatwg.org/time](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-time-element)
 -}
 time :
-    List (GlobalAttributes { datetime : Html.SupportedAttribute })
+    List (GlobalAttributes { datetime : Html.SupportedAttribute } msg)
     -> List (Node PhrasingContent msg)
     -> Node { compatible | time : Html.Supported } msg
 time =
@@ -898,7 +903,7 @@ time =
 {-| Follows the element definition at [html.spec.whatwg.org/time](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-time-element)
 -}
 timeText :
-    List (GlobalAttributes { datetime : Html.SupportedAttribute })
+    List (GlobalAttributes { datetime : Html.SupportedAttribute } msg)
     -> String
     -> Node { compatible | time : Html.Supported } msg
 timeText attributes content =
@@ -907,105 +912,105 @@ timeText attributes content =
 
 {-| Follows the element definition at [html.spec.whatwg.org/code](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-code-element)
 -}
-code : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | code : Html.Supported } msg
+code : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | code : Html.Supported } msg
 code =
     node "code"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/var](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-var-element)
 -}
-var : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | var : Html.Supported } msg
+var : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | var : Html.Supported } msg
 var =
     node "var"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/samp](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element)
 -}
-samp : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | samp : Html.Supported } msg
+samp : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | samp : Html.Supported } msg
 samp =
     node "samp"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/kbd](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element)
 -}
-kbd : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | kbd : Html.Supported } msg
+kbd : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | kbd : Html.Supported } msg
 kbd =
     node "kbd"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/sub](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements)
 -}
-sub : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | sub : Html.Supported } msg
+sub : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | sub : Html.Supported } msg
 sub =
     node "sub"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/sup](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements)
 -}
-sup : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | sup : Html.Supported } msg
+sup : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | sup : Html.Supported } msg
 sup =
     node "sup"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/i](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element)
 -}
-i : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | i : Html.Supported } msg
+i : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | i : Html.Supported } msg
 i =
     node "i"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/b](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element)
 -}
-b : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | b : Html.Supported } msg
+b : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | b : Html.Supported } msg
 b =
     node "b"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/u](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element)
 -}
-u : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | u : Html.Supported } msg
+u : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | u : Html.Supported } msg
 u =
     node "u"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/mark](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element)
 -}
-mark : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | mark : Html.Supported } msg
+mark : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | mark : Html.Supported } msg
 mark =
     node "mark"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/bdi](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdi-element)
 -}
-bdi : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | bdi : Html.Supported } msg
+bdi : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | bdi : Html.Supported } msg
 bdi =
     node "bdi"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/bdo](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-bdo-element)
 -}
-bdo : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | bdo : Html.Supported } msg
+bdo : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | bdo : Html.Supported } msg
 bdo =
     node "bdo"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/span](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element)
 -}
-span : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | span : Html.Supported } msg
+span : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | span : Html.Supported } msg
 span =
     node "span"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/br](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element)
 -}
-br : List (GlobalAttributes {}) -> Node { compatible | br : Html.Supported } msg
+br : List (GlobalAttributes {} msg) -> Node { compatible | br : Html.Supported } msg
 br attributes =
     node "br" attributes []
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/wbr](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-wbr-element)
 -}
-wbr : List (GlobalAttributes {}) -> Node { compatible | wbr : Html.Supported } msg
+wbr : List (GlobalAttributes {} msg) -> Node { compatible | wbr : Html.Supported } msg
 wbr attributes =
     node "wbr" attributes []
 
@@ -1022,6 +1027,7 @@ ins :
             { cite : Html.SupportedAttribute
             , datetime : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node FlowContent msg)
     -> Node { compatible | ins : Html.Supported } msg
@@ -1037,6 +1043,7 @@ del :
             { cite : Html.SupportedAttribute
             , datetime : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node FlowContent msg)
     -> Node { compatible | del : Html.Supported } msg
@@ -1051,7 +1058,7 @@ del =
 {-| Follows the element definition at [html.spec.whatwg.org/picture](https://html.spec.whatwg.org/multipage/embedded-content.html#the-picture-element)
 -}
 picture :
-    List (GlobalAttributes {})
+    List (GlobalAttributes {} msg)
     -> List (Node { source : Html.Supported } msg)
     -> Node { img : Html.Supported } msg
     -> Node { compatible | picture : Html.Supported } msg
@@ -1075,6 +1082,7 @@ source :
             , sizes : Html.SupportedAttribute
             , media : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | source : Html.Supported } msg
 source attributes =
@@ -1098,6 +1106,7 @@ img :
             , referrerpolicy : Html.SupportedAttribute
             , decoding : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | img : Html.Supported } msg
 img attributes =
@@ -1124,6 +1133,7 @@ iframe :
             , height : Html.SupportedAttribute
             , referrerpolicy : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | iframe : Html.Supported } msg
 iframe attributes =
@@ -1140,6 +1150,7 @@ embed :
             , width : Html.SupportedAttribute
             , height : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | embed : Html.Supported } msg
 embed attributes =
@@ -1159,6 +1170,7 @@ object :
             , width : Html.SupportedAttribute
             , height : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node { param : Html.Supported } msg)
     -> List (Node FlowContent msg)
@@ -1170,7 +1182,7 @@ object attributes params contents =
 {-| Follows the element definition at [html.spec.whatwg.org/param](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-param-element)
 -}
 param :
-    List (GlobalAttributes {})
+    List (GlobalAttributes {} msg)
     -> ( String, String )
     -> Node { compatible | param : Html.Supported } msg
 param attributes ( name, value ) =
@@ -1203,6 +1215,7 @@ video :
             , width : Html.SupportedAttribute
             , height : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node { source : Html.Supported } msg)
     -> List (Node { track : Html.Supported } msg)
@@ -1225,6 +1238,7 @@ audio :
             , muted : Html.SupportedAttribute
             , controls : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node { source : Html.Supported } msg)
     -> List (Node { track : Html.Supported } msg)
@@ -1245,6 +1259,7 @@ track :
             , label : Html.SupportedAttribute
             , default : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | track : Html.Supported } msg
 track attributes =
@@ -1258,7 +1273,7 @@ track attributes =
 {-| Follows the element definition at [html.spec.whatwg.org/map](https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element)
 -}
 map :
-    List (GlobalAttributes { name : Html.SupportedAttribute })
+    List (GlobalAttributes { name : Html.SupportedAttribute } msg)
     -> List (Node FlowContent msg)
     -> Node { compatible | map : Html.Supported } msg
 map =
@@ -1280,6 +1295,7 @@ area :
             , rel : Html.SupportedAttribute
             , referrerpolicy : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | area : Html.Supported } msg
 area attributes =
@@ -1303,19 +1319,19 @@ type alias TableContents msg =
 {-| The Type that is passed around the table pipeline
 -}
 type Table msg
-    = Table (List (GlobalAttributes {})) (TableContents msg)
+    = Table (List (GlobalAttributes {} msg)) (TableContents msg)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/table](https://html.spec.whatwg.org/multipage/tables.html#the-table-element)
 -}
-table : List (GlobalAttributes {}) -> Table msg
+table : List (GlobalAttributes {} msg) -> Table msg
 table attributes =
     Table attributes (TableContents Nothing [] Nothing Nothing)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/caption](https://html.spec.whatwg.org/multipage/tables.html#the-caption-element)
 -}
-caption : List (GlobalAttributes {}) -> List (Node FlowContent msg) -> Table msg -> Table msg
+caption : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Table msg -> Table msg
 caption attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
         { tableContents
@@ -1326,7 +1342,7 @@ caption attributes contents (Table tableAttributes tableContents) =
 {-| Follows the element definition at [html.spec.whatwg.org/colgroup](https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-element)
 -}
 colgroup :
-    List (GlobalAttributes { span : Html.SupportedAttribute })
+    List (GlobalAttributes { span : Html.SupportedAttribute } msg)
     -> List (Node { col : Html.Supported } msg)
     -> Table msg
     -> Table msg
@@ -1339,14 +1355,14 @@ colgroup attributes contents (Table tableAttributes tableContents) =
 
 {-| Follows the element definition at [html.spec.whatwg.org/col](https://html.spec.whatwg.org/multipage/tables.html#the-col-element)
 -}
-col : List (GlobalAttributes { span : Html.SupportedAttribute }) -> Node { compatible | col : Html.Supported } msg
+col : List (GlobalAttributes { span : Html.SupportedAttribute } msg) -> Node { compatible | col : Html.Supported } msg
 col attributes =
     node "col" attributes []
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/thead](https://html.spec.whatwg.org/multipage/tables.html#the-thead-element)
 -}
-thead : List (GlobalAttributes {}) -> List (Node { tr : Html.Supported } msg) -> Table msg -> Table msg
+thead : List (GlobalAttributes {} msg) -> List (Node { tr : Html.Supported } msg) -> Table msg -> Table msg
 thead attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
         { tableContents
@@ -1356,7 +1372,7 @@ thead attributes contents (Table tableAttributes tableContents) =
 
 {-| Follows the element definition at [html.spec.whatwg.org/tfoot](https://html.spec.whatwg.org/multipage/tables.html#the-tfoot-element)
 -}
-tfoot : List (GlobalAttributes {}) -> List (Node { tr : Html.Supported } msg) -> Table msg -> Table msg
+tfoot : List (GlobalAttributes {} msg) -> List (Node { tr : Html.Supported } msg) -> Table msg -> Table msg
 tfoot attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
         { tableContents
@@ -1366,7 +1382,7 @@ tfoot attributes contents (Table tableAttributes tableContents) =
 
 {-| Follows the element definition at [html.spec.whatwg.org/tbody](https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element)
 -}
-tbody : List (GlobalAttributes {}) -> List (Node { tr : Html.Supported } msg) -> Table msg -> Node { compatible | table : Html.Supported } msg
+tbody : List (GlobalAttributes {} msg) -> List (Node { tr : Html.Supported } msg) -> Table msg -> Node { compatible | table : Html.Supported } msg
 tbody attributes rows (Table tableAttributes contents) =
     Node "table"
         (List.map toAttribute tableAttributes)
@@ -1394,7 +1410,7 @@ trbody rows (Table tableAttributes contents) =
 
 {-| Follows the element definition at [html.spec.whatwg.org/tr](https://html.spec.whatwg.org/multipage/tables.html#the-tr-element)
 -}
-tr : List (GlobalAttributes {}) -> List (Node { td : Html.Supported, th : Html.Supported } msg) -> Node { compatible | tr : Html.Supported } msg
+tr : List (GlobalAttributes {} msg) -> List (Node { td : Html.Supported, th : Html.Supported } msg) -> Node { compatible | tr : Html.Supported } msg
 tr =
     node "tr"
 
@@ -1408,6 +1424,7 @@ td :
             , rowspan : Html.SupportedAttribute
             , headers : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node FlowContent msg)
     -> Node { compatible | td : Html.Supported } msg
@@ -1431,6 +1448,7 @@ th :
             , scope : Html.SupportedAttribute
             , abbr : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node FlowContent msg)
     -> Node { compatible | th : Html.Supported } msg
@@ -1458,6 +1476,7 @@ form :
             , target : Html.SupportedAttribute
             , rel : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node FlowContent msg)
     -> Node { compatible | form : Html.Supported } msg
@@ -1468,7 +1487,7 @@ form =
 {-| Follows the element definition at [html.spec.whatwg.org/label](https://html.spec.whatwg.org/multipage/forms.html#the-label-element)
 -}
 label :
-    List (GlobalAttributes { for : Html.SupportedAttribute })
+    List (GlobalAttributes { for : Html.SupportedAttribute } msg)
     -> List (Node PhrasingContent msg)
     -> Node { compatible | label : Html.Supported } msg
 label =
@@ -1515,6 +1534,7 @@ input :
             , value : Html.SupportedAttribute
             , width : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 input attributes =
@@ -1523,7 +1543,7 @@ input attributes =
 
 {-| Follows the element definition at [html.spec.whatwg.org/hidden](https://html.spec.whatwg.org/multipage/input.html#hidden-state-(type=hidden))
 -}
-hidden : List (GlobalAttributes { autocomplete : Html.SupportedAttribute }) -> Node { compatible | input : Html.Supported } msg
+hidden : List (GlobalAttributes { autocomplete : Html.SupportedAttribute } msg) -> Node { compatible | input : Html.Supported } msg
 hidden attributes =
     node "input" (Html.Attribute "type" "hidden" :: attributes) []
 
@@ -1544,6 +1564,7 @@ textInput :
             , required : Html.SupportedAttribute
             , size : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 textInput attributes =
@@ -1566,6 +1587,7 @@ search :
             , required : Html.SupportedAttribute
             , size : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 search attributes =
@@ -1587,6 +1609,7 @@ url :
             , required : Html.SupportedAttribute
             , size : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 url attributes =
@@ -1608,6 +1631,7 @@ tel :
             , required : Html.SupportedAttribute
             , size : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 tel attributes =
@@ -1630,6 +1654,7 @@ email :
             , required : Html.SupportedAttribute
             , size : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 email attributes =
@@ -1650,6 +1675,7 @@ password :
             , required : Html.SupportedAttribute
             , size : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 password attributes =
@@ -1669,6 +1695,7 @@ date :
             , required : Html.SupportedAttribute
             , step : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 date attributes =
@@ -1688,6 +1715,7 @@ month :
             , required : Html.SupportedAttribute
             , step : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 month attributes =
@@ -1707,6 +1735,7 @@ week :
             , required : Html.SupportedAttribute
             , step : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 week attributes =
@@ -1726,6 +1755,7 @@ timeInput :
             , required : Html.SupportedAttribute
             , step : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 timeInput attributes =
@@ -1745,6 +1775,7 @@ datetime :
             , required : Html.SupportedAttribute
             , step : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 datetime attributes =
@@ -1765,6 +1796,7 @@ number :
             , required : Html.SupportedAttribute
             , step : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 number attributes =
@@ -1782,6 +1814,7 @@ range :
             , min : Html.SupportedAttribute
             , step : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 range attributes =
@@ -1796,6 +1829,7 @@ color :
             { autocomplete : Html.SupportedAttribute
             , list : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 color attributes =
@@ -1810,6 +1844,7 @@ checkbox :
             { checked : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 checkbox attributes =
@@ -1824,6 +1859,7 @@ radio :
             { checked : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 radio attributes =
@@ -1839,6 +1875,7 @@ file :
             , multiple : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 file attributes =
@@ -1856,6 +1893,7 @@ submit :
             , formnovalidate : Html.SupportedAttribute
             , formtarget : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 submit attributes =
@@ -1877,6 +1915,7 @@ imageButton :
             , src : Html.SupportedAttribute
             , width : Html.SupportedAttribute
             }
+            msg
         )
     -> Node { compatible | input : Html.Supported } msg
 imageButton attributes =
@@ -1885,14 +1924,14 @@ imageButton attributes =
 
 {-| Follows the element definition at [html.spec.whatwg.org/reset](https://html.spec.whatwg.org/multipage/input.html#reset-button-state-(type=reset))
 -}
-resetButton : List (GlobalAttributes {}) -> Node { compatible | input : Html.Supported } msg
+resetButton : List (GlobalAttributes {} msg) -> Node { compatible | input : Html.Supported } msg
 resetButton attributes =
     node "input" (Html.Attribute "type" "reset" :: attributes) []
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/button](https://html.spec.whatwg.org/multipage/input.html#button-state-(type=button))
 -}
-buttonInput : List (GlobalAttributes {}) -> Node { compatible | input : Html.Supported } msg
+buttonInput : List (GlobalAttributes {} msg) -> Node { compatible | input : Html.Supported } msg
 buttonInput attributes =
     node "input" (Html.Attribute "type" "button" :: attributes) []
 
@@ -1917,6 +1956,7 @@ button :
             , type_button : Html.SupportedAttribute
             , value : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node PhrasingContent msg)
     -> Node { compatible | button : Html.Supported } msg
@@ -1937,6 +1977,7 @@ select :
             , required : Html.SupportedAttribute
             , size : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node { option : Html.Supported, optgroup : Html.Supported } msg)
     -> Node { compatible | select : Html.Supported } msg
@@ -1952,6 +1993,7 @@ optgroup :
             { disabled : Html.SupportedAttribute
             , label : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node { option : Html.Supported } msg)
     -> Node { compatible | optgroup : Html.Supported } msg
@@ -1961,14 +2003,14 @@ optgroup =
 
 {-| Follows the element definition at [html.spec.whatwg.org/datalist](https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element)
 -}
-datalist : List (GlobalAttributes {}) -> List (Node { option : Html.Supported } msg) -> Node { compatible | datalist : Html.Supported } msg
+datalist : List (GlobalAttributes {} msg) -> List (Node { option : Html.Supported } msg) -> Node { compatible | datalist : Html.Supported } msg
 datalist =
     node "datalist"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/datalist](https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element)
 -}
-datalistText : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | datalist : Html.Supported } msg
+datalistText : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | datalist : Html.Supported } msg
 datalistText =
     node "datalist"
 
@@ -1982,6 +2024,7 @@ option :
             , selected : Html.SupportedAttribute
             , value : Html.SupportedAttribute
             }
+            msg
         )
     -> String
     -> Node { compatible | option : Html.Supported } msg
@@ -1998,6 +2041,7 @@ optionLabelled :
             , selected : Html.SupportedAttribute
             , value : Html.SupportedAttribute
             }
+            msg
         )
     -> String
     -> Node { compatible | option : Html.Supported } msg
@@ -2024,6 +2068,7 @@ textarea :
             , rows : Html.SupportedAttribute
             , wrap : Html.SupportedAttribute
             }
+            msg
         )
     -> String
     -> Node { compatible | textarea : Html.Supported } msg
@@ -2040,6 +2085,7 @@ output :
             , form : Html.SupportedAttribute
             , name : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node PhrasingContent msg)
     -> Node { compatible | output : Html.Supported } msg
@@ -2055,6 +2101,7 @@ progress :
             { value_ordinal : Html.SupportedAttribute
             , max : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node PhrasingContent msg)
     -> Node { compatible | progress : Html.Supported } msg
@@ -2074,6 +2121,7 @@ meter :
             , high : Html.SupportedAttribute
             , optimum : Html.SupportedAttribute
             }
+            msg
         )
     -> List (Node PhrasingContent msg)
     -> Node { compatible | meter : Html.Supported } msg
@@ -2090,8 +2138,9 @@ fieldset :
             , form : Html.SupportedAttribute
             , name : Html.SupportedAttribute
             }
+            msg
         )
-    -> ( List (GlobalAttributes {}), List (Node PhrasingContent msg) )
+    -> ( List (GlobalAttributes {} msg), List (Node PhrasingContent msg) )
     -> List (Node FlowContent msg)
     -> Node { compatible | fieldset : Html.Supported } msg
 fieldset attributes ( legendAttributes, legendContent ) contents =
@@ -2111,7 +2160,7 @@ fieldset attributes ( legendAttributes, legendContent ) contents =
 {-| Follows the element definition at [html.spec.whatwg.org/details](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element)
 -}
 details :
-    List (GlobalAttributes { open : Html.SupportedAttribute })
+    List (GlobalAttributes { open : Html.SupportedAttribute } msg)
     -> Node { summary : Html.Supported } msg
     -> List (Node FlowContent msg)
     -> Node { compatible | details : Html.Supported } msg
@@ -2121,14 +2170,14 @@ details attributes summaryNode contents =
 
 {-| Follows the element definition at [html.spec.whatwg.org/summary](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-summary-element)
 -}
-summary : List (GlobalAttributes {}) -> List (Node PhrasingContent msg) -> Node { compatible | summary : Html.Supported } msg
+summary : List (GlobalAttributes {} msg) -> List (Node PhrasingContent msg) -> Node { compatible | summary : Html.Supported } msg
 summary =
     node "summary"
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/summary](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-summary-element)
 -}
-summaryHeader : List (GlobalAttributes {}) -> Node HeadingContent msg -> Node { compatible | summary : Html.Supported } msg
+summaryHeader : List (GlobalAttributes {} msg) -> Node HeadingContent msg -> Node { compatible | summary : Html.Supported } msg
 summaryHeader attributes headingNode =
     Node "summary" (List.map toAttribute attributes) [ toHtml headingNode ]
 
@@ -2136,7 +2185,7 @@ summaryHeader attributes headingNode =
 {-| Follows the element definition at [html.spec.whatwg.org/dialog](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element)
 -}
 dialog :
-    List (GlobalAttributes { open : Html.SupportedAttribute })
+    List (GlobalAttributes { open : Html.SupportedAttribute } msg)
     -> List (Node FlowContent msg)
     -> Node { compatible | dialog : Html.Supported } msg
 dialog =
@@ -2146,7 +2195,7 @@ dialog =
 {-| Follows the element definition at [html.spec.whatwg.org/canvas](https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element)
 -}
 canvas :
-    List (GlobalAttributes { width : Html.SupportedAttribute, height : Html.SupportedAttribute })
+    List (GlobalAttributes { width : Html.SupportedAttribute, height : Html.SupportedAttribute } msg)
     -> Node { compatible | canvas : Html.Supported } msg
 canvas attributes =
     node "canvas" attributes []
@@ -2182,12 +2231,12 @@ toHtml typedNode =
 
 {-| Use this function as an escape hatch to support elements that may not be supported by this package.
 -}
-node : String -> List (Attribute a) -> List (Node b msg) -> Node c msg
+node : String -> List (Attribute a msg) -> List (Node b msg) -> Node c msg
 node tagName attributes nodes =
     Node tagName (List.map toAttribute attributes) (List.map toHtml nodes)
 
 
-toAttribute : Attribute a -> VirtualDom.Attribute msg
+toAttribute : Attribute a msg -> VirtualDom.Attribute msg
 toAttribute attribute =
     case attribute of
         Html.Attribute name value ->
@@ -2196,9 +2245,12 @@ toAttribute attribute =
         Html.Property name value ->
             VirtualDom.property name value
 
+        Html.Event event settings transformer ->
+            VirtualDom.on event (transformer settings)
+
 
 {-| -}
-keyed : String -> List (Attribute a) -> List ( String, Node b msg ) -> Node c msg
+keyed : String -> List (Attribute a msg) -> List ( String, Node b msg ) -> Node c msg
 keyed tagName attributes nodes =
     Keyed tagName (List.map toAttribute attributes) (List.map (\n -> Tuple.mapSecond toHtml n) nodes)
 
@@ -2249,3 +2301,409 @@ lazy7 function v1 v2 v3 v4 v5 v6 v7 =
 lazy8 : (a -> b -> c -> d -> e -> f -> g -> h -> Node i msg) -> a -> b -> c -> d -> e -> f -> g -> h -> Node i msg
 lazy8 function v1 v2 v3 v4 v5 v6 v7 v8 =
     Lazy (VirtualDom.lazy8 (\av1 av2 av3 av4 av5 av6 av7 av8 -> toHtml (function av1 av2 av3 av4 av5 av6 av7 av8)) v1 v2 v3 v4 v5 v6 v7 v8)
+
+
+type alias Event msg =
+    { message : msg, preventDefault : Bool, stopPropagation : Bool }
+
+
+{-| -}
+on : String -> Event msg -> (Event msg -> Json.Decoder (Event msg)) -> Html.Attribute b msg
+on event settings transformer =
+    Html.Event event settings (\eventSettings -> VirtualDom.Custom (transformer eventSettings))
+
+
+{-| -}
+onabort : msg -> Html.Attribute a msg
+onabort msg =
+    on "abort" (Event msg False False) Json.succeed
+
+
+{-| -}
+onauxclick : msg -> Html.Attribute a msg
+onauxclick msg =
+    on "auxclick" (Event msg False False) Json.succeed
+
+
+{-| -}
+onblur : msg -> Html.Attribute a msg
+onblur msg =
+    on "blur" (Event msg False False) Json.succeed
+
+
+{-| -}
+oncancel : msg -> Html.Attribute a msg
+oncancel msg =
+    on "cancel" (Event msg False False) Json.succeed
+
+
+{-| -}
+oncanplay : msg -> Html.Attribute a msg
+oncanplay msg =
+    on "canplay" (Event msg False False) Json.succeed
+
+
+{-| -}
+oncanplaythrough : msg -> Html.Attribute a msg
+oncanplaythrough msg =
+    on "canplaythrough" (Event msg False False) Json.succeed
+
+
+{-| -}
+onchange : msg -> Html.Attribute a msg
+onchange msg =
+    on "change" (Event msg False False) Json.succeed
+
+
+{-| -}
+onclick : msg -> Html.Attribute a msg
+onclick msg =
+    on "click" (Event msg False False) Json.succeed
+
+
+{-| -}
+onclose : msg -> Html.Attribute a msg
+onclose msg =
+    on "close" (Event msg False False) Json.succeed
+
+
+{-| -}
+oncontextmenu : msg -> Html.Attribute a msg
+oncontextmenu msg =
+    on "contextmenu" (Event msg False False) Json.succeed
+
+
+{-| -}
+oncopy : msg -> Html.Attribute a msg
+oncopy msg =
+    on "copy" (Event msg False False) Json.succeed
+
+
+{-| -}
+oncuechange : msg -> Html.Attribute a msg
+oncuechange msg =
+    on "cuechange" (Event msg False False) Json.succeed
+
+
+{-| -}
+oncut : msg -> Html.Attribute a msg
+oncut msg =
+    on "cut" (Event msg False False) Json.succeed
+
+
+{-| -}
+ondblclick : msg -> Html.Attribute a msg
+ondblclick msg =
+    on "dblclick" (Event msg False False) Json.succeed
+
+
+{-| -}
+ondrag : msg -> Html.Attribute a msg
+ondrag msg =
+    on "drag" (Event msg False False) Json.succeed
+
+
+{-| -}
+ondragend : msg -> Html.Attribute a msg
+ondragend msg =
+    on "dragend" (Event msg False False) Json.succeed
+
+
+{-| -}
+ondragenter : msg -> Html.Attribute a msg
+ondragenter msg =
+    on "dragenter" (Event msg False False) Json.succeed
+
+
+{-| -}
+ondragexit : msg -> Html.Attribute a msg
+ondragexit msg =
+    on "dragexit" (Event msg False False) Json.succeed
+
+
+{-| -}
+ondragleave : msg -> Html.Attribute a msg
+ondragleave msg =
+    on "dragleave" (Event msg False False) Json.succeed
+
+
+{-| -}
+ondragover : msg -> Html.Attribute a msg
+ondragover msg =
+    on "dragover" (Event msg False False) Json.succeed
+
+
+{-| -}
+ondragstart : msg -> Html.Attribute a msg
+ondragstart msg =
+    on "dragstart" (Event msg False False) Json.succeed
+
+
+{-| -}
+ondrop : msg -> Html.Attribute a msg
+ondrop msg =
+    on "drop" (Event msg False False) Json.succeed
+
+
+{-| -}
+ondurationchange : msg -> Html.Attribute a msg
+ondurationchange msg =
+    on "durationchange" (Event msg False False) Json.succeed
+
+
+{-| -}
+onemptied : msg -> Html.Attribute a msg
+onemptied msg =
+    on "emptied" (Event msg False False) Json.succeed
+
+
+{-| -}
+onended : msg -> Html.Attribute a msg
+onended msg =
+    on "ended" (Event msg False False) Json.succeed
+
+
+{-| -}
+onerror : msg -> Html.Attribute a msg
+onerror msg =
+    on "error" (Event msg False False) Json.succeed
+
+
+{-| -}
+onfocus : msg -> Html.Attribute a msg
+onfocus msg =
+    on "focus" (Event msg False False) Json.succeed
+
+
+{-| -}
+onformdata : msg -> Html.Attribute a msg
+onformdata msg =
+    on "formdata" (Event msg False False) Json.succeed
+
+
+{-| -}
+oninput : msg -> Html.Attribute a msg
+oninput msg =
+    on "input" (Event msg False False) Json.succeed
+
+
+{-| -}
+oninvalid : msg -> Html.Attribute a msg
+oninvalid msg =
+    on "invalid" (Event msg False False) Json.succeed
+
+
+{-| -}
+onkeydown : msg -> Html.Attribute a msg
+onkeydown msg =
+    on "keydown" (Event msg False False) Json.succeed
+
+
+{-| -}
+onkeypress : msg -> Html.Attribute a msg
+onkeypress msg =
+    on "keypress" (Event msg False False) Json.succeed
+
+
+{-| -}
+onkeyup : msg -> Html.Attribute a msg
+onkeyup msg =
+    on "keyup" (Event msg False False) Json.succeed
+
+
+{-| -}
+onload : msg -> Html.Attribute a msg
+onload msg =
+    on "load" (Event msg False False) Json.succeed
+
+
+{-| -}
+onloadeddata : msg -> Html.Attribute a msg
+onloadeddata msg =
+    on "loadeddata" (Event msg False False) Json.succeed
+
+
+{-| -}
+onloadedmetadata : msg -> Html.Attribute a msg
+onloadedmetadata msg =
+    on "loadedmetadata" (Event msg False False) Json.succeed
+
+
+{-| -}
+onloadedstart : msg -> Html.Attribute a msg
+onloadedstart msg =
+    on "loadedstart" (Event msg False False) Json.succeed
+
+
+{-| -}
+onmousedown : msg -> Html.Attribute a msg
+onmousedown msg =
+    on "mousedown" (Event msg False False) Json.succeed
+
+
+{-| -}
+onmouseenter : msg -> Html.Attribute a msg
+onmouseenter msg =
+    on "mouseenter" (Event msg False False) Json.succeed
+
+
+{-| -}
+onmouseleave : msg -> Html.Attribute a msg
+onmouseleave msg =
+    on "mouseleave" (Event msg False False) Json.succeed
+
+
+{-| -}
+onmousemove : msg -> Html.Attribute a msg
+onmousemove msg =
+    on "mousemove" (Event msg False False) Json.succeed
+
+
+{-| -}
+onmouseout : msg -> Html.Attribute a msg
+onmouseout msg =
+    on "mouseout" (Event msg False False) Json.succeed
+
+
+{-| -}
+onmouseover : msg -> Html.Attribute a msg
+onmouseover msg =
+    on "mouseover" (Event msg False False) Json.succeed
+
+
+{-| -}
+onmouseup : msg -> Html.Attribute a msg
+onmouseup msg =
+    on "mouseup" (Event msg False False) Json.succeed
+
+
+{-| -}
+onpaste : msg -> Html.Attribute a msg
+onpaste msg =
+    on "paste" (Event msg False False) Json.succeed
+
+
+{-| -}
+onpause : msg -> Html.Attribute a msg
+onpause msg =
+    on "pause" (Event msg False False) Json.succeed
+
+
+{-| -}
+onplay : msg -> Html.Attribute a msg
+onplay msg =
+    on "play" (Event msg False False) Json.succeed
+
+
+{-| -}
+onplaying : msg -> Html.Attribute a msg
+onplaying msg =
+    on "playing" (Event msg False False) Json.succeed
+
+
+{-| -}
+onprogress : msg -> Html.Attribute a msg
+onprogress msg =
+    on "progress" (Event msg False False) Json.succeed
+
+
+{-| -}
+onratechange : msg -> Html.Attribute a msg
+onratechange msg =
+    on "ratechange" (Event msg False False) Json.succeed
+
+
+{-| -}
+onreset : msg -> Html.Attribute a msg
+onreset msg =
+    on "reset" (Event msg False False) Json.succeed
+
+
+{-| -}
+onresize : msg -> Html.Attribute a msg
+onresize msg =
+    on "resize" (Event msg False False) Json.succeed
+
+
+{-| -}
+onscroll : msg -> Html.Attribute a msg
+onscroll msg =
+    on "scroll" (Event msg False False) Json.succeed
+
+
+{-| -}
+onsecuritypolicyviolation : msg -> Html.Attribute a msg
+onsecuritypolicyviolation msg =
+    on "securitypolicyviolation" (Event msg False False) Json.succeed
+
+
+{-| -}
+onseeked : msg -> Html.Attribute a msg
+onseeked msg =
+    on "seeked" (Event msg False False) Json.succeed
+
+
+{-| -}
+onseeking : msg -> Html.Attribute a msg
+onseeking msg =
+    on "seeking" (Event msg False False) Json.succeed
+
+
+{-| -}
+onselect : msg -> Html.Attribute a msg
+onselect msg =
+    on "select" (Event msg False False) Json.succeed
+
+
+{-| -}
+onslotchange : msg -> Html.Attribute a msg
+onslotchange msg =
+    on "slotchange" (Event msg False False) Json.succeed
+
+
+{-| -}
+onstalled : msg -> Html.Attribute a msg
+onstalled msg =
+    on "stalled" (Event msg False False) Json.succeed
+
+
+{-| -}
+onsubmit : msg -> Html.Attribute a msg
+onsubmit msg =
+    on "submit" (Event msg False False) Json.succeed
+
+
+{-| -}
+onsuspend : msg -> Html.Attribute a msg
+onsuspend msg =
+    on "suspend" (Event msg False False) Json.succeed
+
+
+{-| -}
+ontimeupdate : msg -> Html.Attribute a msg
+ontimeupdate msg =
+    on "timeupdate" (Event msg False False) Json.succeed
+
+
+{-| -}
+ontoggle : msg -> Html.Attribute a msg
+ontoggle msg =
+    on "toggle" (Event msg False False) Json.succeed
+
+
+{-| -}
+onvolumechange : msg -> Html.Attribute a msg
+onvolumechange msg =
+    on "volumechange" (Event msg False False) Json.succeed
+
+
+{-| -}
+onwaiting : msg -> Html.Attribute a msg
+onwaiting msg =
+    on "waiting" (Event msg False False) Json.succeed
+
+
+{-| -}
+onwheel : msg -> Html.Attribute a msg
+onwheel msg =
+    on "wheel" (Event msg False False) Json.succeed
