@@ -15,6 +15,7 @@ module W3.Html exposing
     , button, select, optgroup, datalist, datalistText, option, optionLabelled, textarea, output, progress, meter, fieldset
     , details, summary, summaryHeader, dialog
     , canvas
+    , text
     , toHtml
     , node
     , keyed
@@ -118,6 +119,11 @@ The following attempts to group elements together by function and use.
 @docs canvas
 
 
+## Text
+
+@docs text
+
+
 ## Utility
 
 @docs toHtml
@@ -157,6 +163,7 @@ type Node nodes msg
     = Node String (List (VirtualDom.Attribute msg)) (List (VirtualDom.Node msg))
     | Keyed String (List (VirtualDom.Attribute msg)) (List ( String, VirtualDom.Node msg ))
     | Lazy (VirtualDom.Node msg)
+    | Text String
 
 
 {-| Type for each attribute
@@ -2207,6 +2214,13 @@ canvas attributes =
     node "canvas" attributes []
 
 
+{-| Textual content
+-}
+text : String -> Node a msg
+text =
+    Text
+
+
 maybeVirtualNodeToList : Maybe (VirtualDom.Node msg) -> List (VirtualDom.Node msg)
 maybeVirtualNodeToList maybeNode =
     case maybeNode of
@@ -2233,6 +2247,9 @@ toHtml typedNode =
 
         Keyed tagName attributes contents ->
             VirtualDom.keyedNode tagName attributes contents
+
+        Text contents ->
+            VirtualDom.text contents
 
 
 {-| Use this function as an escape hatch to support elements that may not be supported by this package.

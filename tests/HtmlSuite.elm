@@ -940,6 +940,14 @@ suite =
             ++ numbered "summary" 1 (Html.summaryHeader [] (Html.h1 [] []))
             ++ test "dialog" (Html.dialog [ Attributes.open True ] [])
             ++ test "canvas" (Html.canvas [ Attributes.width 0, Attributes.height 0 ])
+            ++ [ Test.test "text is supported on any element"
+                    (\() ->
+                        flowNode [] [ Html.text "something" ]
+                            |> Html.toHtml
+                            |> Query.fromHtml
+                            |> Query.has [ Selector.text "something" ]
+                    )
+               ]
             ++ [ Test.test "keyed nodes are supported"
                     (\() ->
                         Html.node "basic" [] [ Html.keyed "test" [] [] ]
