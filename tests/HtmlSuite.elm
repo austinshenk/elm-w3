@@ -1005,9 +1005,77 @@ suite =
                             |> Query.has [ Selector.tag "test" ]
                     )
                ]
-            ++ [ Test.test "on is supported"
+            ++ [ Test.test "events are supported"
                     (\() ->
-                        globalAttributesNode [ Html.on "test" { message = Noop, preventDefault = False, stopPropagation = False } Json.succeed ]
+                        globalAttributesNode
+                            [ Html.on "test" { message = Noop, preventDefault = False, stopPropagation = False } Json.succeed
+                            , Html.onabort Noop
+                            , Html.onauxclick Noop
+                            , Html.onblur Noop
+                            , Html.oncancel Noop
+                            , Html.oncanplay Noop
+                            , Html.oncanplaythrough Noop
+                            , Html.onchange Noop
+                            , Html.onclick Noop
+                            , Html.onclose Noop
+                            , Html.oncontextmenu Noop
+                            , Html.oncopy Noop
+                            , Html.oncuechange Noop
+                            , Html.oncut Noop
+                            , Html.ondblclick Noop
+                            , Html.ondrag Noop
+                            , Html.ondragend Noop
+                            , Html.ondragenter Noop
+                            , Html.ondragexit Noop
+                            , Html.ondragleave Noop
+                            , Html.ondragover Noop
+                            , Html.ondragstart Noop
+                            , Html.ondrop Noop
+                            , Html.ondurationchange Noop
+                            , Html.onemptied Noop
+                            , Html.onended Noop
+                            , Html.onerror Noop
+                            , Html.onfocus Noop
+                            , Html.onformdata Noop
+                            , Html.oninput Noop
+                            , Html.oninvalid Noop
+                            , Html.onkeydown Noop
+                            , Html.onkeypress Noop
+                            , Html.onkeyup Noop
+                            , Html.onload Noop
+                            , Html.onloadeddata Noop
+                            , Html.onloadedmetadata Noop
+                            , Html.onloadedstart Noop
+                            , Html.onmousedown Noop
+                            , Html.onmouseenter Noop
+                            , Html.onmouseleave Noop
+                            , Html.onmousemove Noop
+                            , Html.onmouseout Noop
+                            , Html.onmouseover Noop
+                            , Html.onmouseup Noop
+                            , Html.onpaste Noop
+                            , Html.onpause Noop
+                            , Html.onplay Noop
+                            , Html.onplaying Noop
+                            , Html.onprogress Noop
+                            , Html.onratechange Noop
+                            , Html.onreset Noop
+                            , Html.onresize Noop
+                            , Html.onscroll Noop
+                            , Html.onsecuritypolicyviolation Noop
+                            , Html.onseeked Noop
+                            , Html.onseeking Noop
+                            , Html.onselect Noop
+                            , Html.onslotchange Noop
+                            , Html.onstalled Noop
+                            , Html.onsubmit Noop
+                            , Html.onsuspend Noop
+                            , Html.ontimeupdate Noop
+                            , Html.ontoggle Noop
+                            , Html.onvolumechange Noop
+                            , Html.onwaiting Noop
+                            , Html.onwheel Noop
+                            ]
                             |> Html.toHtml
                             |> Query.fromHtml
                             |> Query.has [ Selector.tag "node" ]
