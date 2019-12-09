@@ -48,7 +48,7 @@ test name node =
     [ Test.test ("element: " ++ name)
         (\() ->
             node
-                |> Html.toHtml
+                |> Html.toNode
                 |> Query.fromHtml
                 |> Query.has [ Selector.tag name ]
         )
@@ -60,7 +60,7 @@ numbered name index node =
     [ Test.test ("element: " ++ name ++ " variation " ++ String.fromInt index)
         (\() ->
             node
-                |> Html.toHtml
+                |> Html.toNode
                 |> Query.fromHtml
                 |> Query.has [ Selector.tag name ]
         )
@@ -72,7 +72,7 @@ supports testName node =
     [ Test.test testName
         (\() ->
             node
-                |> Html.toHtml
+                |> Html.toNode
                 |> Query.fromHtml
                 |> Query.has [ Selector.tag "node" ]
         )
@@ -943,7 +943,7 @@ suite =
             ++ [ Test.test "text is supported on any element"
                     (\() ->
                         flowNode [] [ Html.text "something" ]
-                            |> Html.toHtml
+                            |> Html.toNode
                             |> Query.fromHtml
                             |> Query.has [ Selector.text "something" ]
                     )
@@ -951,7 +951,7 @@ suite =
             ++ [ Test.test "keyed nodes are supported"
                     (\() ->
                         Html.node "basic" [] [ Html.keyed "test" [] [] ]
-                            |> Html.toHtml
+                            |> Html.toNode
                             |> Query.fromHtml
                             |> Query.has [ Selector.tag "test" ]
                     )
@@ -959,56 +959,56 @@ suite =
             ++ [ Test.test "lazy is supported"
                     (\() ->
                         Html.lazy (\_ -> Html.node "test" [] []) 1
-                            |> Html.toHtml
+                            |> Html.toNode
                             |> Query.fromHtml
                             |> Query.has [ Selector.tag "test" ]
                     )
                , Test.test "lazy2 is supported"
                     (\() ->
                         Html.lazy2 (\_ _ -> Html.node "test" [] []) 1 2
-                            |> Html.toHtml
+                            |> Html.toNode
                             |> Query.fromHtml
                             |> Query.has [ Selector.tag "test" ]
                     )
                , Test.test "lazy3 is supported"
                     (\() ->
                         Html.lazy3 (\_ _ _ -> Html.node "test" [] []) 1 2 3
-                            |> Html.toHtml
+                            |> Html.toNode
                             |> Query.fromHtml
                             |> Query.has [ Selector.tag "test" ]
                     )
                , Test.test "lazy4 is supported"
                     (\() ->
                         Html.lazy4 (\_ _ _ _ -> Html.node "test" [] []) 1 2 3 4
-                            |> Html.toHtml
+                            |> Html.toNode
                             |> Query.fromHtml
                             |> Query.has [ Selector.tag "test" ]
                     )
                , Test.test "lazy5 is supported"
                     (\() ->
                         Html.lazy5 (\_ _ _ _ _ -> Html.node "test" [] []) 1 2 3 4 5
-                            |> Html.toHtml
+                            |> Html.toNode
                             |> Query.fromHtml
                             |> Query.has [ Selector.tag "test" ]
                     )
                , Test.test "lazy6 is supported"
                     (\() ->
                         Html.lazy6 (\_ _ _ _ _ _ -> Html.node "test" [] []) 1 2 3 4 5 6
-                            |> Html.toHtml
+                            |> Html.toNode
                             |> Query.fromHtml
                             |> Query.has [ Selector.tag "test" ]
                     )
                , Test.test "lazy7 is supported"
                     (\() ->
                         Html.lazy7 (\_ _ _ _ _ _ _ -> Html.node "test" [] []) 1 2 3 4 5 6 7
-                            |> Html.toHtml
+                            |> Html.toNode
                             |> Query.fromHtml
                             |> Query.has [ Selector.tag "test" ]
                     )
                , Test.test "lazy8 is supported"
                     (\() ->
                         Html.lazy8 (\_ _ _ _ _ _ _ _ -> Html.node "test" [] []) 1 2 3 4 5 6 7 8
-                            |> Html.toHtml
+                            |> Html.toNode
                             |> Query.fromHtml
                             |> Query.has [ Selector.tag "test" ]
                     )
@@ -1084,7 +1084,7 @@ suite =
                             , Html.onwaiting Noop
                             , Html.onwheel Noop
                             ]
-                            |> Html.toHtml
+                            |> Html.toNode
                             |> Query.fromHtml
                             |> Query.has [ Selector.tag "node" ]
                     )

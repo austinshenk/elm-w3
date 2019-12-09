@@ -28,7 +28,7 @@ Html.p [] [Html.div [] []]
 
 ### Integrate with Elm's HTML or Browser package
 
-This module uses a separate data structure for elements so we have to convert that to a proper VirtualDom structure before using it with either the `elm/html` package or the `elm/virtual-dom` package. For that we just simply pass the root node to `Html.toHtml`. This converts only the current node to a Virtual DOM node. We don't have to convert the children since we do that as we build the DOM structure so there is not a huge penalty for calling the converter function.
+This package's Html module uses a separate data structure for elements so we have to convert that to a proper VirtualDom structure before using it with either the `elm/html` package or the `elm/virtual-dom` package. For that we just simply pass the root Html element to `Html.toNode`. This converts only the current node to a Virtual DOM node. We don't have to convert the children since we do that as we build the DOM structure so there is not a huge penalty for calling the converter function.
 
 ## Aria
 
@@ -44,15 +44,16 @@ In order to integrate Aria with this package's HTML, we use role functions to re
 Html.section 
     (Aria.alert [Aria.Attribute.expanded (Just True)] []) 
     [] 
-|> Html.toHtml
+|> Html.toNode
 ```
 
 ### Standalone
 
 ```elm
-Aria.alert [Aria.Attribute.expanded (Just True)] []
+Aria.alert [Aria.Attribute.expanded (Just True)] [] 
+|> Html.toAttributes
 ```
 
 ## Unsupported features
 
-There are some things left out intentionally that either can't be supported by elm in general or things that might be added in the future that should be supported by this package. This is why there are escape hatches in most of the modules for defining custom elements and attributes. These should be used sparingly as it does require understanding the Type structure and could break the guarantee this package is attempting to produce.
+There are some things left out intentionally that either can't be supported by elm in general or things that might be added in the future that should be supported by this package. This is why there are escape hatches in most of the modules for defining custom elements and attributes. These should be used sparingly as it does require understanding the Type structure and could break the guarantee this package has.

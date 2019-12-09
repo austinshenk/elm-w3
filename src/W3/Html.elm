@@ -16,7 +16,7 @@ module W3.Html exposing
     , details, summary, summaryHeader, dialog
     , canvas
     , text
-    , toHtml
+    , toNode, toAttributes, toAttribute
     , node
     , keyed
     , lazy, lazy2, lazy3, lazy4, lazy5, lazy6, lazy7, lazy8
@@ -126,7 +126,7 @@ The following attempts to group elements together by function and use.
 
 ## Utility
 
-@docs toHtml
+@docs toNode, toAttributes, toAttribute
 
 
 # Escape Hatch
@@ -708,7 +708,7 @@ figure :
     -> List (Node FlowContent msg)
     -> Node { compatible | figure : Html.Supported } msg
 figure attributes figCaption nodes =
-    Node "figure" (List.map toAttribute attributes) (toHtml figCaption :: List.map toHtml nodes)
+    Node "figure" (List.map toAttribute attributes) (toNode figCaption :: List.map toNode nodes)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/figure](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element)
@@ -719,7 +719,7 @@ figureEndingCaption :
     -> Node { figcaption : Html.Supported } msg
     -> Node { compatible | figure : Html.Supported } msg
 figureEndingCaption attributes nodes figCaption =
-    Node "figure" (List.map toAttribute attributes) (List.map toHtml nodes ++ [ toHtml figCaption ])
+    Node "figure" (List.map toAttribute attributes) (List.map toNode nodes ++ [ toNode figCaption ])
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/figure](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element)
@@ -855,7 +855,7 @@ ruby :
     -> List (Node { rt : Html.Supported, rp : Html.Supported } msg)
     -> Node { compatible | ruby : Html.Supported } msg
 ruby attributes contents rtrpContents =
-    Node "ruby" (List.map toAttribute attributes) (List.map toHtml contents ++ List.map toHtml rtrpContents)
+    Node "ruby" (List.map toAttribute attributes) (List.map toNode contents ++ List.map toNode rtrpContents)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/ruby](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element)
@@ -866,7 +866,7 @@ rubyWrapper :
     -> List (Node { rt : Html.Supported, rp : Html.Supported } msg)
     -> Node { compatible | ruby : Html.Supported } msg
 rubyWrapper attributes rubyChild rtrpContents =
-    Node "ruby" (List.map toAttribute attributes) (toHtml rubyChild :: List.map toHtml rtrpContents)
+    Node "ruby" (List.map toAttribute attributes) (toNode rubyChild :: List.map toNode rtrpContents)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/ruby](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element)
@@ -876,7 +876,7 @@ rubyDescendent :
     -> List (Node { rt : Html.Supported, rp : Html.Supported } msg)
     -> Node { compatible | rubyDescendent : Html.Supported } msg
 rubyDescendent attributes rtrpContents =
-    Node "ruby" (List.map toAttribute attributes) (List.map toHtml rtrpContents)
+    Node "ruby" (List.map toAttribute attributes) (List.map toNode rtrpContents)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/rt](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-rt-element)
@@ -1076,12 +1076,12 @@ picture :
     -> Node { img : Html.Supported } msg
     -> Node { compatible | picture : Html.Supported } msg
 picture attributes sources image =
-    Node "picture" (List.map toAttribute attributes) (List.foldr pictureHelp [ toHtml image ] sources)
+    Node "picture" (List.map toAttribute attributes) (List.foldr pictureHelp [ toNode image ] sources)
 
 
 pictureHelp : Node { source : Html.Supported } msg -> List (VirtualDom.Node msg) -> List (VirtualDom.Node msg)
 pictureHelp sourceNode children =
-    toHtml sourceNode :: children
+    toNode sourceNode :: children
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/source](https://html.spec.whatwg.org/multipage/embedded-content.html#the-source-element)
@@ -1189,7 +1189,7 @@ object :
     -> List (Node FlowContent msg)
     -> Node { compatible | object : Html.Supported } msg
 object attributes params contents =
-    Node "object" (List.map toAttribute attributes) (List.map toHtml params ++ List.map toHtml contents)
+    Node "object" (List.map toAttribute attributes) (List.map toNode params ++ List.map toNode contents)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/param](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-param-element)
@@ -1235,7 +1235,7 @@ video :
     -> List (Node FlowContent msg)
     -> Node { compatible | video : Html.Supported } msg
 video attributes sources tracks contents =
-    Node "video" (List.map toAttribute attributes) (List.map toHtml sources ++ List.map toHtml tracks ++ List.map toHtml contents)
+    Node "video" (List.map toAttribute attributes) (List.map toNode sources ++ List.map toNode tracks ++ List.map toNode contents)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/audio](https://html.spec.whatwg.org/multipage/media.html#the-audio-element)
@@ -1258,7 +1258,7 @@ audio :
     -> List (Node FlowContent msg)
     -> Node { compatible | audio : Html.Supported } msg
 audio attributes sources tracks contents =
-    Node "audio" (List.map toAttribute attributes) (List.map toHtml sources ++ List.map toHtml tracks ++ List.map toHtml contents)
+    Node "audio" (List.map toAttribute attributes) (List.map toNode sources ++ List.map toNode tracks ++ List.map toNode contents)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/track](https://html.spec.whatwg.org/multipage/media.html#the-track-element)
@@ -1348,7 +1348,7 @@ caption : List (GlobalAttributes {} msg) -> List (Node FlowContent msg) -> Table
 caption attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
         { tableContents
-            | caption = Just (VirtualDom.node "caption" (List.map toAttribute attributes) (List.map toHtml contents))
+            | caption = Just (VirtualDom.node "caption" (List.map toAttribute attributes) (List.map toNode contents))
         }
 
 
@@ -1362,7 +1362,7 @@ colgroup :
 colgroup attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
         { tableContents
-            | colgroups = tableContents.colgroups ++ [ VirtualDom.node "colgroup" (List.map toAttribute attributes) (List.map toHtml contents) ]
+            | colgroups = tableContents.colgroups ++ [ VirtualDom.node "colgroup" (List.map toAttribute attributes) (List.map toNode contents) ]
         }
 
 
@@ -1379,7 +1379,7 @@ thead : List (GlobalAttributes {} msg) -> List (Node { tr : Html.Supported } msg
 thead attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
         { tableContents
-            | thead = Just (VirtualDom.node "thead" (List.map toAttribute attributes) (List.map toHtml contents))
+            | thead = Just (VirtualDom.node "thead" (List.map toAttribute attributes) (List.map toNode contents))
         }
 
 
@@ -1389,7 +1389,7 @@ tfoot : List (GlobalAttributes {} msg) -> List (Node { tr : Html.Supported } msg
 tfoot attributes contents (Table tableAttributes tableContents) =
     Table tableAttributes
         { tableContents
-            | tfoot = Just (VirtualDom.node "tfoot" (List.map toAttribute attributes) (List.map toHtml contents))
+            | tfoot = Just (VirtualDom.node "tfoot" (List.map toAttribute attributes) (List.map toNode contents))
         }
 
 
@@ -1402,7 +1402,7 @@ tbody attributes rows (Table tableAttributes contents) =
         (maybeVirtualNodeToList contents.caption
             ++ contents.colgroups
             ++ maybeVirtualNodeToList contents.thead
-            ++ [ VirtualDom.node "tbody" (List.map toAttribute attributes) (List.map toHtml rows) ]
+            ++ [ VirtualDom.node "tbody" (List.map toAttribute attributes) (List.map toNode rows) ]
             ++ maybeVirtualNodeToList contents.tfoot
         )
 
@@ -1416,7 +1416,7 @@ trbody rows (Table tableAttributes contents) =
         (maybeVirtualNodeToList contents.caption
             ++ contents.colgroups
             ++ maybeVirtualNodeToList contents.thead
-            ++ List.map toHtml rows
+            ++ List.map toNode rows
             ++ maybeVirtualNodeToList contents.tfoot
         )
 
@@ -2161,8 +2161,8 @@ fieldset attributes ( legendAttributes, legendContent ) contents =
         (List.map toAttribute attributes)
         (VirtualDom.node "legend"
             (List.map toAttribute legendAttributes)
-            (List.map toHtml legendContent)
-            :: List.map toHtml contents
+            (List.map toNode legendContent)
+            :: List.map toNode contents
         )
 
 
@@ -2178,7 +2178,7 @@ details :
     -> List (Node FlowContent msg)
     -> Node { compatible | details : Html.Supported } msg
 details attributes summaryNode contents =
-    Node "details" (List.map toAttribute attributes) (toHtml summaryNode :: List.map toHtml contents)
+    Node "details" (List.map toAttribute attributes) (toNode summaryNode :: List.map toNode contents)
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/summary](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-summary-element)
@@ -2192,7 +2192,7 @@ summary =
 -}
 summaryHeader : List (GlobalAttributes {} msg) -> Node HeadingContent msg -> Node { compatible | summary : Html.Supported } msg
 summaryHeader attributes headingNode =
-    Node "summary" (List.map toAttribute attributes) [ toHtml headingNode ]
+    Node "summary" (List.map toAttribute attributes) [ toNode headingNode ]
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/dialog](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element)
@@ -2236,8 +2236,8 @@ maybeVirtualNodeToList maybeNode =
     W3.Html.div [] [ W3.Html.a [] [] ] |> W3.Html.toHtml
 
 -}
-toHtml : Node a msg -> VirtualDom.Node msg
-toHtml typedNode =
+toNode : Node a msg -> VirtualDom.Node msg
+toNode typedNode =
     case typedNode of
         Node tagName attributes contents ->
             VirtualDom.node tagName attributes contents
@@ -2256,9 +2256,18 @@ toHtml typedNode =
 -}
 node : String -> List (Attribute a msg) -> List (Node b msg) -> Node c msg
 node tagName attributes nodes =
-    Node tagName (List.map toAttribute attributes) (List.map toHtml nodes)
+    Node tagName (List.map toAttribute attributes) (List.map toNode nodes)
 
 
+{-| Helper method that makes it easier to convert lists of Attributes.
+-}
+toAttributes : List (Attribute a msg) -> List (VirtualDom.Attribute msg)
+toAttributes =
+    List.map toAttribute
+
+
+{-| Allows converting the internal Attribute type to a a VirtualDom.Attribute. This should be used sparingly since this package can not guarantee valid HTML after it is converted.
+-}
 toAttribute : Attribute a msg -> VirtualDom.Attribute msg
 toAttribute attribute =
     case attribute of
@@ -2275,55 +2284,55 @@ toAttribute attribute =
 {-| -}
 keyed : String -> List (Attribute a msg) -> List ( String, Node b msg ) -> Node c msg
 keyed tagName attributes nodes =
-    Keyed tagName (List.map toAttribute attributes) (List.map (\n -> Tuple.mapSecond toHtml n) nodes)
+    Keyed tagName (List.map toAttribute attributes) (List.map (\n -> Tuple.mapSecond toNode n) nodes)
 
 
 {-| -}
 lazy : (a -> Node b msg) -> a -> Node b msg
 lazy function v1 =
-    Lazy (VirtualDom.lazy (\av1 -> toHtml (function av1)) v1)
+    Lazy (VirtualDom.lazy (\av1 -> toNode (function av1)) v1)
 
 
 {-| -}
 lazy2 : (a -> b -> Node c msg) -> a -> b -> Node c msg
 lazy2 function v1 v2 =
-    Lazy (VirtualDom.lazy2 (\av1 av2 -> toHtml (function av1 av2)) v1 v2)
+    Lazy (VirtualDom.lazy2 (\av1 av2 -> toNode (function av1 av2)) v1 v2)
 
 
 {-| -}
 lazy3 : (a -> b -> c -> Node d msg) -> a -> b -> c -> Node d msg
 lazy3 function v1 v2 v3 =
-    Lazy (VirtualDom.lazy3 (\av1 av2 av3 -> toHtml (function av1 av2 av3)) v1 v2 v3)
+    Lazy (VirtualDom.lazy3 (\av1 av2 av3 -> toNode (function av1 av2 av3)) v1 v2 v3)
 
 
 {-| -}
 lazy4 : (a -> b -> c -> d -> Node e msg) -> a -> b -> c -> d -> Node e msg
 lazy4 function v1 v2 v3 v4 =
-    Lazy (VirtualDom.lazy4 (\av1 av2 av3 av4 -> toHtml (function av1 av2 av3 av4)) v1 v2 v3 v4)
+    Lazy (VirtualDom.lazy4 (\av1 av2 av3 av4 -> toNode (function av1 av2 av3 av4)) v1 v2 v3 v4)
 
 
 {-| -}
 lazy5 : (a -> b -> c -> d -> e -> Node f msg) -> a -> b -> c -> d -> e -> Node f msg
 lazy5 function v1 v2 v3 v4 v5 =
-    Lazy (VirtualDom.lazy5 (\av1 av2 av3 av4 av5 -> toHtml (function av1 av2 av3 av4 av5)) v1 v2 v3 v4 v5)
+    Lazy (VirtualDom.lazy5 (\av1 av2 av3 av4 av5 -> toNode (function av1 av2 av3 av4 av5)) v1 v2 v3 v4 v5)
 
 
 {-| -}
 lazy6 : (a -> b -> c -> d -> e -> f -> Node g msg) -> a -> b -> c -> d -> e -> f -> Node g msg
 lazy6 function v1 v2 v3 v4 v5 v6 =
-    Lazy (VirtualDom.lazy6 (\av1 av2 av3 av4 av5 av6 -> toHtml (function av1 av2 av3 av4 av5 av6)) v1 v2 v3 v4 v5 v6)
+    Lazy (VirtualDom.lazy6 (\av1 av2 av3 av4 av5 av6 -> toNode (function av1 av2 av3 av4 av5 av6)) v1 v2 v3 v4 v5 v6)
 
 
 {-| -}
 lazy7 : (a -> b -> c -> d -> e -> f -> g -> Node h msg) -> a -> b -> c -> d -> e -> f -> g -> Node h msg
 lazy7 function v1 v2 v3 v4 v5 v6 v7 =
-    Lazy (VirtualDom.lazy7 (\av1 av2 av3 av4 av5 av6 av7 -> toHtml (function av1 av2 av3 av4 av5 av6 av7)) v1 v2 v3 v4 v5 v6 v7)
+    Lazy (VirtualDom.lazy7 (\av1 av2 av3 av4 av5 av6 av7 -> toNode (function av1 av2 av3 av4 av5 av6 av7)) v1 v2 v3 v4 v5 v6 v7)
 
 
 {-| -}
 lazy8 : (a -> b -> c -> d -> e -> f -> g -> h -> Node i msg) -> a -> b -> c -> d -> e -> f -> g -> h -> Node i msg
 lazy8 function v1 v2 v3 v4 v5 v6 v7 v8 =
-    Lazy (VirtualDom.lazy8 (\av1 av2 av3 av4 av5 av6 av7 av8 -> toHtml (function av1 av2 av3 av4 av5 av6 av7 av8)) v1 v2 v3 v4 v5 v6 v7 v8)
+    Lazy (VirtualDom.lazy8 (\av1 av2 av3 av4 av5 av6 av7 av8 -> toNode (function av1 av2 av3 av4 av5 av6 av7 av8)) v1 v2 v3 v4 v5 v6 v7 v8)
 
 
 type alias Event msg =

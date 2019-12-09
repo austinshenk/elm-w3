@@ -14,7 +14,7 @@ test roleName role =
     Test.test ("role: " ++ roleName)
         (\() ->
             Html.node "node" (role []) []
-                |> Html.toHtml
+                |> Html.toNode
                 |> Query.fromHtml
                 |> Query.has [ Selector.attribute (VirtualDom.attribute "role" roleName) ]
         )
@@ -421,7 +421,7 @@ suite =
         , Test.test "custom Attribute is Supported"
             (\() ->
                 Html.node "node" (Aria.role "test" [] []) []
-                    |> Html.toHtml
+                    |> Html.toNode
                     |> Query.fromHtml
                     |> Query.has [ Selector.attribute (VirtualDom.attribute "role" "test") ]
             )

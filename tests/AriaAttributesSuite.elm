@@ -15,7 +15,7 @@ test testName attributeName attribute expectedValue =
     Test.test testName
         (\() ->
             Html.node "node" (Aria.role "test" [ attribute ] []) []
-                |> Html.toHtml
+                |> Html.toNode
                 |> Query.fromHtml
                 |> Query.has [ Selector.attribute (VirtualDom.attribute ("aria-" ++ attributeName) expectedValue) ]
         )
@@ -156,7 +156,7 @@ suite =
             ++ [ Test.test "custom Attribute is Supported"
                     (\() ->
                         Html.node "node" (Aria.role "basic" [ AriaAttributes.attribute "test" "test" ] []) []
-                            |> Html.toHtml
+                            |> Html.toNode
                             |> Query.fromHtml
                             |> Query.has [ Selector.attribute (VirtualDom.attribute "aria-test" "test") ]
                     )
