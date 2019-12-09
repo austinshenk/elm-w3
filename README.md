@@ -1,6 +1,6 @@
 # W3
 
-This package exposes modules that try to follow W3's guideline for HTML and Accessibility standards.
+This package exposes modules that try to follow W3's guideline for HTML and Accessibility standards. It will not make your code accessible out of the box, but it gives you better tools to make that goal possible.
 
 ## HTML
 
@@ -17,13 +17,13 @@ This means the element supports all the attributes defined by the `GlobalAttribu
 Correct Use
 
 ```elm
-Html.p [] [Html.b [] []]
+Html.p [] [Html.b [] [Html.text "hello"]]
 ```
 
 Incorrect Use
 
 ```elm
-Html.p [] [Html.div [] []]
+Html.p [] [Html.div [] [Html.text "hello"]]
 ```
 
 ### Integrate with Elm's HTML or Browser package
@@ -38,7 +38,7 @@ The following are 2 cases of using the `Aria` module with and without the includ
 
 ### Included
 
-In order to integrate Aria with this package's HTML, we use role functions to replace an HTML element's attribute list. We still have access to the compile-time safety for the HTML attributes that are supported, but also get access to Aria's guarantees for that particular role.
+In order to integrate Aria with this package's HTML, we use Role functions to essentially replace an HTML element's attribute list. This works because the Role functions return a List of Attributes. We still have the compile-time guarantee the the HTML attributes are supported for that element and we get the same guarantee for the Role respectively.
 
 ```elm
 Html.section 
