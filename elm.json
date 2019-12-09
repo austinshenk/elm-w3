@@ -2,7 +2,7 @@
     "type": "package",
     "name": "austinshenk/elm-w3",
     "summary": "Type safe HTML/ARIA that follows W3 guidelines",
-    "license": "MIT",
+    "license": "BSD-3-Clause",
     "version": "1.0.0",
     "exposed-modules": [
         "W3.Aria",
