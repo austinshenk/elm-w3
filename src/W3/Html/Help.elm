@@ -70,7 +70,7 @@ number key =
 string : String -> String -> Attribute a msg
 string key val =
     if val |> String.trim |> String.isEmpty then
-        Attribute "" ""
+        Attribute key ""
 
     else
         Attribute key val
