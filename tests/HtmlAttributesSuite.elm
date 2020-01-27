@@ -143,6 +143,7 @@ suite =
                 , ( Attributes.form_data, "multipart/form-data" )
                 , ( Attributes.plaintext, "text/plain" )
                 ]
+            ++ Help.string test "files" Attributes.files
             ++ Help.string test "for" Attributes.for
             ++ Help.string test "form" Attributes.form
             ++ Help.string test "formaction" Attributes.formaction
@@ -252,6 +253,15 @@ suite =
                 , ( Attributes.auto, "auto" )
                 ]
             ++ Help.bool test "selected" Attributes.selected
+            ++ Help.number test "selectionStart" Attributes.selectionStart
+            ++ Help.number test "selectionEnd" Attributes.selectionEnd
+            ++ Help.value test
+                "selectionDirection"
+                Attributes.selectionDirection
+                [ ( Attributes.forward, "forward" )
+                , ( Attributes.backward, "backward" )
+                , ( Attributes.none, "none" )
+                ]
             ++ Help.value test
                 "shape"
                 Attributes.shape

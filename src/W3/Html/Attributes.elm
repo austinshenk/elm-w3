@@ -1,9 +1,10 @@
 module W3.Html.Attributes exposing
     ( Value
     , accesskey, autocapitalize, autofocus, class, contenteditable, data_, dir, draggable, enterkeyhint, hidden, id, inputmode, is, itemid, itemprop, itemref, itemscope, itemtype, lang, nonce, slot, spellcheck, style, tabindex, title, translate
-    , abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, ismap, kind, label, list, loop, low, max, maxlength, media, method, min, minlength, multiple, muted, name, novalidate, open, optimum, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, type_button, type_input, type_list, type_mime, usemap, value, value_ordinal, width, wrap
+    , abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, files, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, ismap, kind, label, list, loop, low, max, maxlength, media, method, min, minlength, multiple, muted, name, novalidate, open, optimum, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, selectionStart, selectionEnd, selectionDirection, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, type_button, type_input, type_list, type_mime, usemap, value, valueAsDate, valueAsNumber, value_ordinal, width, wrap
     , allow_forms, allow_modals, allow_orientation_lock, allow_pointer_lock, allow_popups, allow_popups_to_escape_sandbox, allow_presentation, allow_same_origin, allow_scripts, allow_top_navigation, allow_top_navigation_by_user_activation, anonymous, auto, async, blank_, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, form_data, form_url_encoded, frame, get, go, hard, loweralpha, lowerroman, ltr, metadata, next, no, none, numeric, off, on, ordinal, parent_, plaintext, poly, polygon, post, previous, rect, rectangle, reset, row, rowgroup, rtl, search, self_, send, sentences, soft, submit, subtitles, sync, tel, text, top_, upperalpha, upperroman, url, use_credentials, words, yes
     , attribute
+    , backward, forward
     )
 
 {-| Module that defines all HTML attributes and values
@@ -25,7 +26,7 @@ These Attributes can be assigned to any HTML element as defined by [html.spec.wh
 
 These Attributes may be assigned to only specific elements. That is defined on a per-element basis.
 
-@docs abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, ismap, kind, label, list, loop, low, max, maxlength, media, method, min, minlength, multiple, muted, name, novalidate, open, optimum, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, type_button, type_input, type_list, type_mime, usemap, value, value_ordinal, width, wrap
+@docs abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, files, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, ismap, kind, label, list, loop, low, max, maxlength, media, method, min, minlength, multiple, muted, name, novalidate, open, optimum, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, selectionStart, selectionEnd, selectionDirection, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, type_button, type_input, type_list, type_mime, usemap, value, valueAsDate, valueAsNumber, value_ordinal, width, wrap
 
 
 # Values
@@ -485,6 +486,13 @@ enctype =
     Html.value "enctype"
 
 
+{-| Follows the attribute definition at [html.spec.whatwg.org/files](https://html.spec.whatwg.org/multipage/input.html#dom-input-files)
+-}
+files : String -> Html.Attribute { compatible | files : Html.SupportedAttribute } msg
+files =
+    Html.string "files"
+
+
 {-| Follows the attribute definition at [html.spec.whatwg.org/label-for](https://html.spec.whatwg.org/multipage/forms.html#attr-label-for),
 [html.spec.whatwg.org/output-for](https://html.spec.whatwg.org/multipage/form-elements.html#attr-output-for)
 -}
@@ -891,6 +899,33 @@ selected =
     Html.bool "selected"
 
 
+{-| Follows the attribute definition at [html.spec.whatwg.org/selectionstart](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#dom-textarea/input-selectionstart)
+-}
+selectionStart : Int -> Html.Attribute { compatible | selectionStart : Html.SupportedAttribute } msg
+selectionStart =
+    Html.number "selectionStart"
+
+
+{-| Follows the attribute definition at [html.spec.whatwg.org/selectionend](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#dom-textarea/input-selectionend)
+-}
+selectionEnd : Int -> Html.Attribute { compatible | selectionEnd : Html.SupportedAttribute } msg
+selectionEnd =
+    Html.number "selectionEnd"
+
+
+{-| Follows the attribute definition at [html.spec.whatwg.org/selectiondirection](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#dom-textarea/input-selectiondirection)
+-}
+selectionDirection :
+    Html.Value
+        { forward : Html.SupportedValue
+        , backward : Html.SupportedValue
+        , none : Html.SupportedValue
+        }
+    -> Html.Attribute { compatible | selectionDirection : Html.SupportedAttribute } msg
+selectionDirection =
+    Html.value "selectionDirection"
+
+
 {-| Follows the attribute definition at [html.spec.whatwg.org/shape](https://html.spec.whatwg.org/multipage/image-maps.html#attr-area-shape)
 -}
 shape :
@@ -1054,6 +1089,20 @@ value =
     Html.string "value"
 
 
+{-| Follows the attribute definition at [html.spec.whatwg.org/input-valueasdate](https://html.spec.whatwg.org/multipage/input.html#dom-input-valueasdate)
+-}
+valueAsDate : String -> Html.Attribute { compatible | valueAsDate : Html.SupportedAttribute } msg
+valueAsDate =
+    Html.string "valueAsDate"
+
+
+{-| Follows the attribute definition at [html.spec.whatwg.org/input-valueasnumber](https://html.spec.whatwg.org/multipage/input.html#dom-input-valueasnumber)
+-}
+valueAsNumber : String -> Html.Attribute { compatible | valueAsNumber : Html.SupportedAttribute } msg
+valueAsNumber =
+    Html.string "valueAsNumber"
+
+
 {-| Follows the attribute definition at [html.spec.whatwg.org/li-value](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-li-value),
 [html.spec.whatwg.org/meter-value](https://html.spec.whatwg.org/multipage/form-elements.html#attr-meter-value),
 [html.spec.whatwg.org/progress-value](https://html.spec.whatwg.org/multipage/form-elements.html#attr-progress-value)
@@ -1168,6 +1217,12 @@ async =
 
 
 {-| -}
+backward : Html.Value { compatible | backward : Html.SupportedValue }
+backward =
+    Html.Value "backward"
+
+
+{-| -}
 blank_ : Html.Value { compatible | blank_ : Html.SupportedValue }
 blank_ =
     Html.Value "_blank"
@@ -1273,6 +1328,12 @@ form_data =
 form_url_encoded : Html.Value { compatible | form_url_encoded : Html.SupportedValue }
 form_url_encoded =
     Html.Value "application/x-www-form-urlencoded"
+
+
+{-| -}
+forward : Html.Value { compatible | forward : Html.SupportedValue }
+forward =
+    Html.Value "forward"
 
 
 {-| -}

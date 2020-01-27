@@ -595,6 +595,7 @@ suite =
                     , Attributes.checked True
                     , Attributes.dirname ""
                     , Attributes.disabled True
+                    , Attributes.files ""
                     , Attributes.form ""
                     , Attributes.formaction ""
                     , Attributes.formenctype Attributes.form_url_encoded
@@ -618,10 +619,15 @@ suite =
                     , Attributes.step 0
                     , Attributes.type_input ""
                     , Attributes.value ""
+                    , Attributes.valueAsNumber ""
+                    , Attributes.valueAsDate ""
                     , Attributes.width 0
+                    , Attributes.selectionStart 0
+                    , Attributes.selectionEnd 0
+                    , Attributes.selectionDirection Attributes.none
                     ]
                 )
-            ++ numbered "input" 1 (Html.hidden [ Attributes.autocomplete True ])
+            ++ numbered "input" 1 (Html.hidden [ Attributes.autocomplete True, Attributes.value "" ])
             ++ numbered "input"
                 2
                 (Html.textInput
@@ -635,6 +641,10 @@ suite =
                     , Attributes.readonly True
                     , Attributes.required True
                     , Attributes.size 0
+                    , Attributes.value ""
+                    , Attributes.selectionStart 0
+                    , Attributes.selectionEnd 0
+                    , Attributes.selectionDirection Attributes.none
                     ]
                 )
             ++ numbered "input"
@@ -650,6 +660,10 @@ suite =
                     , Attributes.readonly True
                     , Attributes.required True
                     , Attributes.size 0
+                    , Attributes.value ""
+                    , Attributes.selectionStart 0
+                    , Attributes.selectionEnd 0
+                    , Attributes.selectionDirection Attributes.none
                     ]
                 )
             ++ numbered "input"
@@ -664,6 +678,10 @@ suite =
                     , Attributes.readonly True
                     , Attributes.required True
                     , Attributes.size 0
+                    , Attributes.value ""
+                    , Attributes.selectionStart 0
+                    , Attributes.selectionEnd 0
+                    , Attributes.selectionDirection Attributes.none
                     ]
                 )
             ++ numbered "input"
@@ -678,6 +696,10 @@ suite =
                     , Attributes.readonly True
                     , Attributes.required True
                     , Attributes.size 0
+                    , Attributes.value ""
+                    , Attributes.selectionStart 0
+                    , Attributes.selectionEnd 0
+                    , Attributes.selectionDirection Attributes.none
                     ]
                 )
             ++ numbered "input"
@@ -693,6 +715,7 @@ suite =
                     , Attributes.readonly True
                     , Attributes.required True
                     , Attributes.size 0
+                    , Attributes.value ""
                     ]
                 )
             ++ numbered "input"
@@ -706,6 +729,10 @@ suite =
                     , Attributes.readonly True
                     , Attributes.required True
                     , Attributes.size 0
+                    , Attributes.value ""
+                    , Attributes.selectionStart 0
+                    , Attributes.selectionEnd 0
+                    , Attributes.selectionDirection Attributes.none
                     ]
                 )
             ++ numbered "input"
@@ -718,6 +745,9 @@ suite =
                     , Attributes.readonly True
                     , Attributes.required True
                     , Attributes.step 0
+                    , Attributes.value ""
+                    , Attributes.valueAsDate ""
+                    , Attributes.valueAsNumber ""
                     ]
                 )
             ++ numbered "input"
@@ -730,6 +760,9 @@ suite =
                     , Attributes.readonly True
                     , Attributes.required True
                     , Attributes.step 0
+                    , Attributes.value ""
+                    , Attributes.valueAsDate ""
+                    , Attributes.valueAsNumber ""
                     ]
                 )
             ++ numbered "input"
@@ -742,6 +775,9 @@ suite =
                     , Attributes.readonly True
                     , Attributes.required True
                     , Attributes.step 0
+                    , Attributes.value ""
+                    , Attributes.valueAsDate ""
+                    , Attributes.valueAsNumber ""
                     ]
                 )
             ++ numbered "input"
@@ -754,6 +790,9 @@ suite =
                     , Attributes.readonly True
                     , Attributes.required True
                     , Attributes.step 0
+                    , Attributes.value ""
+                    , Attributes.valueAsDate ""
+                    , Attributes.valueAsNumber ""
                     ]
                 )
             ++ numbered "input"
@@ -766,6 +805,8 @@ suite =
                     , Attributes.readonly True
                     , Attributes.required True
                     , Attributes.step 0
+                    , Attributes.value ""
+                    , Attributes.valueAsNumber ""
                     ]
                 )
             ++ numbered "input"
@@ -779,6 +820,8 @@ suite =
                     , Attributes.readonly True
                     , Attributes.required True
                     , Attributes.step 0
+                    , Attributes.value ""
+                    , Attributes.valueAsNumber ""
                     ]
                 )
             ++ numbered "input"
@@ -789,6 +832,8 @@ suite =
                     , Attributes.max 0
                     , Attributes.min 0
                     , Attributes.step 0
+                    , Attributes.value ""
+                    , Attributes.valueAsNumber ""
                     ]
                 )
             ++ numbered "input"
@@ -796,6 +841,7 @@ suite =
                 (Html.color
                     [ Attributes.autocomplete True
                     , Attributes.list ""
+                    , Attributes.value ""
                     ]
                 )
             ++ numbered "input"
@@ -803,6 +849,7 @@ suite =
                 (Html.checkbox
                     [ Attributes.checked True
                     , Attributes.required True
+                    , Attributes.value ""
                     ]
                 )
             ++ numbered "input"
@@ -810,6 +857,7 @@ suite =
                 (Html.radio
                     [ Attributes.checked True
                     , Attributes.required True
+                    , Attributes.value ""
                     ]
                 )
             ++ numbered "input"
@@ -817,6 +865,8 @@ suite =
                 (Html.file
                     [ Attributes.accept []
                     , Attributes.required True
+                    , Attributes.value ""
+                    , Attributes.files ""
                     ]
                 )
             ++ numbered "input"
@@ -827,6 +877,7 @@ suite =
                     , Attributes.formmethod Attributes.get
                     , Attributes.formnovalidate True
                     , Attributes.formtarget Attributes.blank_
+                    , Attributes.value ""
                     ]
                 )
             ++ numbered "input"
@@ -841,10 +892,11 @@ suite =
                     , Attributes.height 0
                     , Attributes.src ""
                     , Attributes.width 0
+                    , Attributes.value ""
                     ]
                 )
-            ++ numbered "input" 21 (Html.resetButton [])
-            ++ numbered "input" 22 (Html.buttonInput [])
+            ++ numbered "input" 21 (Html.resetButton [ Attributes.value "" ])
+            ++ numbered "input" 22 (Html.buttonInput [ Attributes.value "" ])
             ++ test "button"
                 (Html.button
                     [ Attributes.disabled True

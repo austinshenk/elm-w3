@@ -1522,6 +1522,7 @@ input :
             , checked : Html.SupportedAttribute
             , dirname : Html.SupportedAttribute
             , disabled : Html.SupportedAttribute
+            , files : Html.SupportedAttribute
             , form : Html.SupportedAttribute
             , formaction : Html.SupportedAttribute
             , formenctype : Html.SupportedAttribute
@@ -1545,7 +1546,12 @@ input :
             , step : Html.SupportedAttribute
             , type_input : Html.SupportedAttribute
             , value : Html.SupportedAttribute
+            , valueAsDate : Html.SupportedAttribute
+            , valueAsNumber : Html.SupportedAttribute
             , width : Html.SupportedAttribute
+            , selectionStart : Html.SupportedAttribute
+            , selectionEnd : Html.SupportedAttribute
+            , selectionDirection : Html.SupportedAttribute
             }
             msg
         )
@@ -1556,7 +1562,15 @@ input attributes =
 
 {-| Follows the element definition at [html.spec.whatwg.org/hidden](https://html.spec.whatwg.org/multipage/input.html#hidden-state-(type=hidden))
 -}
-hidden : List (GlobalAttributes { autocomplete : Html.SupportedAttribute } msg) -> Node { compatible | input : Html.Supported } msg
+hidden :
+    List
+        (GlobalAttributes
+            { autocomplete : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
+            }
+            msg
+        )
+    -> Node { compatible | input : Html.Supported } msg
 hidden attributes =
     node "input" (Html.Attribute "type" "hidden" :: attributes) []
 
@@ -1576,6 +1590,10 @@ textInput :
             , readonly : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             , size : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
+            , selectionStart : Html.SupportedAttribute
+            , selectionEnd : Html.SupportedAttribute
+            , selectionDirection : Html.SupportedAttribute
             }
             msg
         )
@@ -1599,6 +1617,10 @@ search :
             , readonly : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             , size : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
+            , selectionStart : Html.SupportedAttribute
+            , selectionEnd : Html.SupportedAttribute
+            , selectionDirection : Html.SupportedAttribute
             }
             msg
         )
@@ -1621,6 +1643,10 @@ url :
             , readonly : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             , size : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
+            , selectionStart : Html.SupportedAttribute
+            , selectionEnd : Html.SupportedAttribute
+            , selectionDirection : Html.SupportedAttribute
             }
             msg
         )
@@ -1643,6 +1669,10 @@ tel :
             , readonly : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             , size : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
+            , selectionStart : Html.SupportedAttribute
+            , selectionEnd : Html.SupportedAttribute
+            , selectionDirection : Html.SupportedAttribute
             }
             msg
         )
@@ -1666,6 +1696,7 @@ email :
             , readonly : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             , size : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
             }
             msg
         )
@@ -1687,6 +1718,10 @@ password :
             , readonly : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             , size : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
+            , selectionStart : Html.SupportedAttribute
+            , selectionEnd : Html.SupportedAttribute
+            , selectionDirection : Html.SupportedAttribute
             }
             msg
         )
@@ -1707,6 +1742,9 @@ date :
             , readonly : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             , step : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
+            , valueAsDate : Html.SupportedAttribute
+            , valueAsNumber : Html.SupportedAttribute
             }
             msg
         )
@@ -1727,6 +1765,9 @@ month :
             , readonly : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             , step : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
+            , valueAsDate : Html.SupportedAttribute
+            , valueAsNumber : Html.SupportedAttribute
             }
             msg
         )
@@ -1747,6 +1788,9 @@ week :
             , readonly : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             , step : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
+            , valueAsDate : Html.SupportedAttribute
+            , valueAsNumber : Html.SupportedAttribute
             }
             msg
         )
@@ -1767,6 +1811,9 @@ timeInput :
             , readonly : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             , step : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
+            , valueAsDate : Html.SupportedAttribute
+            , valueAsNumber : Html.SupportedAttribute
             }
             msg
         )
@@ -1787,6 +1834,8 @@ datetime :
             , readonly : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             , step : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
+            , valueAsNumber : Html.SupportedAttribute
             }
             msg
         )
@@ -1808,6 +1857,8 @@ number :
             , readonly : Html.SupportedAttribute
             , required : Html.SupportedAttribute
             , step : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
+            , valueAsNumber : Html.SupportedAttribute
             }
             msg
         )
@@ -1826,6 +1877,8 @@ range :
             , max : Html.SupportedAttribute
             , min : Html.SupportedAttribute
             , step : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
+            , valueAsNumber : Html.SupportedAttribute
             }
             msg
         )
@@ -1841,6 +1894,7 @@ color :
         (GlobalAttributes
             { autocomplete : Html.SupportedAttribute
             , list : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
             }
             msg
         )
@@ -1856,6 +1910,7 @@ checkbox :
         (GlobalAttributes
             { checked : Html.SupportedAttribute
             , required : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
             }
             msg
         )
@@ -1871,6 +1926,7 @@ radio :
         (GlobalAttributes
             { checked : Html.SupportedAttribute
             , required : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
             }
             msg
         )
@@ -1887,6 +1943,8 @@ file :
             { accept : Html.SupportedAttribute
             , multiple : Html.SupportedAttribute
             , required : Html.SupportedAttribute
+            , files : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
             }
             msg
         )
@@ -1905,6 +1963,7 @@ submit :
             , formmethod : Html.SupportedAttribute
             , formnovalidate : Html.SupportedAttribute
             , formtarget : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
             }
             msg
         )
@@ -1927,6 +1986,7 @@ imageButton :
             , height : Html.SupportedAttribute
             , src : Html.SupportedAttribute
             , width : Html.SupportedAttribute
+            , value : Html.SupportedAttribute
             }
             msg
         )
@@ -1937,14 +1997,28 @@ imageButton attributes =
 
 {-| Follows the element definition at [html.spec.whatwg.org/reset](https://html.spec.whatwg.org/multipage/input.html#reset-button-state-(type=reset))
 -}
-resetButton : List (GlobalAttributes {} msg) -> Node { compatible | input : Html.Supported } msg
+resetButton :
+    List
+        (GlobalAttributes
+            { value : Html.SupportedAttribute
+            }
+            msg
+        )
+    -> Node { compatible | input : Html.Supported } msg
 resetButton attributes =
     node "input" (Html.Attribute "type" "reset" :: attributes) []
 
 
 {-| Follows the element definition at [html.spec.whatwg.org/button](https://html.spec.whatwg.org/multipage/input.html#button-state-(type=button))
 -}
-buttonInput : List (GlobalAttributes {} msg) -> Node { compatible | input : Html.Supported } msg
+buttonInput :
+    List
+        (GlobalAttributes
+            { value : Html.SupportedAttribute
+            }
+            msg
+        )
+    -> Node { compatible | input : Html.Supported } msg
 buttonInput attributes =
     node "input" (Html.Attribute "type" "button" :: attributes) []
 
