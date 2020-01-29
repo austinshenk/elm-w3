@@ -7,7 +7,7 @@ import VirtualDom exposing (Handler)
 type Attribute a msg
     = Attribute String String
     | Property String Json.Value
-    | Event String { message : msg, stopPropagation : Bool, preventDefault : Bool } ({ message : msg, stopPropagation : Bool, preventDefault : Bool } -> Handler msg)
+    | Event String (Handler msg)
 
 
 type Supported

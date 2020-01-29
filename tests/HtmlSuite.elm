@@ -81,6 +81,8 @@ supports testName node =
 
 type Msg
     = Noop
+    | Value String
+    | Value2 String String
 
 
 suite : Test
@@ -1068,7 +1070,16 @@ suite =
             ++ [ Test.test "events are supported"
                     (\() ->
                         globalAttributesNode
-                            [ Html.on "test" { message = Noop, preventDefault = False, stopPropagation = False } Json.succeed
+                            [ Html.on "test" (Json.succeed { message = Noop, preventDefault = False, stopPropagation = False })
+                            , Html.on "test"
+                                (Json.map (\value -> Html.Event (Value value) False False)
+                                    (Json.at [ "target", "value" ] Json.string)
+                                )
+                            , Html.on "test"
+                                (Json.map2 (\value value2 -> Html.Event (Value2 value value2) False False)
+                                    (Json.at [ "target", "value" ] Json.string)
+                                    (Json.at [ "target", "checked" ] Json.string)
+                                )
                             , Html.onabort Noop
                             , Html.onauxclick Noop
                             , Html.onblur Noop

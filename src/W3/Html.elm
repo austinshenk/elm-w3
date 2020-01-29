@@ -20,6 +20,7 @@ module W3.Html exposing
     , node
     , keyed
     , lazy, lazy2, lazy3, lazy4, lazy5, lazy6, lazy7, lazy8
+    , Event
     , on, onabort, onauxclick, onblur, oncancel, oncanplay, oncanplaythrough, onchange, onclick, onclose, oncontextmenu, oncopy, oncuechange, oncut, ondblclick, ondrag, ondragend, ondragenter, ondragexit, ondragleave, ondragover, ondragstart, ondrop, ondurationchange, onemptied, onended, onerror, onfocus, onformdata, oninput, oninvalid, onkeydown, onkeypress, onkeyup, onload, onloadeddata, onloadedmetadata, onloadedstart, onmousedown, onmouseenter, onmouseleave, onmousemove, onmouseout, onmouseover, onmouseup, onpaste, onpause, onplay, onplaying, onprogress, onratechange, onreset, onresize, onscroll, onsecuritypolicyviolation, onseeked, onseeking, onselect, onslotchange, onstalled, onsubmit, onsuspend, ontimeupdate, ontoggle, onvolumechange, onwaiting, onwheel
     )
 
@@ -147,6 +148,8 @@ Various functions to make node rendering lazy.
 
 
 # Events
+
+@docs Event
 
 @docs on, onabort, onauxclick, onblur, oncancel, oncanplay, oncanplaythrough, onchange, onclick, onclose, oncontextmenu, oncopy, oncuechange, oncut, ondblclick, ondrag, ondragend, ondragenter, ondragexit, ondragleave, ondragover, ondragstart, ondrop, ondurationchange, onemptied, onended, onerror, onfocus, onformdata, oninput, oninvalid, onkeydown, onkeypress, onkeyup, onload, onloadeddata, onloadedmetadata, onloadedstart, onmousedown, onmouseenter, onmouseleave, onmousemove, onmouseout, onmouseover, onmouseup, onpaste, onpause, onplay, onplaying, onprogress, onratechange, onreset, onresize, onscroll, onsecuritypolicyviolation, onseeked, onseeking, onselect, onslotchange, onstalled, onsubmit, onsuspend, ontimeupdate, ontoggle, onvolumechange, onwaiting, onwheel
 
@@ -2351,8 +2354,8 @@ toAttribute attribute =
         Html.Property name value ->
             VirtualDom.property name value
 
-        Html.Event event settings transformer ->
-            VirtualDom.on event (transformer settings)
+        Html.Event event handler ->
+            VirtualDom.on event handler
 
 
 {-| -}
@@ -2409,407 +2412,408 @@ lazy8 function v1 v2 v3 v4 v5 v6 v7 v8 =
     Lazy (VirtualDom.lazy8 (\av1 av2 av3 av4 av5 av6 av7 av8 -> toNode (function av1 av2 av3 av4 av5 av6 av7 av8)) v1 v2 v3 v4 v5 v6 v7 v8)
 
 
+{-| -}
 type alias Event msg =
     { message : msg, preventDefault : Bool, stopPropagation : Bool }
 
 
 {-| -}
-on : String -> Event msg -> (Event msg -> Json.Decoder (Event msg)) -> Html.Attribute b msg
-on event settings transformer =
-    Html.Event event settings (\eventSettings -> VirtualDom.Custom (transformer eventSettings))
+on : String -> Json.Decoder (Event msg) -> Html.Attribute a msg
+on event decoder =
+    Html.Event event (VirtualDom.Custom decoder)
 
 
 {-| -}
 onabort : msg -> Html.Attribute a msg
 onabort msg =
-    on "abort" (Event msg False False) Json.succeed
+    on "abort" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onauxclick : msg -> Html.Attribute a msg
 onauxclick msg =
-    on "auxclick" (Event msg False False) Json.succeed
+    on "auxclick" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onblur : msg -> Html.Attribute a msg
 onblur msg =
-    on "blur" (Event msg False False) Json.succeed
+    on "blur" (Json.succeed (Event msg False False))
 
 
 {-| -}
 oncancel : msg -> Html.Attribute a msg
 oncancel msg =
-    on "cancel" (Event msg False False) Json.succeed
+    on "cancel" (Json.succeed (Event msg False False))
 
 
 {-| -}
 oncanplay : msg -> Html.Attribute a msg
 oncanplay msg =
-    on "canplay" (Event msg False False) Json.succeed
+    on "canplay" (Json.succeed (Event msg False False))
 
 
 {-| -}
 oncanplaythrough : msg -> Html.Attribute a msg
 oncanplaythrough msg =
-    on "canplaythrough" (Event msg False False) Json.succeed
+    on "canplaythrough" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onchange : msg -> Html.Attribute a msg
 onchange msg =
-    on "change" (Event msg False False) Json.succeed
+    on "change" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onclick : msg -> Html.Attribute a msg
 onclick msg =
-    on "click" (Event msg False False) Json.succeed
+    on "click" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onclose : msg -> Html.Attribute a msg
 onclose msg =
-    on "close" (Event msg False False) Json.succeed
+    on "close" (Json.succeed (Event msg False False))
 
 
 {-| -}
 oncontextmenu : msg -> Html.Attribute a msg
 oncontextmenu msg =
-    on "contextmenu" (Event msg False False) Json.succeed
+    on "contextmenu" (Json.succeed (Event msg False False))
 
 
 {-| -}
 oncopy : msg -> Html.Attribute a msg
 oncopy msg =
-    on "copy" (Event msg False False) Json.succeed
+    on "copy" (Json.succeed (Event msg False False))
 
 
 {-| -}
 oncuechange : msg -> Html.Attribute a msg
 oncuechange msg =
-    on "cuechange" (Event msg False False) Json.succeed
+    on "cuechange" (Json.succeed (Event msg False False))
 
 
 {-| -}
 oncut : msg -> Html.Attribute a msg
 oncut msg =
-    on "cut" (Event msg False False) Json.succeed
+    on "cut" (Json.succeed (Event msg False False))
 
 
 {-| -}
 ondblclick : msg -> Html.Attribute a msg
 ondblclick msg =
-    on "dblclick" (Event msg False False) Json.succeed
+    on "dblclick" (Json.succeed (Event msg False False))
 
 
 {-| -}
 ondrag : msg -> Html.Attribute a msg
 ondrag msg =
-    on "drag" (Event msg False False) Json.succeed
+    on "drag" (Json.succeed (Event msg False False))
 
 
 {-| -}
 ondragend : msg -> Html.Attribute a msg
 ondragend msg =
-    on "dragend" (Event msg False False) Json.succeed
+    on "dragend" (Json.succeed (Event msg False False))
 
 
 {-| -}
 ondragenter : msg -> Html.Attribute a msg
 ondragenter msg =
-    on "dragenter" (Event msg False False) Json.succeed
+    on "dragenter" (Json.succeed (Event msg False False))
 
 
 {-| -}
 ondragexit : msg -> Html.Attribute a msg
 ondragexit msg =
-    on "dragexit" (Event msg False False) Json.succeed
+    on "dragexit" (Json.succeed (Event msg False False))
 
 
 {-| -}
 ondragleave : msg -> Html.Attribute a msg
 ondragleave msg =
-    on "dragleave" (Event msg False False) Json.succeed
+    on "dragleave" (Json.succeed (Event msg False False))
 
 
 {-| -}
 ondragover : msg -> Html.Attribute a msg
 ondragover msg =
-    on "dragover" (Event msg False False) Json.succeed
+    on "dragover" (Json.succeed (Event msg False False))
 
 
 {-| -}
 ondragstart : msg -> Html.Attribute a msg
 ondragstart msg =
-    on "dragstart" (Event msg False False) Json.succeed
+    on "dragstart" (Json.succeed (Event msg False False))
 
 
 {-| -}
 ondrop : msg -> Html.Attribute a msg
 ondrop msg =
-    on "drop" (Event msg False False) Json.succeed
+    on "drop" (Json.succeed (Event msg False False))
 
 
 {-| -}
 ondurationchange : msg -> Html.Attribute a msg
 ondurationchange msg =
-    on "durationchange" (Event msg False False) Json.succeed
+    on "durationchange" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onemptied : msg -> Html.Attribute a msg
 onemptied msg =
-    on "emptied" (Event msg False False) Json.succeed
+    on "emptied" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onended : msg -> Html.Attribute a msg
 onended msg =
-    on "ended" (Event msg False False) Json.succeed
+    on "ended" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onerror : msg -> Html.Attribute a msg
 onerror msg =
-    on "error" (Event msg False False) Json.succeed
+    on "error" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onfocus : msg -> Html.Attribute a msg
 onfocus msg =
-    on "focus" (Event msg False False) Json.succeed
+    on "focus" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onformdata : msg -> Html.Attribute a msg
 onformdata msg =
-    on "formdata" (Event msg False False) Json.succeed
+    on "formdata" (Json.succeed (Event msg False False))
 
 
 {-| -}
 oninput : msg -> Html.Attribute a msg
 oninput msg =
-    on "input" (Event msg False False) Json.succeed
+    on "input" (Json.succeed (Event msg False False))
 
 
 {-| -}
 oninvalid : msg -> Html.Attribute a msg
 oninvalid msg =
-    on "invalid" (Event msg False False) Json.succeed
+    on "invalid" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onkeydown : msg -> Html.Attribute a msg
 onkeydown msg =
-    on "keydown" (Event msg False False) Json.succeed
+    on "keydown" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onkeypress : msg -> Html.Attribute a msg
 onkeypress msg =
-    on "keypress" (Event msg False False) Json.succeed
+    on "keypress" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onkeyup : msg -> Html.Attribute a msg
 onkeyup msg =
-    on "keyup" (Event msg False False) Json.succeed
+    on "keyup" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onload : msg -> Html.Attribute a msg
 onload msg =
-    on "load" (Event msg False False) Json.succeed
+    on "load" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onloadeddata : msg -> Html.Attribute a msg
 onloadeddata msg =
-    on "loadeddata" (Event msg False False) Json.succeed
+    on "loadeddata" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onloadedmetadata : msg -> Html.Attribute a msg
 onloadedmetadata msg =
-    on "loadedmetadata" (Event msg False False) Json.succeed
+    on "loadedmetadata" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onloadedstart : msg -> Html.Attribute a msg
 onloadedstart msg =
-    on "loadedstart" (Event msg False False) Json.succeed
+    on "loadedstart" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onmousedown : msg -> Html.Attribute a msg
 onmousedown msg =
-    on "mousedown" (Event msg False False) Json.succeed
+    on "mousedown" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onmouseenter : msg -> Html.Attribute a msg
 onmouseenter msg =
-    on "mouseenter" (Event msg False False) Json.succeed
+    on "mouseenter" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onmouseleave : msg -> Html.Attribute a msg
 onmouseleave msg =
-    on "mouseleave" (Event msg False False) Json.succeed
+    on "mouseleave" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onmousemove : msg -> Html.Attribute a msg
 onmousemove msg =
-    on "mousemove" (Event msg False False) Json.succeed
+    on "mousemove" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onmouseout : msg -> Html.Attribute a msg
 onmouseout msg =
-    on "mouseout" (Event msg False False) Json.succeed
+    on "mouseout" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onmouseover : msg -> Html.Attribute a msg
 onmouseover msg =
-    on "mouseover" (Event msg False False) Json.succeed
+    on "mouseover" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onmouseup : msg -> Html.Attribute a msg
 onmouseup msg =
-    on "mouseup" (Event msg False False) Json.succeed
+    on "mouseup" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onpaste : msg -> Html.Attribute a msg
 onpaste msg =
-    on "paste" (Event msg False False) Json.succeed
+    on "paste" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onpause : msg -> Html.Attribute a msg
 onpause msg =
-    on "pause" (Event msg False False) Json.succeed
+    on "pause" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onplay : msg -> Html.Attribute a msg
 onplay msg =
-    on "play" (Event msg False False) Json.succeed
+    on "play" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onplaying : msg -> Html.Attribute a msg
 onplaying msg =
-    on "playing" (Event msg False False) Json.succeed
+    on "playing" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onprogress : msg -> Html.Attribute a msg
 onprogress msg =
-    on "progress" (Event msg False False) Json.succeed
+    on "progress" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onratechange : msg -> Html.Attribute a msg
 onratechange msg =
-    on "ratechange" (Event msg False False) Json.succeed
+    on "ratechange" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onreset : msg -> Html.Attribute a msg
 onreset msg =
-    on "reset" (Event msg False False) Json.succeed
+    on "reset" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onresize : msg -> Html.Attribute a msg
 onresize msg =
-    on "resize" (Event msg False False) Json.succeed
+    on "resize" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onscroll : msg -> Html.Attribute a msg
 onscroll msg =
-    on "scroll" (Event msg False False) Json.succeed
+    on "scroll" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onsecuritypolicyviolation : msg -> Html.Attribute a msg
 onsecuritypolicyviolation msg =
-    on "securitypolicyviolation" (Event msg False False) Json.succeed
+    on "securitypolicyviolation" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onseeked : msg -> Html.Attribute a msg
 onseeked msg =
-    on "seeked" (Event msg False False) Json.succeed
+    on "seeked" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onseeking : msg -> Html.Attribute a msg
 onseeking msg =
-    on "seeking" (Event msg False False) Json.succeed
+    on "seeking" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onselect : msg -> Html.Attribute a msg
 onselect msg =
-    on "select" (Event msg False False) Json.succeed
+    on "select" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onslotchange : msg -> Html.Attribute a msg
 onslotchange msg =
-    on "slotchange" (Event msg False False) Json.succeed
+    on "slotchange" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onstalled : msg -> Html.Attribute a msg
 onstalled msg =
-    on "stalled" (Event msg False False) Json.succeed
+    on "stalled" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onsubmit : msg -> Html.Attribute a msg
 onsubmit msg =
-    on "submit" (Event msg False False) Json.succeed
+    on "submit" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onsuspend : msg -> Html.Attribute a msg
 onsuspend msg =
-    on "suspend" (Event msg False False) Json.succeed
+    on "suspend" (Json.succeed (Event msg False False))
 
 
 {-| -}
 ontimeupdate : msg -> Html.Attribute a msg
 ontimeupdate msg =
-    on "timeupdate" (Event msg False False) Json.succeed
+    on "timeupdate" (Json.succeed (Event msg False False))
 
 
 {-| -}
 ontoggle : msg -> Html.Attribute a msg
 ontoggle msg =
-    on "toggle" (Event msg False False) Json.succeed
+    on "toggle" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onvolumechange : msg -> Html.Attribute a msg
 onvolumechange msg =
-    on "volumechange" (Event msg False False) Json.succeed
+    on "volumechange" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onwaiting : msg -> Html.Attribute a msg
 onwaiting msg =
-    on "waiting" (Event msg False False) Json.succeed
+    on "waiting" (Json.succeed (Event msg False False))
 
 
 {-| -}
 onwheel : msg -> Html.Attribute a msg
 onwheel msg =
-    on "wheel" (Event msg False False) Json.succeed
+    on "wheel" (Json.succeed (Event msg False False))
