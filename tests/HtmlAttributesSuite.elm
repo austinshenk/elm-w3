@@ -1,6 +1,7 @@
 module HtmlAttributesSuite exposing (suite)
 
 import Help
+import Json.Encode as Json
 import Test exposing (..)
 import Test.Html.Query as Query
 import Test.Html.Selector as Selector
@@ -20,12 +21,23 @@ test testName attributeName attribute expectedValue =
         )
 
 
+testProperty : String -> String -> Html.Attribute a msg -> Json.Value -> Test
+testProperty testName attributeName attribute expectedValue =
+    Test.test testName
+        (\() ->
+            Html.node "node" [ attribute ] []
+                |> Html.toNode
+                |> Query.fromHtml
+                |> Query.has [ Selector.attribute (VirtualDom.property attributeName expectedValue) ]
+        )
+
+
 suite : Test
 suite =
     describe "Html attributes"
         --Global Attributes
-        (Help.stringsSpaceSeparated test "accesskey" Attributes.accesskey
-            ++ Help.value test
+        (Help.stringsSpaceSeparatedProperty testProperty "accesskey" Attributes.accesskey
+            ++ Help.valueProperty testProperty
                 "autocapitalize"
                 Attributes.autocapitalize
                 [ ( Attributes.off, "off" )
@@ -35,7 +47,7 @@ suite =
                 , ( Attributes.words, "words" )
                 , ( Attributes.characters, "characters" )
                 ]
-            ++ Help.bool test "autofocus" Attributes.autofocus
+            ++ Help.boolProperty testProperty "autofocus" Attributes.autofocus
             ++ [ Test.test "class is \"testclass\""
                     (\() ->
                         Html.node "node" [ Attributes.class [ "testclass" ] ] []
@@ -44,17 +56,17 @@ suite =
                             |> Query.has [ Selector.class "testclass" ]
                     )
                ]
-            ++ Help.maybeBool test "contenteditable" Attributes.contenteditable ""
+            ++ Help.maybeBoolProperty testProperty "contentEditable" Attributes.contenteditable (Json.bool False)
             ++ Help.string test "data-test" (Attributes.data_ "test")
-            ++ Help.value test
+            ++ Help.valueProperty testProperty
                 "dir"
                 Attributes.dir
                 [ ( Attributes.ltr, "ltr" )
                 , ( Attributes.rtl, "rtl" )
                 , ( Attributes.auto, "auto" )
                 ]
-            ++ Help.maybeBool test "draggable" Attributes.draggable ""
-            ++ Help.value test
+            ++ Help.maybeBoolProperty testProperty "draggable" Attributes.draggable (Json.bool False)
+            ++ Help.valueProperty testProperty
                 "enterkeyhint"
                 Attributes.enterkeyhint
                 [ ( Attributes.enter, "enter" )
@@ -65,8 +77,8 @@ suite =
                 , ( Attributes.search, "search" )
                 , ( Attributes.send, "send" )
                 ]
-            ++ Help.bool test "hidden" Attributes.hidden
-            ++ Help.string test "id" Attributes.id
+            ++ Help.boolProperty testProperty "hidden" Attributes.hidden
+            ++ Help.stringProperty testProperty "id" Attributes.id
             ++ Help.value test
                 "inputmode"
                 Attributes.inputmode

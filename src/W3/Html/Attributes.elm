@@ -3,7 +3,7 @@ module W3.Html.Attributes exposing
     , accesskey, autocapitalize, autofocus, class, contenteditable, data_, dir, draggable, enterkeyhint, hidden, id, inputmode, is, itemid, itemprop, itemref, itemscope, itemtype, lang, nonce, slot, spellcheck, style, tabindex, title, translate
     , abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, files, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, ismap, kind, label, list, loop, low, max, maxlength, media, method, min, minlength, multiple, muted, name, novalidate, open, optimum, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, selectionStart, selectionEnd, selectionDirection, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, type_button, type_input, type_list, type_mime, usemap, value, valueAsDate, valueAsNumber, value_ordinal, width, wrap
     , allow_forms, allow_modals, allow_orientation_lock, allow_pointer_lock, allow_popups, allow_popups_to_escape_sandbox, allow_presentation, allow_same_origin, allow_scripts, allow_top_navigation, allow_top_navigation_by_user_activation, anonymous, auto, async, backward, blank_, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, form_data, form_url_encoded, forward, frame, get, go, hard, loweralpha, lowerroman, ltr, metadata, next, no, none, numeric, off, on, ordinal, parent_, plaintext, poly, polygon, post, previous, rect, rectangle, reset, row, rowgroup, rtl, search, self_, send, sentences, soft, submit, subtitles, sync, tel, text, top_, upperalpha, upperroman, url, use_credentials, words, yes
-    , attribute
+    , attribute, property
     )
 
 {-| Module that defines all HTML attributes and values
@@ -37,7 +37,9 @@ All of the enumerated values that particular Attributes may have.
 
 # Escape Hatch
 
-@docs attribute
+Use this to break out of this package's requirements. Useful if there is something that this package does not allow and you want to support it.
+
+@docs attribute, property
 
 
 # Not Supported
@@ -71,8 +73,8 @@ type alias Value a =
 {-| Follows the attribute definition at [html.spec.whatwg.org/accesskey](https://html.spec.whatwg.org/multipage/interaction.html#the-accesskey-attribute)
 -}
 accesskey : List String -> Html.Attribute { compatible | accesskey : Html.SupportedAttribute } msg
-accesskey =
-    Html.tokens "accesskey"
+accesskey val =
+    Html.stringProperty "accesskey" (String.join " " val)
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/autocapitalize](https://html.spec.whatwg.org/multipage/interaction.html#attr-autocapitalize)
@@ -88,28 +90,28 @@ autocapitalize :
         }
     -> Html.Attribute { compatible | autocapitalize : Html.SupportedAttribute } msg
 autocapitalize =
-    Html.value "autocapitalize"
+    Html.valueProperty "autocapitalize"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/autofocus](https://html.spec.whatwg.org/multipage/interaction.html#attr-fe-autofocus)
 -}
 autofocus : Bool -> Html.Attribute { compatible | autofocus : Html.SupportedAttribute } msg
 autofocus =
-    Html.bool "autofocus"
+    Html.boolProperty "autofocus"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/class](https://html.spec.whatwg.org/multipage/dom.html#classes)
 -}
 class : List String -> Html.Attribute { compatible | class : Html.SupportedAttribute } msg
 class val =
-    Html.property "className" (Json.string (String.join " " val))
+    Html.stringProperty "className" (String.join " " val)
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/contenteditable](https://html.spec.whatwg.org/multipage/interaction.html#attr-contenteditable)
 -}
 contenteditable : Maybe Bool -> Html.Attribute { compatible | contenteditable : Html.SupportedAttribute } msg
 contenteditable =
-    Html.maybeBool "contenteditable" ""
+    Html.maybeBoolProperty "contentEditable" False
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/custom data](https://html.spec.whatwg.org/multipage/dom.html#custom-data-attribute)
@@ -129,14 +131,14 @@ dir :
         }
     -> Html.Attribute { compatible | dir : Html.SupportedAttribute } msg
 dir =
-    Html.value "dir"
+    Html.valueProperty "dir"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/draggable](https://html.spec.whatwg.org/multipage/dnd.html#the-draggable-attribute)
 -}
 draggable : Maybe Bool -> Html.Attribute { compatible | draggable : Html.SupportedAttribute } msg
 draggable =
-    Html.maybeBool "draggable" ""
+    Html.maybeBoolProperty "draggable" False
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/enterkeyhint](https://html.spec.whatwg.org/multipage/interaction.html#attr-enterkeyhint)
@@ -153,21 +155,21 @@ enterkeyhint :
         }
     -> Html.Attribute { compatible | enterkeyhint : Html.SupportedAttribute } msg
 enterkeyhint =
-    Html.value "enterkeyhint"
+    Html.valueProperty "enterkeyhint"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/hidden](https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute)
 -}
 hidden : Bool -> Html.Attribute { compatible | hidden : Html.SupportedAttribute } msg
 hidden =
-    Html.bool "hidden"
+    Html.boolProperty "hidden"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/id](https://html.spec.whatwg.org/multipage/dom.html#the-id-attribute)
 -}
 id : String -> Html.Attribute { compatible | id : Html.SupportedAttribute } msg
 id =
-    Html.string "id"
+    Html.stringProperty "id"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/inputmode](https://html.spec.whatwg.org/multipage/interaction.html#attr-inputmode)
@@ -1599,8 +1601,13 @@ yes =
     Html.Value "yes"
 
 
-{-| Use this to break out of this package's requirements. Useful if there is something that this package does not allow and you want to support it.
--}
+{-| -}
 attribute : String -> String -> Html.Attribute a msg
 attribute =
     Html.Attribute
+
+
+{-| -}
+property : String -> Json.Value -> Html.Attribute a msg
+property =
+    Html.property

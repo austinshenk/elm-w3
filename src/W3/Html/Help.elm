@@ -1,6 +1,7 @@
-module W3.Html.Help exposing (Attribute(..), Supported, SupportedAttribute, SupportedValue, Value(..), bool, boolValue, maybeBool, number, property, string, tokens, value, values)
+module W3.Html.Help exposing (Attribute(..), Supported, SupportedAttribute, SupportedValue, Value(..), bool, boolProperty, boolValue, maybeBool, maybeBoolProperty, number, property, string, stringProperty, tokens, value, valueProperty, values)
 
 import Json.Decode as Json exposing (Value)
+import Json.Encode
 import VirtualDom exposing (Handler)
 
 
@@ -108,3 +109,32 @@ valueToString (Value val) =
 property : String -> Json.Value -> Attribute a msg
 property =
     Property
+
+
+stringProperty : String -> String -> Attribute a msg
+stringProperty name val =
+    property name (Json.Encode.string val)
+
+
+boolProperty : String -> Bool -> Attribute a msg
+boolProperty name val =
+    property name (Json.Encode.bool val)
+
+
+maybeBoolProperty : String -> Bool -> Maybe Bool -> Attribute a msg
+maybeBoolProperty name default val =
+    let
+        toBool =
+            case val of
+                Just a ->
+                    a
+
+                Nothing ->
+                    default
+    in
+    property name (Json.Encode.bool toBool)
+
+
+valueProperty : String -> Value a -> Attribute b msg
+valueProperty key (Value val) =
+    property key (Json.Encode.string val)
