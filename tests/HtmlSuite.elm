@@ -289,10 +289,10 @@ suite =
                     , Attributes.autocapitalize Attributes.on
                     , Attributes.autofocus True
                     , Attributes.class []
-                    , Attributes.contenteditable (Just True)
+                    , Attributes.contenteditable True
                     , Attributes.data_ "custom" "value"
                     , Attributes.dir Attributes.ltr
-                    , Attributes.draggable (Just True)
+                    , Attributes.draggable True
                     , Attributes.enterkeyhint Attributes.enter
                     , Attributes.hidden True
                     , Attributes.id ""
@@ -304,10 +304,10 @@ suite =
                     , Attributes.itemscope True
                     , Attributes.itemtype []
                     , Attributes.lang ""
-                    , Attributes.nonce 0
+                    , Attributes.nonce ""
                     , Attributes.slot ""
-                    , Attributes.spellcheck (Just True)
-                    , Attributes.style ""
+                    , Attributes.spellcheck True
+                    , Attributes.style "" ""
                     , Attributes.tabindex -1
                     , Attributes.title ""
                     , Attributes.translate True
@@ -393,7 +393,7 @@ suite =
                     , Attributes.rel []
                     , Attributes.hreflang ""
                     , Attributes.type_mime ""
-                    , Attributes.referrerpolicy ""
+                    , Attributes.referrerpolicy Attributes.no_referrer
                     ]
                     []
                 )
@@ -450,7 +450,7 @@ suite =
                     , Attributes.ismap True
                     , Attributes.width 0
                     , Attributes.height 0
-                    , Attributes.referrerpolicy ""
+                    , Attributes.referrerpolicy Attributes.no_referrer
                     , Attributes.decoding Attributes.sync
                     ]
                 )
@@ -465,7 +465,7 @@ suite =
                     , Attributes.allowpaymentrequest True
                     , Attributes.width 0
                     , Attributes.height 0
-                    , Attributes.referrerpolicy ""
+                    , Attributes.referrerpolicy Attributes.no_referrer
                     ]
                 )
             ++ test "embed"
@@ -478,7 +478,7 @@ suite =
                 )
             ++ test "object"
                 (Html.object
-                    [ Attributes.data ""
+                    [ Attributes.data []
                     , Attributes.type_mime ""
                     , Attributes.name ""
                     , Attributes.height 0
@@ -538,7 +538,7 @@ suite =
                     , Attributes.download ""
                     , Attributes.ping []
                     , Attributes.rel []
-                    , Attributes.referrerpolicy ""
+                    , Attributes.referrerpolicy Attributes.no_referrer
                     ]
                 )
             ++ test "table"
@@ -621,12 +621,9 @@ suite =
                     , Attributes.step 0
                     , Attributes.type_input ""
                     , Attributes.value ""
-                    , Attributes.valueAsNumber ""
+                    , Attributes.valueAsNumber 0
                     , Attributes.valueAsDate ""
                     , Attributes.width 0
-                    , Attributes.selectionStart 0
-                    , Attributes.selectionEnd 0
-                    , Attributes.selectionDirection Attributes.none
                     ]
                 )
             ++ numbered "input" 1 (Html.hidden [ Attributes.autocomplete True, Attributes.value "" ])
@@ -644,9 +641,6 @@ suite =
                     , Attributes.required True
                     , Attributes.size 0
                     , Attributes.value ""
-                    , Attributes.selectionStart 0
-                    , Attributes.selectionEnd 0
-                    , Attributes.selectionDirection Attributes.none
                     ]
                 )
             ++ numbered "input"
@@ -663,9 +657,6 @@ suite =
                     , Attributes.required True
                     , Attributes.size 0
                     , Attributes.value ""
-                    , Attributes.selectionStart 0
-                    , Attributes.selectionEnd 0
-                    , Attributes.selectionDirection Attributes.none
                     ]
                 )
             ++ numbered "input"
@@ -681,9 +672,6 @@ suite =
                     , Attributes.required True
                     , Attributes.size 0
                     , Attributes.value ""
-                    , Attributes.selectionStart 0
-                    , Attributes.selectionEnd 0
-                    , Attributes.selectionDirection Attributes.none
                     ]
                 )
             ++ numbered "input"
@@ -699,9 +687,6 @@ suite =
                     , Attributes.required True
                     , Attributes.size 0
                     , Attributes.value ""
-                    , Attributes.selectionStart 0
-                    , Attributes.selectionEnd 0
-                    , Attributes.selectionDirection Attributes.none
                     ]
                 )
             ++ numbered "input"
@@ -732,9 +717,6 @@ suite =
                     , Attributes.required True
                     , Attributes.size 0
                     , Attributes.value ""
-                    , Attributes.selectionStart 0
-                    , Attributes.selectionEnd 0
-                    , Attributes.selectionDirection Attributes.none
                     ]
                 )
             ++ numbered "input"
@@ -749,7 +731,7 @@ suite =
                     , Attributes.step 0
                     , Attributes.value ""
                     , Attributes.valueAsDate ""
-                    , Attributes.valueAsNumber ""
+                    , Attributes.valueAsNumber 0
                     ]
                 )
             ++ numbered "input"
@@ -764,7 +746,7 @@ suite =
                     , Attributes.step 0
                     , Attributes.value ""
                     , Attributes.valueAsDate ""
-                    , Attributes.valueAsNumber ""
+                    , Attributes.valueAsNumber 0
                     ]
                 )
             ++ numbered "input"
@@ -779,7 +761,7 @@ suite =
                     , Attributes.step 0
                     , Attributes.value ""
                     , Attributes.valueAsDate ""
-                    , Attributes.valueAsNumber ""
+                    , Attributes.valueAsNumber 0
                     ]
                 )
             ++ numbered "input"
@@ -794,7 +776,7 @@ suite =
                     , Attributes.step 0
                     , Attributes.value ""
                     , Attributes.valueAsDate ""
-                    , Attributes.valueAsNumber ""
+                    , Attributes.valueAsNumber 0
                     ]
                 )
             ++ numbered "input"
@@ -808,7 +790,7 @@ suite =
                     , Attributes.required True
                     , Attributes.step 0
                     , Attributes.value ""
-                    , Attributes.valueAsNumber ""
+                    , Attributes.valueAsNumber 0
                     ]
                 )
             ++ numbered "input"
@@ -823,7 +805,7 @@ suite =
                     , Attributes.required True
                     , Attributes.step 0
                     , Attributes.value ""
-                    , Attributes.valueAsNumber ""
+                    , Attributes.valueAsNumber 0
                     ]
                 )
             ++ numbered "input"
@@ -835,7 +817,7 @@ suite =
                     , Attributes.min 0
                     , Attributes.step 0
                     , Attributes.value ""
-                    , Attributes.valueAsNumber ""
+                    , Attributes.valueAsNumber 0
                     ]
                 )
             ++ numbered "input"

@@ -56,7 +56,7 @@ suite =
                             |> Query.has [ Selector.class "testclass" ]
                     )
                ]
-            ++ Help.maybeBoolProperty testProperty "contentEditable" Attributes.contenteditable (Json.bool False)
+            ++ Help.boolProperty testProperty "contentEditable" Attributes.contenteditable
             ++ Help.string test "data-test" (Attributes.data_ "test")
             ++ Help.valueProperty testProperty
                 "dir"
@@ -65,7 +65,7 @@ suite =
                 , ( Attributes.rtl, "rtl" )
                 , ( Attributes.auto, "auto" )
                 ]
-            ++ Help.maybeBoolProperty testProperty "draggable" Attributes.draggable (Json.bool False)
+            ++ Help.boolProperty testProperty "draggable" Attributes.draggable
             ++ Help.valueProperty testProperty
                 "enterkeyhint"
                 Attributes.enterkeyhint
@@ -79,8 +79,8 @@ suite =
                 ]
             ++ Help.boolProperty testProperty "hidden" Attributes.hidden
             ++ Help.stringProperty testProperty "id" Attributes.id
-            ++ Help.value test
-                "inputmode"
+            ++ Help.valueProperty testProperty
+                "inputMode"
                 Attributes.inputmode
                 [ ( Attributes.none, "none" )
                 , ( Attributes.text, "text" )
@@ -96,85 +96,85 @@ suite =
             ++ Help.stringsSpaceSeparated test "itemref" Attributes.itemref
             ++ Help.bool test "itemscope" Attributes.itemscope
             ++ Help.stringsSpaceSeparated test "itemtype" Attributes.itemtype
-            ++ Help.string test "lang" Attributes.lang
-            ++ Help.number test "nonce" Attributes.nonce
-            ++ Help.string test "slot" Attributes.slot
-            ++ Help.maybeBool test "spellcheck" Attributes.spellcheck ""
-            ++ Help.string test "style" Attributes.style
+            ++ Help.stringProperty testProperty "lang" Attributes.lang
+            ++ Help.stringProperty testProperty "nonce" Attributes.nonce
+            ++ Help.stringProperty testProperty "slot" Attributes.slot
+            ++ Help.boolProperty testProperty "spellcheck" Attributes.spellcheck
+            -- ++ [ testProperty "style is display:none" "style" (Attributes.style "display" "none") (Json.string "display:none") ]
             ++ Help.number test "tabindex" Attributes.tabindex
-            ++ Help.string test "title" Attributes.title
-            ++ Help.boolValue test
+            ++ Help.stringProperty testProperty "title" Attributes.title
+            ++ Help.boolValueProperty testProperty
                 "translate"
                 Attributes.translate
                 "yes"
                 "no"
             -- Attributes
-            ++ Help.string test "abbr" Attributes.abbr
-            ++ Help.stringsCommaSeparated test "accept" Attributes.accept
-            ++ Help.stringsSpaceSeparated test "acceptcharset" Attributes.acceptcharset
-            ++ Help.string test "action" Attributes.action
-            ++ Help.string test "allow" Attributes.allow
-            ++ Help.bool test "allowfullscreen" Attributes.allowfullscreen
-            ++ Help.bool test "allowpaymentrequest" Attributes.allowpaymentrequest
-            ++ Help.string test "alt" Attributes.alt
-            ++ Help.boolValue test
+            ++ Help.stringProperty testProperty "abbr" Attributes.abbr
+            ++ Help.stringsCommaSeparatedProperty testProperty "accept" Attributes.accept
+            ++ Help.stringsSpaceSeparatedProperty testProperty "acceptCharset" Attributes.acceptcharset
+            ++ Help.stringProperty testProperty "action" Attributes.action
+            ++ Help.stringProperty testProperty "allow" Attributes.allow
+            ++ Help.boolProperty testProperty "allowFullscreen" Attributes.allowfullscreen
+            ++ Help.boolProperty testProperty "allowPaymentRequest" Attributes.allowpaymentrequest
+            ++ Help.stringProperty testProperty "alt" Attributes.alt
+            ++ Help.boolValueProperty testProperty
                 "autocomplete"
                 Attributes.autocomplete
                 "on"
                 "off"
-            ++ Help.bool test "autoplay" Attributes.autoplay
-            ++ Help.bool test "checked" Attributes.checked
-            ++ Help.string test "cite" Attributes.cite
-            ++ Help.number test "cols" Attributes.cols
-            ++ Help.number test "colspan" Attributes.colspan
-            ++ Help.bool test "controls" Attributes.controls
-            ++ [ test "coords is 0,1,2,3" "coords" (Attributes.coords [ 0, 1, 2, 3 ]) "0,1,2,3" ]
-            ++ Help.value test
+            ++ Help.boolProperty testProperty "autoplay" Attributes.autoplay
+            ++ Help.boolProperty testProperty "checked" Attributes.checked
+            ++ Help.stringProperty testProperty "cite" Attributes.cite
+            ++ Help.numberProperty testProperty "cols" Attributes.cols
+            ++ Help.numberProperty testProperty "colspan" Attributes.colspan
+            ++ Help.boolProperty testProperty "controls" Attributes.controls
+            ++ [ testProperty "coords is 0,1,2,3" "coords" (Attributes.coords [ 0, 1, 2, 3 ]) (Json.string "0,1,2,3") ]
+            ++ Help.valueProperty testProperty
                 "crossorigin"
                 Attributes.crossorigin
                 [ ( Attributes.anonymous, "anonymous" )
                 , ( Attributes.use_credentials, "use-credentials" )
                 ]
-            ++ Help.string test "data" Attributes.data
-            ++ Help.string test "datetime" Attributes.datetime
-            ++ Help.value test
+            ++ [ testProperty "data-test is value" "data-test" (Attributes.data [ ( "test", "value" ) ]) (Json.string "value") ]
+            ++ Help.stringProperty testProperty "datetime" Attributes.datetime
+            ++ Help.valueProperty testProperty
                 "decoding"
                 Attributes.decoding
                 [ ( Attributes.sync, "sync" )
                 , ( Attributes.async, "async" )
                 , ( Attributes.auto, "auto" )
                 ]
-            ++ Help.bool test "default" Attributes.default
-            ++ Help.string test "dirname" Attributes.dirname
-            ++ Help.bool test "disabled" Attributes.disabled
-            ++ Help.string test "download" Attributes.download
-            ++ Help.value test
+            ++ Help.boolProperty testProperty "default" Attributes.default
+            ++ Help.stringProperty testProperty "dirname" Attributes.dirname
+            ++ Help.boolProperty testProperty "disabled" Attributes.disabled
+            ++ Help.stringProperty testProperty "download" Attributes.download
+            ++ Help.valueProperty testProperty
                 "enctype"
                 Attributes.enctype
                 [ ( Attributes.form_url_encoded, "application/x-www-form-urlencoded" )
                 , ( Attributes.form_data, "multipart/form-data" )
                 , ( Attributes.plaintext, "text/plain" )
                 ]
-            ++ Help.string test "files" Attributes.files
+            ++ Help.stringProperty testProperty "files" Attributes.files
             ++ Help.string test "for" Attributes.for
             ++ Help.string test "form" Attributes.form
-            ++ Help.string test "formaction" Attributes.formaction
-            ++ Help.value test
+            ++ Help.stringProperty testProperty "formaction" Attributes.formaction
+            ++ Help.valueProperty testProperty
                 "formenctype"
                 Attributes.formenctype
                 [ ( Attributes.form_url_encoded, "application/x-www-form-urlencoded" )
                 , ( Attributes.form_data, "multipart/form-data" )
                 , ( Attributes.plaintext, "text/plain" )
                 ]
-            ++ Help.value test
+            ++ Help.valueProperty testProperty
                 "formmethod"
                 Attributes.formmethod
                 [ ( Attributes.get, "get" )
                 , ( Attributes.post, "post" )
                 , ( Attributes.dialog, "dialog" )
                 ]
-            ++ Help.bool test "formnovalidate" Attributes.formnovalidate
-            ++ Help.value test
+            ++ Help.boolProperty testProperty "formnovalidate" Attributes.formnovalidate
+            ++ Help.valueProperty testProperty
                 "formtarget"
                 Attributes.formtarget
                 [ ( Attributes.blank_, "_blank" )
@@ -183,13 +183,13 @@ suite =
                 , ( Attributes.top_, "_top" )
                 , ( Attributes.frame "test", "test" )
                 ]
-            ++ Help.stringsSpaceSeparated test "headers" Attributes.headers
-            ++ Help.number test "height" Attributes.height
-            ++ Help.number test "high" Attributes.high
-            ++ Help.string test "href" Attributes.href
-            ++ Help.string test "hreflang" Attributes.hreflang
-            ++ Help.bool test "ismap" Attributes.ismap
-            ++ Help.value test
+            ++ Help.stringsSpaceSeparatedProperty testProperty "headers" Attributes.headers
+            ++ Help.numberProperty testProperty "height" Attributes.height
+            ++ Help.numberProperty testProperty "high" Attributes.high
+            ++ Help.stringProperty testProperty "href" Attributes.href
+            ++ Help.stringProperty testProperty "hreflang" Attributes.hreflang
+            ++ Help.boolProperty testProperty "ismap" Attributes.ismap
+            ++ Help.valueProperty testProperty
                 "kind"
                 Attributes.kind
                 [ ( Attributes.subtitles, "subtitles" )
@@ -198,47 +198,84 @@ suite =
                 , ( Attributes.chapters, "chapters" )
                 , ( Attributes.metadata, "metadata" )
                 ]
-            ++ Help.string test "label" Attributes.label
+            ++ Help.stringProperty testProperty "label" Attributes.label
             ++ Help.string test "list" Attributes.list
-            ++ Help.bool test "loop" Attributes.loop
-            ++ Help.number test "low" Attributes.low
-            ++ Help.number test "max" Attributes.max
-            ++ Help.number test "maxlength" Attributes.maxlength
-            ++ Help.string test "media" Attributes.media
-            ++ Help.value test
+            ++ Help.boolProperty testProperty "loop" Attributes.loop
+            ++ Help.numberProperty testProperty "max" Attributes.max
+            ++ Help.numberProperty testProperty "maxlength" Attributes.maxlength
+            ++ Help.stringProperty testProperty "media" Attributes.media
+            ++ Help.valueProperty testProperty
                 "method"
                 Attributes.method
                 [ ( Attributes.get, "get" )
                 , ( Attributes.post, "post" )
                 , ( Attributes.dialog, "dialog" )
                 ]
-            ++ Help.number test "min" Attributes.min
-            ++ Help.number test "minlength" Attributes.minlength
-            ++ Help.bool test "multiple" Attributes.multiple
-            ++ Help.bool test "muted" Attributes.muted
-            ++ Help.string test "name" Attributes.name
-            ++ Help.bool test "novalidate" Attributes.novalidate
-            ++ Help.bool test "open" Attributes.open
-            ++ Help.number test "optimum" Attributes.optimum
-            ++ Help.string test "pattern" Attributes.pattern
-            ++ Help.stringsSpaceSeparated test "ping" Attributes.ping
-            ++ Help.string test "placeholder" Attributes.placeholder
-            ++ Help.bool test "playsinline" Attributes.playsinline
-            ++ Help.string test "poster" Attributes.poster
-            ++ Help.value test
+            ++ Help.numberProperty testProperty "min" Attributes.min
+            ++ Help.numberProperty testProperty "minlength" Attributes.minlength
+            ++ Help.boolProperty testProperty "multiple" Attributes.multiple
+            ++ Help.boolProperty testProperty "muted" Attributes.muted
+            ++ Help.stringProperty testProperty "name" Attributes.name
+            ++ Help.boolProperty testProperty "novalidate" Attributes.novalidate
+            ++ Help.boolProperty testProperty "open" Attributes.open
+            ++ Help.numberProperty testProperty "optimum" Attributes.optimum
+            ++ Help.stringProperty testProperty "pattern" Attributes.pattern
+            ++ Help.stringsSpaceSeparatedProperty testProperty "ping" Attributes.ping
+            ++ Help.stringProperty testProperty "placeholder" Attributes.placeholder
+            ++ Help.boolProperty testProperty "playsinline" Attributes.playsinline
+            ++ Help.stringProperty testProperty "poster" Attributes.poster
+            ++ Help.valueProperty testProperty
                 "preload"
                 Attributes.preload
                 [ ( Attributes.none, "none" )
                 , ( Attributes.metadata, "metadata" )
                 , ( Attributes.auto, "auto" )
                 ]
-            ++ Help.bool test "readonly" Attributes.readonly
-            ++ Help.string test "referrerpolicy" Attributes.referrerpolicy
-            ++ Help.stringsSpaceSeparated test "rel" Attributes.rel
-            ++ Help.bool test "required" Attributes.required
-            ++ Help.bool test "reversed" Attributes.reversed
-            ++ Help.number test "rows" Attributes.rows
-            ++ Help.number test "rowspan" Attributes.rowspan
+            ++ Help.boolProperty testProperty "readonly" Attributes.readonly
+            ++ Help.valueProperty testProperty
+                "referrerpolicy"
+                Attributes.referrerpolicy
+                [ ( Attributes.no_referrer, "no-referrer" )
+                , ( Attributes.no_referrer_when_downgrade, "no-referrer-when-downgrade" )
+                , ( Attributes.same_origin, "same-origin" )
+                , ( Attributes.origin, "origin" )
+                , ( Attributes.strict_origin, "strict-origin" )
+                , ( Attributes.origin_when_cross_origin, "origin-when-cross-origin" )
+                , ( Attributes.strict_origin_when_cross_origin, "strict-origin-when-cross-origin" )
+                , ( Attributes.unsafe_url, "unsafe-url" )
+                ]
+            ++ Help.valuesProperty testProperty
+                "rel"
+                Attributes.rel
+                [ Attributes.alternate
+                , Attributes.canonical
+                , Attributes.author
+                , Attributes.bookmark
+                , Attributes.dns_prefetch
+                , Attributes.external
+                , Attributes.help
+                , Attributes.icon
+                , Attributes.modulepreload
+                , Attributes.license
+                , Attributes.next
+                , Attributes.nofollow
+                , Attributes.noopener
+                , Attributes.noreferrer
+                , Attributes.opener
+                , Attributes.pingback
+                , Attributes.prefetch
+                , Attributes.preload_rel
+                , Attributes.prerender
+                , Attributes.prev
+                , Attributes.search
+                , Attributes.stylesheet
+                , Attributes.tag
+                ]
+                " alternate canonical author bookmark dns-prefetch external help icon modulepreload license next nofollow noopener noreferrer opener pingback prefetch preload prerender prev search stylesheet tag"
+            ++ Help.boolProperty testProperty "required" Attributes.required
+            ++ Help.boolProperty testProperty "reversed" Attributes.reversed
+            ++ Help.numberProperty testProperty "rows" Attributes.rows
+            ++ Help.numberProperty testProperty "rowspan" Attributes.rowspan
             ++ Help.values test
                 "sandbox"
                 Attributes.sandbox
@@ -255,7 +292,7 @@ suite =
                 , Attributes.allow_top_navigation_by_user_activation
                 ]
                 " allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts allow-top-navigation allow-top-navigation-by-user-activation"
-            ++ Help.value test
+            ++ Help.valueProperty testProperty
                 "scope"
                 Attributes.scope
                 [ ( Attributes.row, "row" )
@@ -264,17 +301,8 @@ suite =
                 , ( Attributes.colgroup, "colgroup" )
                 , ( Attributes.auto, "auto" )
                 ]
-            ++ Help.bool test "selected" Attributes.selected
-            ++ Help.number test "selectionStart" Attributes.selectionStart
-            ++ Help.number test "selectionEnd" Attributes.selectionEnd
-            ++ Help.value test
-                "selectionDirection"
-                Attributes.selectionDirection
-                [ ( Attributes.forward, "forward" )
-                , ( Attributes.backward, "backward" )
-                , ( Attributes.none, "none" )
-                ]
-            ++ Help.value test
+            ++ Help.boolProperty testProperty "selected" Attributes.selected
+            ++ Help.valueProperty testProperty
                 "shape"
                 Attributes.shape
                 [ ( Attributes.circle, "circle" )
@@ -285,16 +313,16 @@ suite =
                 , ( Attributes.rect, "rect" )
                 , ( Attributes.rectangle, "rectangle" )
                 ]
-            ++ Help.number test "size" Attributes.size
-            ++ Help.stringsSpaceSeparated test "sizes" Attributes.sizes
-            ++ Help.number test "span" Attributes.span
-            ++ Help.string test "src" Attributes.src
-            ++ Help.string test "srcdoc" Attributes.srcdoc
-            ++ Help.string test "srclang" Attributes.srclang
-            ++ Help.stringsSpaceSeparated test "srcset" Attributes.srcset
-            ++ Help.number test "start" Attributes.start
-            ++ Help.number test "step" Attributes.step
-            ++ Help.value test
+            ++ Help.numberProperty testProperty "size" Attributes.size
+            ++ Help.stringsSpaceSeparatedProperty testProperty "sizes" Attributes.sizes
+            ++ Help.numberProperty testProperty "span" Attributes.span
+            ++ Help.stringProperty testProperty "src" Attributes.src
+            ++ Help.stringProperty testProperty "srcdoc" Attributes.srcdoc
+            ++ Help.stringProperty testProperty "srclang" Attributes.srclang
+            ++ Help.stringsSpaceSeparatedProperty testProperty "srcset" Attributes.srcset
+            ++ Help.numberProperty testProperty "start" Attributes.start
+            ++ Help.numberProperty testProperty "step" Attributes.step
+            ++ Help.valueProperty testProperty
                 "target"
                 Attributes.target
                 [ ( Attributes.blank_, "_blank" )
@@ -303,15 +331,15 @@ suite =
                 , ( Attributes.top_, "_top" )
                 , ( Attributes.frame "test", "test" )
                 ]
-            ++ Help.value test
+            ++ Help.valueProperty testProperty
                 "type"
                 Attributes.type_button
                 [ ( Attributes.submit, "submit" )
                 , ( Attributes.reset, "reset" )
                 , ( Attributes.button, "button" )
                 ]
-            ++ [ test "type for input is \"testValue\"" "type" (Attributes.type_input "testValue") "testValue" ]
-            ++ Help.value test
+            ++ [ testProperty "type for input is \"testValue\"" "type" (Attributes.type_input "testValue") (Json.string "testValue") ]
+            ++ Help.valueProperty testProperty
                 "type"
                 Attributes.type_list
                 [ ( Attributes.ordinal, "1" )
@@ -320,20 +348,28 @@ suite =
                 , ( Attributes.lowerroman, "i" )
                 , ( Attributes.upperroman, "I" )
                 ]
-            ++ [ test "type for mime is \"testValue\"" "type" (Attributes.type_mime "testValue") "testValue" ]
-            ++ Help.string test "usemap" Attributes.usemap
-            ++ Help.string test "value" Attributes.value
-            ++ Help.number test "value" Attributes.value_ordinal
-            ++ Help.number test "width" Attributes.width
-            ++ Help.value test
+            ++ [ testProperty "type for mime is \"testValue\"" "type" (Attributes.type_mime "testValue") (Json.string "testValue") ]
+            ++ Help.stringProperty testProperty "usemap" Attributes.usemap
+            ++ Help.stringProperty testProperty "value" Attributes.value
+            ++ Help.numberProperty testProperty "value" Attributes.value_ordinal
+            ++ Help.numberProperty testProperty "width" Attributes.width
+            ++ Help.valueProperty testProperty
                 "wrap"
                 Attributes.wrap
                 [ ( Attributes.soft, "soft" )
                 , ( Attributes.hard, "hard" )
                 ]
-            ++ [ Test.test "custom Aria Attribute is supported"
+            ++ [ Test.test "custom Attribute is supported"
                     (\() ->
                         Html.node "node" [ Attributes.attribute "test" "test" ] []
+                            |> Html.toNode
+                            |> Query.fromHtml
+                            |> Query.has [ Selector.attribute (VirtualDom.attribute "test" "test") ]
+                    )
+               ]
+            ++ [ Test.test "custom Property is supported"
+                    (\() ->
+                        Html.node "node" [ Attributes.property "test" (Json.string "test") ] []
                             |> Html.toNode
                             |> Query.fromHtml
                             |> Query.has [ Selector.attribute (VirtualDom.attribute "test" "test") ]

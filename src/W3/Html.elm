@@ -2357,6 +2357,9 @@ toAttribute attribute =
         Html.Event event handler ->
             VirtualDom.on event handler
 
+        Html.Style name value ->
+            VirtualDom.style name value
+
 
 {-| -}
 keyed : String -> List (Attribute a msg) -> List ( String, Node b msg ) -> Node c msg

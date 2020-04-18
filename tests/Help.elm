@@ -1,4 +1,4 @@
-module Help exposing (bool, boolProperty, boolValue, boundedNumber, maybeBool, maybeBoolProperty, number, string, stringProperty, stringsCommaSeparated, stringsCommaSeparatedProperty, stringsSpaceSeparated, stringsSpaceSeparatedProperty, value, valueProperty, values)
+module Help exposing (bool, boolProperty, boolValue, boolValueProperty, boundedNumber, maybeBool, maybeBoolProperty, number, numberProperty, string, stringProperty, stringsCommaSeparated, stringsCommaSeparatedProperty, stringsSpaceSeparated, stringsSpaceSeparatedProperty, value, valueProperty, values, valuesProperty)
 
 import Json.Encode as Json
 import Test exposing (..)
@@ -48,6 +48,16 @@ number test name attribute =
     ]
 
 
+numberProperty : TestConstructor a Json.Value -> String -> (Int -> a) -> List Test
+numberProperty test name attribute =
+    [ test (name ++ " is " ++ "-100") name (attribute -100) (Json.int -100)
+    , test (name ++ " is " ++ "-1") name (attribute -1) (Json.int -1)
+    , test (name ++ " is " ++ "0") name (attribute 0) (Json.int 0)
+    , test (name ++ " is " ++ "1") name (attribute 1) (Json.int 1)
+    , test (name ++ " is " ++ "100") name (attribute 100) (Json.int 100)
+    ]
+
+
 boundedNumber : TestConstructor a String -> String -> (Int -> a) -> Int -> List Test
 boundedNumber test name attribute minValue =
     [ test (name ++ " is " ++ String.fromInt minValue) name (attribute minValue) (String.fromInt minValue)
@@ -74,6 +84,13 @@ boolValue : TestConstructor a String -> String -> (Bool -> a) -> String -> Strin
 boolValue test name attribute trueValue falseValue =
     [ test (name ++ " is " ++ trueValue) name (attribute True) trueValue
     , test (name ++ " is " ++ falseValue) name (attribute False) falseValue
+    ]
+
+
+boolValueProperty : TestConstructor a Json.Value -> String -> (Bool -> a) -> String -> String -> List Test
+boolValueProperty test name attribute trueValue falseValue =
+    [ test (name ++ " is " ++ trueValue) name (attribute True) (Json.string trueValue)
+    , test (name ++ " is " ++ falseValue) name (attribute False) (Json.string falseValue)
     ]
 
 
@@ -116,3 +133,8 @@ valuePropertyToTest test name attribute ( val, expected ) =
 values : TestConstructor b String -> String -> (List a -> b) -> List a -> String -> List Test
 values test name attribute valueList expected =
     [ test (name ++ " is " ++ expected) name (attribute valueList) expected ]
+
+
+valuesProperty : TestConstructor b Json.Value -> String -> (List a -> b) -> List a -> String -> List Test
+valuesProperty test name attribute valueList expected =
+    [ test (name ++ " is " ++ expected) name (attribute valueList) (Json.string expected) ]

@@ -1,8 +1,8 @@
 module W3.Html.Attributes exposing
     ( Value
     , accesskey, autocapitalize, autofocus, class, contenteditable, data_, dir, draggable, enterkeyhint, hidden, id, inputmode, is, itemid, itemprop, itemref, itemscope, itemtype, lang, nonce, slot, spellcheck, style, tabindex, title, translate
-    , abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, files, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, ismap, kind, label, list, loop, low, max, maxlength, media, method, min, minlength, multiple, muted, name, novalidate, open, optimum, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, selectionStart, selectionEnd, selectionDirection, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, type_button, type_input, type_list, type_mime, usemap, value, valueAsDate, valueAsNumber, value_ordinal, width, wrap
-    , allow_forms, allow_modals, allow_orientation_lock, allow_pointer_lock, allow_popups, allow_popups_to_escape_sandbox, allow_presentation, allow_same_origin, allow_scripts, allow_top_navigation, allow_top_navigation_by_user_activation, anonymous, auto, async, backward, blank_, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, form_data, form_url_encoded, forward, frame, get, go, hard, loweralpha, lowerroman, ltr, metadata, next, no, none, numeric, off, on, ordinal, parent_, plaintext, poly, polygon, post, previous, rect, rectangle, reset, row, rowgroup, rtl, search, self_, send, sentences, soft, submit, subtitles, sync, tel, text, top_, upperalpha, upperroman, url, use_credentials, words, yes
+    , abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, files, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, ismap, kind, label, list, loop, low, max, maxlength, media, method, min, minlength, multiple, muted, name, novalidate, open, optimum, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, type_button, type_input, type_list, type_mime, usemap, value, valueAsDate, valueAsNumber, value_ordinal, width, wrap
+    , allow_forms, allow_modals, allow_orientation_lock, allow_pointer_lock, allow_popups, allow_popups_to_escape_sandbox, allow_presentation, allow_same_origin, allow_scripts, allow_top_navigation, allow_top_navigation_by_user_activation, alternate, anonymous, author, auto, async, backward, blank_, bookmark, button, canonical, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, dns_prefetch, done, email, enter, external, form_data, form_url_encoded, forward, frame, get, go, hard, help, icon, license, loweralpha, lowerroman, ltr, metadata, modulepreload, next, no, nofollow, none, noopener, noreferrer, no_referrer, no_referrer_when_downgrade, numeric, off, on, opener, ordinal, origin, origin_when_cross_origin, parent_, pingback, plaintext, poly, polygon, post, preconnect, prefetch, preload_rel, prerender, prev, previous, rect, rectangle, reset, row, rowgroup, rtl, same_origin, search, self_, send, sentences, soft, strict_origin, strict_origin_when_cross_origin, stylesheet, submit, subtitles, sync, tag, tel, text, top_, unsafe_url, upperalpha, upperroman, url, use_credentials, words, yes
     , attribute, property
     )
 
@@ -25,14 +25,14 @@ These Attributes can be assigned to any HTML element as defined by [html.spec.wh
 
 These Attributes may be assigned to only specific elements. That is defined on a per-element basis.
 
-@docs abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, files, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, ismap, kind, label, list, loop, low, max, maxlength, media, method, min, minlength, multiple, muted, name, novalidate, open, optimum, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, selectionStart, selectionEnd, selectionDirection, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, type_button, type_input, type_list, type_mime, usemap, value, valueAsDate, valueAsNumber, value_ordinal, width, wrap
+@docs abbr, accept, acceptcharset, action, allow, allowfullscreen, allowpaymentrequest, alt, autocomplete, autoplay, checked, cite, cols, colspan, controls, coords, crossorigin, data, datetime, decoding, default, dirname, disabled, download, enctype, files, for, form, formaction, formenctype, formmethod, formnovalidate, formtarget, headers, height, high, href, hreflang, ismap, kind, label, list, loop, low, max, maxlength, media, method, min, minlength, multiple, muted, name, novalidate, open, optimum, pattern, ping, placeholder, playsinline, poster, preload, readonly, referrerpolicy, rel, required, reversed, rows, rowspan, sandbox, scope, selected, shape, size, span, start, step, src, srcdoc, srclang, srcset, sizes, target, type_button, type_input, type_list, type_mime, usemap, value, valueAsDate, valueAsNumber, value_ordinal, width, wrap
 
 
 # Values
 
 All of the enumerated values that particular Attributes may have.
 
-@docs allow_forms, allow_modals, allow_orientation_lock, allow_pointer_lock, allow_popups, allow_popups_to_escape_sandbox, allow_presentation, allow_same_origin, allow_scripts, allow_top_navigation, allow_top_navigation_by_user_activation, anonymous, auto, async, backward, blank_, button, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, done, email, enter, form_data, form_url_encoded, forward, frame, get, go, hard, loweralpha, lowerroman, ltr, metadata, next, no, none, numeric, off, on, ordinal, parent_, plaintext, poly, polygon, post, previous, rect, rectangle, reset, row, rowgroup, rtl, search, self_, send, sentences, soft, submit, subtitles, sync, tel, text, top_, upperalpha, upperroman, url, use_credentials, words, yes
+@docs allow_forms, allow_modals, allow_orientation_lock, allow_pointer_lock, allow_popups, allow_popups_to_escape_sandbox, allow_presentation, allow_same_origin, allow_scripts, allow_top_navigation, allow_top_navigation_by_user_activation, alternate, anonymous, author, auto, async, backward, blank_, bookmark, button, canonical, captions, chapters, characters, circ, circle, col, colgroup, decimal, default_, description, dialog, dns_prefetch, done, email, enter, external, form_data, form_url_encoded, forward, frame, get, go, hard, help, icon, license, loweralpha, lowerroman, ltr, metadata, modulepreload, next, no, nofollow, none, noopener, noreferrer, no_referrer, no_referrer_when_downgrade, numeric, off, on, opener, ordinal, origin, origin_when_cross_origin, parent_, pingback, plaintext, poly, polygon, post, preconnect, prefetch, preload_rel, prerender, prev, previous, rect, rectangle, reset, row, rowgroup, rtl, same_origin, search, self_, send, sentences, soft, strict_origin, strict_origin_when_cross_origin, stylesheet, submit, subtitles, sync, tag, tel, text, top_, unsafe_url, upperalpha, upperroman, url, use_credentials, words, yes
 
 
 # Escape Hatch
@@ -109,9 +109,9 @@ class val =
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/contenteditable](https://html.spec.whatwg.org/multipage/interaction.html#attr-contenteditable)
 -}
-contenteditable : Maybe Bool -> Html.Attribute { compatible | contenteditable : Html.SupportedAttribute } msg
+contenteditable : Bool -> Html.Attribute { compatible | contenteditable : Html.SupportedAttribute } msg
 contenteditable =
-    Html.maybeBoolProperty "contentEditable" False
+    Html.boolProperty "contentEditable"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/custom data](https://html.spec.whatwg.org/multipage/dom.html#custom-data-attribute)
@@ -136,9 +136,9 @@ dir =
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/draggable](https://html.spec.whatwg.org/multipage/dnd.html#the-draggable-attribute)
 -}
-draggable : Maybe Bool -> Html.Attribute { compatible | draggable : Html.SupportedAttribute } msg
+draggable : Bool -> Html.Attribute { compatible | draggable : Html.SupportedAttribute } msg
 draggable =
-    Html.maybeBoolProperty "draggable" False
+    Html.boolProperty "draggable"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/enterkeyhint](https://html.spec.whatwg.org/multipage/interaction.html#attr-enterkeyhint)
@@ -187,154 +187,154 @@ inputmode :
         }
     -> Html.Attribute { compatible | inputmode : Html.SupportedAttribute } msg
 inputmode =
-    Html.value "inputmode"
+    Html.valueProperty "inputMode"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/is](https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is)
 -}
 is : String -> Html.Attribute { compatible | is : Html.SupportedAttribute } msg
 is =
-    Html.string "is"
+    Html.stringAttribute "is"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemid](https://html.spec.whatwg.org/multipage/microdata.html#attr-itemid)
 -}
 itemid : String -> Html.Attribute { compatible | itemid : Html.SupportedAttribute } msg
 itemid =
-    Html.string "itemid"
+    Html.stringAttribute "itemid"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemprop](https://html.spec.whatwg.org/multipage/microdata.html#names:-the-itemprop-attribute)
 -}
 itemprop : List String -> Html.Attribute { compatible | itemprop : Html.SupportedAttribute } msg
 itemprop =
-    Html.tokens "itemprop"
+    Html.tokensAttribute "itemprop"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemref](https://html.spec.whatwg.org/multipage/microdata.html#attr-itemref)
 -}
 itemref : List String -> Html.Attribute { compatible | itemref : Html.SupportedAttribute } msg
 itemref =
-    Html.tokens "itemref"
+    Html.tokensAttribute "itemref"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemscope](https://html.spec.whatwg.org/multipage/microdata.html#attr-itemscope)
 -}
 itemscope : Bool -> Html.Attribute { compatible | itemscope : Html.SupportedAttribute } msg
 itemscope =
-    Html.bool "itemscope"
+    Html.boolAttribute "itemscope"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/itemtype](https://html.spec.whatwg.org/multipage/microdata.html#attr-itemtype)
 -}
 itemtype : List String -> Html.Attribute { compatible | itemtype : Html.SupportedAttribute } msg
 itemtype =
-    Html.tokens "itemtype"
+    Html.tokensAttribute "itemtype"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/lang](https://html.spec.whatwg.org/multipage/dom.html#attr-lang)
 -}
 lang : String -> Html.Attribute { compatible | lang : Html.SupportedAttribute } msg
 lang =
-    Html.string "lang"
+    Html.stringProperty "lang"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/nonce](https://html.spec.whatwg.org/multipage/urls-and-fetching.html#attr-nonce)
 -}
-nonce : Int -> Html.Attribute { compatible | nonce : Html.SupportedAttribute } msg
+nonce : String -> Html.Attribute { compatible | nonce : Html.SupportedAttribute } msg
 nonce =
-    Html.number "nonce"
+    Html.stringProperty "nonce"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/slot](https://html.spec.whatwg.org/multipage/dom.html#the-id-attribute)
 -}
 slot : String -> Html.Attribute { compatible | slot : Html.SupportedAttribute } msg
 slot =
-    Html.string "slot"
+    Html.stringProperty "slot"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/spellcheck](https://html.spec.whatwg.org/multipage/interaction.html#attr-spellcheck)
 -}
-spellcheck : Maybe Bool -> Html.Attribute { compatible | spellcheck : Html.SupportedAttribute } msg
+spellcheck : Bool -> Html.Attribute { compatible | spellcheck : Html.SupportedAttribute } msg
 spellcheck =
-    Html.maybeBool "spellcheck" ""
+    Html.boolProperty "spellcheck"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/style](https://html.spec.whatwg.org/multipage/dom.html#the-style-attribute)
 -}
-style : String -> Html.Attribute { compatible | style : Html.SupportedAttribute } msg
+style : String -> String -> Html.Attribute { compatible | style : Html.SupportedAttribute } msg
 style =
-    Html.string "style"
+    Html.style
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/tabindex](https://html.spec.whatwg.org/multipage/interaction.html#attr-tabindex)
 -}
 tabindex : Int -> Html.Attribute { compatible | tabindex : Html.SupportedAttribute } msg
 tabindex =
-    Html.number "tabindex"
+    Html.numberAttribute "tabindex"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/title](https://html.spec.whatwg.org/multipage/dom.html#attr-title)
 -}
 title : String -> Html.Attribute { compatible | title : Html.SupportedAttribute } msg
 title =
-    Html.string "title"
+    Html.stringProperty "title"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/translate](https://html.spec.whatwg.org/multipage/dom.html#attr-translate)
 -}
 translate : Bool -> Html.Attribute { compatible | translate : Html.SupportedAttribute } msg
 translate =
-    Html.boolValue "translate" yes no
+    Html.boolValueProperty "translate" yes no
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/abbr](https://html.spec.whatwg.org/multipage/tables.html#attr-th-abbr)
 -}
 abbr : String -> Html.Attribute { compatible | abbr : Html.SupportedAttribute } msg
 abbr =
-    Html.string "abbr"
+    Html.stringProperty "abbr"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/accept](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept)
 -}
 accept : List String -> Html.Attribute { compatible | accept : Html.SupportedAttribute } msg
-accept values =
-    Html.Attribute "accept" (String.join "," values)
+accept =
+    Html.stringProperty "accept" << String.join ","
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/acceptcharset](https://html.spec.whatwg.org/multipage/forms.html#attr-form-accept-charset)
 -}
 acceptcharset : List String -> Html.Attribute { compatible | acceptcharset : Html.SupportedAttribute } msg
 acceptcharset =
-    Html.tokens "acceptcharset"
+    Html.stringProperty "acceptCharset" << String.join " "
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/action](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-action)
 -}
 action : String -> Html.Attribute { compatible | action : Html.SupportedAttribute } msg
 action =
-    Html.string "action"
+    Html.stringProperty "action"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/allow](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-allow)
 -}
 allow : String -> Html.Attribute { compatible | allow : Html.SupportedAttribute } msg
 allow =
-    Html.string "allow"
+    Html.stringProperty "allow"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/allowfullscreen](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-allowfullscreen)
 -}
 allowfullscreen : Bool -> Html.Attribute { compatible | allowfullscreen : Html.SupportedAttribute } msg
 allowfullscreen =
-    Html.bool "allowfullscreen"
+    Html.boolProperty "allowFullscreen"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/allowpaymentrequest](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-allowpaymentrequest)
 -}
 allowpaymentrequest : Bool -> Html.Attribute { compatible | allowpaymentrequest : Html.SupportedAttribute } msg
 allowpaymentrequest =
-    Html.bool "allowpaymentrequest"
+    Html.boolProperty "allowPaymentRequest"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/area-alt](https://html.spec.whatwg.org/multipage/image-maps.html#attr-area-alt),
@@ -343,28 +343,28 @@ allowpaymentrequest =
 -}
 alt : String -> Html.Attribute { compatible | alt : Html.SupportedAttribute } msg
 alt =
-    Html.string "alt"
+    Html.stringProperty "alt"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/autocomplete](https://html.spec.whatwg.org/multipage/forms.html#attr-form-autocomplete)
 -}
 autocomplete : Bool -> Html.Attribute { compatible | autocomplete : Html.SupportedAttribute } msg
 autocomplete =
-    Html.boolValue "autocomplete" on off
+    Html.boolValueProperty "autocomplete" on off
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/autoplay](https://html.spec.whatwg.org/multipage/media.html#attr-media-autoplay),
 -}
 autoplay : Bool -> Html.Attribute { compatible | autoplay : Html.SupportedAttribute } msg
 autoplay =
-    Html.bool "autoplay"
+    Html.boolProperty "autoplay"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/checked](https://html.spec.whatwg.org/multipage/input.html#attr-input-checked)
 -}
 checked : Bool -> Html.Attribute { compatible | checked : Html.SupportedAttribute } msg
 checked =
-    Html.bool "checked"
+    Html.boolProperty "checked"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/blockquote-cite](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-blockquote-cite),
@@ -373,35 +373,35 @@ checked =
 -}
 cite : String -> Html.Attribute { compatible | cite : Html.SupportedAttribute } msg
 cite =
-    Html.string "cite"
+    Html.stringProperty "cite"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/cols](https://html.spec.whatwg.org/multipage/form-elements.html#attr-textarea-cols)
 -}
 cols : Int -> Html.Attribute { compatible | cols : Html.SupportedAttribute } msg
 cols =
-    Html.number "cols"
+    Html.numberProperty "cols"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/colspan](https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-colspan)
 -}
 colspan : Int -> Html.Attribute { compatible | colspan : Html.SupportedAttribute } msg
 colspan =
-    Html.number "colspan"
+    Html.numberProperty "colSpan"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/controls](https://html.spec.whatwg.org/multipage/media.html#attr-media-controls)
 -}
 controls : Bool -> Html.Attribute { compatible | controls : Html.SupportedAttribute } msg
 controls =
-    Html.bool "controls"
+    Html.boolProperty "controls"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/coords](https://html.spec.whatwg.org/multipage/image-maps.html#attr-area-coords)
 -}
-coords : List Int -> Html.Attribute { compatible | coords : Html.SupportedAttribute } msg
+coords : List Float -> Html.Attribute { compatible | coords : Html.SupportedAttribute } msg
 coords numbers =
-    Html.Attribute "coords" (List.map String.fromInt numbers |> String.join ",")
+    Html.stringProperty "coords" (List.map String.fromFloat numbers |> String.join ",")
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/media-crossorigin](https://html.spec.whatwg.org/multipage/media.html#attr-media-crossorigin),
@@ -414,14 +414,14 @@ crossorigin :
         }
     -> Html.Attribute { compatible | crossorigin : Html.SupportedAttribute } msg
 crossorigin =
-    Html.value "crossorigin"
+    Html.valueProperty "crossOrigin"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/data](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-object-data)
 -}
-data : String -> Html.Attribute { compatible | data : Html.SupportedAttribute } msg
-data =
-    Html.string "data"
+data : List ( String, String ) -> Html.Attribute { compatible | data : Html.SupportedAttribute } msg
+data values =
+    Html.property "data" (Json.object (List.map (\( key, val ) -> ( key, Json.string val )) values))
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/mod-datetime](https://html.spec.whatwg.org/multipage/edits.html#attr-mod-datetime),
@@ -429,7 +429,7 @@ data =
 -}
 datetime : String -> Html.Attribute { compatible | datetime : Html.SupportedAttribute } msg
 datetime =
-    Html.string "datetime"
+    Html.stringProperty "dateTime"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/decoding](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-decoding)
@@ -442,21 +442,21 @@ decoding :
         }
     -> Html.Attribute { compatible | decoding : Html.SupportedAttribute } msg
 decoding =
-    Html.value "decoding"
+    Html.valueProperty "decoding"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/default](https://html.spec.whatwg.org/multipage/media.html#attr-track-default)
 -}
 default : Bool -> Html.Attribute { compatible | default : Html.SupportedAttribute } msg
 default =
-    Html.bool "default"
+    Html.boolProperty "default"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/dirname](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-dirname)
 -}
 dirname : String -> Html.Attribute { compatible | dirname : Html.SupportedAttribute } msg
 dirname =
-    Html.string "dirname"
+    Html.stringProperty "dirName"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/disabled](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-disabled),
@@ -464,14 +464,14 @@ dirname =
 -}
 disabled : Bool -> Html.Attribute { compatible | disabled : Html.SupportedAttribute } msg
 disabled =
-    Html.bool "disabled"
+    Html.boolProperty "disabled"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/download](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-download)
 -}
 download : String -> Html.Attribute { compatible | download : Html.SupportedAttribute } msg
 download =
-    Html.string "download"
+    Html.stringProperty "download"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/enctype](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-enctype)
@@ -484,14 +484,14 @@ enctype :
         }
     -> Html.Attribute { compatible | enctype : Html.SupportedAttribute } msg
 enctype =
-    Html.value "enctype"
+    Html.valueProperty "enctype"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/files](https://html.spec.whatwg.org/multipage/input.html#dom-input-files)
 -}
 files : String -> Html.Attribute { compatible | files : Html.SupportedAttribute } msg
 files =
-    Html.string "files"
+    Html.stringProperty "files"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/label-for](https://html.spec.whatwg.org/multipage/forms.html#attr-label-for),
@@ -499,21 +499,21 @@ files =
 -}
 for : String -> Html.Attribute { compatible | for : Html.SupportedAttribute } msg
 for =
-    Html.string "for"
+    Html.stringAttribute "htmlFor"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/form](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fae-form)
 -}
 form : String -> Html.Attribute { compatible | form : Html.SupportedAttribute } msg
 form =
-    Html.string "form"
+    Html.stringAttribute "form"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/formaction](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formaction)
 -}
 formaction : String -> Html.Attribute { compatible | formaction : Html.SupportedAttribute } msg
 formaction =
-    Html.string "formaction"
+    Html.stringProperty "formAction"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/formenctype](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formenctype)
@@ -526,7 +526,7 @@ formenctype :
         }
     -> Html.Attribute { compatible | formenctype : Html.SupportedAttribute } msg
 formenctype =
-    Html.value "formenctype"
+    Html.valueProperty "formEnctype"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/formmethod](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formmethod)
@@ -539,14 +539,14 @@ formmethod :
         }
     -> Html.Attribute { compatible | formmethod : Html.SupportedAttribute } msg
 formmethod =
-    Html.value "formmethod"
+    Html.valueProperty "formMethod"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/formnovalidate](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formnovalidate)
 -}
 formnovalidate : Bool -> Html.Attribute { compatible | formnovalidate : Html.SupportedAttribute } msg
 formnovalidate =
-    Html.bool "formnovalidate"
+    Html.boolProperty "formNoValidate"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/formtarget](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-formtarget)
@@ -561,14 +561,14 @@ formtarget :
         }
     -> Html.Attribute { compatible | formtarget : Html.SupportedAttribute } msg
 formtarget =
-    Html.value "formtarget"
+    Html.valueProperty "formTarget"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/headers](https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-headers)
 -}
 headers : List String -> Html.Attribute { compatible | headers : Html.SupportedAttribute } msg
 headers =
-    Html.tokens "headers"
+    Html.stringProperty "headers" << String.join " "
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/height](https://html.spec.whatwg.org/multipage/embedded-content-other.html#attr-dim-height),
@@ -576,35 +576,35 @@ headers =
 -}
 height : Int -> Html.Attribute { compatible | height : Html.SupportedAttribute } msg
 height =
-    Html.number "height"
+    Html.numberProperty "height"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/high](https://html.spec.whatwg.org/multipage/form-elements.html#attr-meter-high)
 -}
 high : Int -> Html.Attribute { compatible | high : Html.SupportedAttribute } msg
 high =
-    Html.number "high"
+    Html.numberProperty "high"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/href](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-href)
 -}
 href : String -> Html.Attribute { compatible | href : Html.SupportedAttribute } msg
 href =
-    Html.string "href"
+    Html.stringProperty "href"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/hreflang](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-hreflang)
 -}
 hreflang : String -> Html.Attribute { compatible | hreflang : Html.SupportedAttribute } msg
 hreflang =
-    Html.string "hreflang"
+    Html.stringProperty "hreflang"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/ismap](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-ismap)
 -}
 ismap : Bool -> Html.Attribute { compatible | ismap : Html.SupportedAttribute } msg
 ismap =
-    Html.bool "ismap"
+    Html.boolProperty "isMap"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/kind](https://html.spec.whatwg.org/multipage/media.html#attr-track-kind)
@@ -619,7 +619,7 @@ kind :
         }
     -> Html.Attribute { compatible | kind : Html.SupportedAttribute } msg
 kind =
-    Html.value "kind"
+    Html.valueProperty "kind"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/optgroup-label](https://html.spec.whatwg.org/multipage/form-elements.html#attr-optgroup-label),
@@ -628,28 +628,28 @@ kind =
 -}
 label : String -> Html.Attribute { compatible | label : Html.SupportedAttribute } msg
 label =
-    Html.string "label"
+    Html.stringProperty "label"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/list](https://html.spec.whatwg.org/multipage/input.html#attr-input-list)
 -}
 list : String -> Html.Attribute { compatible | list : Html.SupportedAttribute } msg
 list =
-    Html.string "list"
+    Html.stringAttribute "list"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/loop](https://html.spec.whatwg.org/multipage/media.html#attr-media-loop)
 -}
 loop : Bool -> Html.Attribute { compatible | loop : Html.SupportedAttribute } msg
 loop =
-    Html.bool "loop"
+    Html.boolProperty "loop"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/low](https://html.spec.whatwg.org/multipage/form-elements.html#attr-meter-low)
 -}
 low : Int -> Html.Attribute { compatible | low : Html.SupportedAttribute } msg
 low =
-    Html.number "low"
+    Html.numberProperty "low"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-max](https://html.spec.whatwg.org/multipage/input.html#attr-input-max),
@@ -658,7 +658,7 @@ low =
 -}
 max : Int -> Html.Attribute { compatible | max : Html.SupportedAttribute } msg
 max =
-    Html.number "max"
+    Html.numberProperty "max"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-maxlength](https://html.spec.whatwg.org/multipage/input.html#attr-input-maxlength),
@@ -666,14 +666,14 @@ max =
 -}
 maxlength : Int -> Html.Attribute { compatible | maxlength : Html.SupportedAttribute } msg
 maxlength =
-    Html.number "maxlength"
+    Html.numberProperty "maxLength"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/media](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-source-media)
 -}
 media : String -> Html.Attribute { compatible | media : Html.SupportedAttribute } msg
 media =
-    Html.string "media"
+    Html.stringProperty "media"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/method](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-method)
@@ -686,7 +686,7 @@ method :
         }
     -> Html.Attribute { compatible | method : Html.SupportedAttribute } msg
 method =
-    Html.value "method"
+    Html.valueProperty "method"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-min](https://html.spec.whatwg.org/multipage/input.html#attr-input-min),
@@ -694,7 +694,7 @@ method =
 -}
 min : Int -> Html.Attribute { compatible | min : Html.SupportedAttribute } msg
 min =
-    Html.number "min"
+    Html.numberProperty "min"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-minlength](https://html.spec.whatwg.org/multipage/input.html#attr-input-minlength),
@@ -702,7 +702,7 @@ min =
 -}
 minlength : Int -> Html.Attribute { compatible | minlength : Html.SupportedAttribute } msg
 minlength =
-    Html.number "minlength"
+    Html.numberProperty "minLength"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-multiple](https://html.spec.whatwg.org/multipage/input.html#attr-input-multiple),
@@ -710,14 +710,14 @@ minlength =
 -}
 multiple : Bool -> Html.Attribute { compatible | multiple : Html.SupportedAttribute } msg
 multiple =
-    Html.bool "multiple"
+    Html.boolProperty "multiple"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/muted](https://html.spec.whatwg.org/multipage/media.html#attr-media-muted)
 -}
 muted : Bool -> Html.Attribute { compatible | muted : Html.SupportedAttribute } msg
 muted =
-    Html.bool "muted"
+    Html.boolProperty "muted"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/name](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-name),
@@ -729,14 +729,14 @@ muted =
 -}
 name : String -> Html.Attribute { compatible | name : Html.SupportedAttribute } msg
 name =
-    Html.string "name"
+    Html.stringProperty "name"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/novalidate](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fs-novalidate)
 -}
 novalidate : Bool -> Html.Attribute { compatible | novalidate : Html.SupportedAttribute } msg
 novalidate =
-    Html.bool "novalidate"
+    Html.boolProperty "noValidate"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/details-open](https://html.spec.whatwg.org/multipage/interactive-elements.html#attr-details-open),
@@ -744,28 +744,28 @@ novalidate =
 -}
 open : Bool -> Html.Attribute { compatible | open : Html.SupportedAttribute } msg
 open =
-    Html.bool "open"
+    Html.boolProperty "open"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/optimum](https://html.spec.whatwg.org/multipage/form-elements.html#attr-meter-optimum)
 -}
 optimum : Int -> Html.Attribute { compatible | optimum : Html.SupportedAttribute } msg
 optimum =
-    Html.number "optimum"
+    Html.numberProperty "optimum"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/pattern](https://html.spec.whatwg.org/multipage/input.html#attr-input-pattern)
 -}
 pattern : String -> Html.Attribute { compatible | pattern : Html.SupportedAttribute } msg
 pattern =
-    Html.string "pattern"
+    Html.stringProperty "pattern"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/ping](https://html.spec.whatwg.org/multipage/links.html#ping)
 -}
 ping : List String -> Html.Attribute { compatible | ping : Html.SupportedAttribute } msg
 ping =
-    Html.tokens "ping"
+    Html.stringProperty "ping" << String.join " "
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-placeholder](https://html.spec.whatwg.org/multipage/input.html#attr-input-placeholder),
@@ -773,21 +773,21 @@ ping =
 -}
 placeholder : String -> Html.Attribute { compatible | placeholder : Html.SupportedAttribute } msg
 placeholder =
-    Html.string "placeholder"
+    Html.stringProperty "placeholder"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/playsinline](https://html.spec.whatwg.org/multipage/media.html#attr-video-playsinline)
 -}
 playsinline : Bool -> Html.Attribute { compatible | playsinline : Html.SupportedAttribute } msg
 playsinline =
-    Html.bool "playsinline"
+    Html.boolProperty "playsInline"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/poster](https://html.spec.whatwg.org/multipage/media.html#attr-video-poster)
 -}
 poster : String -> Html.Attribute { compatible | poster : Html.SupportedAttribute } msg
 poster =
-    Html.string "poster"
+    Html.stringProperty "poster"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/preload](https://html.spec.whatwg.org/multipage/media.html#attr-media-preload)
@@ -800,7 +800,7 @@ preload :
         }
     -> Html.Attribute { compatible | preload : Html.SupportedAttribute } msg
 preload =
-    Html.value "preload"
+    Html.valueProperty "preload"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-readonly](https://html.spec.whatwg.org/multipage/input.html#attr-input-readonly),
@@ -808,21 +808,61 @@ preload =
 -}
 readonly : Bool -> Html.Attribute { compatible | readonly : Html.SupportedAttribute } msg
 readonly =
-    Html.bool "readonly"
+    Html.boolProperty "readOnly"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/referrerpolicy](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-referrerpolicy)
 -}
-referrerpolicy : String -> Html.Attribute { compatible | referrerpolicy : Html.SupportedAttribute } msg
+referrerpolicy :
+    Html.Value
+        { no_referrer : Html.SupportedValue
+        , no_referrer_when_downgrade : Html.SupportedValue
+        , same_origin : Html.SupportedValue
+        , origin : Html.SupportedValue
+        , strict_origin : Html.SupportedValue
+        , origin_when_cross_origin : Html.SupportedValue
+        , strict_origin_when_cross_origin : Html.SupportedValue
+        , unsafe_url : Html.SupportedValue
+        }
+    -> Html.Attribute { compatible | referrerpolicy : Html.SupportedAttribute } msg
 referrerpolicy =
-    Html.string "referrerpolicy"
+    Html.valueProperty "referrerPolicy"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/rel](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-rel)
 -}
-rel : List String -> Html.Attribute { compatible | rel : Html.SupportedAttribute } msg
+rel :
+    List
+        (Html.Value
+            { alternate : Html.SupportedValue
+            , canonical : Html.SupportedValue
+            , author : Html.SupportedValue
+            , bookmark : Html.SupportedValue
+            , dns_prefetch : Html.SupportedValue
+            , external : Html.SupportedValue
+            , help : Html.SupportedValue
+            , icon : Html.SupportedValue
+            , modulepreload : Html.SupportedValue
+            , license : Html.SupportedValue
+            , next : Html.SupportedValue
+            , nofollow : Html.SupportedValue
+            , noopener : Html.SupportedValue
+            , noreferrer : Html.SupportedValue
+            , opener : Html.SupportedValue
+            , pingback : Html.SupportedValue
+            , preconnect : Html.SupportedValue
+            , prefetch : Html.SupportedValue
+            , preload_rel : Html.SupportedValue
+            , prerender : Html.SupportedValue
+            , prev : Html.SupportedValue
+            , search : Html.SupportedValue
+            , stylesheet : Html.SupportedValue
+            , tag : Html.SupportedValue
+            }
+        )
+    -> Html.Attribute { compatible | rel : Html.SupportedAttribute } msg
 rel =
-    Html.tokens "rel"
+    Html.valuesProperty "rel"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-required](https://html.spec.whatwg.org/multipage/input.html#attr-input-required),
@@ -831,28 +871,28 @@ rel =
 -}
 required : Bool -> Html.Attribute { compatible | required : Html.SupportedAttribute } msg
 required =
-    Html.bool "required"
+    Html.boolProperty "required"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/reversed](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-ol-reversed)
 -}
 reversed : Bool -> Html.Attribute { compatible | reversed : Html.SupportedAttribute } msg
 reversed =
-    Html.bool "reversed"
+    Html.boolProperty "reversed"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/rows](https://html.spec.whatwg.org/multipage/form-elements.html#attr-textarea-rows)
 -}
 rows : Int -> Html.Attribute { compatible | rows : Html.SupportedAttribute } msg
 rows =
-    Html.number "rows"
+    Html.numberProperty "rows"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/rowspan](https://html.spec.whatwg.org/multipage/tables.html#attr-tdth-rowspan)
 -}
 rowspan : Int -> Html.Attribute { compatible | rowspan : Html.SupportedAttribute } msg
 rowspan =
-    Html.number "rowspan"
+    Html.numberProperty "rowSpan"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/sandbox](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-sandbox)
@@ -875,7 +915,7 @@ sandbox :
         )
     -> Html.Attribute { compatible | sandbox : Html.SupportedAttribute } msg
 sandbox =
-    Html.values "sandbox"
+    Html.valuesAttribute "sandbox"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/scope](https://html.spec.whatwg.org/multipage/tables.html#attr-th-scope)
@@ -890,41 +930,14 @@ scope :
         }
     -> Html.Attribute { compatible | scope : Html.SupportedAttribute } msg
 scope =
-    Html.value "scope"
+    Html.valueProperty "scope"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/selected](https://html.spec.whatwg.org/multipage/form-elements.html#attr-option-selected)
 -}
 selected : Bool -> Html.Attribute { compatible | selected : Html.SupportedAttribute } msg
 selected =
-    Html.bool "selected"
-
-
-{-| Follows the attribute definition at [html.spec.whatwg.org/selectionstart](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#dom-textarea/input-selectionstart)
--}
-selectionStart : Int -> Html.Attribute { compatible | selectionStart : Html.SupportedAttribute } msg
-selectionStart =
-    Html.number "selectionStart"
-
-
-{-| Follows the attribute definition at [html.spec.whatwg.org/selectionend](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#dom-textarea/input-selectionend)
--}
-selectionEnd : Int -> Html.Attribute { compatible | selectionEnd : Html.SupportedAttribute } msg
-selectionEnd =
-    Html.number "selectionEnd"
-
-
-{-| Follows the attribute definition at [html.spec.whatwg.org/selectiondirection](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#dom-textarea/input-selectiondirection)
--}
-selectionDirection :
-    Html.Value
-        { forward : Html.SupportedValue
-        , backward : Html.SupportedValue
-        , none : Html.SupportedValue
-        }
-    -> Html.Attribute { compatible | selectionDirection : Html.SupportedAttribute } msg
-selectionDirection =
-    Html.value "selectionDirection"
+    Html.boolProperty "selected"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/shape](https://html.spec.whatwg.org/multipage/image-maps.html#attr-area-shape)
@@ -941,7 +954,7 @@ shape :
         }
     -> Html.Attribute { compatible | shape : Html.SupportedAttribute } msg
 shape =
-    Html.value "shape"
+    Html.valueProperty "shape"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-size](https://html.spec.whatwg.org/multipage/input.html#attr-input-size),
@@ -949,7 +962,7 @@ shape =
 -}
 size : Int -> Html.Attribute { compatible | size : Html.SupportedAttribute } msg
 size =
-    Html.number "size"
+    Html.numberProperty "size"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/img-sizes](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-sizes),
@@ -957,7 +970,7 @@ size =
 -}
 sizes : List String -> Html.Attribute { compatible | sizes : Html.SupportedAttribute } msg
 sizes =
-    Html.tokens "sizes"
+    Html.stringProperty "sizes" << String.join " "
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/col-span](https://html.spec.whatwg.org/multipage/tables.html#attr-col-span),
@@ -965,28 +978,28 @@ sizes =
 -}
 span : Int -> Html.Attribute { compatible | span : Html.SupportedAttribute } msg
 span =
-    Html.number "span"
+    Html.numberProperty "span"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/src](https://html.spec.whatwg.org/multipage/media.html#attr-media-src)
 -}
 src : String -> Html.Attribute { compatible | src : Html.SupportedAttribute } msg
 src =
-    Html.string "src"
+    Html.stringProperty "src"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/srcdoc](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-srcdoc)
 -}
 srcdoc : String -> Html.Attribute { compatible | srcdoc : Html.SupportedAttribute } msg
 srcdoc =
-    Html.string "srcdoc"
+    Html.stringProperty "srcdoc"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/srclang](https://html.spec.whatwg.org/multipage/media.html#attr-track-srclang)
 -}
 srclang : String -> Html.Attribute { compatible | srclang : Html.SupportedAttribute } msg
 srclang =
-    Html.string "srclang"
+    Html.stringProperty "srclang"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/img-srcset](https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-srcset),
@@ -994,21 +1007,21 @@ srclang =
 -}
 srcset : List String -> Html.Attribute { compatible | srcset : Html.SupportedAttribute } msg
 srcset =
-    Html.tokens "srcset"
+    Html.stringProperty "srcset" << String.join " "
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/start](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-ol-start)
 -}
 start : Int -> Html.Attribute { compatible | start : Html.SupportedAttribute } msg
 start =
-    Html.number "start"
+    Html.numberProperty "start"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/step](https://html.spec.whatwg.org/multipage/input.html#attr-input-step)
 -}
 step : Int -> Html.Attribute { compatible | step : Html.SupportedAttribute } msg
 step =
-    Html.number "step"
+    Html.stringProperty "step" << String.fromInt
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/target](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-target)
@@ -1024,7 +1037,7 @@ target :
         }
     -> Html.Attribute { compatible | target : Html.SupportedAttribute } msg
 target =
-    Html.value "target"
+    Html.valueProperty "target"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/button-type](https://html.spec.whatwg.org/multipage/form-elements.html#attr-button-type)
@@ -1037,14 +1050,14 @@ type_button :
         }
     -> Html.Attribute { compatible | type_button : Html.SupportedAttribute } msg
 type_button =
-    Html.value "type"
+    Html.valueProperty "type"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-type](https://html.spec.whatwg.org/multipage/input.html#attr-input-type)
 -}
 type_input : String -> Html.Attribute { compatible | type_input : Html.SupportedAttribute } msg
 type_input =
-    Html.string "type"
+    Html.stringProperty "type"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/ol-type](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-ol-type)
@@ -1059,7 +1072,7 @@ type_list :
         }
     -> Html.Attribute { compatible | type_list : Html.SupportedAttribute } msg
 type_list =
-    Html.value "type"
+    Html.valueProperty "type"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/a-mimeType](https://html.spec.whatwg.org/multipage/links.html#attr-hyperlink-type),
@@ -1069,14 +1082,14 @@ type_list =
 -}
 type_mime : String -> Html.Attribute { compatible | type_mime : Html.SupportedAttribute } msg
 type_mime =
-    Html.string "type"
+    Html.stringProperty "type"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/usemap](https://html.spec.whatwg.org/multipage/image-maps.html#attr-hyperlink-usemap)
 -}
 usemap : String -> Html.Attribute { compatible | usemap : Html.SupportedAttribute } msg
 usemap =
-    Html.string "usemap"
+    Html.stringProperty "useMap"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/button-value](https://html.spec.whatwg.org/multipage/form-elements.html#attr-button-value),
@@ -1087,21 +1100,21 @@ usemap =
 -}
 value : String -> Html.Attribute { compatible | value : Html.SupportedAttribute } msg
 value =
-    Html.string "value"
+    Html.stringProperty "value"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-valueasdate](https://html.spec.whatwg.org/multipage/input.html#dom-input-valueasdate)
 -}
 valueAsDate : String -> Html.Attribute { compatible | valueAsDate : Html.SupportedAttribute } msg
 valueAsDate =
-    Html.string "valueAsDate"
+    Html.stringProperty "valueAsDate"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/input-valueasnumber](https://html.spec.whatwg.org/multipage/input.html#dom-input-valueasnumber)
 -}
-valueAsNumber : String -> Html.Attribute { compatible | valueAsNumber : Html.SupportedAttribute } msg
+valueAsNumber : Int -> Html.Attribute { compatible | valueAsNumber : Html.SupportedAttribute } msg
 valueAsNumber =
-    Html.string "valueAsNumber"
+    Html.numberProperty "valueAsNumber"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/li-value](https://html.spec.whatwg.org/multipage/grouping-content.html#attr-li-value),
@@ -1110,7 +1123,7 @@ valueAsNumber =
 -}
 value_ordinal : Int -> Html.Attribute { compatible | value_ordinal : Html.SupportedAttribute } msg
 value_ordinal =
-    Html.number "value"
+    Html.numberProperty "value"
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/width](https://html.spec.whatwg.org/multipage/embedded-content-other.html#attr-dim-width),
@@ -1118,7 +1131,7 @@ value_ordinal =
 -}
 width : Int -> Html.Attribute { compatible | width : Html.SupportedAttribute } msg
 width =
-    Html.number "width"
+    Html.stringProperty "width" << String.fromInt
 
 
 {-| Follows the attribute definition at [html.spec.whatwg.org/wrap](https://html.spec.whatwg.org/multipage/form-elements.html#attr-textarea-wrap)
@@ -1130,7 +1143,7 @@ wrap :
         }
     -> Html.Attribute { compatible | wrap : Html.SupportedAttribute } msg
 wrap =
-    Html.value "wrap"
+    Html.valueProperty "wrap"
 
 
 {-| -}
@@ -1200,9 +1213,21 @@ allow_top_navigation_by_user_activation =
 
 
 {-| -}
+alternate : Html.Value { compatible | alternate : Html.SupportedValue }
+alternate =
+    Html.Value "alternate"
+
+
+{-| -}
 anonymous : Html.Value { compatible | anonymous : Html.SupportedValue }
 anonymous =
     Html.Value "anonymous"
+
+
+{-| -}
+author : Html.Value { compatible | author : Html.SupportedValue }
+author =
+    Html.Value "author"
 
 
 {-| -}
@@ -1230,9 +1255,21 @@ blank_ =
 
 
 {-| -}
+bookmark : Html.Value { compatible | bookmark : Html.SupportedValue }
+bookmark =
+    Html.Value "bookmark"
+
+
+{-| -}
 button : Html.Value { compatible | button : Html.SupportedValue }
 button =
     Html.Value "button"
+
+
+{-| -}
+canonical : Html.Value { compatible | canonical : Html.SupportedValue }
+canonical =
+    Html.Value "canonical"
 
 
 {-| -}
@@ -1302,6 +1339,12 @@ dialog =
 
 
 {-| -}
+dns_prefetch : Html.Value { compatible | dns_prefetch : Html.SupportedValue }
+dns_prefetch =
+    Html.Value "dns-prefetch"
+
+
+{-| -}
 done : Html.Value { compatible | done : Html.SupportedValue }
 done =
     Html.Value "done"
@@ -1317,6 +1360,12 @@ email =
 enter : Html.Value { compatible | enter : Html.SupportedValue }
 enter =
     Html.Value "enter"
+
+
+{-| -}
+external : Html.Value { compatible | external : Html.SupportedValue }
+external =
+    Html.Value "external"
 
 
 {-| -}
@@ -1362,6 +1411,24 @@ hard =
 
 
 {-| -}
+help : Html.Value { compatible | help : Html.SupportedValue }
+help =
+    Html.Value "help"
+
+
+{-| -}
+icon : Html.Value { compatible | icon : Html.SupportedValue }
+icon =
+    Html.Value "icon"
+
+
+{-| -}
+license : Html.Value { compatible | license : Html.SupportedValue }
+license =
+    Html.Value "license"
+
+
+{-| -}
 loweralpha : Html.Value { compatible | loweralpha : Html.SupportedValue }
 loweralpha =
     Html.Value "a"
@@ -1386,6 +1453,12 @@ metadata =
 
 
 {-| -}
+modulepreload : Html.Value { compatible | modulepreload : Html.SupportedValue }
+modulepreload =
+    Html.Value "modulepreload"
+
+
+{-| -}
 next : Html.Value { compatible | next : Html.SupportedValue }
 next =
     Html.Value "next"
@@ -1398,9 +1471,39 @@ no =
 
 
 {-| -}
+nofollow : Html.Value { compatible | nofollow : Html.SupportedValue }
+nofollow =
+    Html.Value "nofollow"
+
+
+{-| -}
 none : Html.Value { compatible | none : Html.SupportedValue }
 none =
     Html.Value "none"
+
+
+{-| -}
+noopener : Html.Value { compatible | noopener : Html.SupportedValue }
+noopener =
+    Html.Value "noopener"
+
+
+{-| -}
+noreferrer : Html.Value { compatible | noreferrer : Html.SupportedValue }
+noreferrer =
+    Html.Value "noreferrer"
+
+
+{-| -}
+no_referrer : Html.Value { compatible | no_referrer : Html.SupportedValue }
+no_referrer =
+    Html.Value "no-referrer"
+
+
+{-| -}
+no_referrer_when_downgrade : Html.Value { compatible | no_referrer_when_downgrade : Html.SupportedValue }
+no_referrer_when_downgrade =
+    Html.Value "no-referrer-when-downgrade"
 
 
 {-| -}
@@ -1422,15 +1525,39 @@ on =
 
 
 {-| -}
+opener : Html.Value { compatible | opener : Html.SupportedValue }
+opener =
+    Html.Value "opener"
+
+
+{-| -}
 ordinal : Html.Value { compatible | ordinal : Html.SupportedValue }
 ordinal =
     Html.Value "1"
 
 
 {-| -}
+origin : Html.Value { compatible | origin : Html.SupportedValue }
+origin =
+    Html.Value "origin"
+
+
+{-| -}
+origin_when_cross_origin : Html.Value { compatible | origin_when_cross_origin : Html.SupportedValue }
+origin_when_cross_origin =
+    Html.Value "origin-when-cross-origin"
+
+
+{-| -}
 parent_ : Html.Value { compatible | parent_ : Html.SupportedValue }
 parent_ =
     Html.Value "_parent"
+
+
+{-| -}
+pingback : Html.Value { compatible | pingback : Html.SupportedValue }
+pingback =
+    Html.Value "pingback"
 
 
 {-| -}
@@ -1455,6 +1582,36 @@ polygon =
 post : Html.Value { compatible | post : Html.SupportedValue }
 post =
     Html.Value "post"
+
+
+{-| -}
+preconnect : Html.Value { compatible | preconnect : Html.SupportedValue }
+preconnect =
+    Html.Value "preconnect"
+
+
+{-| -}
+prefetch : Html.Value { compatible | prefetch : Html.SupportedValue }
+prefetch =
+    Html.Value "prefetch"
+
+
+{-| -}
+preload_rel : Html.Value { compatible | preload_rel : Html.SupportedValue }
+preload_rel =
+    Html.Value "preload"
+
+
+{-| -}
+prerender : Html.Value { compatible | prerender : Html.SupportedValue }
+prerender =
+    Html.Value "prerender"
+
+
+{-| -}
+prev : Html.Value { compatible | prev : Html.SupportedValue }
+prev =
+    Html.Value "prev"
 
 
 {-| -}
@@ -1500,6 +1657,12 @@ rtl =
 
 
 {-| -}
+same_origin : Html.Value { compatible | same_origin : Html.SupportedValue }
+same_origin =
+    Html.Value "same-origin"
+
+
+{-| -}
 search : Html.Value { compatible | search : Html.SupportedValue }
 search =
     Html.Value "search"
@@ -1530,6 +1693,24 @@ soft =
 
 
 {-| -}
+strict_origin : Html.Value { compatible | strict_origin : Html.SupportedValue }
+strict_origin =
+    Html.Value "strict-origin"
+
+
+{-| -}
+strict_origin_when_cross_origin : Html.Value { compatible | strict_origin_when_cross_origin : Html.SupportedValue }
+strict_origin_when_cross_origin =
+    Html.Value "strict-origin-when-cross-origin"
+
+
+{-| -}
+stylesheet : Html.Value { compatible | stylesheet : Html.SupportedValue }
+stylesheet =
+    Html.Value "stylesheet"
+
+
+{-| -}
 submit : Html.Value { compatible | submit : Html.SupportedValue }
 submit =
     Html.Value "submit"
@@ -1548,6 +1729,12 @@ sync =
 
 
 {-| -}
+tag : Html.Value { compatible | tag : Html.SupportedValue }
+tag =
+    Html.Value "tag"
+
+
+{-| -}
 tel : Html.Value { compatible | tel : Html.SupportedValue }
 tel =
     Html.Value "tel"
@@ -1563,6 +1750,12 @@ text =
 top_ : Html.Value { compatible | top_ : Html.SupportedValue }
 top_ =
     Html.Value "_top"
+
+
+{-| -}
+unsafe_url : Html.Value { compatible | unsafe_url : Html.SupportedValue }
+unsafe_url =
+    Html.Value "unsafe-url"
 
 
 {-| -}
